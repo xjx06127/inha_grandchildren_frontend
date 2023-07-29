@@ -158,7 +158,6 @@ const FontSizeSetting = () => {
             <input
               type="radio"
               name="normal"
-
               checked={fontSize === "normal"}
               onChange={handleRadioChange}
             />

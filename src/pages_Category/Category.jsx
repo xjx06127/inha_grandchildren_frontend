@@ -5,7 +5,7 @@ const Desktop = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden; /* 화면을 옆으로 스크롤되지 않도록 설정 */
-  background-color: #E6E6E6;
+  background-color: #FFFFFF;
   padding-top:20px;
   padding-bottom: 100px;
 
@@ -169,7 +169,7 @@ const Category = () => {
         </T1>
             <Con>
             <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
-            <Box1><Button1><Buttontext>자세히</Buttontext>sss</Button1></Box1>
+            <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
         </Desktop>

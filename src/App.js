@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6cce01c545b37d414d18335156fa19e6e5d2febf
 import { GlobalStyle } from "./GlobalStyle";
 import { Link } from "react-router-dom";
 import App_methods from "./pages_app_methods/App_methods";
