@@ -164,12 +164,6 @@ const FontSizeSetting = () => {
             <input
               type="radio"
               name="normal"
-              sx={{
-                color: pink,
-                "&.Mui-checked": {
-                  color: pink,
-                },
-              }}
               checked={fontSize === "normal"}
               onChange={handleRadioChange}
             />
