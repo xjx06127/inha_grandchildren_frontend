@@ -12,7 +12,7 @@ function App() {
     <>
     <GlobalStyle/>
     <Category/>
-<App_methods></App_methods>
+<App_methods></App_methods> 
     </>
    
   );
