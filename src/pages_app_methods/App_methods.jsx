@@ -48,7 +48,7 @@ const App_methods = () => {
 <>
 <BackGround>
     <Icon src="/videoIcon.png"></Icon>
-<Text>직접 동영상으로<br/>알려드릴게요 🐥</Text>
+<Text>직접 동영상으로<br/>알려드릴게요🐥</Text>
 <Videobox>
 <ReactPlayer
     url='video.mp4'
