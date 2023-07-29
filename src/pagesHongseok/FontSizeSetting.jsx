@@ -52,15 +52,6 @@ const Option = styled.div`
   padding-right: 20px;
   color: #000000;
   box-sizing: border-box;
-
-  margin-bottom: 10px;
-  /* 선택된 라디오 버튼에 대한 스타일 지정 */
-  ${/* 선택된 라디오 버튼의 스타일을 지정합니다. */ ""}
-  input[type=radio]:checked {
-    background: #6cd986; /* 초록색 배경으로 변경 */
-    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
-    color: #ffffff; /* 글자색을 흰색으로 변경 */
-  }
 `;
 
 const Label1 = styled.p`
@@ -164,12 +155,6 @@ const FontSizeSetting = () => {
             <input
               type="radio"
               name="normal"
-              sx={{
-                color: pink,
-                "&.Mui-checked": {
-                  color: pink,
-                },
-              }}
               checked={fontSize === "normal"}
               onChange={handleRadioChange}
             />
