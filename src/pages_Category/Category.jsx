@@ -5,8 +5,10 @@ const Desktop = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden; /* 화면을 옆으로 스크롤되지 않도록 설정 */
-background-color: #E6E6E6;
-padding:20px;
+  background-color: #E6E6E6;
+  padding-top:20px;
+  padding-bottom: 100px;
+
 `;
 
 
@@ -27,14 +29,21 @@ const Tbutton = styled.button`
  background-color:transparent;
  border: none;
  margin-left:15px;
- font-size:20px;
- color: #535353;
+ 
 `;
     
+
+const TButtontext=styled.p`
+ font-size:20px;
+ color: #535353;
+    
+`;
+
+
 const T1= styled.div`
 display: flex;
 flex-direction: row;
-margin-left: 10px;
+margin-left: 20px;
 margin-top: 70px;
 `;
 
@@ -57,16 +66,19 @@ border-radius: 5px;
 `;
 
 const Button= styled.button`
-font-size: 20px;
 background-color:transparent;
 border: none;
-color: #617143;
 margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
 margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-text-decoration: underline;
 margin-right: 10px; 
 margin-bottom: 10px; 
+`;
 
+const Buttontext=styled.p`
+    font-size: 20px;
+    color: #617143;
+    text-decoration: underline;
+    
 `;
 
 
@@ -106,58 +118,58 @@ const Category = () => {
 
         <T1>
         <Text><Highlight>추천</Highlight> 어플 </Text>
-        <Tbutton >[더보기]</Tbutton>
+        <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
 
             <Con>
-            <Box><Button>자세히</Button></Box>
-            <Box1><Button1>자세히</Button1></Box1>
+            <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
+            <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
         <T1>
         <Text><Highlight>씨앗용</Highlight> 어플</Text>
-        <Tbutton >[더보기]</Tbutton>
+        <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
 
             <Con>
-            <Box><Button>자세히</Button></Box>
-            <Box1><Button1>자세히</Button1></Box1>
+            <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
+            <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
         <T1>
         <Text><Highlight>새싹용</Highlight> 어플</Text>
-        <Tbutton >[더보기]</Tbutton>
+        <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
             <Con>
-            <Box><Button>자세히</Button></Box>
-            <Box1><Button1>자세히</Button1></Box1>
+            <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
+            <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
         <T1>
         <Text><Highlight>꽃용</Highlight> 어플</Text>
-        <Tbutton >[더보기]</Tbutton>
+        <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
             <Con>
-            <Box><Button>자세히</Button></Box>
-            <Box1><Button1>자세히</Button1></Box1>
+            <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
+            <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
         <T1>
         <Text><Highlight>열매용</Highlight> 어플</Text>
-        <Tbutton >[더보기]</Tbutton>
+        <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
             <Con>
-            <Box><Button>자세히</Button></Box>
-            <Box1><Button1>자세히</Button1></Box1>
+            <Box><Button>=<Buttontext>자세히</Buttontext></Button></Box>
+            <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
         <T1>
         <Text><Highlight>나무용</Highlight> 어플</Text>
-        <Tbutton >[더보기]</Tbutton>
+        <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
             <Con>
-            <Box><Button>자세히</Button></Box>
-            <Box1><Button1>자세히</Button1></Box1>
+            <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
+            <Box1><Button1><Buttontext>자세히</Buttontext>sss</Button1></Box1>
             </Con>
 
         </Desktop>
