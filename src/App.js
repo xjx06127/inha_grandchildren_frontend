@@ -1,3 +1,5 @@
+import Home from "./pages_home/Home";
+import { GlobalStyle } from "./GlobalStyle";
 
 import Category from './pages_Category/Category';
 
@@ -11,8 +13,9 @@ function App() {
   return (
     <>
     <GlobalStyle/>
+    <Home/>
     <Category/>
-<App_methods></App_methods>
+<App_methods></App_methods> 
     </>
    
   );
