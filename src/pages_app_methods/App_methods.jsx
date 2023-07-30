@@ -24,7 +24,7 @@ margin-bottom: 10%;
 `;
 
 const Title=styled.div`
-font-size: 25px;
+font-size: 3.5vh;
 color:black;
 margin-left: 10%;
 margin-right: 10%;
@@ -47,7 +47,7 @@ const App_methods = () => {
     return (
 <>
 <BackGround>
-    <Icon src="/videoIcon.png"></Icon>
+    <Icon src="/videoIcon.svg"></Icon>
 <Text>직접 동영상으로<br/>알려드릴게요🐥</Text>
 <Videobox>
 <ReactPlayer

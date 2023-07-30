@@ -25,7 +25,7 @@ const BackImg = styled.img`
 `;
 
 const BackText = styled.p`
-    color:white;
+    color:rgba(95, 95, 95, 1);
     font-size: 2.4vh;
 `;
 
@@ -42,12 +42,12 @@ const SoundImg = styled.img`
 `;
 
 const SoundText = styled.p`  
-    color: white;
+    color: rgba(95, 95, 95, 1);
     font-size: 2.4vh;
 `;
 
 
-const Navigator = () => {
+const TestNavigator = () => {
     const navigate = useNavigate();
     const [isBackClicked,setBackClicked] = useState(false);
     const [isSoundClicked,setSoundClicked] = useState(false);
@@ -76,12 +76,12 @@ const Navigator = () => {
        <Box>
 
        <BackBox onClick={GoToBack}>
-        <BackImg src="/back.svg"/>
+        <BackImg src="/TestBack.svg"/>
         <BackText clicked={isBackClicked}>돌아가기</BackText>
        </BackBox>
 
        <SoundBox>
-        <SoundImg src="/sound.svg"/>
+        <SoundImg src="/TestNext.svg"/>
         <SoundText>소리끄기</SoundText>
        </SoundBox>
 
@@ -91,4 +91,4 @@ const Navigator = () => {
     );
 };
 
-export default Navigator;
+export default TestNavigator;
