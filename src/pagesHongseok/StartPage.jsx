@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Img = styled.img`
-  content: url(startPageLogo.png);
+  content: url(startPageLogo.svg);
 `;
 
 const Div = styled.div`

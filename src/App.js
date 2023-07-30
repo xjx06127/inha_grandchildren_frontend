@@ -19,6 +19,7 @@ function App() {
           <Route path="/Test" element={<Test />} />
           <Route path="/Main" element={<Home />} />
           <Route path="/Category" element={<Category />} />
+          <Route path="/Method" element={<App_methods />} />
         </Routes>
       </BrowserRouter>
     </>

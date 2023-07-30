@@ -14,13 +14,13 @@ const P = styled.p`
 `;
 
 const ExBox = styled.div`
-  width: 314px;
-  height: 168px;
+  width: 18rem;
 
   background: #ffffff;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin-bottom: 25px;
+  padding: 5%;
 `;
 
 const VertiBox = styled.div`
@@ -52,6 +52,8 @@ const Option = styled.div`
   padding-right: 20px;
   color: #000000;
   box-sizing: border-box;
+
+  margin-bottom: 1rem;
 `;
 
 const Label1 = styled.p`
@@ -72,7 +74,7 @@ const Title = styled.h1`
 `;
 
 const Logo = styled.img`
-  content: url(text.png);
+  content: url(text.svg);
 `;
 
 const VertiBox2 = styled.div`
@@ -140,10 +142,10 @@ const FontSizeSetting = () => {
             style={{
               fontSize:
                 fontSize === "normal"
-                  ? "25px"
+                  ? "1.6rem"
                   : fontSize === "large"
-                  ? "30px"
-                  : "35px",
+                  ? "1.9rem"
+                  : "2.2rem",
             }}
           >
             동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
