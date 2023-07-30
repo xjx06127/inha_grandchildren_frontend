@@ -11,8 +11,6 @@ const Desktop = styled.div`
 
 `;
 
-
-
 const Text = styled.p`
   font-weight: bold;
   font-size: 25px;
@@ -108,8 +106,6 @@ margin-bottom: 10px;
 
 
 
-
-
 const Category = () => {
     return (
         <>
@@ -159,7 +155,7 @@ const Category = () => {
         <Tbutton ><TButtontext>[더보기]</TButtontext></Tbutton>
         </T1>
             <Con>
-            <Box><Button>=<Buttontext>자세히</Buttontext></Button></Box>
+            <Box><Button><Buttontext>자세히</Buttontext></Button></Box>
             <Box1><Button1><Buttontext>자세히</Buttontext></Button1></Box1>
             </Con>
 
