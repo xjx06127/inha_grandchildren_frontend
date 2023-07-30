@@ -86,9 +86,13 @@ const Highlighter = styled.span`
   border-radius: 3px;
 `;
 
-const Test = () => {
+const Test5 = () => {
   const navigate = useNavigate();
-  const [OX, setOX] = useState("");
+
+  const { OX, OX2, OX3, OX4 } = useParams();
+
+  const [OX5, setOX5] = useState("");
+
   const [speakMessage, setSpeakMessage] = useState(false);
 
   useEffect(() => {
@@ -101,54 +105,52 @@ const Test = () => {
     };
 
     if (!speakMessage) {
-      speakText("회원가입을 성공해보셨나요?");
+      speakText("어플 삭제를 해보셨나요?");
       setSpeakMessage(true);
     }
   }, [speakMessage]);
 
-  const GoTest2 = (answer) => {
+  const GoResult = (answer) => {
     if (answer === "네") {
-      setOX("O");
+      setOX5("O");
     } else if (answer === "아니요") {
-      setOX("X");
+      setOX5("X");
     }
-    // navigate(`/Test2/${answer}`);
   };
 
   const GoNextPage = () => {
-    navigate(`/Test2/${OX}`);
+    navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Result`);
   };
 
   return (
     <>
       <TestNavigator />
-      <progress id="progress" value="20" min="0" max="100"></progress>
+      <progress id="progress" value="100" min="0" max="100"></progress>
       <div>
         <All>
-          <PageNum>1/5</PageNum>
+          <PageNum>5/5</PageNum>
           <Question>
             <Highlight>
-              <Highlighter>회원가입</Highlighter>
+              <Highlighter>어플 삭제</Highlighter>
             </Highlight>
-            을
+            를
           </Question>{" "}
-          <Question> 성공해 보셨나요?</Question>
+          <Question> 해보셨나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest2("네")}>
+          <Ans onClick={() => GoResult("네")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest2("아니요")}>
+          <Ans onClick={() => GoResult("아니요")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-
         <NextButton onClick={GoNextPage}>다음</NextButton>
       </div>
     </>
   );
 };
 
-export default Test;
+export default Test5;

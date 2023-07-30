@@ -86,9 +86,13 @@ const Highlighter = styled.span`
   border-radius: 3px;
 `;
 
-const Test = () => {
+const Test4 = () => {
   const navigate = useNavigate();
-  const [OX, setOX] = useState("");
+
+  const { OX, OX2, OX3 } = useParams();
+
+  const [OX4, setOX4] = useState("");
+
   const [speakMessage, setSpeakMessage] = useState(false);
 
   useEffect(() => {
@@ -101,54 +105,52 @@ const Test = () => {
     };
 
     if (!speakMessage) {
-      speakText("회원가입을 성공해보셨나요?");
+      speakText("로그인이 어려우신가요?");
       setSpeakMessage(true);
     }
   }, [speakMessage]);
 
-  const GoTest2 = (answer) => {
+  const GoTest5 = (answer) => {
     if (answer === "네") {
-      setOX("O");
+      setOX4("O");
     } else if (answer === "아니요") {
-      setOX("X");
+      setOX4("X");
     }
-    // navigate(`/Test2/${answer}`);
   };
 
   const GoNextPage = () => {
-    navigate(`/Test2/${OX}`);
+    navigate(`/Test5/${OX}/${OX2}/${OX3}/${OX4}`);
   };
 
   return (
     <>
       <TestNavigator />
-      <progress id="progress" value="20" min="0" max="100"></progress>
+      <progress id="progress" value="80" min="0" max="100"></progress>
       <div>
         <All>
-          <PageNum>1/5</PageNum>
+          <PageNum>4/5</PageNum>
           <Question>
             <Highlight>
-              <Highlighter>회원가입</Highlighter>
+              <Highlighter>로그인</Highlighter>
             </Highlight>
-            을
+            이
           </Question>{" "}
-          <Question> 성공해 보셨나요?</Question>
+          <Question> 어려우신가요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest2("네")}>
+          <Ans onClick={() => GoTest5("네")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest2("아니요")}>
+          <Ans onClick={() => GoTest5("아니요")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-
         <NextButton onClick={GoNextPage}>다음</NextButton>
       </div>
     </>
   );
 };
 
-export default Test;
+export default Test4;

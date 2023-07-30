@@ -7,7 +7,6 @@ import ReactPlayer from "react-player/lazy";
 import Navigator from "../Navigator";
 import TestNavigator from "./TestNavigator";
 import "./Bar.css";
-
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
@@ -86,9 +85,10 @@ const Highlighter = styled.span`
   border-radius: 3px;
 `;
 
-const Test = () => {
+const Test2 = () => {
   const navigate = useNavigate();
-  const [OX, setOX] = useState("");
+  const { OX } = useParams();
+  const [OX2, setOX2] = useState("");
   const [speakMessage, setSpeakMessage] = useState(false);
 
   useEffect(() => {
@@ -101,54 +101,52 @@ const Test = () => {
     };
 
     if (!speakMessage) {
-      speakText("회원가입을 성공해보셨나요?");
+      speakText("인터넷 뱅킹을 쓰시나요?");
       setSpeakMessage(true);
     }
   }, [speakMessage]);
 
-  const GoTest2 = (answer) => {
+  const GoTest3 = (answer) => {
     if (answer === "네") {
-      setOX("O");
+      setOX2("O");
     } else if (answer === "아니요") {
-      setOX("X");
+      setOX2("X");
     }
-    // navigate(`/Test2/${answer}`);
   };
 
   const GoNextPage = () => {
-    navigate(`/Test2/${OX}`);
+    navigate(`/Test3/${OX}/${OX2}`);
   };
 
   return (
     <>
       <TestNavigator />
-      <progress id="progress" value="20" min="0" max="100"></progress>
+      <progress id="progress" value="40" min="0" max="100"></progress>
       <div>
         <All>
-          <PageNum>1/5</PageNum>
+          <PageNum>2/5</PageNum>
           <Question>
             <Highlight>
-              <Highlighter>회원가입</Highlighter>
+              <Highlighter>인터넷 뱅킹</Highlighter>
             </Highlight>
             을
           </Question>{" "}
-          <Question> 성공해 보셨나요?</Question>
+          <Question> 쓰시나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest2("네")}>
+          <Ans onClick={() => GoTest3("네")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest2("아니요")}>
+          <Ans onClick={() => GoTest3("아니요")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-
         <NextButton onClick={GoNextPage}>다음</NextButton>
       </div>
     </>
   );
 };
 
-export default Test;
+export default Test2;
