@@ -8,7 +8,7 @@ const Box = styled.div`
     justify-content: space-between;
     padding-left: 4.8%;
     padding-right: 4.8%;
-    padding-top: 10%;
+    padding-top: 7%;
 `
 
 const BackBox = styled.div`
@@ -18,15 +18,14 @@ const BackBox = styled.div`
 `;
 
 const BackImg = styled.img`
-   width: 45%;
-   height: 45%;
+   width: 40%;
+   height: 40%;
    margin-bottom: 7px;
-   
 `;
 
 const BackText = styled.p`
     color:white;
-    font-size: 2.4vh;
+    font-size: 1rem;
 `;
 
 const SoundBox = styled.div`
@@ -36,14 +35,14 @@ const SoundBox = styled.div`
 `;
 
 const SoundImg = styled.img`
-   width: 45%;
-   height: 45%;
+   width: 40%;
+   height: 40%;
    margin-bottom: 7px;
 `;
 
 const SoundText = styled.p`  
     color: white;
-    font-size: 2.4vh;
+    font-size: 1rem;
 `;
 
 
