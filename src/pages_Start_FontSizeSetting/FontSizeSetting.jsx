@@ -14,13 +14,17 @@ const P = styled.p`
 `;
 
 const ExBox = styled.div`
-  width: 18rem;
+  width: 70%;
+  min-height: 20vh; /* 최대 높이를 지정합니다. */
 
   background: #ffffff;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   margin-bottom: 25px;
   padding: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const VertiBox = styled.div`
@@ -34,12 +38,21 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+`;
+
+const Highlight = styled.span`
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 90%,
+    rgba(255, 255, 255, 0.4) 55%
+  );
 `;
 
 const Option = styled.div`
   /* 선택지 하나하나 control */
 
-  width: 314px;
+  width: 80%;
   height: 66px;
 
   background: #ffffff;
@@ -54,6 +67,7 @@ const Option = styled.div`
   box-sizing: border-box;
 
   margin-bottom: 1rem;
+  padding: 2rem;
 `;
 
 const Label1 = styled.p`
@@ -123,6 +137,33 @@ const SetP = styled.p`
   color: #ffffff;
 `;
 
+const Input = styled.input`
+  appearance: none;
+  border: 2.5px solid rgba(97, 113, 67, 0.3);
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+  transition: border 0.2s ease-in-out;
+  position: relative;
+
+  &:checked {
+    border: 2.5px solid #617143;
+  }
+  &:checked::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 12px;
+    height: 12px;
+    background-color: #617143;
+    border-radius: 50%;
+  } /* Ellipse 5 */
+`;
+
 const FontSizeSetting = () => {
   const [fontSize, setFontSize] = useState("normal");
 
@@ -135,26 +176,28 @@ const FontSizeSetting = () => {
       <VertiBox>
         <VertiBox2>
           <Logo />
-          <Title>원하는 글자 크기를 선택해 주세요</Title>
+          <Title>
+            원하는 <Highlight>글자 크기</Highlight>를 선택해 주세요
+          </Title>
         </VertiBox2>
-        <ExBox>
-          <p
-            style={{
-              fontSize:
-                fontSize === "normal"
-                  ? "1.6rem"
-                  : fontSize === "large"
-                  ? "1.9rem"
-                  : "2.2rem",
-            }}
-          >
-            동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세
-          </p>
-        </ExBox>
-        <Div className="select">
+        <Div>
+          <ExBox>
+            <p
+              style={{
+                fontSize:
+                  fontSize === "normal"
+                    ? "1.6rem"
+                    : fontSize === "large"
+                    ? "1.9rem"
+                    : "2.2rem",
+              }}
+            >
+              동해물과 백두산이 마르고 닳도록
+            </p>
+          </ExBox>
           <Option>
             <Label1 htmlFor="select">보통</Label1>
-            <input
+            <Input
               type="radio"
               name="normal"
               checked={fontSize === "normal"}
@@ -163,7 +206,7 @@ const FontSizeSetting = () => {
           </Option>
           <Option>
             <Label2 htmlFor="select2">크게</Label2>
-            <input
+            <Input
               type="radio"
               name="large"
               checked={fontSize === "large"}
@@ -172,7 +215,7 @@ const FontSizeSetting = () => {
           </Option>
           <Option>
             <Label3 htmlFor="select3">매우 크게</Label3>
-            <input
+            <Input
               type="radio"
               name="veryLarge"
               checked={fontSize === "veryLarge"}
