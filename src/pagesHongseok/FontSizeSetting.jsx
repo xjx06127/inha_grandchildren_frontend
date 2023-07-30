@@ -52,6 +52,9 @@ const Option = styled.div`
   padding-right: 20px;
   color: #000000;
   box-sizing: border-box;
+
+  margin-bottom: 10px;
+
 `;
 
 const Label1 = styled.p`
