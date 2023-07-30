@@ -1,93 +1,44 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import ReactPlayer from 'react-player/lazy';
+import { GlobalStyle } from "./GlobalStyle";
+import { Link } from "react-router-dom";
+import App_methods from "./pages_app_methods/App_methods";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FontSizeSetting from "./pages_Start_FontSizeSetting/FontSizeSetting";
+import StartPage from "./pages_Start_FontSizeSetting/StartPage";
+import Test from "./pages_Test/Test";
+import Home from "./pages_home/Home";
+import Category from "./pages_Category/Category";
+import Test2 from "./pages_Test/Test2";
+import Test3 from "./pages_Test/Test3";
+import Test4 from "./pages_Test/Test4";
+import Test5 from "./pages_Test/Test5";
+import Result from "./pages_Result/Result";
+import { FontSizeProvider } from "./pages_font_context/FontSizeProvider";
+import AppReco from "./pages_AppReco/AppReco";
+import AppPage from "./pages_AppPage/AppPage";
 
+function App() {
+  return (
+    <FontSizeProvider>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/fontsizeSetting" element={<FontSizeSetting />} />
+          <Route path="/Test" element={<Test />} />
+          <Route path="/Test2/:OX" element={<Test2 />} />
+          <Route path="/Test3/:OX/:OX2" element={<Test3 />} />
+          <Route path="/Test4/:OX/:OX2/:OX3" element={<Test4 />} />
+          <Route path="/Test5/:OX/:OX2/:OX3/:OX4" element={<Test5 />} />
+          <Route path="/Main" element={<Home />} />
+          <Route path="/Category" element={<Category />} />
+          <Route path="/Method" element={<App_methods />} />
+          <Route path="/:OX/:OX2/:OX3/:OX4/:OX5/Result" element={<Result />} />
+          <Route path="/AppReco" element={<AppReco />} />
+          <Route path="/AppPage" element={<AppPage />} />
+        </Routes>
+      </BrowserRouter>
+    </FontSizeProvider>
+  );
+}
 
-const BackGround = styled.div`
-    background-image: url(/mainBackground.png);
-    width: 100vw; 
-    height: 40vh;
-    background-size: cover;
-    border-radius: 0 0 50px 60px / 0 0 12px 19px;
-`
-
-
-const Text = styled.h1`
-  color: #ffffff;
-  margin-left: 10%;
-  padding-top: 5%;
-margin-bottom: 10%;
-
-`;
-
-const Title=styled.div`
-font-size: 3.5vh;
-color:black;
-margin-left: 10%;
-margin-right: 10%;
-margin-bottom: 5%;
-`
-
-const Videobox=styled.div`
-    margin-left: 10%;
-`
-
-const Icon = styled.img`
-  width: 80px;
-  height: 60px;
-padding-left: 10%;
-padding-top: 15%;
-`;
-
-
-const App_methods = () => {
-    return (
-<>
-<BackGround>
-    <Icon src="/videoIcon.svg"></Icon>
-<Text>직접 동영상으로<br/>알려드릴게요🐥</Text>
-<Videobox>
-<ReactPlayer
-    url='video.mp4'
-    width='90%'
-    height='20%'
-    // playing={true}
-    muted={true}
-    controls={true}
-    loop={true}
-    />
-</Videobox>
-<Title>'손주야~'사용영상 </Title>
-<Videobox>
-<ReactPlayer
-    url='video2.mp4'
-    width='90%'
-    height='20%'
-    // playing={true}
-    muted={true}
-    controls={true}
-    loop={true}
-    />
-</Videobox>
-<Title>삭제는 이렇게 해요 </Title>
-<Videobox>
-<ReactPlayer
-    url='video3.mp4'
-    width='90%'
-    height='20%'
-    // playing={true}
-    muted={true}
-    controls={true}
-    loop={true}
-    />
-</Videobox>
-<Title>친구에게도 알려주고 싶으실 땐요,</Title>
-</BackGround>
-</>
-    );
-};
-
-export default App_methods;
+export default App;
