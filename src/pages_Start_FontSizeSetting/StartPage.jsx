@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const Img = styled.img``;
+const Img = styled.img`
+  content: url(startPageLogo.png);
+`;
 
 const Div = styled.div`
   display: flex;
@@ -12,12 +14,9 @@ const Div = styled.div`
 
 const StartPage = () => {
   return (
-    <>
-      <audio src={"temp_tts.mp3"} autoplay loop></audio>
-      <Div>
-        <Img src={"startPageLogo.svg"} />
-      </Div>
-    </>
+    <Div>
+      <Img />
+    </Div>
   );
 };
 
