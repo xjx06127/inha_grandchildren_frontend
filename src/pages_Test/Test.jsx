@@ -4,8 +4,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from 'react-player/lazy';
-
-
+import Navigator from "../Navigator";
+import TestNavigator from "./TestNavigator";
 
 
 const All=styled.div`
@@ -81,21 +81,25 @@ margin-top: 10%;
 margin-bottom: 10%;
 font-weight: bold;
 `;
+
 const Test = () => {
     return (
+        <>
+        <TestNavigator/>
         <div>
-       
+        
             <All>
+        
             <PageNum>1/5</PageNum>
            <Question><Highlight>회원가입</Highlight>을</Question> <Question> 성공해 보셨나요?</Question>
            </All>
-<Align><Ans><Icon src="/Yes.png"></Icon>네</Ans></Align>
-<Align><Ans><Icon src="/No.png"></Icon>아니요</Ans></Align>
+<Align><Ans><Icon src="/Good.svg"></Icon>네</Ans></Align>
+<Align><Ans><Icon src="/TT.svg"></Icon>아니요</Ans></Align>
 
 <NextButton>다음</NextButton>
 
-
-        </div>
+        </div>         
+        </>
     );
 };
 
