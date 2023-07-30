@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -165,10 +166,11 @@ const Input = styled.input`
 `;
 
 const FontSizeSetting = () => {
-  const [fontSize, setFontSize] = useState("normal");
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const handleRadioChange = (event) => {
     setFontSize(event.target.name);
+    console.log(fontSize);
   };
 
   return (

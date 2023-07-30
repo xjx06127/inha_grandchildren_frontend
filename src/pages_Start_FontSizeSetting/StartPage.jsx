@@ -12,9 +12,12 @@ const Div = styled.div`
 
 const StartPage = () => {
   return (
-    <Div>
-      <Img src={"startPageLogo.svg"} />
-    </Div>
+    <>
+      <audio src={"temp_tts.mp3"} autoplay loop></audio>
+      <Div>
+        <Img src={"startPageLogo.svg"} />
+      </Div>
+    </>
   );
 };
 
