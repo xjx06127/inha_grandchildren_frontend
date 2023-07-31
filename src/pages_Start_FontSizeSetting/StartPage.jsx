@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router";
 
 const Img = styled.img`
   content: url(startPageLogo.png);
@@ -13,10 +15,27 @@ const Div = styled.div`
 `;
 
 const StartPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/fontsizesetting");
+    }, 3000); // 3000 milliseconds = 3 seconds
+
+    // Clean up the timer to avoid memory leaks
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Div>
-      <Img />
-    </Div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <Div>
+        <Img />
+      </Div>
+    </motion.div>
   );
 };
 
