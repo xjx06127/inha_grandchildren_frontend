@@ -130,6 +130,7 @@ const Result = () => {
       gravity: 0.5, // 추가된 모션: 중력 적용
     });
   }
+
   const navigate = useNavigate();
   const { OX, OX2, OX3, OX4, OX5 } = useParams();
   const [imgSrc, setImgSrc] = useState("");

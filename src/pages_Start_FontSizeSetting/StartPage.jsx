@@ -18,12 +18,17 @@ const StartPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/fontsizesetting");
-    }, 3000); // 3000 milliseconds = 3 seconds
-
-    // Clean up the timer to avoid memory leaks
-    return () => clearTimeout(timer);
+    let isNew = localStorage.getItem("IsNew");
+    if (isNew == null) {
+      localStorage.setItem("IsNew", false);
+      setTimeout(() => {
+        navigate(`/FontSizeSettingForNew`);
+      }, 3000);
+    } else {
+      setTimeout(() => {
+        navigate(`/Main`);
+      }, 3000);
+    }
   }, []);
 
   return (
