@@ -15,6 +15,7 @@ import Result from "./pages_Result/Result";
 import { FontSizeProvider } from "./pages_font_context/FontSizeProvider";
 import AppReco from "./pages_AppReco/AppReco";
 import AppPage from "./pages_AppPage/AppPage";
+import Analyze from "./pages_analyze/Analyze";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
           <Route path="/:OX/:OX2/:OX3/:OX4/:OX5/Result" element={<Result />} />
           <Route path="/AppReco" element={<AppReco />} />
           <Route path="/AppPage" element={<AppPage />} />
+          <Route
+            path="/:OX/:OX2/:OX3/:OX4/:OX5/Analyze"
+            element={<Analyze />}
+          />
         </Routes>
       </BrowserRouter>
     </FontSizeProvider>
