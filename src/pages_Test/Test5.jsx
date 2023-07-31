@@ -119,7 +119,7 @@ const Test5 = () => {
   };
 
   const GoNextPage = () => {
-    navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Result`);
+    navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Analyze`);
   };
 
   return (
