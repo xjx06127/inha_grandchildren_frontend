@@ -169,7 +169,7 @@ const Input = styled.input`
   } /* Ellipse 5 */
 `;
 
-const FontSizeSetting = () => {
+const FontSizeSettingForNew = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const navigate = useNavigate();
   const handleRadioChange = (event) => {
@@ -178,13 +178,7 @@ const FontSizeSetting = () => {
   };
 
   const go = () => {
-    // 로컬 스토리지에 있는 테스트 여부 뽑아와서, 테스트 했으면 메인으로, 아니면 test 페이지로 보낸다.
-    let isTested = localStorage.getItem("IsTested");
-    if (isTested) {
-      navigate(`/Main`);
-    } else if (!isTested) {
-      navigate(`/Test`);
-    }
+    navigate(`/TestForNew`);
   };
 
   return (
@@ -247,11 +241,6 @@ const FontSizeSetting = () => {
             </Option>
           </Div>
           <ButtonBox>
-            <Link to={`/Main`} style={{ textDecoration: "none" }}>
-              <CancelBtn>
-                <CancelP>취소</CancelP>
-              </CancelBtn>
-            </Link>
             <SetBtn onClick={() => go()}>
               <SetP>설정하기</SetP>
             </SetBtn>
@@ -262,4 +251,4 @@ const FontSizeSetting = () => {
   );
 };
 
-export default FontSizeSetting;
+export default FontSizeSettingForNew;

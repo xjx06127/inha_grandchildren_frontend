@@ -66,7 +66,6 @@ const FindBox = styled.div`
 
         ${FindText} {
           color: #5A4843;
-          text-align: center;
         }
       }
     `
@@ -75,7 +74,7 @@ const FindBox = styled.div`
 `
 
 const FindText = styled.p`
-    font-size : 1.3rem;
+    font-size : 1.6rem;
     margin-left: 5%;
     font-weight: bold;
 `
@@ -113,7 +112,7 @@ const JustLookBox = styled.div`
 `
 
 const JustLookText = styled.p`
-    font-size : 1.3rem;
+    font-size : 1.6rem;
     font-weight: bold;
 `
 
@@ -121,7 +120,7 @@ const JustLookIcon = styled.img`
     width: 50%;
     height: 50%;
     margin-left: 50%;
-    padding-top: 20%;
+    
 `
 
 const TestBox = styled.div`
@@ -153,7 +152,7 @@ const TestBox = styled.div`
 `
 
 const TestText = styled.p`
-    font-size : 1.3rem;
+    font-size : 1.6rem;
     font-weight: bold;
 `
 
@@ -215,7 +214,7 @@ const HelpIcon = styled.img`
 `
 
 const HelpText = styled.p`
-    font-size : 1.3rem;
+    font-size : 1.6rem;
     font-weight: bold;
 
 `
@@ -256,7 +255,7 @@ const FontIcon = styled.img`
 `
 
 const FontText = styled.p`
-    font-size : 1.3rem;
+    font-size : 1.6rem;
     font-weight: bold;
 `
 

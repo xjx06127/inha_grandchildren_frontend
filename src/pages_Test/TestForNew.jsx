@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/lazy";
 import Navigator from "../Navigator";
-import TestNavigator from "./TestNavigator";
+import TestNavigatorForNew from "./TestNavigatorForNew";
 import "./Bar.css";
 
 const All = styled.div`
@@ -86,13 +86,9 @@ const Highlighter = styled.span`
   border-radius: 3px;
 `;
 
-const Test5 = () => {
+const TestForNew = () => {
   const navigate = useNavigate();
-
-  const { OX, OX2, OX3, OX4 } = useParams();
-
-  const [OX5, setOX5] = useState("");
-
+  const [OX, setOX] = useState("");
   const [speakMessage, setSpeakMessage] = useState(false);
 
   useEffect(() => {
@@ -105,52 +101,54 @@ const Test5 = () => {
     };
 
     if (!speakMessage) {
-      speakText("어플 삭제를 해보셨나요?");
+      speakText("회원가입을 성공해보셨나요?");
       setSpeakMessage(true);
     }
   }, [speakMessage]);
 
-  const GoResult = (answer) => {
+  const GoTest2 = (answer) => {
     if (answer === "네") {
-      setOX5("O");
+      setOX("O");
     } else if (answer === "아니요") {
-      setOX5("X");
+      setOX("X");
     }
+    // navigate(`/Test2/${answer}`);
   };
 
   const GoNextPage = () => {
-    navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Analyze`);
+    navigate(`/Test2/${OX}`);
   };
 
   return (
     <>
-      <TestNavigator />
-      <progress id="progress" value="100" min="0" max="100"></progress>
+      <TestNavigatorForNew />
+      <progress id="progress" value="20" min="0" max="100"></progress>
       <div>
         <All>
-          <PageNum>5/5</PageNum>
+          <PageNum>1/5</PageNum>
           <Question>
             <Highlight>
-              <Highlighter>어플 삭제</Highlighter>
+              <Highlighter>회원가입</Highlighter>
             </Highlight>
-            를
+            을
           </Question>{" "}
-          <Question> 해보셨나요?</Question>
+          <Question> 성공해 보셨나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoResult("네")}>
+          <Ans onClick={() => GoTest2("네")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoResult("아니요")}>
+          <Ans onClick={() => GoTest2("아니요")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
+
         <NextButton onClick={GoNextPage}>다음</NextButton>
       </div>
     </>
   );
 };
 
-export default Test5;
+export default TestForNew;

@@ -104,7 +104,7 @@ const Test3 = () => {
     };
 
     if (!speakMessage) {
-      speakText("회원가입을 성공해 보셨나요?");
+      speakText("어플설치를 3번이상 해보셨나요?");
       setSpeakMessage(true);
     }
   }, [speakMessage]);
@@ -130,11 +130,11 @@ const Test3 = () => {
           <PageNum>3/5</PageNum>
           <Question>
             <Highlight>
-              <Highlighter>회원가입</Highlighter>
+              <Highlighter>어플 설치</Highlighter>
             </Highlight>
-            을
+            를
           </Question>{" "}
-          <Question> 성공해 보셨나요?</Question>
+          <Question> 3번이상 해보셨나요?</Question>
         </All>
         <Align>
           <Ans onClick={() => GoTest4("네")}>
