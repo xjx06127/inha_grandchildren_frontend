@@ -116,9 +116,11 @@ const Test = () => {
   };
 
   const GoNextPage = () => {
-    navigate(`/Test2/${OX}`);
+    // 사용자가 선택한 값이 '네' 또는 '아니요' 인 경우에만 다음 페이지로 넘어가도록 조건을 추가합니다.
+    if (OX === "O" || OX === "X") {
+      navigate(`/Test2/${OX}`);
+    }
   };
-
   return (
     <>
       <TestNavigator />
