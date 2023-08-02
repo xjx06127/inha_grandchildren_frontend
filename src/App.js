@@ -19,6 +19,7 @@ import Analyze from "./pages_analyze/Analyze";
 import { AnimatePresence } from "framer-motion";
 import FontSizeSettingForNew from "./pages_Start_FontSizeSetting/FontSizeSettingForNew";
 import TestForNew from "./pages_Test/TestForNew";
+import FirstChoosePage from "./pages_app_find_test/FirstChoosePage";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
               path="/fontsizeSettingfornew"
               element={<FontSizeSettingForNew />}
             />
+            <Route path="/FindApps" element={<FirstChoosePage />} />
           </Routes>
         </BrowserRouter>
       </AnimatePresence>
