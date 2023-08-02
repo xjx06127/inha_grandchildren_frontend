@@ -19,6 +19,12 @@ import Analyze from "./pages_analyze/Analyze";
 import { AnimatePresence } from "framer-motion";
 import FontSizeSettingForNew from "./pages_Start_FontSizeSetting/FontSizeSettingForNew";
 import TestForNew from "./pages_Test/TestForNew";
+import NotFound from "./NotFound";
+import Level1Reco from "./pages_AppReco/Level1Reco";
+import Level2Reco from "./pages_AppReco/Level2Reco";
+import Level3Reco from "./pages_AppReco/Level3Reco";
+import Level4Reco from "./pages_AppReco/Level4Reco";
+import Level5Reco from "./pages_AppReco/Level5Reco";
 
 function App() {
   return (
@@ -52,6 +58,13 @@ function App() {
               path="/fontsizeSettingfornew"
               element={<FontSizeSettingForNew />}
             />
+            <Route path="/level1" element={<Level1Reco />} />
+            <Route path="/level2" element={<Level2Reco />} />
+            <Route path="/level3" element={<Level3Reco />} />
+            <Route path="/level4" element={<Level4Reco />} />
+            <Route path="/level5" element={<Level5Reco />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </AnimatePresence>
