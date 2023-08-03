@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import TestNavigator from "../pages_Test/TestNavigator";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AppPage from "../pages_AppPage/AppPage";
 
 const Desktop = styled.div`
   display: flex;
@@ -27,9 +28,6 @@ const Tbutton = styled.button`
   margin-left: 15px;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   /* 클릭 여부에 따라 폰트 두께를 동적으로 설정합니다. */
-`;
-
-const TButtontext = styled.p`
   font-size: 1.3rem;
   color: #535353;
 `;
@@ -61,17 +59,20 @@ const Box = styled.div`
 const Button = styled.button`
   background-color: transparent;
   border: none;
+  font-size: 1.3rem;
+  color: #617143;
+  text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-right: 10px;
   margin-bottom: 10px;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-`;
-
-const Buttontext = styled.p`
-  font-size: 1.3rem;
-  color: #617143;
-  text-decoration: underline;
+  a:active {
+    color: orange;
+  }
+  a:hover {
+    color: red;
+  }
 `;
 
 const Box1 = styled.div`
@@ -106,6 +107,7 @@ const Title = styled.p`
   text-align: left;
 `;
 const Category = () => {
+  const navigate = useNavigate();
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
 
   const handleButtonClick = (index) => {
@@ -118,6 +120,7 @@ const Category = () => {
   const [app3, setApp3] = useState([]);
   const [app4, setApp4] = useState([]);
   const [app5, setApp5] = useState([]);
+  const [AppName, setAppName] = useState("");
   useEffect(() => {
     axios.get(`https://forgrandparents.store/mainapplist/`).then((res) => {
       //   setRecoApp(res.data.level_0);
@@ -143,7 +146,7 @@ const Category = () => {
             isActive={activeButtonIndex === 0}
             onClick={() => handleButtonClick(0)}
           >
-            <TButtontext>[더보기]</TButtontext>
+            <Link to="../RecoApp">[더보기]</Link>
           </Tbutton>
         </T1>
 
@@ -152,11 +155,15 @@ const Category = () => {
             <Box>
               <AppImage src={recoApp[0].image}></AppImage>
               <Title>{recoApp[0].name}</Title>
+
               <Button
                 isActive={activeButtonIndex === 7}
-                onClick={() => handleButtonClick(7)}
+                onClick={() => {
+                  handleButtonClick(7);
+                  navigate(`../AppPage/${recoApp[0].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button>
             </Box>
           )}
@@ -166,9 +173,12 @@ const Category = () => {
               <Title>{recoApp[1].name}</Title>
               <Button1
                 isActive={activeButtonIndex === 8}
-                onClick={() => handleButtonClick(8)}
+                onClick={() => {
+                  handleButtonClick(8);
+                  navigate(`../AppPage/${recoApp[1].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button1>
             </Box1>
           )}
@@ -182,9 +192,7 @@ const Category = () => {
             isActive={activeButtonIndex === 1}
             onClick={() => handleButtonClick(1)}
           >
-            <Link to="../level1">
-              <TButtontext>[더보기]</TButtontext>
-            </Link>
+            <Link to="../level1">[더보기]</Link>
           </Tbutton>
         </T1>
 
@@ -195,9 +203,12 @@ const Category = () => {
               <Title>{app1[0].name}</Title>
               <Button
                 isActive={activeButtonIndex === 9}
-                onClick={() => handleButtonClick(9)}
+                onClick={() => {
+                  handleButtonClick(9);
+                  navigate(`../AppPage/${app1[0].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button>
             </Box>
           )}
@@ -207,9 +218,12 @@ const Category = () => {
               <Title>{app1[1].name}</Title>
               <Button1
                 isActive={activeButtonIndex === 10}
-                onClick={() => handleButtonClick(10)}
+                onClick={() => {
+                  handleButtonClick(10);
+                  navigate(`../AppPage/${app1[1].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button1>
             </Box1>
           )}
@@ -224,9 +238,7 @@ const Category = () => {
             isActive={activeButtonIndex === 2}
             onClick={() => handleButtonClick(2)}
           >
-            <Link to="../level2">
-              <TButtontext>[더보기]</TButtontext>
-            </Link>
+            <Link to="../level2">[더보기]</Link>
           </Tbutton>
         </T1>
         <Con>
@@ -236,9 +248,12 @@ const Category = () => {
               <Title>{app2[0].name}</Title>
               <Button
                 isActive={activeButtonIndex === 11}
-                onClick={() => handleButtonClick(11)}
+                onClick={() => {
+                  handleButtonClick(11);
+                  navigate(`../AppPage/${app2[0].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button>
             </Box>
           )}
@@ -248,9 +263,12 @@ const Category = () => {
               <Title>{app2[1].name}</Title>
               <Button1
                 isActive={activeButtonIndex === 12}
-                onClick={() => handleButtonClick(12)}
+                onClick={() => {
+                  handleButtonClick(12);
+                  navigate(`../AppPage/${app2[1].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button1>
             </Box1>
           )}
@@ -264,9 +282,7 @@ const Category = () => {
             isActive={activeButtonIndex === 3}
             onClick={() => handleButtonClick(3)}
           >
-            <Link to="../level3">
-              <TButtontext>[더보기]</TButtontext>
-            </Link>
+            <Link to="../level3">[더보기]</Link>
           </Tbutton>
         </T1>
         <Con>
@@ -276,9 +292,12 @@ const Category = () => {
               <Title>{app3[0].name}</Title>
               <Button
                 isActive={activeButtonIndex === 13}
-                onClick={() => handleButtonClick(13)}
+                onClick={() => {
+                  handleButtonClick(13);
+                  navigate(`../AppPage/${app3[0].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button>
             </Box>
           )}
@@ -288,9 +307,12 @@ const Category = () => {
               <Title>{app3[1].name}</Title>
               <Button1
                 isActive={activeButtonIndex === 14}
-                onClick={() => handleButtonClick(14)}
+                onClick={() => {
+                  handleButtonClick(14);
+                  navigate(`../AppPage/${app3[1].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button1>
             </Box1>
           )}
@@ -305,9 +327,7 @@ const Category = () => {
             onClick={() => handleButtonClick(4)}
           >
             {" "}
-            <Link to="../level4">
-              <TButtontext>[더보기]</TButtontext>{" "}
-            </Link>
+            <Link to="../level4">[더보기]</Link>
           </Tbutton>
         </T1>
         <Con>
@@ -318,9 +338,12 @@ const Category = () => {
               <Title>{app4[0].name}</Title>
               <Button
                 isActive={activeButtonIndex === 15}
-                onClick={() => handleButtonClick(15)}
+                onClick={() => {
+                  handleButtonClick(15);
+                  navigate(`../AppPage/${app4[0].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button>
             </Box>
           )}
@@ -330,9 +353,12 @@ const Category = () => {
               <Title>{app4[1].name}</Title>
               <Button1
                 isActive={activeButtonIndex === 16}
-                onClick={() => handleButtonClick(16)}
+                onClick={() => {
+                  handleButtonClick(16);
+                  navigate(`../AppPage/${app4[1].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button1>
             </Box1>
           )}
@@ -347,9 +373,7 @@ const Category = () => {
             onClick={() => handleButtonClick(5)}
           >
             {" "}
-            <Link to="../level5">
-              <TButtontext>[더보기]</TButtontext>{" "}
-            </Link>
+            <Link to="../level5">[더보기]</Link>
           </Tbutton>
         </T1>
         <Con>
@@ -360,9 +384,12 @@ const Category = () => {
               <Title>{app5[0].name}</Title>
               <Button
                 isActive={activeButtonIndex === 17}
-                onClick={() => handleButtonClick(17)}
+                onClick={() => {
+                  handleButtonClick(17);
+                  navigate(`../AppPage/${app5[0].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button>
             </Box>
           )}
@@ -372,9 +399,12 @@ const Category = () => {
               <Title>{app5[1].name}</Title>
               <Button1
                 isActive={activeButtonIndex === 18}
-                onClick={() => handleButtonClick(18)}
+                onClick={() => {
+                  handleButtonClick(18);
+                  navigate(`../AppPage/${app5[1].id}`);
+                }}
               >
-                <Buttontext>자세히</Buttontext>
+                자세히
               </Button1>
             </Box1>
           )}
