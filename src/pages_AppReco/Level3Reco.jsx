@@ -110,7 +110,7 @@ const AppImage = styled.img`
   height: 60%;
 `;
 
-const AppReco = () => {
+const Level3Reco = () => {
   const [App, setApp] = useState([]);
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
@@ -158,4 +158,4 @@ const AppReco = () => {
   );
 };
 
-export default AppReco;
+export default Level3Reco;

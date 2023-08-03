@@ -25,7 +25,7 @@ import Level2Reco from "./pages_AppReco/Level2Reco";
 import Level3Reco from "./pages_AppReco/Level3Reco";
 import Level4Reco from "./pages_AppReco/Level4Reco";
 import Level5Reco from "./pages_AppReco/Level5Reco";
-
+import RecoApp from "./pages_AppReco/RecoApp";
 function App() {
   return (
     <FontSizeProvider>
@@ -58,6 +58,7 @@ function App() {
               path="/fontsizeSettingfornew"
               element={<FontSizeSettingForNew />}
             />
+            <Route path="/RecoApp" element={<RecoApp />} />
             <Route path="/level1" element={<Level1Reco />} />
             <Route path="/level2" element={<Level2Reco />} />
             <Route path="/level3" element={<Level3Reco />} />

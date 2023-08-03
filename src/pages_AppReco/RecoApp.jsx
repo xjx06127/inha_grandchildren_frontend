@@ -92,29 +92,16 @@ const Button = styled.button`
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
 `;
 
-const Button1 = styled.button`
-  font-size: 1.6rem;
-  background-color: transparent;
-  border: none;
-  color: #617143;
-  margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
-  margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  text-decoration: underline;
-  margin-right: 5%;
-  margin-bottom: 5%;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-`;
-
 const AppImage = styled.img`
   width: 60%;
   height: 60%;
 `;
 
-const Level2Reco = () => {
+const RecoApp = () => {
   const [App, setApp] = useState([]);
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
-      setApp(res.data.level_1);
+      setApp(res.data.top_app);
       console.log(App);
       console.log(res.data);
     });
@@ -133,9 +120,9 @@ const Level2Reco = () => {
         <Rectangle>
           <CBox>
             <Ibox>
-              <Img src="/Level2.svg"></Img>
+              <Img src="/recoapp.svg"></Img>
             </Ibox>
-            <Text>새싹용 어플</Text>
+            <Text>추천 어플</Text>
           </CBox>
 
           <Con>
@@ -158,4 +145,4 @@ const Level2Reco = () => {
   );
 };
 
-export default Level2Reco;
+export default RecoApp;
