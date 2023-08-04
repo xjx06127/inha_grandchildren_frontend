@@ -24,6 +24,7 @@ const Rectangle = styled.div`
 
 const Img =styled.img`
 width:50%;
+
 `
 const Text = styled.p`
   font-weight: bold;
@@ -118,7 +119,7 @@ height:auto;
 `;
 
 
-const AppReco = () => {
+const TreeApp = () => {
   const [src , setSrc] = useState("");
 const[name, setName]=useState("") 
  useEffect(()=>{
@@ -143,7 +144,7 @@ axios.get(`https://forgrandparents.store/applist/`)
     
     <Rectangle>
       <CBox>
-      <Ibox><Img src="/Rec.svg"></Img></Ibox>
+      <Ibox><Img src="/Tree.svg"></Img></Ibox>
       <Text>추천 어플</Text>
       </CBox>
       
@@ -174,4 +175,4 @@ axios.get(`https://forgrandparents.store/applist/`)
   );
 };
 
-export default AppReco;
+export default TreeApp;

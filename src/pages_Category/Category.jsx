@@ -8,7 +8,8 @@ const Desktop = styled.div`
   flex-direction: column;
   overflow-x: hidden; /* 화면을 옆으로 스크롤되지 않도록 설정 */
   background-color: #FFFFFF;
-  padding-bottom: 100px;
+  width:100%;
+  padding-bottom: 10%;
 `;
 
 const Text = styled.p`
@@ -25,14 +26,14 @@ const Highlight = styled.span`
 const Tbutton = styled.button`
  background-color:transparent;
  border: none;
- margin-left:15px;
+ margin-left:7%;
  font-weight: ${({ isActive }) => (isActive ? 'bold' : 'normal')};
 /* 클릭 여부에 따라 폰트 두께를 동적으로 설정합니다. */
 `;
     
 
 const TButtontext=styled.p`
- font-size:1.3rem;
+ font-size:1.6rem;
  color: #535353;
     
 `;
@@ -41,22 +42,24 @@ const TButtontext=styled.p`
 const T1= styled.div`
 display: flex;
 flex-direction: row;
-margin-left: 20px;
-margin-top: 50px;
+margin-left: 5%;
+margin-top: 10%;
 `;
+
 
 const Con = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: center; /* 가로축 가운데 정렬 */
-margin-top: 10px;
-
+margin-top: 5%;
+width:100%;
 `;
+
 
 const Box= styled.div`
 display: flex;
 flex-direction: column;
-width:150px;
+width:42%;
 height:150px;
 background-color: #ffffff;
 box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
@@ -69,38 +72,40 @@ background-color:transparent;
 border: none;
 margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
 margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-margin-right: 10px; 
-margin-bottom: 10px;
+margin-right: 5%; 
+margin-bottom: 5%;
 font-weight: ${({ isActive }) => (isActive ? 'bold' : 'normal')};
 `;
 
 const Buttontext=styled.p`
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: #617143;
     text-decoration: underline;
+`;
+
+const text=styled.p`
+font-size: 1.9rem;
+font-weight: bold;
 `;
 
 const Box1= styled.div`
 display: flex;
 flex-direction: column;
-width:150px;
-height:150px;
+width:42%;
 background-color: #ffffff;
-margin-left:25px;
+margin-left:7%;
 box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
 border-radius: 5px;
 `;
 
 const Button1= styled.button`
-font-size: 20px;
 background-color:transparent;
 border: none;
 color: #617143;
 margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
 margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-text-decoration: underline;
-margin-right: 10px; 
-margin-bottom: 10px;
+margin-right: 5%; 
+margin-bottom: 5%;
 font-weight: ${({ isActive }) => (isActive ? 'bold' : 'normal')};
 `;
 
@@ -127,7 +132,7 @@ const Category = () => {
         </T1>
 
             <Con>
-            <Box><Button isActive={activeButtonIndex === 7} onClick={() => handleButtonClick(7)}>
+            <Box><Text>피그마</Text><Button isActive={activeButtonIndex === 7} onClick={() => handleButtonClick(7)}>
                 <Buttontext>자세히</Buttontext></Button></Box>
             <Box1><Button1 isActive={activeButtonIndex === 8} onClick={() => handleButtonClick(8)}>
                 <Buttontext>자세히</Buttontext></Button1></Box1>

@@ -7,32 +7,32 @@ const Desktop = styled.div`
   flex-direction: column;
   overflow-x: hidden; /* 화면을 옆으로 스크롤되지 않도록 설정 */
   background-color: #FFFFFF;
-  padding-bottom: 100px;
-  
-`;
+  width:100%;
+  margin-bottom: 10%;
+ `;
 
 const AppNameWrapper = styled.div`
   text-align: center;
+  margin-top:5%;
 `;
-
 const AppName = styled.p`
   font-weight: bold;
   font-size: 1.9rem;
-  
 `;
+
 const Con= styled.div`
 display: flex;
 flex-direction: row;
 justify-content: center; /* 가로축 가운데 정렬 */
 align-items:center;
-margin-top: 30px;
-
+margin-top: 7%;
+margin-left: 12%;
+margin-right: 12%;
 `;
 
-
 const Circle = styled.div`
-  width: 58px;
-  height: 58px;
+  width: 25vw;
+  height:25vw;
   background-color: #617143;
   border-radius: 50%; /* 50%로 설정하여 원 모양 */
   display: flex;
@@ -41,57 +41,137 @@ const Circle = styled.div`
 `;
 
 const Img =styled.img`
-width:auto;
-height:auto;
+width:50%;
+height:50%;
 `
 const Level=styled.p`
 font-size: 1.6rem;
-margin-left:15px;
+margin-left:10%;
+width:60%;
 `;
 
 
 const Box= styled.div`
 display: flex;
 flex-direction: column;
-width:297px;
-height:352px;
+width:80%;
 background-color: #ffffff;
 box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
 border-radius: 5px;
+align-items: center;
+`;
+
+
+/*
+const AppImage=styled.img`
+width:auto;
+height:auto; 
+`;
+어플이미지 받아오기 */
+
+
+const BText= styled.p`
+font-size: 1.6rem;
+margin-top:65%; /*const appimg넣은후 20%정도로 수정 */
+text-align: center;/* 내용을 가로축으로 가운데 정렬 */
 `;
 
 const Button= styled.button`
-background-color:transparent;
+background: linear-gradient(45deg, #617143, #9DA582);
 border: none;
-width:129;
-height:39;
-margin-top:10px;
-margin-bottom: 10px;
+width:40%;
+height:12%;
+margin-top:5%;
 font-weight: ${({ isActive }) => (isActive ? 'bold' : 'normal')};
+font-size: 1.6rem;
+color:#ffffff;
+margin-bottom:10%;
 `;
 
+
 const Box1= styled.div`
-display: flex;
-flex-direction: column;
-width:297px;
-height:229px;
+width:80%;
 background-color: #ffffff;
 box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
 border-radius: 5px;
+margin-top:8%;
+`;
+
+const  B1text=styled.p`
+font-size: 1.6rem;
+font-weight: bold;
+`;
+
+const SButton = styled.button`
+  width: 7%;
+  margin-left: 7%;
+  background-color: transparent;
+  border: none;
+`;
+
+const SImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const BS= styled.div`
+display: flex;
+flex-direction: row;
+margin-left:5%;
+margin-top:10%;
+align-items: center;
+`;
+
+const B1text2=styled.p`
+font-size: 1.6rem;
+margin-top:10%;
+margin-left:5%;
+margin-right:5%;
+margin-bottom:10%;
+`;
+
+const Bcon= styled.div`
+display: flex;
+flex-direction: column;
+align-items:center;/* 세로축 */
+margin-top:10%;
+margin-bottom:10%;
 `;
 
 
-
 const AppPage = () => {
+ 
+  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
+
+  const handleButtonClick = (index) => {
+    setActiveButtonIndex(index);
+  };
     return (
       <>
+     <TestNavigator></TestNavigator>
       <Desktop>
         <AppNameWrapper><AppName>피그마</AppName></AppNameWrapper>
-      </Desktop>
+      
       <Con>
-      <Circle><Img/></Circle>
-      <Level>이러쿵저러sgfdsdgsd쿵<br/>이러쿵 저러쿵쿵쿵</Level>
+      <Circle><Img src="/Seed.svg"/></Circle>
+      <Level>이러쿵아아아아러아쿵쿵</Level>
       </Con>
+
+      <Bcon>
+      <Box>
+      <BText>이러쿵저러쿵</BText><Button isActive={activeButtonIndex === 0} onClick={() => handleButtonClick(0)}>다운로드</Button>
+      </Box>
+
+      <Box1>
+      <BS>
+      <B1text>어떻게 사용할까요?</B1text> 
+      <SButton><SImg src="/TestNext.svg" /></SButton>
+      </BS>
+      <B1text2>이러쿵저러쿵이아아아아fsdfsdsfsfsffsdf러쿵저렁쿵이러쿵저러웈</B1text2>
+      </Box1>
+      </Bcon>
+      
+      </Desktop>
       </>
     );
 };

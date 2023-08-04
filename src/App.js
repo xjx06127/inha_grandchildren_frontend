@@ -16,6 +16,13 @@ import { FontSizeProvider } from "./pages_font_context/FontSizeProvider";
 import AppReco from "./pages_AppReco/AppReco";
 import AppPage from "./pages_AppPage/AppPage";
 
+
+import SeedApp from "./pages_AppReco/SeedApp";
+import SaessackApp from "./pages_AppReco/SaessackApp";
+import FlowerApp from "./pages_AppReco/FlowerApp";
+import YeolmaeApp from "./pages_AppReco/YeolmaeApp";
+import TreeApp from "./pages_AppReco/TreeApp";
+
 function App() {
   return (
     <FontSizeProvider>
@@ -35,6 +42,12 @@ function App() {
           <Route path="/:OX/:OX2/:OX3/:OX4/:OX5/Result" element={<Result />} />
           <Route path="/AppReco" element={<AppReco />} />
           <Route path="/AppPage" element={<AppPage />} />
+
+          <Route path="/SeedApp" element={<SeedApp />} />
+          <Route path="/SaessackApp" element={<SaessackApp />} />
+          <Route path="/FlowerApp" element={<FlowerApp />} />
+          <Route path="/YeolmaeApp" element={<YeolmaeApp />} />
+          <Route path="/TreeApp" element={<TreeApp />} />
         </Routes>
       </BrowserRouter>
     </FontSizeProvider>
