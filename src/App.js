@@ -26,6 +26,7 @@ import Level3Reco from "./pages_AppReco/Level3Reco";
 import Level4Reco from "./pages_AppReco/Level4Reco";
 import Level5Reco from "./pages_AppReco/Level5Reco";
 import RecoApp from "./pages_AppReco/RecoApp";
+import FirstChoosePage from "./pages_app_find_test/FirstChoosePage";
 
 function App() {
   return (
@@ -65,6 +66,8 @@ function App() {
             <Route path="/level3" element={<Level3Reco />} />
             <Route path="/level4" element={<Level4Reco />} />
             <Route path="/level5" element={<Level5Reco />} />
+
+            <Route path="/AppFind" element={<FirstChoosePage/>}/>
 
             <Route path="*" element={<NotFound />} />
           </Routes>
