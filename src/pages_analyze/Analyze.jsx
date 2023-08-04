@@ -34,8 +34,8 @@ const Icon = styled.img`
 const Text = styled.h1`
   color: #000000;
   text-align: center;
-  padding-top: 15%;
-  margin-bottom: 10%;
+  padding-top: 25%;
+  margin-bottom: 30%;
 `;
 
 // const Container = styled.div`
