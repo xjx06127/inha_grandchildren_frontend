@@ -104,20 +104,20 @@ const FirstChoosePage = () => {
 
     const GoToHobbyPage = () => {
         setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            navigate(`/HobbyAppTest1`)
         },600);
     };
 
     
     const GoToCoummnityPage = () => {
         setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            navigate(`/CommunityAppsFind`)
         },600);
     };
 
     const GoToHealthyPage = () => {
         setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            navigate(`/HealthyAppTest1`)
         },600);
     };
 

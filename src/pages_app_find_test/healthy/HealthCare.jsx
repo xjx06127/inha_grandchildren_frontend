@@ -2,7 +2,6 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
-import axios from 'axios';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -58,6 +57,7 @@ const Row1 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
     }
+    
 `
 
 const Row2 = styled.div`
@@ -67,15 +67,6 @@ const Row2 = styled.div`
     height: 15vh;
     }
 `
-
-const Row3 = styled.div`
-   display: flex;
-    @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
-    height: 15vh;
-    }
-`
-
 
 const Box = styled.div`
    display: flex;
@@ -103,31 +94,24 @@ const SelText = styled.p`
     font-weight: bold;
 `
 
-const SearchLoad = () => {
+const HealthCare = () => {
     const navigate = useNavigate();
 
-    const GoToMapPage = () => {
+    const GoToMenuPage = () => {
         setTimeout(()=>{
-            navigate(`/AppsFindResult/지도`);
+            navigate(`/AppsFindResult/식단`);
         },600);
     };
-
-    const GoToSubwayPage = () => {
-        setTimeout(()=>{
-            navigate(`/AppsFindResult/지하철`);
-        },600);
-    };
-
     
-    const GoToBusPage = () => {
+    const GoToSleepPage = () => {
         setTimeout(()=>{
-            navigate(`/AppsFindResult/버스`);
+            navigate(`/AppsFindResult/수면`);
         },600);
     };
 
-    const GoToTexiPage = () => {
+    const GoToExercisePage = () => {
         setTimeout(()=>{
-            navigate(`/AppsFindResult/택시`);
+            navigate(`/AppsFindResult/운동`);
         },600);
     };
 
@@ -137,25 +121,21 @@ const SearchLoad = () => {
             <GrayNavigator/>
             <MidBox>
                 <ImgArea src="/hi.svg"/>
-                <MainText>어떤 <HighLight>분야</HighLight>를<br/>찾으시나요?</MainText>
+                <MainText>어떤 <HighLight>관리</HighLight>가<br/>필요하신가요?</MainText>
                 <SubText>아래의 버튼 중 하나를 선택해주세요.</SubText>
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToMapPage}>
-                        <SelText>지도</SelText>
+                    <Box onClick={GoToMenuPage}>
+                        <SelText>식단</SelText>
                     </Box>
-                    <Box onClick={GoToSubwayPage}>
-                        <SelText>지하철</SelText>
+                    <Box onClick={GoToSleepPage}>
+                        <SelText>수면</SelText>
                     </Box>
                 </Row1>
-                
                 <Row2>
-                    <Box onClick={GoToBusPage}>
-                        <SelText>버스</SelText>
-                    </Box>
-                    <Box onClick={GoToTexiPage}>
-                        <SelText>택시</SelText>
+                    <Box onClick={GoToExercisePage}>
+                        <SelText>운동</SelText>
                     </Box>
                 </Row2>
             </SelectBox>
@@ -164,4 +144,4 @@ const SearchLoad = () => {
     );
 };
 
-export default SearchLoad;
+export default HealthCare;

@@ -101,25 +101,13 @@ const Delivery = () => {
 
     const GoToDeliveryFoodPage = () => {
         setTimeout(()=>{
-            axios
-            .post(`https://forgrandparents.store/recommend/`,{
-            field: "배달 음식"
-            })
-            .then((res)=>{
-            console.log(res.data);
-            })
+            navigate(`/AppsFindResult/배달 음식`);
         },600);
     };
 
     const GoToGeneralDeliveryPage = () => {
         setTimeout(()=>{
-            axios
-            .post(`https://forgrandparents.store/recommend/`,{
-            field: "식료품 및 생활용품 배송"
-            })
-            .then((res)=>{
-            console.log(res.data);
-            })
+            navigate(`/AppsFindResult/식료품 및 생활용품 배송`);
         },600);
     };
 

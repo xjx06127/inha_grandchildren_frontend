@@ -80,7 +80,7 @@ const GrayNavigator = () => {
        </BackBox>
 
        <SoundBox>
-        <SoundImg src="/graysound.svg"/>
+        <SoundImg src="/soundoff_gray.svg"/>
         <SoundText>소리끄기</SoundText>
        </SoundBox>
 

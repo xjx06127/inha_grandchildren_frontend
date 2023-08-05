@@ -112,7 +112,7 @@ const LivingAppTest = () => {
 
     const GoToWeatherPage = () => {
         setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            navigate(`/AppsFindResult/날씨`)
         },600);
     };
 
@@ -131,7 +131,7 @@ const LivingAppTest = () => {
 
     const GoToSchedulePage = () => {
         setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            navigate(`/AppsFindResult/일정 관리`)
         },600);
     };
 
