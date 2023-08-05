@@ -290,7 +290,7 @@ const Home = () => {
     const GoToFindPage = () => {
         setFindClick(true);
         setTimeout(()=>{
-            navigate(`/FindApps`);
+            navigate(`/AppFind`);
         },600);
        
     }
