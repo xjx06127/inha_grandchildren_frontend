@@ -27,6 +27,11 @@ import Level4Reco from "./pages_AppReco/Level4Reco";
 import Level5Reco from "./pages_AppReco/Level5Reco";
 import RecoApp from "./pages_AppReco/RecoApp";
 import FirstChoosePage from "./pages_app_find_test/FirstChoosePage";
+import LivingAppTest from "./pages_app_find_test/living/LivingAppTest";
+import Finance from "./pages_app_find_test/living/Finance";
+import SearchLoad from "./pages_app_find_test/living/SearchLoad";
+import Delivery from "./pages_app_find_test/living/Delivery";
+import AppsFind from "./pages_app_find_test/AppsFind";
 
 function App() {
   return (
@@ -68,6 +73,12 @@ function App() {
             <Route path="/level5" element={<Level5Reco />} />
 
             <Route path="/AppFind" element={<FirstChoosePage/>}/>
+            <Route path="/AppsFindResult/:appfield" element={<AppsFind/>}/>
+
+            <Route path="/LivingAppsFind1" element={<LivingAppTest/>}/>
+            <Route path="/FinanceAppsFind" element={<Finance/>}/>
+            <Route path="/SearchLoadsAppsFind" element={<SearchLoad/>}/>
+            <Route path="/DeliveryAppsFind" element={<Delivery/>}/>
 
             <Route path="*" element={<NotFound />} />
           </Routes>
