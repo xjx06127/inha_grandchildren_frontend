@@ -65,7 +65,7 @@ const FindBox = styled.div`
         background-color: #F3DDD6;
 
         ${FindText} {
-          color: #5A4843;
+          color: white;
         }
       }
     `
@@ -103,7 +103,7 @@ const JustLookBox = styled.div`
         background-color: #F3DDD6;
 
         ${JustLookText} {
-            color: #5A4843;
+            color: white;
         }
         
         ${JustLookIcon}{

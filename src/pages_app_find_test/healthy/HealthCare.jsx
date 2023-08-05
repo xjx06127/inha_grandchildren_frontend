@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -83,7 +84,7 @@ const Box = styled.div`
 
    &:hover{
     transition:2s;
-    background-color: #EFC5B9;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
 
 
@@ -96,21 +97,28 @@ const SelText = styled.p`
 
 const HealthCare = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
 
     const GoToMenuPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/식단`);
         },600);
     };
     
     const GoToSleepPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/수면`);
         },600);
     };
 
     const GoToExercisePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/운동`);
         },600);
     };
@@ -126,15 +134,15 @@ const HealthCare = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToMenuPage}>
+                    <Box onClick={GoToMenuPage} clicked={isBoxClicked}>
                         <SelText>식단</SelText>
                     </Box>
-                    <Box onClick={GoToSleepPage}>
+                    <Box onClick={GoToSleepPage} clicked={isBoxClicked}>
                         <SelText>수면</SelText>
                     </Box>
                 </Row1>
                 <Row2>
-                    <Box onClick={GoToExercisePage}>
+                    <Box onClick={GoToExercisePage} clicked={isBoxClicked}>
                         <SelText>운동</SelText>
                     </Box>
                 </Row2>

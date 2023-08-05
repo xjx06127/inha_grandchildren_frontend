@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -91,7 +92,7 @@ const Box = styled.div`
 
    &:hover{
     transition:2s;
-    background-color: #EFC5B9;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
 
 `
@@ -103,15 +104,20 @@ const SelText = styled.p`
 
 const HealthyAppTest = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
 
     const GoToHealthCarePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/HealthCareAppsFind`)
         },600);
     };
 
     const GoToTreatmentPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/TreatmentAppsFind`)
         },600);
     };
@@ -128,10 +134,10 @@ const HealthyAppTest = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToHealthCarePage}>
+                    <Box onClick={GoToHealthCarePage} clicked={isBoxClicked}>
                         <SelText>건강 관리</SelText>
                     </Box>
-                    <Box onClick={GoToTreatmentPage}>
+                    <Box onClick={GoToTreatmentPage} clicked={isBoxClicked}>
                         <SelText>진료</SelText>
                     </Box>
                 </Row1>

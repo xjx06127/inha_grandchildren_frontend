@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -91,9 +92,8 @@ const Box = styled.div`
 
    &:hover{
     transition:2s;
-    background-color: #EFC5B9;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
-
 `
 
 const SelText = styled.p`
@@ -103,15 +103,20 @@ const SelText = styled.p`
 
 const HobbyAppTest = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
 
     const GoToIndoorPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/IndoorAppsFind`)
         },600);
     };
 
     const GoToOutdoorPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/OutdoorAppsFind`)
         },600);
     };
@@ -128,10 +133,10 @@ const HobbyAppTest = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToIndoorPage}>
+                    <Box onClick={GoToIndoorPage} clicked={isBoxClicked}>
                         <SelText>내부</SelText>
                     </Box>
-                    <Box onClick={GoToOutdoorPage}>
+                    <Box onClick={GoToOutdoorPage} clicked={isBoxClicked}>
                         <SelText>외부</SelText>
                     </Box>
                 </Row1>

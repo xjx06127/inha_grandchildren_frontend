@@ -1,7 +1,8 @@
 import React from 'react';
-import styled, {css} from "styled-components";
+import styled from 'styled-components';
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -11,7 +12,7 @@ const BackGround = styled.div`
     /* Set the height specifically for portrait mode */
     height: 100vh;
     }
-    margin: 0; 
+    margin: 0;
 `
 
 const MidBox = styled.div`
@@ -91,9 +92,8 @@ const Box = styled.div`
 
    &:hover{
     transition:2s;
-    background-color: #EFC5B9;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
-
 `
 
 const SelText = styled.p`
@@ -103,34 +103,45 @@ const SelText = styled.p`
 
 const LivingAppTest = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
 
     const GoToFinancePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/FinanceAppsFind`)
         },600);
     };
 
     const GoToWeatherPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/날씨`)
         },600);
     };
 
     
     const GoToSearchLoadPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/SearchLoadsAppsFind`)
         },600);
     };
 
     const GoToDeliveryPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/DeliveryAppsFind`)
         },600);
     };
 
     const GoToSchedulePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/일정 관리`)
         },600);
     };
@@ -146,25 +157,25 @@ const LivingAppTest = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToFinancePage}>
+                    <Box onTouchEnd={GoToFinancePage} onClick={GoToFinancePage} clicked={isBoxClicked}>
                         <SelText>금융</SelText>
                     </Box>
-                    <Box onClick={GoToWeatherPage}>
+                    <Box onTouchEnd={GoToWeatherPage} onClick={GoToWeatherPage} clicked={isBoxClicked}>
                         <SelText>날씨</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToSearchLoadPage}>
+                    <Box onTouchEnd={GoToSearchLoadPage} onClick={GoToSearchLoadPage} clicked={isBoxClicked}>
                         <SelText>길 찾기</SelText>
                     </Box>
-                    <Box onClick={GoToDeliveryPage}>
+                    <Box onTouchEnd={GoToDeliveryPage} onClick={GoToDeliveryPage} clicked={isBoxClicked}>
                         <SelText>배달 및<br/> 배송</SelText>
                     </Box>
                 </Row2>
 
                 <Row3>
-                    <Box onClick={GoToSchedulePage}>
+                    <Box onTouchEnd={GoToSchedulePage} onClick={GoToSchedulePage} clicked={isBoxClicked}>
                         <SelText>일정 관리</SelText>
                     </Box>
                 </Row3>

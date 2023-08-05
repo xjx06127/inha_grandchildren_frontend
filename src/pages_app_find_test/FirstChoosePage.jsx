@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from './GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 const BackGround = styled.div`
      background-color: #F7F7F7;
@@ -83,9 +84,8 @@ const Box = styled.div`
 
    &:hover{
     transition:2s;
-    background-color: #EFC5B9;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
-
 `
 
 const SelText = styled.p`
@@ -95,28 +95,37 @@ const SelText = styled.p`
 
 const FirstChoosePage = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
 
     const GoToLivingPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/LivingAppsFind1`)
         },600);
     };
 
     const GoToHobbyPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/HobbyAppTest1`)
         },600);
     };
 
     
     const GoToCoummnityPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/CommunityAppsFind`)
         },600);
     };
 
     const GoToHealthyPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/HealthyAppTest1`)
         },600);
     };
@@ -133,19 +142,19 @@ const FirstChoosePage = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToLivingPage}>
+                    <Box onTouchEnd={GoToLivingPage} clicked={isBoxClicked}>
                         <SelText>생활 편의</SelText>
                     </Box>
-                    <Box onClick={GoToHobbyPage}>
+                    <Box onTouchEnd={GoToHobbyPage} clicked={isBoxClicked}>
                         <SelText>취미</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToCoummnityPage}>
+                    <Box onTouchEnd={GoToCoummnityPage} clicked={isBoxClicked}>
                         <SelText>소통</SelText>
                     </Box>
-                    <Box onClick={GoToHealthyPage}>
+                    <Box onTouchEnd={GoToHealthyPage} clicked={isBoxClicked}>
                         <SelText>건강</SelText>
                     </Box>
                 </Row2>

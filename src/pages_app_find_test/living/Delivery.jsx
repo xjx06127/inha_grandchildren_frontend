@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
-import axios from 'axios';
+import { useState } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -84,7 +84,7 @@ const Box = styled.div`
 
    &:hover{
     transition:2s;
-    background-color: #EFC5B9;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
 
 
@@ -98,15 +98,20 @@ const SelText = styled.p`
 
 const Delivery = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
 
     const GoToDeliveryFoodPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/배달 음식`);
         },600);
     };
 
     const GoToGeneralDeliveryPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/식료품 및 생활용품 배송`);
         },600);
     };
@@ -124,13 +129,13 @@ const Delivery = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToDeliveryFoodPage}>
+                    <Box onClick={GoToDeliveryFoodPage} clicked={isBoxClicked}>
                         <SelText>배달 음식</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToGeneralDeliveryPage}>
+                    <Box onClick={GoToGeneralDeliveryPage} clicked={isBoxClicked}>
                         <SelText>식료품 및<br/>생활용품 <br/>배송</SelText>
                     </Box>
                 </Row2>
