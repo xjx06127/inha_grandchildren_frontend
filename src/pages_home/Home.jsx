@@ -297,7 +297,9 @@ const Home = () => {
 
     const GoToRecoPage = () => {
         setRecoClick(true);
-
+        setTimeout(()=>{
+            navigate(`/Category`);
+        },600);
     }
 
     const GoToHelpPage = () => {

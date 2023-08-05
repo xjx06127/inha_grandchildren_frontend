@@ -2,7 +2,6 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
-import axios from 'axios';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -19,7 +18,7 @@ const MidBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top: 17%;
+    margin-top: 20%;
     margin-bottom: 3%;
 `
 
@@ -69,7 +68,7 @@ const Row2 = styled.div`
 `
 
 const Row3 = styled.div`
-   display: flex;
+    display: flex;
     @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 15vh;
@@ -95,7 +94,6 @@ const Box = styled.div`
     background-color: #EFC5B9;
    }
 
-
 `
 
 const SelText = styled.p`
@@ -103,33 +101,21 @@ const SelText = styled.p`
     font-weight: bold;
 `
 
-const SearchLoad = () => {
+const CommunityAppTest = () => {
     const navigate = useNavigate();
 
-    const GoToMapPage = () => {
+    const GoToConnectPage = () => {
         setTimeout(()=>{
-            navigate(`/AppsFindResult/지도`);
+            navigate(`/AppsFindResult/연락`)
         },600);
     };
 
-    const GoToSubwayPage = () => {
+    const GoToSharePage = () => {
         setTimeout(()=>{
-            navigate(`/AppsFindResult/지하철`);
+            navigate(`/AppsFindResult/일상공유`)
         },600);
     };
 
-    
-    const GoToBusPage = () => {
-        setTimeout(()=>{
-            navigate(`/AppsFindResult/버스`);
-        },600);
-    };
-
-    const GoToTexiPage = () => {
-        setTimeout(()=>{
-            navigate(`/AppsFindResult/택시`);
-        },600);
-    };
 
     return (
         <>
@@ -137,31 +123,22 @@ const SearchLoad = () => {
             <GrayNavigator/>
             <MidBox>
                 <ImgArea src="/hi.svg"/>
-                <MainText>어떤 <HighLight>분야</HighLight>를<br/>찾으시나요?</MainText>
+                <MainText><HighLight>어느 것</HighLight>이<br/>필요하신가요?</MainText>
                 <SubText>아래의 버튼 중 하나를 선택해주세요.</SubText>
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToMapPage}>
-                        <SelText>지도</SelText>
+                    <Box onClick={GoToConnectPage}>
+                        <SelText>연락</SelText>
                     </Box>
-                    <Box onClick={GoToSubwayPage}>
-                        <SelText>지하철</SelText>
+                    <Box onClick={GoToSharePage}>
+                        <SelText>일상 공유</SelText>
                     </Box>
                 </Row1>
-                
-                <Row2>
-                    <Box onClick={GoToBusPage}>
-                        <SelText>버스</SelText>
-                    </Box>
-                    <Box onClick={GoToTexiPage}>
-                        <SelText>택시</SelText>
-                    </Box>
-                </Row2>
             </SelectBox>
         </BackGround>
         </>
     );
 };
 
-export default SearchLoad;
+export default CommunityAppTest;

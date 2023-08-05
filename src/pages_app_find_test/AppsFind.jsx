@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const MainText = styled.h1`
     text-align: center;
@@ -66,7 +67,6 @@ const GoToDetail = styled.p`
     text-align: right;
     color: #617143;
     text-decoration: underline;
-    font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
     margin-top: 1%;
 
     &:hover{
@@ -89,6 +89,7 @@ const GoToAppDetail = () => {
 const AppsFind = () => {
     const {appfield} = useParams();
     const [apps,setApps] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         axios
@@ -116,17 +117,19 @@ const AppsFind = () => {
                         <AppLevel>난이도 : 
                             
                             {
-                            index.levelvalue === 0 ? '씨앗' : 
-                            index.levelvalue === 1 ? '새싹' :
-                            index.levelvalue === 2 ? '꽃용' :
-                            index.levelvalue === 3 ? '열매용' :
-                            index.levelvalue === 4 ? '나무용' :
-                            index.levelvalue === 5 ? '나무용' :
+                            index.levelvalue === 0 ? ' 씨앗' : 
+                            index.levelvalue === 1 ? ' 새싹' :
+                            index.levelvalue === 2 ? ' 꽃용' :
+                            index.levelvalue === 3 ? ' 열매용' :
+                            index.levelvalue === 4 ? ' 나무용' :
+                            index.levelvalue === 5 ? ' 나무용' :
                             'level정보가 존재하지 않습니다'                            
                             }
                             
                             </AppLevel>
-                        <GoToDetail onClick={GoToAppDetail}>자세히</GoToDetail>
+                        <GoToDetail onClick={()=>{
+                            navigate(`../AppPage/${index.id}`)
+                        }}>자세히</GoToDetail>
                         </TextBox>
                     </AppBox>
               ))}  
