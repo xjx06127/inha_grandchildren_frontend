@@ -27,10 +27,10 @@ const Tbutton = styled.button`
   background-color: transparent;
   border: none;
   margin-left: 7%;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-  /* 클릭 여부에 따라 폰트 두께를 동적으로 설정합니다. */
   font-size: 1.6rem;
   color: #535353;
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+  /* 클릭 여부에 따라 폰트 두께를 동적으로 설정합니다. */
 `;
 
 const T1 = styled.div`
@@ -66,14 +66,11 @@ const Button = styled.button`
   color: #617143;
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
-margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-  a:active {
-    color: orange;
-  }
-  a:hover {
-    color: red;
-  }
+  margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
+  
+  &:hover{
+    font-weight: bold;
+   }
 `;
 
 const Box1 = styled.div`
@@ -93,9 +90,11 @@ const Button1 = styled.button`
   color: #617143;
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
-margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
+ margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
 
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+ &:hover{
+    font-weight: bold;
+   }
 `;
 const AppImage = styled.img`
   width: 30%;
@@ -121,6 +120,12 @@ const Category = () => {
 
   const handleButtonClick = (index) => {
     setActiveButtonIndex(index);
+  };
+
+  const handleButtonClick1 = (id) => {
+    setTimeout(() => {
+      navigate(`../AppPage/${id}`);
+    }, 300);
   };
 
   const [recoApp, setRecoApp] = useState([]);
@@ -166,10 +171,8 @@ const Category = () => {
               <TB>
               <Title>{recoApp[0].name}</Title>
               <Button
-                isActive={activeButtonIndex === 7}
                 onClick={() => {
-                  handleButtonClick(7);
-                  navigate(`../AppPage/${recoApp[0].id}`);
+                  handleButtonClick1(recoApp[0].id);
                 }}
               >
                 자세히
@@ -183,10 +186,8 @@ const Category = () => {
               <TB>
               <Title>{recoApp[1].name}</Title>
               <Button1
-                isActive={activeButtonIndex === 8}
                 onClick={() => {
-                  handleButtonClick(8);
-                  navigate(`../AppPage/${recoApp[1].id}`);
+                  handleButtonClick1(recoApp[1].id);
                 }}
               >
                 자세히
@@ -215,10 +216,8 @@ const Category = () => {
               <TB>
               <Title>{app1[0].name}</Title>
               <Button
-                isActive={activeButtonIndex === 9}
                 onClick={() => {
-                  handleButtonClick(9);
-                  navigate(`../AppPage/${app1[0].id}`);
+                  handleButtonClick1(app1[0].id);
                 }}
               >
                 자세히
@@ -232,10 +231,8 @@ const Category = () => {
               <TB>
               <Title>{app1[1].name}</Title>
               <Button1
-                isActive={activeButtonIndex === 10}
                 onClick={() => {
-                  handleButtonClick(10);
-                  navigate(`../AppPage/${app1[1].id}`);
+                  handleButtonClick1(app1[1].id);
                 }}
               >
                 자세히
@@ -264,10 +261,8 @@ const Category = () => {
               <TB>
               <Title>{app2[0].name}</Title>
               <Button
-                isActive={activeButtonIndex === 11}
                 onClick={() => {
-                  handleButtonClick(11);
-                  navigate(`../AppPage/${app2[0].id}`);
+                  handleButtonClick1(app2[0].id);
                 }}
               >
                 자세히
@@ -281,10 +276,8 @@ const Category = () => {
               <TB>
               <Title>{app2[1].name}</Title>
               <Button1
-                isActive={activeButtonIndex === 12}
                 onClick={() => {
-                  handleButtonClick(12);
-                  navigate(`../AppPage/${app2[1].id}`);
+                  handleButtonClick1(app2[1].id);
                 }}
               >
                 자세히
@@ -312,10 +305,9 @@ const Category = () => {
               <TB>
               <Title>{app3[0].name}</Title>
               <Button
-                isActive={activeButtonIndex === 13}
+               
                 onClick={() => {
-                  handleButtonClick(13);
-                  navigate(`../AppPage/${app3[0].id}`);
+                  handleButtonClick1(app3[0].id);
                 }}
               >
                 자세히
@@ -329,10 +321,8 @@ const Category = () => {
               <TB>
               <Title>{app3[1].name}</Title>
               <Button1
-                isActive={activeButtonIndex === 14}
                 onClick={() => {
-                  handleButtonClick(14);
-                  navigate(`../AppPage/${app3[1].id}`);
+                  handleButtonClick1(app3[1].id);
                 }}
               >
                 자세히
@@ -362,10 +352,8 @@ const Category = () => {
               <TB>
               <Title>{app4[0].name}</Title>
               <Button
-                isActive={activeButtonIndex === 15}
                 onClick={() => {
-                  handleButtonClick(15);
-                  navigate(`../AppPage/${app4[0].id}`);
+                  handleButtonClick1(app4[0].id);
                 }}
               >
                 자세히
@@ -379,10 +367,8 @@ const Category = () => {
               <TB>
               <Title>{app4[1].name}</Title>
               <Button1
-                isActive={activeButtonIndex === 16}
                 onClick={() => {
-                  handleButtonClick(16);
-                  navigate(`../AppPage/${app4[1].id}`);
+                  handleButtonClick1(app4[1].id);
                 }}
               >
                 자세히
@@ -412,10 +398,8 @@ const Category = () => {
               <TB>
               <Title>{app5[0].name}</Title>
               <Button
-                isActive={activeButtonIndex === 17}
                 onClick={() => {
-                  handleButtonClick(17);
-                  navigate(`../AppPage/${app5[0].id}`);
+                  handleButtonClick1(app5[0].id);
                 }}
               >
                 자세히
@@ -429,10 +413,8 @@ const Category = () => {
               <TB>
               <Title>{app5[1].name}</Title>
               <Button1
-                isActive={activeButtonIndex === 18}
                 onClick={() => {
-                  handleButtonClick(18);
-                  navigate(`../AppPage/${app5[1].id}`);
+                  handleButtonClick1(app5[1].id);
                 }}
               >
                 자세히

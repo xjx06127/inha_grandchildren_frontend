@@ -83,9 +83,13 @@ const Button = styled.button`
   margin-top: 5%;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   font-size: 1.6rem;
-  padding:2%;
+  padding:3%;
   color: #ffffff;
   margin-bottom: 10%;
+
+  &:hover{
+    font-weight: bold;
+   }
 `;
 
 const Box1 = styled.div`
@@ -105,7 +109,11 @@ const SButton = styled.button`
   width: 7%;
   margin-left: 7%;
   background-color: transparent;
-  border: none;
+  border: none;  
+
+  &:hover{
+    color: #000000;
+   }
 `;
 
 const SImg = styled.img`
@@ -148,9 +156,10 @@ const AppPage = () => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
   const [App, setApp] = useState([]);
 
-  const handleButtonClick = (index) => {
-    setActiveButtonIndex(index);
+  const handleButtonClick = () => {
+  
   };
+
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
       console.log(res.data);
@@ -184,8 +193,7 @@ const AppPage = () => {
             <AppImage src={App.app_info?.image}></AppImage>
             <BText>{App.app_info?.name}</BText>
             <Button
-              isActive={activeButtonIndex === 0}
-              onClick={() => handleButtonClick(0)}
+              onClick={() => handleButtonClick}
             >
               다운로드
             </Button>
