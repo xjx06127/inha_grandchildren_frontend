@@ -119,7 +119,9 @@ const Test4 = () => {
   };
 
   const GoNextPage = () => {
-    navigate(`/Test5/${OX}/${OX2}/${OX3}/${OX4}`);
+    if (OX4 !== "") {
+      navigate(`/Test5/${OX}/${OX2}/${OX3}/${OX4}`);
+    }
   };
 
   return (
