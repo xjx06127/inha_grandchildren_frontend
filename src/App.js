@@ -32,6 +32,13 @@ import Finance from "./pages_app_find_test/living/Finance";
 import SearchLoad from "./pages_app_find_test/living/SearchLoad";
 import Delivery from "./pages_app_find_test/living/Delivery";
 import AppsFind from "./pages_app_find_test/AppsFind";
+import HobbyAppTest from "./pages_app_find_test/hobby/HobbyAppTest";
+import Indoor from "./pages_app_find_test/hobby/Indoor";
+import Outdoor from "./pages_app_find_test/hobby/Outdoor";
+import HealthyAppTest from "./pages_app_find_test/healthy/HealthyAppTest";
+import HealthCare from "./pages_app_find_test/healthy/HealthCare";
+import Treatment from "./pages_app_find_test/healthy/Treatment";
+import CommunityAppTest from "./pages_app_find_test/community/CommunityAppTest";
 
 function App() {
   return (
@@ -79,6 +86,17 @@ function App() {
             <Route path="/FinanceAppsFind" element={<Finance/>}/>
             <Route path="/SearchLoadsAppsFind" element={<SearchLoad/>}/>
             <Route path="/DeliveryAppsFind" element={<Delivery/>}/>
+
+            <Route path="/HobbyAppTest1" element={<HobbyAppTest/>}/>
+            <Route path="/IndoorAppsFind" element={<Indoor/>}/>
+            <Route path="/OutdoorAppsFind" element={<Outdoor/>}/>
+
+            <Route path="/HealthyAppTest1" element={<HealthyAppTest/>}/>
+            <Route path="/HealthCareAppsFind" element={<HealthCare/>}/>
+            <Route path="/TreatmentAppsFind" element={<Treatment/>}/>
+
+            <Route path="/CommunityAppsFind" element={<CommunityAppTest/>}/>
+
 
             <Route path="*" element={<NotFound />} />
           </Routes>
