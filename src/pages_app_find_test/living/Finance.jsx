@@ -18,7 +18,7 @@ const MidBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top: 20%;
+    margin-top: 17%;
     margin-bottom: 3%;
 `
 
@@ -57,6 +57,7 @@ const Row1 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
     }
+    
 `
 
 const Row2 = styled.div`
@@ -66,15 +67,6 @@ const Row2 = styled.div`
     height: 15vh;
     }
 `
-
-const Row3 = styled.div`
-    display: flex;
-    @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
-    height: 15vh;
-    }
-`
-
 
 const Box = styled.div`
    display: flex;
@@ -94,6 +86,7 @@ const Box = styled.div`
     background-color: #EFC5B9;
    }
 
+
 `
 
 const SelText = styled.p`
@@ -101,37 +94,24 @@ const SelText = styled.p`
     font-weight: bold;
 `
 
-const LivingAppTest = () => {
+const Finance = () => {
     const navigate = useNavigate();
 
-    const GoToFinancePage = () => {
+    const GoToBankPage = () => {
         setTimeout(()=>{
-            navigate(`/FinanceAppsFind`)
+            navigate(`/AppsFindResult/은행`);
         },600);
     };
-
-    const GoToWeatherPage = () => {
-        setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
-        },600);
-    };
-
     
-    const GoToSearchLoadPage = () => {
+    const GoToStockPage = () => {
         setTimeout(()=>{
-            navigate(`/SearchLoadsAppsFind`)
+            navigate(`/AppsFindResult/주식`);
         },600);
     };
 
-    const GoToDeliveryPage = () => {
+    const GoToSimplePaymentPage = () => {
         setTimeout(()=>{
-            navigate(`/DeliveryAppsFind`)
-        },600);
-    };
-
-    const GoToSchedulePage = () => {
-        setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            navigate(`/AppsFindResult/간편결제`);
         },600);
     };
 
@@ -141,37 +121,28 @@ const LivingAppTest = () => {
             <GrayNavigator/>
             <MidBox>
                 <ImgArea src="/hi.svg"/>
-                <MainText>지금 <HighLight>필요하신 것</HighLight>이<br/>무엇인가요?</MainText>
+                <MainText>어떤 <HighLight>분야</HighLight>를<br/>찾으시나요?</MainText>
                 <SubText>아래의 버튼 중 하나를 선택해주세요.</SubText>
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToFinancePage}>
-                        <SelText>금융</SelText>
+                    <Box onClick={GoToBankPage}>
+                        <SelText>은행</SelText>
                     </Box>
-                    <Box onClick={GoToWeatherPage}>
-                        <SelText>날씨</SelText>
+                    <Box onClick={GoToStockPage}>
+                        <SelText>주식</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToSearchLoadPage}>
-                        <SelText>길 찾기</SelText>
-                    </Box>
-                    <Box onClick={GoToDeliveryPage}>
-                        <SelText>배달 및<br/> 배송</SelText>
+                    <Box onClick={GoToSimplePaymentPage}>
+                        <SelText>간편 결제</SelText>
                     </Box>
                 </Row2>
-
-                <Row3>
-                    <Box onClick={GoToSchedulePage}>
-                        <SelText>일정 관리</SelText>
-                    </Box>
-                </Row3>
             </SelectBox>
         </BackGround>
         </>
     );
 };
 
-export default LivingAppTest;
+export default Finance;

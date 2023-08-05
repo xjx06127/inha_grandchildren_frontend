@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -18,7 +19,7 @@ const MidBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top: 20%;
+    margin-top: 17%;
     margin-bottom: 3%;
 `
 
@@ -68,7 +69,7 @@ const Row2 = styled.div`
 `
 
 const Row3 = styled.div`
-    display: flex;
+   display: flex;
     @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 15vh;
@@ -94,6 +95,7 @@ const Box = styled.div`
     background-color: #EFC5B9;
    }
 
+
 `
 
 const SelText = styled.p`
@@ -101,37 +103,55 @@ const SelText = styled.p`
     font-weight: bold;
 `
 
-const LivingAppTest = () => {
+const SearchLoad = () => {
     const navigate = useNavigate();
 
-    const GoToFinancePage = () => {
+    const GoToMapPage = () => {
         setTimeout(()=>{
-            navigate(`/FinanceAppsFind`)
+            axios
+            .post(`https://forgrandparents.store/recommend/`,{
+                field: "지도"
+            })
+            .then((res)=>{
+                console.log(res.data);
+            })
         },600);
     };
 
-    const GoToWeatherPage = () => {
+    const GoToSubwayPage = () => {
         setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            axios
+            .post(`https://forgrandparents.store/recommend/`,{
+                field: "지하철"
+            })
+            .then((res)=>{
+                console.log(res.data);
+            })
         },600);
     };
 
     
-    const GoToSearchLoadPage = () => {
+    const GoToBusPage = () => {
         setTimeout(()=>{
-            navigate(`/SearchLoadsAppsFind`)
+            axios
+            .post(`https://forgrandparents.store/recommend/`,{
+                field: "버스"
+            })
+            .then((res)=>{
+                console.log(res.data);
+            })
         },600);
     };
 
-    const GoToDeliveryPage = () => {
+    const GoToTexiPage = () => {
         setTimeout(()=>{
-            navigate(`/DeliveryAppsFind`)
-        },600);
-    };
-
-    const GoToSchedulePage = () => {
-        setTimeout(()=>{
-            navigate(`/LivingAppTest1`)
+            axios
+            .post(`https://forgrandparents.store/recommend/`,{
+                field: "택시"
+            })
+            .then((res)=>{
+                console.log(res.data);
+            })
         },600);
     };
 
@@ -141,37 +161,31 @@ const LivingAppTest = () => {
             <GrayNavigator/>
             <MidBox>
                 <ImgArea src="/hi.svg"/>
-                <MainText>지금 <HighLight>필요하신 것</HighLight>이<br/>무엇인가요?</MainText>
+                <MainText>어떤 <HighLight>분야</HighLight>를<br/>찾으시나요?</MainText>
                 <SubText>아래의 버튼 중 하나를 선택해주세요.</SubText>
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToFinancePage}>
-                        <SelText>금융</SelText>
+                    <Box onClick={GoToMapPage}>
+                        <SelText>지도</SelText>
                     </Box>
-                    <Box onClick={GoToWeatherPage}>
-                        <SelText>날씨</SelText>
+                    <Box onClick={GoToSubwayPage}>
+                        <SelText>지하철</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToSearchLoadPage}>
-                        <SelText>길 찾기</SelText>
+                    <Box onClick={GoToBusPage}>
+                        <SelText>버스</SelText>
                     </Box>
-                    <Box onClick={GoToDeliveryPage}>
-                        <SelText>배달 및<br/> 배송</SelText>
+                    <Box onClick={GoToTexiPage}>
+                        <SelText>택시</SelText>
                     </Box>
                 </Row2>
-
-                <Row3>
-                    <Box onClick={GoToSchedulePage}>
-                        <SelText>일정 관리</SelText>
-                    </Box>
-                </Row3>
             </SelectBox>
         </BackGround>
         </>
     );
 };
 
-export default LivingAppTest;
+export default SearchLoad;

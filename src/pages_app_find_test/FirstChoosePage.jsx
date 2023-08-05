@@ -4,20 +4,21 @@ import GrayNavigator from './GrayNavigator';
 import { useNavigate } from 'react-router';
 
 const BackGround = styled.div`
-    background-color: #F7F7F7;
-    background-size:cover;
+     background-color: #F7F7F7;
+    background-size: cover;
+    width: 100vw;
     @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 100vh;
     }
-    width: 100vw;
+    margin: 0;
 `
 
 const MidBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top: 20%;
+    margin-top: 14%;
     margin-bottom: 9%;
 `
 
@@ -51,13 +52,19 @@ const SelectBox = styled.div`
 `
 const Row1 = styled.div`
     display: flex;
+    @media (orientation: portrait) {
+    /* Set the height specifically for portrait mode */
     height: 15vh;
+    }
     
 `
 
 const Row2 = styled.div`
     display: flex;
+    @media (orientation: portrait) {
+    /* Set the height specifically for portrait mode */
     height: 15vh;
+    }
 `
 
 
@@ -79,7 +86,6 @@ const Box = styled.div`
     background-color: #EFC5B9;
    }
 
-
 `
 
 const SelText = styled.p`
@@ -87,16 +93,32 @@ const SelText = styled.p`
     font-weight: bold;
 `
 
-const GoToLivingSecondPage = () => {
-
-
-};
-
 const FirstChoosePage = () => {
     const navigate = useNavigate();
 
-    const GoToLivingSecondPage = () => {
-        navigate(`/`)
+    const GoToLivingPage = () => {
+        setTimeout(()=>{
+            navigate(`/LivingAppsFind1`)
+        },600);
+    };
+
+    const GoToHobbyPage = () => {
+        setTimeout(()=>{
+            navigate(`/LivingAppTest1`)
+        },600);
+    };
+
+    
+    const GoToCoummnityPage = () => {
+        setTimeout(()=>{
+            navigate(`/LivingAppTest1`)
+        },600);
+    };
+
+    const GoToHealthyPage = () => {
+        setTimeout(()=>{
+            navigate(`/LivingAppTest1`)
+        },600);
     };
 
 
@@ -111,26 +133,23 @@ const FirstChoosePage = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToLivingSecondPage}>
+                    <Box onClick={GoToLivingPage}>
                         <SelText>생활 편의</SelText>
                     </Box>
-                    <Box>
+                    <Box onClick={GoToHobbyPage}>
                         <SelText>취미</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box>
+                    <Box onClick={GoToCoummnityPage}>
                         <SelText>소통</SelText>
                     </Box>
-                    <Box>
+                    <Box onClick={GoToHealthyPage}>
                         <SelText>건강</SelText>
                     </Box>
                 </Row2>
             </SelectBox>
-
-
-
         </BackGround>
         </>
     );
