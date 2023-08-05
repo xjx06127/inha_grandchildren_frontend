@@ -76,7 +76,10 @@ const Button = styled.button`
   font-size: 1.6rem;
   color: #617143;
   text-decoration: underline;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+
+  &:hover{
+    font-weight: bold;
+   }
 `;
 
 const Title = styled.p`
@@ -106,10 +109,11 @@ const Level3Reco = () => {
       console.log(res.data);
     });
   }, []);
-  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
-
-  const handleButtonClick = (index) => {
-    setActiveButtonIndex(index);
+  
+  const handleButtonClick = (id) => {
+    setTimeout(() => {
+      navigate(`../AppPage/${id}`);
+    }, 300);
   };
 
   return (
@@ -132,9 +136,7 @@ const Level3Reco = () => {
                 <TB>
                 <Title>{element.name}</Title>
                 <Button
-                  isActive={activeButtonIndex === index}
-                  onClick={() => {handleButtonClick(index);
-                    navigate(`../AppPage/${element.id}`);}}
+                  onClick={() => handleButtonClick(element.id)}
                 >
                   자세히
                 </Button>
