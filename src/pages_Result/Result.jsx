@@ -179,6 +179,13 @@ const Result = () => {
       });
   }, [OX, OX2, OX3, OX4, OX5]);
 
+  useEffect(() => {
+    let isNew = localStorage.getItem("IsNew");
+    if (isNew == null) {
+      localStorage.setItem("IsNew", false);
+    }
+  }, []);
+
   return (
     <>
       <TestNavigator />

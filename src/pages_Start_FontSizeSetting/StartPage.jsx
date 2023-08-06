@@ -20,14 +20,13 @@ const StartPage = () => {
   useEffect(() => {
     let isNew = localStorage.getItem("IsNew");
     if (isNew == null) {
-      localStorage.setItem("IsNew", false);
       setTimeout(() => {
         navigate(`/FontSizeSettingForNew`);
-      }, 3000);
+      }, 2000);
     } else {
       setTimeout(() => {
         navigate(`/Main`);
-      }, 3000);
+      }, 2000);
     }
   }, []);
 
