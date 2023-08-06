@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Navigator from "../Navigator";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import AppPage from "../pages_AppPage/AppPage";
+
 
 const Desktop = styled.div`
   display: flex;
@@ -28,12 +31,9 @@ const Img = styled.img`
 const Text = styled.p`
   font-weight: bold;
   font-size: 1.9rem;
+  margin-bottom:15%;
 `;
 
-const Title = styled.p`
-  font-size: 1.3rem;
-  text-align: left;
-`;
 
 const Ibox = styled.div`
   width: 100px;
@@ -55,21 +55,9 @@ const CBox = styled.div`
   margin-top: -15%;
 `;
 
-const Con = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 10%;
-  width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: flex-start; /* 홀수 개수일 때 왼쪽 정렬 */
-`;
-
 const Box = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 42%;
-  height: 150px;
+  width: 80%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -77,6 +65,7 @@ const Box = styled.div`
   /* &:nth-child(2n + 1) {
     margin-right: auto;
   } */
+  padding: 5%;
 `;
 
 const Button = styled.button`
@@ -84,21 +73,37 @@ const Button = styled.button`
   border: none;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  margin-right: 5%;
-  margin-bottom: 5%;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   color: #617143;
   text-decoration: underline;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+
+  &:hover{
+    font-weight: bold;
+   }
+
 `;
 
-const AppImage = styled.img`
-  width: 60%;
-  height: 60%;
+const Title = styled.p`
+  font-size: 1.6rem;
+  text-align: left;
+  margin-left: 5%;
 `;
+
+const TB = styled.div`
+ display: flex;
+ flex-direction:column;
+ width:65%;
+`
+const AppImage = styled.img`
+  width: 30%;
+  height: 30%;
+`;
+
 
 const Level5Reco = () => {
   const [App, setApp] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
       setApp(res.data.level_5);
@@ -106,10 +111,12 @@ const Level5Reco = () => {
       console.log(res.data);
     });
   }, []);
-  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
 
-  const handleButtonClick = (index) => {
-    setActiveButtonIndex(index);
+  const handleButtonClick = (id) => {
+    // Add a 0.6-second delay before transitioning to the AppPage
+    setTimeout(() => {
+      navigate(`../AppPage/${id}`);
+    }, 300);
   };
 
   return (
@@ -125,20 +132,20 @@ const Level5Reco = () => {
             <Text>나무용 어플</Text>
           </CBox>
 
-          <Con>
             {App.map((element, index) => (
               <Box key={index}>
                 <AppImage src={element.image} />
+                <TB>
                 <Title>{element.name}</Title>
                 <Button
-                  isActive={activeButtonIndex === 0}
-                  onClick={() => handleButtonClick(0)}
+                    onClick={() => handleButtonClick(element.id)}
                 >
                   자세히
                 </Button>
+                </TB>
               </Box>
             ))}
-          </Con>
+
         </Rectangle>
       </Desktop>
     </>

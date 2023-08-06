@@ -85,6 +85,9 @@ const FindIcon = styled.img`
 `
 
 const JustLookBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -114,7 +117,8 @@ const JustLookBox = styled.div`
 const JustLookText = styled.p`
     font-size : 1.6rem;
     font-weight: bold;
-`
+    margin-bottom: 10%;
+    `
 
 const JustLookIcon = styled.img`
     width: 50%;
@@ -124,10 +128,14 @@ const JustLookIcon = styled.img`
 `
 
 const TestBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     padding: 4%;
+    padding-bottom: 1%;
     width: 35%;
     margin-left: 1.3%;
 
@@ -154,6 +162,7 @@ const TestBox = styled.div`
 const TestText = styled.p`
     font-size : 1.6rem;
     font-weight: bold;
+    margin-bottom: 10%;
 `
 
 const TestIcon = styled.img`
@@ -280,12 +289,17 @@ const Home = () => {
 
     const GoToFindPage = () => {
         setFindClick(true);
+        setTimeout(()=>{
+            navigate(`/AppFind`);
+        },600);
        
     }
 
     const GoToRecoPage = () => {
         setRecoClick(true);
-
+        setTimeout(()=>{
+            navigate(`/Category`);
+        },600);
     }
 
     const GoToHelpPage = () => {

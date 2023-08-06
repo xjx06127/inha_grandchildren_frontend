@@ -18,7 +18,10 @@ const SoundBox = styled.div`
 
 const SoundImg = styled.img`
    width: 40%;
-   height: 40%;
+   @media (orientation: portrait) {
+    /* Set the height specifically for portrait mode */
+    height: 3vh;
+    }
    margin-bottom: 7px;
 `;
 
@@ -29,21 +32,22 @@ const SoundText = styled.p`
 
 
 const HomeNavigator = () => {
-    const navigate = useNavigate();
-    const [isSoundClicked,setSoundClicked] = useState(false);
-
-    useEffect(()=>{
-        if(isSoundClicked){
-            setSoundClicked(false);
-        }
-    },[isSoundClicked])
+    const [isSoundOffClicked,setSoundOffClicked] = useState(false);
     
+    const handleControlSound = () => {
+        setSoundOffClicked(!isSoundOffClicked);
+    }
+
     return (
        <>
        <Box>
        <SoundBox>
-        <SoundImg src="/sound.svg"/>
-        <SoundText>소리끄기</SoundText>
+        <SoundImg 
+        src={isSoundOffClicked ? '/soundoff_white.svg' : '/sound.svg'}
+        onClick={handleControlSound}/>
+        <SoundText>{
+            isSoundOffClicked ? '소리 켜기' : '소리 끄기'
+            }</SoundText>
        </SoundBox>
        </Box>
 

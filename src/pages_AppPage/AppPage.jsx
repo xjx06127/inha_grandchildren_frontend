@@ -71,20 +71,25 @@ height:auto;
 
 const BText = styled.p`
   font-size: 1.6rem;
-  margin-top: 65%; /*const appimg넣은후 20%정도로 수정 */
+  margin-top: 3%; /*const appimg넣은후 20%정도로 수정 */
   text-align: center; /* 내용을 가로축으로 가운데 정렬 */
 `;
 
 const Button = styled.button`
   background: linear-gradient(45deg, #617143, #9da582);
   border: none;
-  width: 40%;
-  height: 12%;
+  width: 42%;
+  border-radius: 15px;
   margin-top: 5%;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   font-size: 1.6rem;
+  padding:3%;
   color: #ffffff;
   margin-bottom: 10%;
+
+  &:hover{
+    font-weight: bold;
+   }
 `;
 
 const Box1 = styled.div`
@@ -104,7 +109,11 @@ const SButton = styled.button`
   width: 7%;
   margin-left: 7%;
   background-color: transparent;
-  border: none;
+  border: none;  
+
+  &:hover{
+    color: #000000;
+   }
 `;
 
 const SImg = styled.img`
@@ -126,6 +135,8 @@ const B1text2 = styled.p`
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 10%;
+  white-space: pre-line; /* 공백과 줄바꿈 유지 설정 */
+  
 `;
 
 const Bcon = styled.div`
@@ -138,15 +149,17 @@ const Bcon = styled.div`
 const AppImage = styled.img`
   width: 60%;
   height: 60%;
+  margin-top:10%;
 `;
 const AppPage = () => {
   const { id } = useParams();
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
   const [App, setApp] = useState([]);
 
-  const handleButtonClick = (index) => {
-    setActiveButtonIndex(index);
+  const handleButtonClick = () => {
+  
   };
+
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
       console.log(res.data);
@@ -180,8 +193,7 @@ const AppPage = () => {
             <AppImage src={App.app_info?.image}></AppImage>
             <BText>{App.app_info?.name}</BText>
             <Button
-              isActive={activeButtonIndex === 0}
-              onClick={() => handleButtonClick(0)}
+              onClick={() => handleButtonClick}
             >
               다운로드
             </Button>
@@ -194,7 +206,8 @@ const AppPage = () => {
                 <SImg src="/TestNext.svg" />
               </SButton>
             </BS>
-            <B1text2>{App.app_info?.detail}</B1text2>
+            
+          <B1text2>{App.app_info?.detail && App.app_info?.detail.replace(/ • /g, '\n').replace(/\n/g, '\n\n')}</B1text2>
           </Box1>
         </Bcon>
       </Desktop>
