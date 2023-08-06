@@ -178,13 +178,7 @@ const FontSizeSetting = () => {
   };
 
   const go = () => {
-    // 로컬 스토리지에 있는 테스트 여부 뽑아와서, 테스트 했으면 메인으로, 아니면 test 페이지로 보낸다.
-    let isTested = localStorage.getItem("IsTested");
-    if (isTested) {
-      navigate(`/Main`);
-    } else if (!isTested) {
-      navigate(`/Test`);
-    }
+    navigate(`/Main`);
   };
 
   return (
