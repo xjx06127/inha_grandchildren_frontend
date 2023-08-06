@@ -104,7 +104,7 @@ const Test3 = () => {
     };
 
     if (!speakMessage) {
-      speakText("어플설치를 3번이상 해보셨나요?");
+      speakText("어플설치를 세번이상 해보셨나요?");
       setSpeakMessage(true);
     }
   }, [speakMessage]);
