@@ -7,6 +7,7 @@ import ReactPlayer from "react-player/lazy";
 import Navigator from "../Navigator";
 import TestNavigatorForNew from "./TestNavigatorForNew";
 import "./Bar.css";
+import { motion } from "framer-motion";
 
 const All = styled.div`
   padding-top: 11%;
@@ -122,7 +123,13 @@ const TestForNew = () => {
   };
 
   return (
-    <>
+    <motion.div
+      key="fontSizeSetting" // Add a unique key to the motion.div so that it properly triggers animations during updates
+      initial={{ opacity: 0 }} // Initial state (invisible and slightly moved up)
+      animate={{ opacity: 1 }} // Animation when the component appears
+      exit={{ opacity: 0 }} // Animation when the component is removed from the DOM
+      transition={{ duration: 0.2, ease: "easeOut" }} // Animation duration and easing function
+    >
       <TestNavigatorForNew />
       <progress id="progress" value="20" min="0" max="100"></progress>
       <div>
@@ -149,7 +156,7 @@ const TestForNew = () => {
 
         <NextButton onClick={GoNextPage}>다음</NextButton>
       </div>
-    </>
+    </motion.div>
   );
 };
 

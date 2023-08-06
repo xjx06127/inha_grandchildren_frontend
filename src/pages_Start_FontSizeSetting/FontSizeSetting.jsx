@@ -182,77 +182,69 @@ const FontSizeSetting = () => {
   };
 
   return (
-    <motion.div
-      key="fontSizeSetting" // Add a unique key to the motion.div so that it properly triggers animations during updates
-      initial={{ opacity: 0 }} // Initial state (invisible and slightly moved up)
-      animate={{ opacity: 1 }} // Animation when the component appears
-      exit={{ opacity: 0 }} // Animation when the component is removed from the DOM
-      transition={{ duration: 0.2, ease: "easeOut" }} // Animation duration and easing function
-    >
-      <BackGround>
-        <VertiBox>
-          <VertiBox2>
-            <Logo />
-            <Title>
-              원하는 <Highlight>글자 크기</Highlight>를 선택해 주세요
-            </Title>
-          </VertiBox2>
-          <Div>
-            <ExBox>
-              <p
-                style={{
-                  fontSize:
-                    fontSize === "normal"
-                      ? "1.6rem"
-                      : fontSize === "large"
-                      ? "1.9rem"
-                      : "2.2rem",
-                }}
-              >
-                동해물과 백두산이 마르고 닳도록
-              </p>
-            </ExBox>
-            <Option defaultChecked>
-              <Label1 htmlFor="select">보통</Label1>
-              <Input
-                type="radio"
-                name="normal"
-                checked={fontSize === "normal"}
-                onChange={handleRadioChange}
-              />
-            </Option>
-            <Option>
-              <Label2 htmlFor="select2">크게</Label2>
-              <Input
-                type="radio"
-                name="large"
-                checked={fontSize === "large"}
-                onChange={handleRadioChange}
-              />
-            </Option>
-            <Option>
-              <Label3 htmlFor="select3">매우 크게</Label3>
-              <Input
-                type="radio"
-                name="veryLarge"
-                checked={fontSize === "veryLarge"}
-                onChange={handleRadioChange}
-              />
-            </Option>
-          </Div>
-          <ButtonBox>
-            <Link to={`/Main`} style={{ textDecoration: "none" }}>
-              <CancelBtn>
-                <CancelP>취소</CancelP>
-              </CancelBtn>
-            </Link>
-            <SetBtn onClick={() => go()}>
-              <SetP>설정하기</SetP>
-            </SetBtn>
-          </ButtonBox>
-        </VertiBox>
-      </BackGround>
-    </motion.div>
+    <BackGround>
+      <VertiBox>
+        <VertiBox2>
+          <Logo />
+          <Title>
+            원하는 <Highlight>글자 크기</Highlight>를 선택해 주세요
+          </Title>
+        </VertiBox2>
+        <Div>
+          <ExBox>
+            <p
+              style={{
+                fontSize:
+                  fontSize === "normal"
+                    ? "1.6rem"
+                    : fontSize === "large"
+                    ? "1.9rem"
+                    : "2.2rem",
+              }}
+            >
+              동해물과 백두산이 마르고 닳도록
+            </p>
+          </ExBox>
+          <Option defaultChecked>
+            <Label1 htmlFor="select">보통</Label1>
+            <Input
+              type="radio"
+              name="normal"
+              checked={fontSize === "normal"}
+              onChange={handleRadioChange}
+            />
+          </Option>
+          <Option>
+            <Label2 htmlFor="select2">크게</Label2>
+            <Input
+              type="radio"
+              name="large"
+              checked={fontSize === "large"}
+              onChange={handleRadioChange}
+            />
+          </Option>
+          <Option>
+            <Label3 htmlFor="select3">매우 크게</Label3>
+            <Input
+              type="radio"
+              name="veryLarge"
+              checked={fontSize === "veryLarge"}
+              onChange={handleRadioChange}
+            />
+          </Option>
+        </Div>
+        <ButtonBox>
+          <Link to={`/Main`} style={{ textDecoration: "none" }}>
+            <CancelBtn>
+              <CancelP>취소</CancelP>
+            </CancelBtn>
+          </Link>
+          <SetBtn onClick={() => go()}>
+            <SetP>설정하기</SetP>
+          </SetBtn>
+        </ButtonBox>
+      </VertiBox>
+    </BackGround>
   );
 };
 

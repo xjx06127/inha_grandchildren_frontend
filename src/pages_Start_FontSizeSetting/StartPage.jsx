@@ -22,11 +22,11 @@ const StartPage = () => {
     if (isNew == null) {
       setTimeout(() => {
         navigate(`/FontSizeSettingForNew`);
-      }, 2000);
+      }, 2300);
     } else {
       setTimeout(() => {
         navigate(`/Main`);
-      }, 2000);
+      }, 2300);
     }
   }, []);
 
