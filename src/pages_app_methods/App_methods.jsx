@@ -4,11 +4,12 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/lazy";
+import BackNavigator from "../BackNavigator";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
   width: 100vw;
-  height: 40vh;
+  height: 43vh;
   background-size: cover;
   border-radius: 0 0 50px 60px / 0 0 12px 19px;
 `;
@@ -16,7 +17,7 @@ const BackGround = styled.div`
 const Text = styled.h1`
   color: #ffffff;
   margin-left: 10%;
-  padding-top: 5%;
+  padding-top: 2%;
   margin-bottom: 10%;
 `;
 
@@ -36,13 +37,14 @@ const Icon = styled.img`
   width: 80px;
   height: 60px;
   padding-left: 10%;
-  padding-top: 15%;
+  padding-top: 7%;
 `;
 
 const App_methods = () => {
   return (
     <>
       <BackGround>
+        <BackNavigator />
         <Icon src="/videoIcon.svg"></Icon>
         <Text>
           직접 동영상으로

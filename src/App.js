@@ -26,6 +26,19 @@ import Level3Reco from "./pages_AppReco/Level3Reco";
 import Level4Reco from "./pages_AppReco/Level4Reco";
 import Level5Reco from "./pages_AppReco/Level5Reco";
 import RecoApp from "./pages_AppReco/RecoApp";
+import FirstChoosePage from "./pages_app_find_test/FirstChoosePage";
+import LivingAppTest from "./pages_app_find_test/living/LivingAppTest";
+import Finance from "./pages_app_find_test/living/Finance";
+import SearchLoad from "./pages_app_find_test/living/SearchLoad";
+import Delivery from "./pages_app_find_test/living/Delivery";
+import AppsFind from "./pages_app_find_test/AppsFind";
+import HobbyAppTest from "./pages_app_find_test/hobby/HobbyAppTest";
+import Indoor from "./pages_app_find_test/hobby/Indoor";
+import Outdoor from "./pages_app_find_test/hobby/Outdoor";
+import HealthyAppTest from "./pages_app_find_test/healthy/HealthyAppTest";
+import HealthCare from "./pages_app_find_test/healthy/HealthCare";
+import Treatment from "./pages_app_find_test/healthy/Treatment";
+import CommunityAppTest from "./pages_app_find_test/community/CommunityAppTest";
 
 function App() {
   return (
@@ -65,6 +78,24 @@ function App() {
             <Route path="/level3" element={<Level3Reco />} />
             <Route path="/level4" element={<Level4Reco />} />
             <Route path="/level5" element={<Level5Reco />} />
+
+            <Route path="/AppFind" element={<FirstChoosePage />} />
+            <Route path="/AppsFindResult/:appfield" element={<AppsFind />} />
+
+            <Route path="/LivingAppsFind1" element={<LivingAppTest />} />
+            <Route path="/FinanceAppsFind" element={<Finance />} />
+            <Route path="/SearchLoadsAppsFind" element={<SearchLoad />} />
+            <Route path="/DeliveryAppsFind" element={<Delivery />} />
+
+            <Route path="/HobbyAppTest1" element={<HobbyAppTest />} />
+            <Route path="/IndoorAppsFind" element={<Indoor />} />
+            <Route path="/OutdoorAppsFind" element={<Outdoor />} />
+
+            <Route path="/HealthyAppTest1" element={<HealthyAppTest />} />
+            <Route path="/HealthCareAppsFind" element={<HealthCare />} />
+            <Route path="/TreatmentAppsFind" element={<Treatment />} />
+
+            <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
