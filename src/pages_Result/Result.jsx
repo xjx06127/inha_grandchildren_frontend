@@ -167,7 +167,7 @@ const Result = () => {
         } else if (correctNum >= 3 && correctNum <= 4) {
           newImgSrc = "/Yeolmae.svg";
           newComment =
-            "열매은 4단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+            "열매는 4단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 5) {
           newImgSrc = "/Tree.svg";
           newComment = "당신은 디지털 끝판왕!😉";
@@ -188,6 +188,21 @@ const Result = () => {
       localStorage.setItem("IsNew", false);
     }
   }, []);
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+
+    const speakText = (text) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.8;
+      synth.speak(utterance);
+    };
+
+    if (comment !== "") {
+      // 빈 comment 문자열이 아닐 때만 TTS 실행
+      speakText(comment);
+    }
+  }, [comment]);
 
   return (
     <>
