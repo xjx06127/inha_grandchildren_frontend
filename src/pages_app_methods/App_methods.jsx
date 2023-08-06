@@ -8,12 +8,20 @@ import BackNavigator from "../BackNavigator";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
+<<<<<<< HEAD
   width: 100vw;
   height: 43vh;
+=======
+>>>>>>> 32715d2c3ce80acf659d694a9907bc1c90a02613
   background-size: cover;
   border-radius: 0 0 50px 60px / 0 0 12px 19px;
+  @media (orientation: portrait) {
+    height: 40vh;
+  }
+  @media (orientation: landscape) {
+    height: 120vh;
+  }
 `;
-
 const Text = styled.h1`
   color: #ffffff;
   margin-left: 10%;
