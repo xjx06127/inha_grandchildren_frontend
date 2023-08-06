@@ -5,18 +5,16 @@ import { useState, useEffect} from 'react';
 import { useNavigate } from 'react-router';
 
 const BackGround = styled.div`
-    background-image: url(/mainBackground.png);
-    width: 100vw; 
-
-    @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
+  background-image: url(/mainBackground.png);
+  background-size: cover;
+  border-radius: 0 0 50px 60px / 0 0 12px 19px;
+  @media (orientation: portrait) {
     height: 40vh;
-    }
-
-    background-size: cover;
-    border-radius: 0 0 50px 60px / 0 0 12px 19px;
-
-`
+  }
+  @media (orientation: landscape) {
+    height: 120vh;
+  }
+`;
 
 const MainText = styled.h1`
 color : white;

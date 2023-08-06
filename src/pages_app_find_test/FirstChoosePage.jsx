@@ -142,19 +142,19 @@ const FirstChoosePage = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onTouchEnd={GoToLivingPage} clicked={isBoxClicked}>
+                    <Box onClick={GoToLivingPage} clicked={isBoxClicked}>
                         <SelText>생활 편의</SelText>
                     </Box>
-                    <Box onTouchEnd={GoToHobbyPage} clicked={isBoxClicked}>
+                    <Box onClick={GoToHobbyPage} clicked={isBoxClicked}>
                         <SelText>취미</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onTouchEnd={GoToCoummnityPage} clicked={isBoxClicked}>
+                    <Box onClick={GoToCoummnityPage} clicked={isBoxClicked}>
                         <SelText>소통</SelText>
                     </Box>
-                    <Box onTouchEnd={GoToHealthyPage} clicked={isBoxClicked}>
+                    <Box onClick={GoToHealthyPage} clicked={isBoxClicked}>
                         <SelText>건강</SelText>
                     </Box>
                 </Row2>
