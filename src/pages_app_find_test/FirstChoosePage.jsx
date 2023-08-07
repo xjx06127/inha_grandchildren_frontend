@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from './GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
 
 const BackGround = styled.div`
      background-color: #F7F7F7;
@@ -82,10 +83,9 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
-    background-color: #EFC5B9;
+    transition:1s;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
-
 `
 
 const SelText = styled.p`
@@ -95,30 +95,44 @@ const SelText = styled.p`
 
 const FirstChoosePage = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
+
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     const GoToLivingPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/LivingAppsFind1`)
-        },600);
+        },310);
     };
 
     const GoToHobbyPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/HobbyAppTest1`)
-        },600);
+        },310);
     };
 
     
     const GoToCoummnityPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/CommunityAppsFind`)
-        },600);
+        },310);
     };
 
     const GoToHealthyPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/HealthyAppTest1`)
-        },600);
+        },310);
     };
 
 
@@ -133,19 +147,19 @@ const FirstChoosePage = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToLivingPage}>
+                    <Box onClick={GoToLivingPage} clicked={isBoxClicked}>
                         <SelText>생활 편의</SelText>
                     </Box>
-                    <Box onClick={GoToHobbyPage}>
+                    <Box onClick={GoToHobbyPage} clicked={isBoxClicked}>
                         <SelText>취미</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToCoummnityPage}>
+                    <Box onClick={GoToCoummnityPage} clicked={isBoxClicked}>
                         <SelText>소통</SelText>
                     </Box>
-                    <Box onClick={GoToHealthyPage}>
+                    <Box onClick={GoToHealthyPage} clicked={isBoxClicked}>
                         <SelText>건강</SelText>
                     </Box>
                 </Row2>

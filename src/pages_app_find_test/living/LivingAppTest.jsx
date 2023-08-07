@@ -1,7 +1,8 @@
 import React from 'react';
-import styled, {css} from "styled-components";
+import styled from 'styled-components';
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -11,7 +12,7 @@ const BackGround = styled.div`
     /* Set the height specifically for portrait mode */
     height: 100vh;
     }
-    margin: 0; 
+    margin: 0;
 `
 
 const MidBox = styled.div`
@@ -90,10 +91,9 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
-    background-color: #EFC5B9;
+    transition:1s;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
-
 `
 
 const SelText = styled.p`
@@ -103,36 +103,52 @@ const SelText = styled.p`
 
 const LivingAppTest = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
+
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     const GoToFinancePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/FinanceAppsFind`)
-        },600);
+        },310);
     };
 
     const GoToWeatherPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/날씨`)
-        },600);
+        },310);
     };
 
     
     const GoToSearchLoadPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/SearchLoadsAppsFind`)
-        },600);
+        },310);
     };
 
     const GoToDeliveryPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/DeliveryAppsFind`)
-        },600);
+        },310);
     };
 
     const GoToSchedulePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/일정 관리`)
-        },600);
+        },310);
     };
 
     return (
@@ -146,25 +162,25 @@ const LivingAppTest = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToFinancePage}>
+                    <Box onTouchEnd={GoToFinancePage} onClick={GoToFinancePage} clicked={isBoxClicked}>
                         <SelText>금융</SelText>
                     </Box>
-                    <Box onClick={GoToWeatherPage}>
+                    <Box onTouchEnd={GoToWeatherPage} onClick={GoToWeatherPage} clicked={isBoxClicked}>
                         <SelText>날씨</SelText>
                     </Box>
                 </Row1>
                 
                 <Row2>
-                    <Box onClick={GoToSearchLoadPage}>
+                    <Box onTouchEnd={GoToSearchLoadPage} onClick={GoToSearchLoadPage} clicked={isBoxClicked}>
                         <SelText>길 찾기</SelText>
                     </Box>
-                    <Box onClick={GoToDeliveryPage}>
+                    <Box onTouchEnd={GoToDeliveryPage} onClick={GoToDeliveryPage} clicked={isBoxClicked}>
                         <SelText>배달 및<br/> 배송</SelText>
                     </Box>
                 </Row2>
 
                 <Row3>
-                    <Box onClick={GoToSchedulePage}>
+                    <Box onTouchEnd={GoToSchedulePage} onClick={GoToSchedulePage} clicked={isBoxClicked}>
                         <SelText>일정 관리</SelText>
                     </Box>
                 </Row3>
