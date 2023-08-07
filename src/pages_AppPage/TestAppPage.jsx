@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import TestNavigator from "../pages_Test/TestNavigator";
 import { useParams } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import AppPageNavigator from "./AppPageNavigator";
 import Swal from "sweetalert2";
 
 const GlobalStyles = createGlobalStyle`
@@ -21,23 +21,10 @@ const Desktop = styled.div`
   margin-bottom: 10%;
 `;
 
-const AppNameWrapper = styled.div`
-  text-align: center;
-  margin-top: 5%;
-`;
-const AppName = styled.p`
-  font-weight: bold;
-  font-size: 1.9rem;
-`;
-
-const Con = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center; /* 가로축 가운데 정렬 */
-  align-items: center;
-  margin-top: 7%;
-  margin-left: 12%;
-  margin-right: 12%;
+const  Ccon = styled.div`
+ display: flex;
+ flex-direction: column;
+ align-items: center;
 `;
 
 const Circle = styled.div`
@@ -54,11 +41,28 @@ const Img = styled.img`
   width: 50%;
   height: 50%;
 `;
-const Level = styled.p`
-  font-size: 1.6rem;
-  margin-left: 10%;
-  width: 60%;
+
+const  NameWrapper = styled.div`
+ justify-content: center;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items:center;
 `;
+const Name = styled.p`
+  font-size: 1.6rem;
+`;
+
+const Number = styled.p`
+font-size: 1.6rem;
+font-weight: bold;
+`;
+
+const Icon1 = styled.img`
+  width: 9%;
+  height: 9%;
+`;
+
 
 const Box = styled.div`
   display: flex;
@@ -76,20 +80,34 @@ width:auto;
 height:auto; 
 `;
 어플이미지 받아오기 */
+const AppImage = styled.img`
+  width: 60%;
+  height: 60%;
+  margin-top:10%;
+  border-radius:5px;
+`;
 
 const BText = styled.p`
   font-size: 1.6rem;
-  margin-top: 3%; /*const appimg넣은후 20%정도로 수정 */
+  margin-top: 3%; 
   text-align: center; /* 내용을 가로축으로 가운데 정렬 */
+  font-weight:bold;
 `;
+
+const Level = styled.p`
+  font-size: 1.6rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top:5%;
+`;
+
 
 const Button = styled.button`
   background: linear-gradient(45deg, #617143, #9da582);
   border: none;
   width: 42%;
   border-radius: 13px;
-  margin-top: 5%;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+  margin-top: 8%;
   font-size: 1.6rem;
   padding:2%;
   color: #ffffff;
@@ -109,33 +127,15 @@ const Box1 = styled.div`
 `;
 
 const B1text = styled.p`
-  font-size: 1.6rem;
-  font-weight: bold;
+font-size: 1.6rem;
+margin-top: 10%;
+margin-left: 5%;
+margin-right: 5%;
+margin-bottom: 10%;
+font-weight:bold;
 `;
 
-const SButton = styled.button`
-  width: 7%;
-  margin-left: 7%;
-  background-color: transparent;
-  border: none;  
 
-  &:hover{
-    color: #000000;
-   }
-`;
-
-const SImg = styled.img`
-  width: 100%;
-  height: 100%;
-`;
-
-const BS = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: 5%;
-  margin-top: 10%;
-  align-items: center;
-`;
 
 const B1text2 = styled.p`
   font-size: 1.6rem;
@@ -147,6 +147,8 @@ const B1text2 = styled.p`
   
 `;
 
+
+
 const Bcon = styled.div`
   display: flex;
   flex-direction: column;
@@ -155,10 +157,60 @@ const Bcon = styled.div`
   margin-bottom: 10%;
 `;
 
-const AppImage = styled.img`
-  width: 60%;
-  height: 60%;
-  margin-top:10%;
+
+const Box2 = styled.div`
+  width: 80%;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-top: 8%;
+`;
+
+const B2text = styled.p`
+  font-size: 1.6rem;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+  font-weight:bold;
+`;
+const B2text2 = styled.p`
+  font-size: 1.6rem;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+`;
+
+const Icon = styled.img`
+  width: 35%;
+  height: 35%;
+`;
+const Button2 = styled.button`
+  background: linear-gradient(45deg, #617143, #9da582);
+  border: none;
+  width: 45%;
+  height: 30%;
+  border-radius: 13px;
+  padding:2%;
+  color: #ffffff;
+  margin-left:10%;
+  font-size:1.6rem;
+  &:hover{
+    font-weight: bold;
+   }
+`;
+
+const Con = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:10%;
+`;
+
+const Highlight = styled.span`
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 50%);
 `;
 
 const ErrorMessage = styled.div`
@@ -230,14 +282,12 @@ const MidBox = styled.div`
   }
 `
 
-
-const Highlight = styled.span`
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #ffd05d 50%);
+const Hidden = styled.p`
 `;
+
 
 const TestAppPage = () => {
   const { id } = useParams();
-  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
   const [App, setApp] = useState([]);
   const [iosUrl,setIosUrl] = useState("");
   const [AndroidUrl,setAndroidUrl] = useState("");
@@ -250,12 +300,14 @@ const TestAppPage = () => {
       setIosUrl(res.data.app_info?.alink);
       setAndroidUrl(res.data.app_info?.slink);
       //  setApp5(res.data.level_5);
+      tts();
     });
   }, []);
 
   const tts = () => {
-    const audio = new Audio(App.tts);
-    audio.play(); // 음성 파일을 재생합니다.
+    console.log("a")
+    // const audio = new Audio(App.tts);
+    // audio.play(); // 음성 파일을 재생합니다.
   };
 
   const handleButtonClick = () => {
@@ -284,37 +336,42 @@ const TestAppPage = () => {
   
   return (
     <>
+    <Hidden onClick={() => tts()}/>
       <GlobalStyles show={showError} />
-      <TestNavigator></TestNavigator>
+      <AppPageNavigator></AppPageNavigator>
       <Desktop>
-        <AppNameWrapper>
-          <AppName>{App.app_info?.name}</AppName>
-        </AppNameWrapper>
+        <Ccon>
+      <Circle>
+         <Img src={`/L${App.app_info?.levelvalue}.svg`} />
+      </Circle>
+      </Ccon>
 
-        <Con>
-          <Circle>
-            <Img src={`/L${App.app_info?.levelvalue}.svg`} />
-          </Circle>
-          <Level>{App.app_info?.summary}</Level>
-        </Con>
+        <NameWrapper>
+          <Icon1 src="/Rec.svg"></Icon1>
+          <Number>{}명</Number><Name>의 추천을 받은 어플</Name>
+        </NameWrapper>
 
         <Bcon>
           <Box>
             <AppImage src={App.app_info?.image}></AppImage>
             <BText>{App.app_info?.name}</BText>
+            <Level>{App.app_info?.summary}</Level>
             <Button onClick={handleButtonClick}>다운로드</Button>
           </Box>
 
           <Box1>
-            <BS>
-              <B1text>어떻게 사용할까요?</B1text>
-              <SButton onClick={tts}>
-                <SImg src="/TestNext.svg" />
-              </SButton>
-            </BS>
-            
+            <B1text>어떻게 사용할까요?</B1text>
           <B1text2>{App.app_info?.detail && App.app_info?.detail.replace(/ • /g, '\n').replace(/\n/g, '\n\n')}</B1text2>
           </Box1>
+
+          <Box2>
+            <B2text>어플이<br/> <Highlight>마음에 드신다면?</Highlight></B2text>
+            <B2text2>다른 분들을 위해 추천해주세요.</B2text2>
+            <Con>
+             <Icon src="/Rec.svg"></Icon>
+             <Button2 onClick={handleButtonClick}>나도 추천</Button2>
+            </Con>
+            </Box2>
         </Bcon>
       </Desktop>
     </>
