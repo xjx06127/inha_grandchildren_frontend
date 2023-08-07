@@ -114,7 +114,6 @@ const Box = styled.div`
   width: 46vw;
   margin: 3%;
   padding: 2%;
-
   &:hover {
     transition: 1s;
     background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
