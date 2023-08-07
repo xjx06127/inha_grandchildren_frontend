@@ -53,7 +53,7 @@ const LevelComment2 = styled.p`
   /* 짧은 설명이 들어가면 좋을 것 같은데 */
 
   font-size: 1.3rem;
-  width: 50%;
+  width: 70%;
   text-align: center;
   color: #000000;
   margin-top: 5%;
@@ -155,19 +155,22 @@ const Result = () => {
 
         if (correctNum === 0) {
           newImgSrc = "/Seed.svg";
-          newComment = "씨앗용 멘트";
+          newComment =
+            "씨앗은 1단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 1) {
           newImgSrc = "/Saessack.svg";
-          newComment = "새싹용 멘트";
+          newComment =
+            "새싹은 2단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 2) {
           newImgSrc = "/Flower.svg";
-          newComment = "꽃용 멘트";
+          newComment = "꽃은 3단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum >= 3 && correctNum <= 4) {
           newImgSrc = "/Yeolmae.svg";
-          newComment = "열매용 멘트";
+          newComment =
+            "열매는 4단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 5) {
           newImgSrc = "/Tree.svg";
-          newComment = "나무용 멘트";
+          newComment = "당신은 디지털 끝판왕!😉";
         }
 
         setImgSrc(newImgSrc);
@@ -178,6 +181,28 @@ const Result = () => {
         console.error(error);
       });
   }, [OX, OX2, OX3, OX4, OX5]);
+
+  useEffect(() => {
+    let isNew = localStorage.getItem("IsNew");
+    if (isNew == null) {
+      localStorage.setItem("IsNew", false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+
+    const speakText = (text) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.8;
+      synth.speak(utterance);
+    };
+
+    if (comment !== "") {
+      // 빈 comment 문자열이 아닐 때만 TTS 실행
+      speakText(comment);
+    }
+  }, [comment]);
 
   return (
     <>
