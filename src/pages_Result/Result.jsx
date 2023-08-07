@@ -157,20 +157,20 @@ const Result = () => {
 
         if (correctNum === 0) {
           newImgSrc = "/Seed.svg";
-          newComment1 = "씨앗은 1단계 입니다.";
-          newComment2 = "5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "씨앗은 레벨1 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum === 1) {
           newImgSrc = "/Saessack.svg";
-          newComment1 = "새싹은 2단계 입니다.";
-          newComment2 = "5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "새싹은 레벨2 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum === 2) {
           newImgSrc = "/Flower.svg";
-          newComment1 = "꽃은 3단계 입니다.";
-          newComment2 = "5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "꽃은 레벨3 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum >= 3 && correctNum <= 4) {
           newImgSrc = "/Yeolmae.svg";
-          newComment1 = "열매는 4단계 입니다.";
-          newComment2 = "5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "열매는 레벨4 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum === 5) {
           newImgSrc = "/Tree.svg";
           newComment1 = "당신은 디지털 끝판왕!😉";
@@ -212,13 +212,13 @@ const Result = () => {
     <>
       <TestNavigator />
       <Comment1>
-        <Highlight>디지털 단계</Highlight>을<br />
+        <Highlight>디지털 레벨</Highlight>을<br />
         분석했어요!
       </Comment1>
       <VertiBox>
         <Circle>
           {imgSrc && <Img src={imgSrc} />}
-          {level && <LevelComment>{level} 단계</LevelComment>}
+          {level && <LevelComment>{level} 레벨</LevelComment>}
         </Circle>
         {comment1 && (
           <LevelComment2>
@@ -232,7 +232,7 @@ const Result = () => {
             navigate(`/Main`);
           }}
         >
-          디지털 단계를 올려보세요! 👍
+          디지털 레벨을 올려보세요! 👍
         </Btn>
       </VertiBox>
     </>

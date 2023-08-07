@@ -441,7 +441,7 @@ const Home = () => {
               <TestText fS={fontSize}>
                 디지털
                 <br />
-                단계
+                레벨
                 <br />
                 알려드릴게요
               </TestText>
