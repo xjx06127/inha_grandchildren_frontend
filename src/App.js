@@ -13,7 +13,6 @@ import Test4 from "./pages_Test/Test4";
 import Test5 from "./pages_Test/Test5";
 import Result from "./pages_Result/Result";
 import { FontSizeProvider } from "./pages_font_context/FontSizeProvider";
-import AppReco from "./pages_AppReco/AppReco";
 import AppPage from "./pages_AppPage/AppPage";
 import Analyze from "./pages_analyze/Analyze";
 import { AnimatePresence } from "framer-motion";
@@ -62,7 +61,6 @@ function App() {
               path="/:OX/:OX2/:OX3/:OX4/:OX5/Result"
               element={<Result />}
             />
-            <Route path="/AppReco" element={<AppReco />} />
             {/* <Route path="/AppPage/:id" element={<AppPage />} /> */}
             <Route path="/AppPage/:id" element={<TestAppPage/>}/>
             <Route
@@ -81,23 +79,24 @@ function App() {
             <Route path="/level4" element={<Level4Reco />} />
             <Route path="/level5" element={<Level5Reco />} />
 
-            <Route path="/AppFind" element={<FirstChoosePage />} />
-            <Route path="/AppsFindResult/:appfield" element={<AppsFind />} />
+            <Route path="/AppFind" element={<FirstChoosePage/>}/>
+            <Route path="/AppsFindResult/:appfield" element={<AppsFind/>}/>
 
-            <Route path="/LivingAppsFind1" element={<LivingAppTest />} />
-            <Route path="/FinanceAppsFind" element={<Finance />} />
-            <Route path="/SearchLoadsAppsFind" element={<SearchLoad />} />
-            <Route path="/DeliveryAppsFind" element={<Delivery />} />
+            <Route path="/LivingAppsFind1" element={<LivingAppTest/>}/>
+            <Route path="/FinanceAppsFind" element={<Finance/>}/>
+            <Route path="/SearchLoadsAppsFind" element={<SearchLoad/>}/>
+            <Route path="/DeliveryAppsFind" element={<Delivery/>}/>
 
-            <Route path="/HobbyAppTest1" element={<HobbyAppTest />} />
-            <Route path="/IndoorAppsFind" element={<Indoor />} />
-            <Route path="/OutdoorAppsFind" element={<Outdoor />} />
+            <Route path="/HobbyAppTest1" element={<HobbyAppTest/>}/>
+            <Route path="/IndoorAppsFind" element={<Indoor/>}/>
+            <Route path="/OutdoorAppsFind" element={<Outdoor/>}/>
 
-            <Route path="/HealthyAppTest1" element={<HealthyAppTest />} />
-            <Route path="/HealthCareAppsFind" element={<HealthCare />} />
-            <Route path="/TreatmentAppsFind" element={<Treatment />} />
+            <Route path="/HealthyAppTest1" element={<HealthyAppTest/>}/>
+            <Route path="/HealthCareAppsFind" element={<HealthCare/>}/>
+            <Route path="/TreatmentAppsFind" element={<Treatment/>}/>
 
-            <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
+            <Route path="/CommunityAppsFind" element={<CommunityAppTest/>}/>
+
 
             <Route path="*" element={<NotFound />} />
           </Routes>
