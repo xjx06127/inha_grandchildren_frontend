@@ -135,7 +135,8 @@ const Result = () => {
   const { OX, OX2, OX3, OX4, OX5 } = useParams();
   const [imgSrc, setImgSrc] = useState("");
   const [level, setLevel] = useState("");
-  const [comment, setComment] = useState("");
+  const [comment1, setComment1] = useState("");
+  const [comment2, setComment2] = useState("");
 
   useEffect(() => {
     axios
@@ -151,31 +152,34 @@ const Result = () => {
         const correctNum = res.data.count;
         const newLevel = res.data.result;
         let newImgSrc = "";
-        let newComment = "";
+        let newComment1 = "";
+        let newComment2 = "";
 
         if (correctNum === 0) {
           newImgSrc = "/Seed.svg";
-          newComment =
-            "씨앗은 1단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "씨앗은 1단계 입니다.";
+          newComment2 = "5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 1) {
           newImgSrc = "/Saessack.svg";
-          newComment =
-            "새싹은 2단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "새싹은 2단계 입니다.";
+          newComment2 = "5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 2) {
           newImgSrc = "/Flower.svg";
-          newComment = "꽃은 3단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "꽃은 3단계 입니다.";
+          newComment2 = "5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum >= 3 && correctNum <= 4) {
           newImgSrc = "/Yeolmae.svg";
-          newComment =
-            "열매는 4단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "열매는 4단계 입니다.";
+          newComment2 = "5단계인 나무 단계까지 올려보세요!";
         } else if (correctNum === 5) {
           newImgSrc = "/Tree.svg";
-          newComment = "당신은 디지털 끝판왕!😉";
+          newComment1 = "당신은 디지털 끝판왕!😉";
         }
 
         setImgSrc(newImgSrc);
         setLevel(newLevel);
-        setComment(newComment);
+        setComment1(newComment1);
+        setComment2(newComment2);
       })
       .catch((error) => {
         console.error(error);
@@ -198,31 +202,37 @@ const Result = () => {
       synth.speak(utterance);
     };
 
-    if (comment !== "") {
+    if (comment1 !== "") {
       // 빈 comment 문자열이 아닐 때만 TTS 실행
-      speakText(comment);
+      speakText(comment1 + comment2);
     }
-  }, [comment]);
+  }, [comment1]);
 
   return (
     <>
       <TestNavigator />
       <Comment1>
-        <Highlight>디지털 레벨</Highlight>을<br />
+        <Highlight>디지털 단계</Highlight>을<br />
         분석했어요!
       </Comment1>
       <VertiBox>
         <Circle>
           {imgSrc && <Img src={imgSrc} />}
-          {level && <LevelComment>{level} 레벨</LevelComment>}
+          {level && <LevelComment>{level} 단계</LevelComment>}
         </Circle>
-        {comment && <LevelComment2>{comment}</LevelComment2>}
+        {comment1 && (
+          <LevelComment2>
+            {comment1}
+            <br />
+            {comment2}
+          </LevelComment2>
+        )}
         <Btn
           onClick={() => {
             navigate(`/Main`);
           }}
         >
-          디지털 레벨을 올려보세요! 👍
+          디지털 단계를 올려보세요! 👍
         </Btn>
       </VertiBox>
     </>

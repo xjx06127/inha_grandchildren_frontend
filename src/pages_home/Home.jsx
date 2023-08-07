@@ -454,9 +454,9 @@ const Home = () => {
               <HelpIcon src="/help_white.svg" />
             </Circle>
             <HelpText fS={fontSize}>
-              도움이
+              사용 방법을
               <br />
-              필요하신가요?
+              알고 싶으신가요?
             </HelpText>
           </HelpBox>
 
