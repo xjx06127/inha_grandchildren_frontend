@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import HomeNavigator from "./HomeNavigator";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -19,7 +20,17 @@ const BackGround = styled.div`
 
 const MainText = styled.h1`
   color: white;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
   padding-left: 10%;
   padding-top: 8%;
 `;
@@ -69,7 +80,17 @@ const FindBox = styled.div`
 `;
 
 const FindText = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-left: 5%;
   font-weight: bold;
 `;
@@ -109,7 +130,17 @@ const JustLookBox = styled.div`
 `;
 
 const JustLookText = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
   margin-bottom: 10%;
 `;
@@ -151,7 +182,16 @@ const TestBox = styled.div`
 `;
 
 const TestText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
   margin-bottom: 10%;
 `;
@@ -210,7 +250,16 @@ const HelpIcon = styled.img`
 `;
 
 const HelpText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
 `;
 
@@ -249,7 +298,16 @@ const FontIcon = styled.img`
 `;
 
 const FontText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
 `;
 
@@ -258,6 +316,7 @@ const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 const WhiteImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
 const Home = () => {
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [findClick, setFindClick] = useState(false);
   const [recoClick, setRecoClick] = useState(false);
   const [helpClick, setHelpClick] = useState(false);
@@ -319,7 +378,7 @@ const Home = () => {
     <>
       <BackGround>
         <HomeNavigator />
-        <MainText>
+        <MainText fS={fontSize}>
           원하시는 서비스를
           <br />
           선택해주세요
@@ -328,12 +387,12 @@ const Home = () => {
         <Box>
           <FindBox onClick={GoToFindPage} active={findClick}>
             <HomeIconsAnimation />
-            <FindText>찾고 싶은 기능이 있어요</FindText>
+            <FindText fS={fontSize}>찾고 싶은 기능이 있어요</FindText>
           </FindBox>
 
           <Row1>
             <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-              <JustLookText>
+              <JustLookText fS={fontSize}>
                 그냥
                 <br />
                 둘러볼게요
@@ -342,7 +401,7 @@ const Home = () => {
             </JustLookBox>
 
             <TestBox onClick={GoToTestPage} active={testClick}>
-              <TestText>
+              <TestText fS={fontSize}>
                 디지털
                 <br />
                 활용능력
@@ -357,7 +416,7 @@ const Home = () => {
             <Circle>
               <HelpIcon src="/help_white.svg" />
             </Circle>
-            <HelpText>
+            <HelpText fS={fontSize}>
               도움이
               <br />
               필요해요
@@ -368,7 +427,7 @@ const Home = () => {
             <Circle>
               <FontIcon src="/font_white.svg" />
             </Circle>
-            <FontText>
+            <FontText fS={fontSize}>
               글자 크기를
               <br />
               바꾸고 싶어요
