@@ -58,6 +58,17 @@ const FindBox = styled.div`
   padding: 1.8%;
   padding-left: 6%;
   padding-right: 6%;
+  font-weight: bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
@@ -68,11 +79,11 @@ const FindBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.5s;
+        transition: 1s;
         background-color: #f3ddd6;
 
         ${FindText} {
-          color: white;
+          color: gray;
         }
       }
     `}
@@ -90,7 +101,7 @@ const FindText = styled.p`
         return "2.2rem";
     }
   }};
-  margin-left: 5%;
+  margin-left: 14%;
   font-weight: bold;
 `;
 
@@ -114,16 +125,16 @@ const JustLookBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.5s;
+        transition: 1s;
         background-color: #f3ddd6;
 
         ${JustLookText} {
-          color: white;
+          color: gray;
         }
 
-        ${JustLookIcon} {
+        /* ${JustLookIcon} {
           content: url(/look_white.svg);
-        }
+        } */
       }
     `}
 `;
@@ -166,16 +177,16 @@ const TestBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.5s;
+        transition: 1s;
         background-color: #f3ddd6;
 
         ${TestText} {
-          color: white;
+          color: gray;
         }
 
-        ${TestIcon} {
+        /* ${TestIcon} {
           content: url(/test_white.svg);
-        }
+        } */
       }
     `}
 `;
@@ -218,11 +229,11 @@ const HelpBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.5s;
+        transition: 1s;
         background-color: #f3ddd6;
 
         ${HelpText} {
-          color: white;
+          color: gray;
         }
 
         ${HelpIcon} {
@@ -277,11 +288,11 @@ const FontBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.5s;
+        transition: 1s;
         background-color: #f3ddd6;
 
         ${FontText} {
-          color: white;
+          color: gray;
         }
 
         ${FontIcon} {
@@ -322,7 +333,23 @@ const Home = () => {
   const [testClick, setTestClick] = useState(false);
   const [fontClick, setFontClick] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [speakMessage, setSpeakMessage] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+
+    const speakText = (text) => {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 0.8;
+      synth.speak(utterance);
+    };
+
+    if (!speakMessage) {
+      speakText("하단의 버튼을 클릭하여, 원하시는 서비스를 선택해주세요.");
+      setSpeakMessage(true);
+    }
+  }, [speakMessage]);
 
   const GoToFindPage = () => {
     setFindClick(true);
@@ -362,6 +389,7 @@ const Home = () => {
   const HomeIconsAnimation = styled.img`
     content: url(${ImageUrls[currentImageIndex]});
     width: 12%;
+    margin-right: 10%;
   `;
 
   const ChangeImage = () => {
@@ -377,86 +405,29 @@ const Home = () => {
     <>
       <BackGround>
         <HomeNavigator />
-        <MainText>
+        <MainText fS={fontSize}>
           원하시는 서비스를
           <br />
           선택해주세요
         </MainText>
-        return (
-        <>
-          <BackGround>
-            <HomeNavigator />
-            <MainText fS={fontSize}>
-              원하시는 서비스를
-              <br />
-              선택해주세요
-            </MainText>
 
-            <Box>
-              <FindBox onClick={GoToFindPage} active={findClick}>
-                <HomeIconsAnimation />
-                <FindText fS={fontSize}>찾고 싶은 기능이 있어요</FindText>
-              </FindBox>
-
-              <Row1>
-                <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-                  <JustLookText fS={fontSize}>
-                    그냥
-                    <br />
-                    둘러볼게요
-                  </JustLookText>
-                  <JustLookIcon src="/lookicon.svg" />
-                </JustLookBox>
-
-                <TestBox onClick={GoToTestPage} active={testClick}>
-                  <TestText fS={fontSize}>
-                    디지털
-                    <br />
-                    활용능력
-                    <br />
-                    테스트
-                  </TestText>
-                  <TestIcon src="test.svg" />
-                </TestBox>
-              </Row1>
-
-              <HelpBox onClick={GoToHelpPage} active={helpClick}>
-                <Circle>
-                  <HelpIcon src="/help_white.svg" />
-                </Circle>
-                <HelpText fS={fontSize}>
-                  도움이
-                  <br />
-                  필요해요
-                </HelpText>
-              </HelpBox>
-
-              <FontBox onClick={GoToFontPage} active={fontClick}>
-                <Circle>
-                  <FontIcon src="/font_white.svg" />
-                </Circle>
-                <FontText fS={fontSize}>
-                  글자 크기를
-                  <br />
-                  바꾸고 싶어요
-                </FontText>
-              </FontBox>
-            </Box>
-          </BackGround>
-        </>
-        );
         <Box>
-          <FindBox onClick={GoToFindPage} active={findClick}>
+          {/* <FindBox onClick={GoToFindPage} active={findClick}>
             <HomeIconsAnimation />
-            <FindText>
+            <FindText fS={fontSize}>
               필요한 어플 <br />
               찾아드릴게요
             </FindText>
+          </FindBox> */}
+          <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
+            <HomeIconsAnimation />
+            필요한 어플 <br />
+            찾아드릴게요
           </FindBox>
 
           <Row1>
             <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-              <JustLookText>
+              <JustLookText fS={fontSize}>
                 분야별
                 <br />
                 어플
@@ -467,8 +438,10 @@ const Home = () => {
             </JustLookBox>
 
             <TestBox onClick={GoToTestPage} active={testClick}>
-              <TestText>
-                디지털 단계
+              <TestText fS={fontSize}>
+                디지털
+                <br />
+                단계
                 <br />
                 알려드릴게요
               </TestText>
@@ -480,7 +453,7 @@ const Home = () => {
             <Circle>
               <HelpIcon src="/help_white.svg" />
             </Circle>
-            <HelpText>
+            <HelpText fS={fontSize}>
               도움이
               <br />
               필요하신가요?
@@ -491,7 +464,7 @@ const Home = () => {
             <Circle>
               <FontIcon src="/font_white.svg" />
             </Circle>
-            <FontText>
+            <FontText fS={fontSize}>
               글자 크기가
               <br />
               불편하신가요?
