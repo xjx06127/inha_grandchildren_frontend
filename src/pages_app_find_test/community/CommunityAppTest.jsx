@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -90,7 +91,7 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
+    transition:1s;
     background-color: #EFC5B9;
    }
 
@@ -104,16 +105,21 @@ const SelText = styled.p`
 const CommunityAppTest = () => {
     const navigate = useNavigate();
 
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
+
     const GoToConnectPage = () => {
         setTimeout(()=>{
             navigate(`/AppsFindResult/연락`)
-        },600);
+        },310);
     };
 
     const GoToSharePage = () => {
         setTimeout(()=>{
             navigate(`/AppsFindResult/일상공유`)
-        },600);
+        },310);
     };
 
 

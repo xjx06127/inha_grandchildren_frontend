@@ -20,7 +20,7 @@ const MainText = styled.h1`
 color : white;
 font-size: 1.9rem;
 padding-left: 10%;
-padding-top: 8%;
+padding-top: 6%;
 `
 const Box = styled.div`
     display: flex;
@@ -32,13 +32,13 @@ const Box = styled.div`
 const Row1 = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 7%;
+    margin-top: 8%;
 `
 
 
 const FindBox = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
@@ -59,7 +59,7 @@ const FindBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 1.5s;
         background-color: #F3DDD6;
 
         ${FindText} {
@@ -97,7 +97,7 @@ const JustLookBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 1.5s;
         background-color: #F3DDD6;
 
         ${JustLookText} {
@@ -141,7 +141,7 @@ const TestBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 1.5s;
         background-color: #F3DDD6;
 
         ${TestText} {
@@ -187,7 +187,7 @@ const HelpBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 1.5s;
         background-color: #F3DDD6;
 
         ${HelpText} {
@@ -241,7 +241,7 @@ const FontBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 1.5s;
         background-color: #F3DDD6;
 
         ${FontText} {
@@ -289,7 +289,7 @@ const Home = () => {
         setFindClick(true);
         setTimeout(()=>{
             navigate(`/AppFind`);
-        },600);
+        },300);
        
     }
 
@@ -297,33 +297,33 @@ const Home = () => {
         setRecoClick(true);
         setTimeout(()=>{
             navigate(`/Category`);
-        },600);
+        },300);
     }
 
     const GoToHelpPage = () => {
         setHelpClick(true);
         setTimeout(()=>{
             navigate(`/Method`);
-        },600);
+        },300);
     }
 
     const GoToTestPage = () => {
         setTestClick(true);
         setTimeout(()=>{
             navigate('/Test');
-        },600);
+        },300);
     }
 
     const GoToFontPage = () => {
         setFontClick(true);
         setTimeout(()=>{
             navigate(`/fontsizeSetting`);
-        },600);
+        },300);
     }
     
     const HomeIconsAnimation = styled.img`
         content: url(${ImageUrls[currentImageIndex]});
-        width: 10%;
+        width: 12%;
     `;
 
     const ChangeImage = () => {
@@ -345,12 +345,12 @@ const Home = () => {
             <Box>
                 <FindBox onClick={GoToFindPage} active={findClick}>
                     <HomeIconsAnimation/>
-                    <FindText>찾고 싶은 기능이 있어요</FindText>
+                    <FindText>필요한 어플을 <br/>찾아드릴게요</FindText>
                 </FindBox>
 
                 <Row1>
                     <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-                        <JustLookText>그냥<br/>둘러볼게요</JustLookText>
+                        <JustLookText>분야별<br/>어플<br/>한눈에 보기</JustLookText>
                         <JustLookIcon src="/lookicon.svg"/>
                     </JustLookBox>
 

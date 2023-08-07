@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -91,7 +91,7 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
+    transition:1s;
     background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
 
@@ -107,12 +107,17 @@ const SearchLoad = () => {
     const navigate = useNavigate();
     const [isBoxClicked,setIsBoxClicked]=useState(false);
 
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
+
     const GoToMapPage = () => {
         setIsBoxClicked(true);
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/지도`);
-        },600);
+        },310);
     };
 
     const GoToSubwayPage = () => {
@@ -120,7 +125,7 @@ const SearchLoad = () => {
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/지하철`);
-        },600);
+        },310);
     };
 
     
@@ -129,7 +134,7 @@ const SearchLoad = () => {
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/버스`);
-        },600);
+        },310);
     };
 
     const GoToTexiPage = () => {
@@ -137,7 +142,7 @@ const SearchLoad = () => {
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/택시`);
-        },600);
+        },310);
     };
 
     return (

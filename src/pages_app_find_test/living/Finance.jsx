@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -83,7 +83,7 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
+    transition:1s;
     background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
    touch-action: none;
@@ -99,12 +99,17 @@ const Finance = () => {
     const navigate = useNavigate();
     const [isBoxClicked,setIsBoxClicked]=useState(false);
 
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
+
     const GoToBankPage = () => {
         setIsBoxClicked(true);
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/은행`);
-        },600);
+        },310);
     };
     
     const GoToStockPage = () => {
@@ -112,7 +117,7 @@ const Finance = () => {
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/주식`);
-        },600);
+        },310);
     };
 
     const GoToSimplePaymentPage = () => {
@@ -120,7 +125,7 @@ const Finance = () => {
         setTimeout(()=>{
             setIsBoxClicked(false);
             navigate(`/AppsFindResult/간편결제`);
-        },600);
+        },310);
     };
 
     return (
