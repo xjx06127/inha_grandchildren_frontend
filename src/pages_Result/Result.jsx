@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -8,10 +8,20 @@ import Navigator from "../Navigator";
 import TestNavigator from "../pages_Test/TestNavigator";
 import "../pages_Test/Bar.css";
 import confetti from "canvas-confetti";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const Comment1 = styled.p`
   /* 디지털 레벨을 분석했어요! */
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-left: 10%;
   margin-top: 17%;
 `;
@@ -45,14 +55,32 @@ const LevelComment = styled.p`
   /* OO 레벨 */
 
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   color: #000000;
 `;
 
 const LevelComment2 = styled.p`
   /* 짧은 설명이 들어가면 좋을 것 같은데 */
 
-  font-size: 1.3rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
   width: 70%;
   text-align: center;
   color: #000000;
@@ -65,20 +93,31 @@ const Img = styled.img`
 `;
 
 const Btn = styled.button`
-  width: 308px;
-  height: 59px;
+  width: 90%;
+  padding: 18px;
+  padding-right: 20px;
+  padding-left: 20px;
 
   background: #617143;
   border-radius: 30px;
 
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
   text-align: center;
 
   color: #ffffff;
   border: none;
 
-  margin-top: 20%;
+  margin-top: 15%;
   margin-bottom: 20%;
 `;
 
@@ -137,6 +176,7 @@ const Result = () => {
   const [level, setLevel] = useState("");
   const [comment1, setComment1] = useState("");
   const [comment2, setComment2] = useState("");
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   useEffect(() => {
     axios
@@ -211,23 +251,24 @@ const Result = () => {
   return (
     <>
       <TestNavigator />
-      <Comment1>
+      <Comment1 fS={fontSize}>
         <Highlight>디지털 레벨</Highlight>을<br />
         분석했어요!
       </Comment1>
       <VertiBox>
         <Circle>
           {imgSrc && <Img src={imgSrc} />}
-          {level && <LevelComment>{level} 레벨</LevelComment>}
+          {level && <LevelComment fS={fontSize}>{level} 레벨</LevelComment>}
         </Circle>
         {comment1 && (
-          <LevelComment2>
+          <LevelComment2 fS={fontSize}>
             {comment1}
             <br />
             {comment2}
           </LevelComment2>
         )}
         <Btn
+          fS={fontSize}
           onClick={() => {
             navigate(`/Main`);
           }}

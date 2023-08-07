@@ -271,6 +271,7 @@ const HelpText = styled.p`
     }
   }};
   font-weight: bold;
+  width: 67%;
 `;
 
 const FontBox = styled.div`
@@ -319,6 +320,7 @@ const FontText = styled.p`
     }
   }};
   font-weight: bold;
+  width: 67%;
 `;
 
 const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import Swal from "sweetalert2";
 
 const Box = styled.div`
   display: flex;
@@ -19,10 +20,8 @@ const SoundBox = styled.div`
 
 const SoundImg = styled.img`
   width: 40%;
-  @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
-    height: 3vh;
-  }
+  height: 40%;
+
   margin-bottom: 7px;
 `;
 
@@ -47,6 +46,26 @@ const HomeNavigator = () => {
 
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1200,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+    isSoundOffClicked === true
+      ? Toast.fire({
+          icon: "success",
+          title: "음성 지원 소리를 켰습니다.",
+        })
+      : Toast.fire({
+          icon: "success",
+          title: "음성 지원 소리를 껐습니다.",
+        });
   };
 
   return (
