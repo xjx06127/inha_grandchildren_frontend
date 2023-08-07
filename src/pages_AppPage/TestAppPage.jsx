@@ -4,6 +4,7 @@ import TestNavigator from "../pages_Test/TestNavigator";
 import { useParams } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -177,19 +178,17 @@ const TextBox = styled.div`
     margin-left: 13%;
     margin-top: 60%;
   }
- 
 `
 
 const ErrorText1 = styled.h1`
   @media (orientation: landscape) {
-    margin-bottom: 3%;
-    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-top: 10%;
     text-align: center;
   }
+  margin-bottom: 3%;
   font-size: 2rem;
   font-weight: bold;
-  
-  
 `
 
 const ErrorText2 = styled.p`
@@ -213,7 +212,7 @@ const ErrorText3 = styled.p`
 const BackButton = styled.button`
   background: linear-gradient(45deg, #617143, #9da582);
   border: none;
-  width: 42%;
+  width: 38%;
   border-radius: 13px;
   font-size: 1.6rem;
   padding:1.4%;
@@ -229,8 +228,6 @@ const MidBox = styled.div`
   @media (orientation: portrait) {
     margin-top: 15%;  
   }
- 
-  
 `
 
 
@@ -273,7 +270,15 @@ const TestAppPage = () => {
     ) {
       return window.open(iosUrl);
     } else {
-      setShowError(true);
+      Swal.fire(
+        {
+          icon: 'error',
+          title: '잠시만요!',
+          text: '해당 어플은 현재 단말기에서 지원하지 않아요.',
+          confirmButtonText: '다른 어플 보러가기',
+          confirmButtonColor: '#798560',          
+        }
+      );
     }
   };
   
@@ -299,21 +304,6 @@ const TestAppPage = () => {
             <BText>{App.app_info?.name}</BText>
             <Button onClick={handleButtonClick}>다운로드</Button>
           </Box>
-
-          {showError && (
-            <ErrorMessage>
-              <TextBox>
-                <ErrorText1>잠시만요!</ErrorText1>
-                <ErrorText2>해당 어플은<br/>현재 단말기에서<br/><Highlight>지원하지 않아요.</Highlight></ErrorText2>
-              </TextBox>
-              <MidBox>
-                <DownImg src="/down.svg"/>
-                <ErrorText3>비슷한 어플 보러가기</ErrorText3>
-                <BackButton onClick={()=>navigate(-1)}>이동하기</BackButton>
-              </MidBox>
-              
-            </ErrorMessage>
-          )}
 
           <Box1>
             <BS>
