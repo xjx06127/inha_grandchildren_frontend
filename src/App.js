@@ -39,6 +39,7 @@ import HealthyAppTest from "./pages_app_find_test/healthy/HealthyAppTest";
 import HealthCare from "./pages_app_find_test/healthy/HealthCare";
 import Treatment from "./pages_app_find_test/healthy/Treatment";
 import CommunityAppTest from "./pages_app_find_test/community/CommunityAppTest";
+import TestAppPage from "./pages_AppPage/TestAppPage";
 
 function App() {
   return (
@@ -62,7 +63,8 @@ function App() {
               element={<Result />}
             />
             <Route path="/AppReco" element={<AppReco />} />
-            <Route path="/AppPage/:id" element={<AppPage />} />
+            {/* <Route path="/AppPage/:id" element={<AppPage />} /> */}
+            <Route path="/AppPage/:id" element={<TestAppPage/>}/>
             <Route
               path="/:OX/:OX2/:OX3/:OX4/:OX5/Analyze"
               element={<Analyze />}
