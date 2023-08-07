@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -90,8 +91,8 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
-    background-color: #EFC5B9;
+    transition:1s;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
 
 `
@@ -103,17 +104,27 @@ const SelText = styled.p`
 
 const HealthyAppTest = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
+
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     const GoToHealthCarePage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/HealthCareAppsFind`)
-        },600);
+        },310);
     };
 
     const GoToTreatmentPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/TreatmentAppsFind`)
-        },600);
+        },310);
     };
 
 
@@ -128,10 +139,10 @@ const HealthyAppTest = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToHealthCarePage}>
+                    <Box onClick={GoToHealthCarePage} clicked={isBoxClicked}>
                         <SelText>건강 관리</SelText>
                     </Box>
-                    <Box onClick={GoToTreatmentPage}>
+                    <Box onClick={GoToTreatmentPage} clicked={isBoxClicked}>
                         <SelText>진료</SelText>
                     </Box>
                 </Row1>

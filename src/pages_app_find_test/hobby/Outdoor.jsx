@@ -2,6 +2,7 @@ import React from 'react';
 import styled, {css} from "styled-components";
 import GrayNavigator from '../GrayNavigator';
 import { useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
 
 const BackGround = styled.div`
     background-color: #F7F7F7;
@@ -82,8 +83,8 @@ const Box = styled.div`
    padding: 2%;
 
    &:hover{
-    transition:2s;
-    background-color: #EFC5B9;
+    transition:1s;
+    background-color: ${({ clicked }) => (clicked ? '#EFC5B9' : '#FFFFFF')};
    }
 
 
@@ -96,23 +97,35 @@ const SelText = styled.p`
 
 const Outdoor = () => {
     const navigate = useNavigate();
+    const [isBoxClicked,setIsBoxClicked]=useState(false);
+
+    useEffect(() => {
+        // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+        window.scrollTo(0, 0);
+    }, []);
 
     const GoToTravelPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/여행`);
-        },600);
+        },310);
     };
     
     const GoToFishPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/낚시`);
-        },600);
+        },310);
     };
 
     const GoToClimbingPage = () => {
+        setIsBoxClicked(true);
         setTimeout(()=>{
+            setIsBoxClicked(false);
             navigate(`/AppsFindResult/등산`);
-        },600);
+        },310);
     };
 
     return (
@@ -126,15 +139,15 @@ const Outdoor = () => {
             </MidBox>
             <SelectBox>
                 <Row1>
-                    <Box onClick={GoToTravelPage}>
+                    <Box onClick={GoToTravelPage} clicked={isBoxClicked}>
                         <SelText>여행</SelText>
                     </Box>
-                    <Box onClick={GoToFishPage}>
+                    <Box onClick={GoToFishPage} clicked={isBoxClicked}>
                         <SelText>낚시</SelText>
                     </Box>
                 </Row1>
                 <Row2>
-                <Box onClick={GoToClimbingPage}>
+                <Box onClick={GoToClimbingPage} clicked={isBoxClicked}>
                         <SelText>등산</SelText>
                     </Box>
                 </Row2>
