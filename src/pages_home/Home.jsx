@@ -38,7 +38,7 @@ const Row1 = styled.div`
 
 const FindBox = styled.div`
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
@@ -73,7 +73,7 @@ const FindBox = styled.div`
 
 const FindText = styled.p`
     font-size : 1.6rem;
-    margin-left: 5%;
+    margin-left: 14%;
     font-weight: bold;
 `
 
@@ -345,17 +345,17 @@ const Home = () => {
             <Box>
                 <FindBox onClick={GoToFindPage} active={findClick}>
                     <HomeIconsAnimation/>
-                    <FindText>필요한 어플을 <br/>찾아드릴게요</FindText>
+                    <FindText>필요한 어플 <br/>찾아드릴게요</FindText>
                 </FindBox>
 
                 <Row1>
                     <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-                        <JustLookText>분야별<br/>어플<br/>한눈에 보기</JustLookText>
+                        <JustLookText>분야별<br/>어플<br/>보여드릴게요</JustLookText>
                         <JustLookIcon src="/lookicon.svg"/>
                     </JustLookBox>
 
                     <TestBox onClick={GoToTestPage} active={testClick}>
-                        <TestText>디지털<br/>활용능력<br/>테스트</TestText>
+                        <TestText>디지털 단계<br/>알려드릴게요</TestText>
                         <TestIcon src="test.svg"/>
                     </TestBox>
                 </Row1>
@@ -364,14 +364,14 @@ const Home = () => {
                     <Circle>
                         <HelpIcon src="/help_white.svg"/>
                     </Circle>
-                    <HelpText>도움이<br/>필요해요</HelpText>
+                    <HelpText>도움이<br/>필요하신가요?</HelpText>
                 </HelpBox>
 
                 <FontBox onClick={GoToFontPage} active={fontClick}>
                     <Circle>
                         <FontIcon src="/font_white.svg"/>
                     </Circle>
-                    <FontText>글자 크기를<br/>바꾸고 싶어요</FontText>
+                    <FontText>글자 크기가<br/>불편하신가요?</FontText>
                 </FontBox>
 
             </Box>
