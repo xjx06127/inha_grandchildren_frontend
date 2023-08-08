@@ -75,7 +75,7 @@ const GrayNavigator = () => {
        <>
        <Box>
 
-       <BackBox onClick={GoToBack}>
+       <BackBox onClick={GoToBack} >
         <BackImg src="/grayback.svg"/>
         <BackText clicked={isBackClicked}>돌아가기</BackText>
        </BackBox>
