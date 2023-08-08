@@ -24,8 +24,8 @@ const Rectangle = styled.div`
 `;
 
 const Img = styled.img`
-  width: auto;
-  height: auto;
+  width: 65%;
+  height: 65%;
 `;
 const Text = styled.p`
   font-weight: bold;
@@ -110,6 +110,7 @@ const Title = styled.p`
   font-size: 1.6rem;
   text-align: left;
   margin-left: 5%;
+  font-weight: bold;
 `;
 
 const TB = styled.div`
