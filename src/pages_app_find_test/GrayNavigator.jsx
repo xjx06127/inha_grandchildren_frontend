@@ -66,22 +66,12 @@ const SoundText = styled.p`
 
 const GrayNavigator = () => {
   const navigate = useNavigate();
-  const [isBackClicked, setBackClicked] = useState(false);
   const [isSoundOffClicked, setSoundOffClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const GoToBack = () => {
-    setBackClicked(true);
-    setTimeout(() => {
-      navigate(-1);
-    }, 250);
+    window.history.go(-1);
   };
-
-  useEffect(() => {
-    if (isBackClicked) {
-      setBackClicked(false);
-    }
-  }, [isBackClicked]);
 
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
@@ -92,9 +82,7 @@ const GrayNavigator = () => {
       <Box>
         <BackBox onClick={GoToBack}>
           <BackImg src="/grayback.svg" />
-          <BackText clicked={isBackClicked} fS={fontSize}>
-            돌아가기
-          </BackText>
+          <BackText fS={fontSize}>돌아가기</BackText>
         </BackBox>
 
         <SoundBox>

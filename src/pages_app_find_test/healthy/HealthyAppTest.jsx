@@ -122,7 +122,16 @@ const Box = styled.div`
 `;
 
 const SelText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
 `;
 
