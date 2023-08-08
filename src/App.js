@@ -62,7 +62,7 @@ function App() {
               element={<Result />}
             />
             {/* <Route path="/AppPage/:id" element={<AppPage />} /> */}
-            <Route path="/AppPage/:id" element={<TestAppPage/>}/>
+            <Route path="/AppPage/:id" element={<TestAppPage />} />
             <Route
               path="/:OX/:OX2/:OX3/:OX4/:OX5/Analyze"
               element={<Analyze />}
