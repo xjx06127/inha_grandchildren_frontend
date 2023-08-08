@@ -21,7 +21,7 @@ const MidBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 17%;
-  margin-bottom: 3%;
+  margin-bottom: 9%;
 `;
 
 const ImgArea = styled.img``;
@@ -84,6 +84,10 @@ const Row1 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
   }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
+  }
 `;
 
 const Row2 = styled.div`
@@ -91,6 +95,10 @@ const Row2 = styled.div`
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 15vh;
+  }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
   }
 `;
 
@@ -116,7 +124,7 @@ const Box = styled.div`
   padding: 2%;
 
   &:hover {
-    transition: 1s;
+    transition: 0.1s;
     background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
 `;
@@ -150,7 +158,7 @@ const SearchLoad = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/지도`);
-    }, 310);
+    }, 100);
   };
 
   const GoToSubwayPage = () => {
@@ -158,7 +166,7 @@ const SearchLoad = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/지하철`);
-    }, 310);
+    }, 100);
   };
 
   const GoToBusPage = () => {
@@ -166,7 +174,7 @@ const SearchLoad = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/버스`);
-    }, 310);
+    }, 100);
   };
 
   const GoToTexiPage = () => {
@@ -174,7 +182,7 @@ const SearchLoad = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/택시`);
-    }, 310);
+    }, 100);
   };
 
   return (

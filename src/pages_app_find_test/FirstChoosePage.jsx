@@ -4,6 +4,7 @@ import GrayNavigator from "./GrayNavigator";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import { useLocation } from "react-router";
 
 const BackGround = styled.div`
   background-color: #f7f7f7;
@@ -84,6 +85,10 @@ const Row1 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
   }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
+  }
 `;
 
 const Row2 = styled.div`
@@ -91,6 +96,10 @@ const Row2 = styled.div`
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 15vh;
+  }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
   }
 `;
 
@@ -108,7 +117,7 @@ const Box = styled.div`
   padding: 2%;
 
   &:hover {
-    transition: 1s;
+    transition: 0.1s;
     background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
 `;
@@ -131,10 +140,12 @@ const FirstChoosePage = () => {
   const navigate = useNavigate();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  const location = useLocation();
 
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
+    console.log(location.pathname);
   }, []);
 
   const GoToLivingPage = () => {
@@ -142,7 +153,7 @@ const FirstChoosePage = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/LivingAppsFind1`);
-    }, 310);
+    }, 100);
   };
 
   const GoToHobbyPage = () => {
@@ -150,7 +161,7 @@ const FirstChoosePage = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/HobbyAppTest1`);
-    }, 310);
+    }, 100);
   };
 
   const GoToCoummnityPage = () => {
@@ -158,7 +169,7 @@ const FirstChoosePage = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/CommunityAppsFind`);
-    }, 310);
+    }, 100);
   };
 
   const GoToHealthyPage = () => {
@@ -166,7 +177,7 @@ const FirstChoosePage = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/HealthyAppTest1`);
-    }, 310);
+    }, 100);
   };
 
   return (

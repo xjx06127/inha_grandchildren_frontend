@@ -21,7 +21,7 @@ const MidBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 20%;
-  margin-bottom: 3%;
+  margin-bottom: 9%;
 `;
 
 const ImgArea = styled.img``;
@@ -84,6 +84,10 @@ const Row1 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
   }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
+  }
 `;
 
 const Row2 = styled.div`
@@ -92,6 +96,10 @@ const Row2 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
   }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
+  }
 `;
 
 const Row3 = styled.div`
@@ -99,6 +107,10 @@ const Row3 = styled.div`
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 15vh;
+  }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
   }
 `;
 
@@ -115,7 +127,7 @@ const Box = styled.div`
   margin: 3%;
   padding: 2%;
   &:hover {
-    transition: 1s;
+    transition: 0.1s;
     background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
 `;
@@ -149,7 +161,7 @@ const LivingAppTest = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/FinanceAppsFind`);
-    }, 310);
+    }, 100);
   };
 
   const GoToWeatherPage = () => {
@@ -157,7 +169,7 @@ const LivingAppTest = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/날씨`);
-    }, 310);
+    }, 100);
   };
 
   const GoToSearchLoadPage = () => {
@@ -165,7 +177,7 @@ const LivingAppTest = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/SearchLoadsAppsFind`);
-    }, 310);
+    }, 100);
   };
 
   const GoToDeliveryPage = () => {
@@ -173,7 +185,7 @@ const LivingAppTest = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/DeliveryAppsFind`);
-    }, 310);
+    }, 100);
   };
 
   const GoToSchedulePage = () => {
@@ -181,7 +193,7 @@ const LivingAppTest = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/일정 관리`);
-    }, 310);
+    }, 100);
   };
 
   return (

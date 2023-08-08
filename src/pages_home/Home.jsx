@@ -4,6 +4,7 @@ import HomeNavigator from "./HomeNavigator";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import ContactUs from "../ContactUs";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -473,7 +474,9 @@ const Home = () => {
             </FontText>
           </FontBox>
         </Box>
+        <ContactUs/>
       </BackGround>
+      
     </>
   );
 };

@@ -21,7 +21,7 @@ const MidBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 17%;
-  margin-bottom: 3%;
+  margin-bottom: 9%;
 `;
 
 const ImgArea = styled.img``;
@@ -84,6 +84,10 @@ const Row1 = styled.div`
     /* Set the height specifically for portrait mode */
     height: 15vh;
   }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
+  }
 `;
 
 const Row2 = styled.div`
@@ -91,6 +95,10 @@ const Row2 = styled.div`
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
     height: 15vh;
+  }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
   }
 `;
 
@@ -108,7 +116,7 @@ const Box = styled.div`
   padding: 2%;
 
   &:hover {
-    transition: 1s;
+    transition: 0.1s;
     background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
   touch-action: none;
@@ -143,7 +151,7 @@ const Finance = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/은행`);
-    }, 310);
+    }, 100);
   };
 
   const GoToStockPage = () => {
@@ -151,7 +159,7 @@ const Finance = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/주식`);
-    }, 310);
+    }, 100);
   };
 
   const GoToSimplePaymentPage = () => {
@@ -159,7 +167,7 @@ const Finance = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/간편결제`);
-    }, 310);
+    }, 100);
   };
 
   return (

@@ -22,7 +22,7 @@ const MidBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 17%;
-  margin-bottom: 3%;
+  margin-bottom: 9%;
 `;
 
 const ImgArea = styled.img``;
@@ -76,14 +76,18 @@ const SubText = styled.p`
 
 const SelectBox = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 const Row1 = styled.div`
   display: flex;
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
-    height: 20vh;
+    height: 15vh;
+  }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
   }
 `;
 
@@ -91,6 +95,11 @@ const Row2 = styled.div`
   display: flex;
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
+    height: 15vh;
+  }
+  @media (orientation: landscape) {
+    /* Set the height specifically for portrait mode */
+    height: 50vh;
   }
 `;
 
@@ -105,7 +114,8 @@ const Box = styled.div`
   border: none;
   width: 46vw;
   margin: 3%;
-  padding: 2%;
+  padding-top: 70px;
+  padding-bottom: 70px;
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -118,7 +128,7 @@ const Box = styled.div`
   }};
   font-weight: bold;
   &:hover {
-    transition: 1s;
+    transition: 0.1s;
     background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
 `;
@@ -152,7 +162,7 @@ const Delivery = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/배달 음식`);
-    }, 310);
+    }, 100);
   };
 
   const GoToGeneralDeliveryPage = () => {
@@ -160,7 +170,7 @@ const Delivery = () => {
     setTimeout(() => {
       setIsBoxClicked(false);
       navigate(`/AppsFindResult/식료품 및 생활용품 배송`);
-    }, 310);
+    }, 100);
   };
 
   return (

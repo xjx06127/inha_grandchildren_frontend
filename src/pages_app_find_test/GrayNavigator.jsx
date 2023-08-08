@@ -70,7 +70,7 @@ const GrayNavigator = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const GoToBack = () => {
-    window.history.go(-1);
+    navigate(-1);
   };
 
   const handleControlSound = () => {
