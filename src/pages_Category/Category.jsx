@@ -37,32 +37,49 @@ const T1 = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 5%;
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 `;
 
-
-const Con = styled.div`
+const  NameWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center; /* 가로축 가운데 정렬 */
-  margin-top: 5%;
-  width:100%;
+  flex-direction: row;
   align-items:center;
+  margin-left:5%;
+`;
+const Name = styled.p`
+  font-size: 1.3rem;
+`;
+
+const Number = styled.p`
+font-size: 1.3rem;
+font-weight: bold;
+`;
+
+const Icon1 = styled.img`
+  width: 6%;
+  height: 6%;
+  margin-right:2%;
 `;
 
 const Box = styled.div`
   display: flex;
-  width: 80%;
+  margin-left:5%;
+  margin-right:5%;
+  margin-top: 2%;
+  margin-bottom:7%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding:5%;
+  /* justify-content: center; 
+  align-items:center; */
 `;
 
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: #617143;
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
@@ -75,16 +92,18 @@ const Button = styled.button`
 
 const Box1 = styled.div`
   display: flex;
-  width: 80%;
+  margin-left:5%;
+  margin-right:5%;
+  margin-top: 2%;
+  margin-bottom:7%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin-top:10%;
   padding:5%;
 `;
 
 const Button1 = styled.button`
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   background-color: transparent;
   border: none;
   color: #617143;
@@ -99,7 +118,7 @@ const Button1 = styled.button`
 const AppImage = styled.img`
   width: 30%;
   height: 30%;
-
+  border-radius: 5px;
 `;
 const Title = styled.p`
   font-size: 1.6rem;
@@ -164,8 +183,12 @@ const Category = () => {
           </Tbutton>
         </T1>
 
-        <Con>
           {recoApp[0] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{recoApp[0].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box>
               <AppImage src={recoApp[0].image}></AppImage>
               <TB>
@@ -179,8 +202,15 @@ const Category = () => {
               </Button>
              </TB>
             </Box>
+            </div>
           )}
+
           {recoApp[1] && (
+             <div>
+             <NameWrapper>
+               <Icon1 src="/Rec.svg"></Icon1>
+               <Number>{recoApp[1].like}명</Number><Name>이 추천해요!</Name>
+               </NameWrapper>
             <Box1>
               <AppImage src={recoApp[1].image}></AppImage>
               <TB>
@@ -194,9 +224,10 @@ const Category = () => {
               </Button1>
               </TB>
             </Box1>
+            </div>
           )}
-        </Con>
-
+        
+      
         <T1>
           <Text>
             <Highlight>씨앗용</Highlight> 어플
@@ -209,8 +240,12 @@ const Category = () => {
           </Tbutton>
         </T1>
 
-        <Con>
           {app1[0] && (
+             <div>
+             <NameWrapper>
+               <Icon1 src="/Rec.svg"></Icon1>
+               <Number>{app1[0].like}명</Number><Name>이 추천해요!</Name>
+               </NameWrapper>
             <Box>
               <AppImage src={app1[0].image}></AppImage>
               <TB>
@@ -224,8 +259,14 @@ const Category = () => {
               </Button>
               </TB>
             </Box>
+            </div>
           )}
           {app1[1] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{app1[1].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box1>
               <AppImage src={app1[1].image}></AppImage>
               <TB>
@@ -239,8 +280,9 @@ const Category = () => {
               </Button1>
               </TB>
             </Box1>
+           </div>
           )}
-        </Con>
+        
 
         <T1>
           <Text>
@@ -254,8 +296,13 @@ const Category = () => {
             <Link to="../level2">[더보기]</Link>
           </Tbutton>
         </T1>
-        <Con>
+
           {app2[0] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{app2[0].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box>
               <AppImage src={app2[0].image}></AppImage>
               <TB>
@@ -269,8 +316,15 @@ const Category = () => {
               </Button>
               </TB>
             </Box>
+           </div>
           )}
+
           {app2[1] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{app2[1].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box1>
               <AppImage src={app2[1].image}></AppImage>{" "}
               <TB>
@@ -284,8 +338,9 @@ const Category = () => {
               </Button1>
               </TB>
             </Box1>
-          )}
-        </Con>
+            </div>
+           )}
+        
 
         <T1>
           <Text>
@@ -298,8 +353,13 @@ const Category = () => {
             <Link to="../level3">[더보기]</Link>
           </Tbutton>
         </T1>
-        <Con>
+          
           {app3[0] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{app3[0].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box>
               <AppImage src={app3[0].image}></AppImage>
               <TB>
@@ -314,8 +374,15 @@ const Category = () => {
               </Button>
               </TB>
             </Box>
+            </div>
           )}
+
           {app3[1] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{app3[1].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box1>
               <AppImage src={app3[1].image}></AppImage>
               <TB>
@@ -329,8 +396,9 @@ const Category = () => {
               </Button1>
               </TB>
             </Box1>
+            </div>
           )}
-        </Con>
+        
 
         <T1>
           <Text>
@@ -340,13 +408,17 @@ const Category = () => {
             isActive={activeButtonIndex === 4}
             onClick={() => handleButtonClick(4)}
           >
-            {" "}
+            
             <Link to="../level4">[더보기]</Link>
           </Tbutton>
         </T1>
-        <Con>
-          {" "}
+        
           {app4[0] && (
+            <div>
+            <NameWrapper>
+              <Icon1 src="/Rec.svg"></Icon1>
+              <Number>{app4[0].like}명</Number><Name>이 추천해요!</Name>
+              </NameWrapper>
             <Box>
               <AppImage src={app4[0].image}></AppImage>
               <TB>
@@ -360,8 +432,15 @@ const Category = () => {
               </Button>
               </TB>
             </Box>
+            </div>
           )}
+
           {app4[1] && (
+             <div>
+             <NameWrapper>
+               <Icon1 src="/Rec.svg"></Icon1>
+               <Number>{app4[1].like}명</Number><Name>이 추천해요!</Name>
+               </NameWrapper>
             <Box1>
               <AppImage src={app4[1].image}></AppImage>
               <TB>
@@ -375,8 +454,9 @@ const Category = () => {
               </Button1>
               </TB>
             </Box1>
+            </div>
           )}
-        </Con>
+        
 
         <T1>
           <Text>
@@ -386,13 +466,16 @@ const Category = () => {
             isActive={activeButtonIndex === 5}
             onClick={() => handleButtonClick(5)}
           >
-            {" "}
+           
             <Link to="../level5">[더보기]</Link>
           </Tbutton>
         </T1>
-        <Con>
-          {" "}
           {app5[0] && (
+             <div>
+             <NameWrapper>
+               <Icon1 src="/Rec.svg"></Icon1>
+               <Number>{app5[0].like}명</Number><Name>이 추천해요!</Name>
+               </NameWrapper>
             <Box>
               <AppImage src={app5[0].image}></AppImage>
               <TB>
@@ -406,8 +489,15 @@ const Category = () => {
               </Button>
               </TB>
             </Box>
+            </div>
           )}
+
           {app5[1] && (
+             <div>
+             <NameWrapper>
+               <Icon1 src="/Rec.svg"></Icon1>
+               <Number>{app5[1].like}명</Number><Name>이 추천해요!</Name>
+               </NameWrapper>
             <Box1>
               <AppImage src={app5[1].image}></AppImage>
               <TB>
@@ -421,8 +511,9 @@ const Category = () => {
               </Button1>
               </TB>
             </Box1>
+            </div>
           )}
-        </Con>
+       
       </Desktop>
     </>
   );
