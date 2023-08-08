@@ -19,8 +19,26 @@ const SoundBox = styled.div`
 `;
 
 const SoundImg = styled.img`
-  width: 40%;
-  height: 40%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "30px";
+      case "large":
+        return "36px";
+      case "veryLarge":
+        return "45px";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "24px";
+      case "large":
+        return "27px";
+      case "veryLarge":
+        return "34px";
+    }
+  }};
 
   margin-bottom: 7px;
 `;
@@ -44,13 +62,34 @@ const HomeNavigator = () => {
   const [isSoundOffClicked, setSoundOffClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance();
+
+    const speakText = (text) => {
+      utterance.text = text;
+      utterance.rate = 0.8;
+      synth.speak(utterance);
+    };
+
+    if (isSoundOffClicked) {
+      synth.cancel();
+    } else {
+      speakText("하단의 버튼을 클릭하여, 원하시는 서비스를 선택해주세요.");
+    }
+
+    return () => {
+      synth.cancel();
+    };
+  }, [isSoundOffClicked]);
+
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
       showConfirmButton: false,
-      timer: 1200,
+      timer: 1000,
       timerProgressBar: false,
       didOpen: (toast) => {
         toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -73,6 +112,7 @@ const HomeNavigator = () => {
       <Box>
         <SoundBox>
           <SoundImg
+            fS={fontSize}
             src={isSoundOffClicked ? "/soundoff_white.svg" : "/sound.svg"}
             onClick={handleControlSound}
           />
@@ -84,5 +124,6 @@ const HomeNavigator = () => {
     </>
   );
 };
+
 
 export default HomeNavigator;

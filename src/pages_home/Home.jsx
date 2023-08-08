@@ -80,7 +80,7 @@ const FindBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${FindText} {
@@ -126,7 +126,7 @@ const JustLookBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${JustLookText} {
@@ -178,7 +178,7 @@ const TestBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${TestText} {
@@ -230,7 +230,7 @@ const HelpBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${HelpText} {
@@ -290,7 +290,7 @@ const FontBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${FontText} {
@@ -336,36 +336,20 @@ const Home = () => {
   const [testClick, setTestClick] = useState(false);
   const [fontClick, setFontClick] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [speakMessage, setSpeakMessage] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-    };
-
-    if (!speakMessage) {
-      speakText("하단의 버튼을 클릭하여, 원하시는 서비스를 선택해주세요.");
-      setSpeakMessage(true);
-    }
-  }, [speakMessage]);
 
   const GoToFindPage = () => {
     setFindClick(true);
     setTimeout(() => {
       navigate(`/AppFind`);
-    }, 300);
+    }, 100);
   };
 
   const GoToRecoPage = () => {
     setRecoClick(true);
     setTimeout(() => {
       navigate(`/Category`);
-    }, 300);
+    }, 100);
   };
 
   const GoToHelpPage = () => {
@@ -379,14 +363,14 @@ const Home = () => {
     setTestClick(true);
     setTimeout(() => {
       navigate("/Test");
-    }, 300);
+    }, 100);
   };
 
   const GoToFontPage = () => {
     setFontClick(true);
     setTimeout(() => {
       navigate(`/fontsizeSetting`);
-    }, 300);
+    }, 100);
   };
 
   const HomeIconsAnimation = styled.img`
