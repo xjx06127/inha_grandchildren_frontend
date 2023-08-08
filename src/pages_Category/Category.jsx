@@ -124,7 +124,7 @@ const Title = styled.p`
   font-size: 1.6rem;
   text-align: left;
   margin-left:5%;
-
+  font-weight:bold;
 `;
 
 const TB = styled.div`
@@ -173,7 +173,7 @@ const Category = () => {
       <Desktop>
         <T1>
           <Text>
-            <Highlight>추천</Highlight> 어플{" "}
+            <Highlight>손주</Highlight>의 추천{" "}
           </Text>
           <Tbutton
             isActive={activeButtonIndex === 0}

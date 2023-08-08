@@ -10,6 +10,7 @@ import { useNavigate } from "react-router";
 const MainText = styled.h1`
   text-align: center;
   margin-top: 7%;
+  margin-bottom:10%;
 `;
 
 const Highlight = styled.span`
@@ -20,20 +21,20 @@ const Highlight2 = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #c5d3ab 50%);
 `;
 
-const Apps = styled.div``;
+const Apps = styled.div`
+padding-bottom:10%;
+`;
 
 const AppBox = styled.div`
   display: flex;
-  align-items: center;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin-bottom: 10%; /* 각 Box 요소의 아래 간격 설정 */
-  /* &:nth-child(2n + 1) {
-    margin-right: auto;
-  } */
+  margin-bottom: 7%;
+  margin-top: 2%;
+  margin-left:5%;
+  margin-right:5%;
   padding: 5%;
-  margin: 5%;
 `;
 
 const AppImg = styled.img`
@@ -73,12 +74,32 @@ const GoToDetail = styled.p`
   }
 `;
 
+const  NameWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-left:5%;
+`;
+const Name = styled.p`
+  font-size: 1.3rem;
+`;
+const Number = styled.p`
+font-size: 1.3rem;
+font-weight: bold;
+`;
+const Icon1 = styled.img`
+  width: 6%;
+  height: 6%;
+  margin-right:2%;
+`;
+
 const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: end;
   margin-left: 7%;
 `;
+
 
 const GoToAppDetail = () => {};
 
@@ -108,6 +129,11 @@ const AppsFind = () => {
 
       <Apps>
         {apps.map((index) => (
+          <div>
+          <NameWrapper>
+          <Icon1 src="/Rec.svg"></Icon1>
+          <Number>{index.like}명</Number><Name>이 추천해요!</Name>
+          </NameWrapper>
           <AppBox>
             <AppImg src={index.image} />
             <TextBox>
@@ -137,6 +163,7 @@ const AppsFind = () => {
               </GoToDetail>
             </TextBox>
           </AppBox>
+          </div>
         ))}
       </Apps>
     </>
