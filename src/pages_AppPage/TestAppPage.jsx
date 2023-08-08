@@ -368,7 +368,7 @@ const TestAppPage = () => {
 
           <Box2>
             <B2text>어플이<br/> <Highlight>마음에 드신다면?</Highlight></B2text>
-            <B2text2>다른 분들을 위해 추천해주세요.</B2text2>
+            <B2text2>다른 분들을 위해 <br/>추천해주세요.</B2text2>
             <Con>
              <Icon src="/Rec.svg"></Icon>
              <Button2 onClick={handleButtonClick2}>나도 추천</Button2>
