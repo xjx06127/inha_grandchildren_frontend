@@ -61,6 +61,7 @@ font-weight: bold;
 const Icon1 = styled.img`
   width: 9%;
   height: 9%;
+  margin-right:2%;
 `;
 
 
@@ -74,12 +75,7 @@ const Box = styled.div`
   align-items: center;
 `;
 
-/*
-const AppImage=styled.img`
-width:auto;
-height:auto; 
-`;
-어플이미지 받아오기 */
+
 const AppImage = styled.img`
   width: 60%;
   height: 60%;
@@ -332,6 +328,12 @@ const TestAppPage = () => {
         }
       );
     }
+
+  };
+
+  const handleButtonClick2 = () => {
+    console.log("a");
+    axios.post(`https://forgrandparents.store/detail/${id}`);
   };
   
   return (
@@ -348,7 +350,7 @@ const TestAppPage = () => {
 
         <NameWrapper>
           <Icon1 src="/Rec.svg"></Icon1>
-          <Number>{}명</Number><Name>의 추천을 받은 어플</Name>
+          <Number>{App.app_info?.like}명</Number><Name>의 추천을 받은 어플</Name>
         </NameWrapper>
 
         <Bcon>
@@ -369,7 +371,7 @@ const TestAppPage = () => {
             <B2text2>다른 분들을 위해 추천해주세요.</B2text2>
             <Con>
              <Icon src="/Rec.svg"></Icon>
-             <Button2 onClick={handleButtonClick}>나도 추천</Button2>
+             <Button2 onClick={handleButtonClick2}>나도 추천</Button2>
             </Con>
             </Box2>
         </Bcon>
