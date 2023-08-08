@@ -13,7 +13,6 @@ import Test4 from "./pages_Test/Test4";
 import Test5 from "./pages_Test/Test5";
 import Result from "./pages_Result/Result";
 import { FontSizeProvider } from "./pages_font_context/FontSizeProvider";
-import AppReco from "./pages_AppReco/AppReco";
 import AppPage from "./pages_AppPage/AppPage";
 import Analyze from "./pages_analyze/Analyze";
 import { AnimatePresence } from "framer-motion";
@@ -39,6 +38,7 @@ import HealthyAppTest from "./pages_app_find_test/healthy/HealthyAppTest";
 import HealthCare from "./pages_app_find_test/healthy/HealthCare";
 import Treatment from "./pages_app_find_test/healthy/Treatment";
 import CommunityAppTest from "./pages_app_find_test/community/CommunityAppTest";
+import TestAppPage from "./pages_AppPage/TestAppPage";
 
 function App() {
   return (
@@ -61,8 +61,8 @@ function App() {
               path="/:OX/:OX2/:OX3/:OX4/:OX5/Result"
               element={<Result />}
             />
-            <Route path="/AppReco" element={<AppReco />} />
-            <Route path="/AppPage/:id" element={<AppPage />} />
+            {/* <Route path="/AppPage/:id" element={<AppPage />} /> */}
+            <Route path="/AppPage/:id" element={<TestAppPage />} />
             <Route
               path="/:OX/:OX2/:OX3/:OX4/:OX5/Analyze"
               element={<Analyze />}
