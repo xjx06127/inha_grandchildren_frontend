@@ -314,22 +314,38 @@ const TestAppPage = () => {
     }
   };
 
-  const handleButtonClick2 = () => {
+  const handleButtonClick2 = async () => {
     let arr = JSON.parse(localStorage.getItem("isRecoArr"));
     if (arr[parseInt(id)] === false) {
-      axios.post(`https://forgrandparents.store/detail/${id}`);
-      setLike(true);
-      arr[parseInt(id)] = true;
-      localStorage.setItem("isRecoArr", JSON.stringify(arr));
-      Swal.fire({
-        icon: "success",
-        title: "추천 완료",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else if (
-      JSON.parse(localStorage.getItem("isRecoArr"))[parseInt(id)] === true
-    ) {
+      try {
+        await axios.post(`https://forgrandparents.store/detail/${id}`);
+        arr[parseInt(id)] = true;
+        localStorage.setItem("isRecoArr", JSON.stringify(arr));
+
+        // 좋아요 개수 업데이트 요청을 보낸 후 서버 응답을 기다리기
+        const response = await axios.get(
+          `https://forgrandparents.store/detail/${id}`
+        );
+        const updatedLikeCount = response.data.app_info.like;
+
+        // 화면 업데이트
+        setLike(true);
+        const updatedApp = {
+          ...App,
+          app_info: { ...App.app_info, like: updatedLikeCount },
+        };
+        setApp(updatedApp);
+
+        Swal.fire({
+          icon: "success",
+          title: "추천 완료",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } catch (error) {
+        console.error("Error occurred while updating like:", error);
+      }
+    } else if (arr[parseInt(id)] === true) {
       Swal.fire({
         icon: "error",
         title: "잠시만요!",
