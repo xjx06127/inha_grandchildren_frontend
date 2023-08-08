@@ -19,6 +19,8 @@ const StartPage = () => {
 
   useEffect(() => {
     let isNew = localStorage.getItem("IsNew");
+    let arr = new Array(100).fill(false);
+    localStorage.setItem("isRecoArr", JSON.stringify(arr));
     if (isNew == null) {
       setTimeout(() => {
         navigate(`/FontSizeSettingForNew`);

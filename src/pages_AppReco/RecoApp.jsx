@@ -29,8 +29,8 @@ const Img = styled.img`
 const Text = styled.p`
   font-weight: bold;
   font-size: 1.9rem;
-  margin-top:2%;
-  margin-bottom:10%;
+  margin-top: 2%;
+  margin-bottom: 10%;
 `;
 
 const Ibox = styled.div`
@@ -60,35 +60,35 @@ const CBox = styled.div`
   align-items: center;
 `;
 
-const  NameWrapper = styled.div`
+const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  align-items:center;
-  margin-left:5%;
+  align-items: center;
+  margin-left: 5%;
 `;
 const Name = styled.p`
   font-size: 1.3rem;
 `;
 const Number = styled.p`
-font-size: 1.3rem;
-font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: bold;
 `;
 const Icon1 = styled.img`
   width: 6%;
   height: 6%;
-  margin-right:2%;
+  margin-right: 2%;
 `;
 
 const Box = styled.div`
   display: flex;
-  margin-left:5%;
-  margin-right:5%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 2%;
-  margin-bottom:7%;
+  margin-bottom: 7%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  padding:5%;
+  padding: 5%;
 `;
 
 const Button = styled.button`
@@ -99,31 +99,29 @@ const Button = styled.button`
   font-size: 1.3rem;
   color: #617143;
   text-decoration: underline;
-  
-  &:hover{
+
+  &:hover {
     font-weight: bold;
-   }
+  }
 `;
 
 const Title = styled.p`
   font-size: 1.6rem;
   text-align: left;
-  margin-left:5%;
+  margin-left: 5%;
 `;
 
 const TB = styled.div`
-display: flex;
-flex-direction:column;
-width:65%;
+  display: flex;
+  flex-direction: column;
+  width: 65%;
 `;
 
 const AppImage = styled.img`
-width: 30%;
-height: 30%;
-border-radius:5px;
+  width: 30%;
+  height: 30%;
+  border-radius: 5px;
 `;
-
-
 
 const RecoApp = () => {
   const [App, setApp] = useState([]);
@@ -132,11 +130,10 @@ const RecoApp = () => {
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
       setApp(res.data.top_app);
-      console.log(App);
       console.log(res.data);
     });
   }, []);
-  
+
   const handleButtonClick = (id) => {
     setTimeout(() => {
       navigate(`../AppPage/${id}`);
@@ -155,36 +152,32 @@ const RecoApp = () => {
             </Ibox>
             <Text>추천 어플</Text>
           </CBox>
-       
-            {/* {App.map((element) => (
+
+          {/* {App.map((element) => (
               <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
               <Number>{element.like}명</Number><Name>이 추천해요!</Name>
               </NameWrapper>
             ))} */}
 
-            {App.map((element, index) => (
-              <div>
+          {App.map((element, index) => (
+            <div>
               <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{element.like}명</Number><Name>이 추천해요!</Name>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number>{element.like}명</Number>
+                <Name>이 추천해요!</Name>
               </NameWrapper>
               <Box key={index}>
                 <AppImage src={element.image} />
                 <TB>
-                <Title>{element.name}</Title>
-                <Button
-                  
-                  onClick={() => handleButtonClick(element.id)}
-               >
-                  자세히
-                </Button>
+                  <Title>{element.name}</Title>
+                  <Button onClick={() => handleButtonClick(element.id)}>
+                    자세히
+                  </Button>
                 </TB>
               </Box>
-              </div>
-            ))}
-         
-          
+            </div>
+          ))}
         </Rectangle>
       </Desktop>
     </>
