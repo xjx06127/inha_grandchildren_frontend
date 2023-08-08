@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -8,10 +8,20 @@ import Navigator from "../Navigator";
 import TestNavigator from "../pages_Test/TestNavigator";
 import "../pages_Test/Bar.css";
 import confetti from "canvas-confetti";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const Comment1 = styled.p`
   /* 디지털 레벨을 분석했어요! */
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-left: 10%;
   margin-top: 17%;
 `;
@@ -45,14 +55,32 @@ const LevelComment = styled.p`
   /* OO 레벨 */
 
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   color: #000000;
 `;
 
 const LevelComment2 = styled.p`
   /* 짧은 설명이 들어가면 좋을 것 같은데 */
 
-  font-size: 1.3rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
   width: 70%;
   text-align: center;
   color: #000000;
@@ -65,20 +93,31 @@ const Img = styled.img`
 `;
 
 const Btn = styled.button`
-  width: 308px;
-  height: 59px;
+  width: 90%;
+  padding: 18px;
+  padding-right: 20px;
+  padding-left: 20px;
 
   background: #617143;
   border-radius: 30px;
 
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
   text-align: center;
 
   color: #ffffff;
   border: none;
 
-  margin-top: 20%;
+  margin-top: 15%;
   margin-bottom: 20%;
 `;
 
@@ -135,7 +174,9 @@ const Result = () => {
   const { OX, OX2, OX3, OX4, OX5 } = useParams();
   const [imgSrc, setImgSrc] = useState("");
   const [level, setLevel] = useState("");
-  const [comment, setComment] = useState("");
+  const [comment1, setComment1] = useState("");
+  const [comment2, setComment2] = useState("");
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   useEffect(() => {
     axios
@@ -151,31 +192,34 @@ const Result = () => {
         const correctNum = res.data.count;
         const newLevel = res.data.result;
         let newImgSrc = "";
-        let newComment = "";
+        let newComment1 = "";
+        let newComment2 = "";
 
         if (correctNum === 0) {
           newImgSrc = "/Seed.svg";
-          newComment =
-            "씨앗은 1단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "씨앗은 레벨1 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum === 1) {
           newImgSrc = "/Saessack.svg";
-          newComment =
-            "새싹은 2단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "새싹은 레벨2 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum === 2) {
           newImgSrc = "/Flower.svg";
-          newComment = "꽃은 3단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "꽃은 레벨3 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum >= 3 && correctNum <= 4) {
           newImgSrc = "/Yeolmae.svg";
-          newComment =
-            "열매는 4단계 입니다.\n 5단계인 나무 단계까지 올려보세요!";
+          newComment1 = "열매는 레벨4 입니다.";
+          newComment2 = "레벨5인 나무 레벨까지 올려보세요!";
         } else if (correctNum === 5) {
           newImgSrc = "/Tree.svg";
-          newComment = "당신은 디지털 끝판왕!😉";
+          newComment1 = "당신은 디지털 끝판왕!😉";
         }
 
         setImgSrc(newImgSrc);
         setLevel(newLevel);
-        setComment(newComment);
+        setComment1(newComment1);
+        setComment2(newComment2);
       })
       .catch((error) => {
         console.error(error);
@@ -198,26 +242,33 @@ const Result = () => {
       synth.speak(utterance);
     };
 
-    if (comment !== "") {
+    if (comment1 !== "") {
       // 빈 comment 문자열이 아닐 때만 TTS 실행
-      speakText(comment);
+      speakText(comment1 + comment2);
     }
-  }, [comment]);
+  }, [comment1]);
 
   return (
     <>
       <TestNavigator />
-      <Comment1>
+      <Comment1 fS={fontSize}>
         <Highlight>디지털 레벨</Highlight>을<br />
         분석했어요!
       </Comment1>
       <VertiBox>
         <Circle>
           {imgSrc && <Img src={imgSrc} />}
-          {level && <LevelComment>{level} 레벨</LevelComment>}
+          {level && <LevelComment fS={fontSize}>{level} 레벨</LevelComment>}
         </Circle>
-        {comment && <LevelComment2>{comment}</LevelComment2>}
+        {comment1 && (
+          <LevelComment2 fS={fontSize}>
+            {comment1}
+            <br />
+            {comment2}
+          </LevelComment2>
+        )}
         <Btn
+          fS={fontSize}
           onClick={() => {
             navigate(`/Main`);
           }}

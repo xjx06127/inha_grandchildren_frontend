@@ -1,25 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled, { css } from "styled-components";
 import HomeNavigator from "./HomeNavigator";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import ContactUs from "../ContactUs";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
-  width: 100vw;
-
-  @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
-    height: 40vh;
-  }
-
   background-size: cover;
   border-radius: 0 0 50px 60px / 0 0 12px 19px;
+  @media (orientation: portrait) {
+    height: 40vh;
+  }
+  @media (orientation: landscape) {
+    height: 120vh;
+  }
 `;
 
 const MainText = styled.h1`
   color: white;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
   padding-left: 10%;
   padding-top: 8%;
 `;
@@ -32,7 +43,7 @@ const Box = styled.div`
 const Row1 = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 7%;
+  margin-top: 8%;
 `;
 
 const FindBox = styled.div`
@@ -48,6 +59,17 @@ const FindBox = styled.div`
   padding: 1.8%;
   padding-left: 6%;
   padding-right: 6%;
+  font-weight: bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 
   @media (orientation: portrait) {
     /* Set the height specifically for portrait mode */
@@ -58,19 +80,29 @@ const FindBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${FindText} {
-          color: #5a4843;
+          color: gray;
         }
       }
     `}
 `;
 
 const FindText = styled.p`
-  font-size: 1.6rem;
-  margin-left: 5%;
+  /* font-size: 1.6rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+  margin-left: 14%;
   font-weight: bold;
 `;
 
@@ -94,22 +126,32 @@ const JustLookBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${JustLookText} {
-          color: #5a4843;
+          color: gray;
         }
 
-        ${JustLookIcon} {
+        /* ${JustLookIcon} {
           content: url(/look_white.svg);
-        }
+        } */
       }
     `}
 `;
 
 const JustLookText = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
   margin-bottom: 10%;
 `;
@@ -136,22 +178,31 @@ const TestBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${TestText} {
-          color: white;
+          color: gray;
         }
 
-        ${TestIcon} {
+        /* ${TestIcon} {
           content: url(/test_white.svg);
-        }
+        } */
       }
     `}
 `;
 
 const TestText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
   margin-bottom: 10%;
 `;
@@ -179,11 +230,11 @@ const HelpBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${HelpText} {
-          color: white;
+          color: gray;
         }
 
         ${HelpIcon} {
@@ -210,8 +261,18 @@ const HelpIcon = styled.img`
 `;
 
 const HelpText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
+  width: 67%;
 `;
 
 const FontBox = styled.div`
@@ -229,11 +290,11 @@ const FontBox = styled.div`
     props.active &&
     css`
       &:hover {
-        transition: 1.6s;
+        transition: 0.1s;
         background-color: #f3ddd6;
 
         ${FontText} {
-          color: white;
+          color: gray;
         }
 
         ${FontIcon} {
@@ -249,8 +310,18 @@ const FontIcon = styled.img`
 `;
 
 const FontText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
+  width: 67%;
 `;
 
 const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
@@ -258,6 +329,7 @@ const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 const WhiteImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
 const Home = () => {
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [findClick, setFindClick] = useState(false);
   const [recoClick, setRecoClick] = useState(false);
   const [helpClick, setHelpClick] = useState(false);
@@ -270,40 +342,41 @@ const Home = () => {
     setFindClick(true);
     setTimeout(() => {
       navigate(`/AppFind`);
-    }, 600);
+    }, 100);
   };
 
   const GoToRecoPage = () => {
     setRecoClick(true);
     setTimeout(() => {
       navigate(`/Category`);
-    }, 600);
+    }, 100);
   };
 
   const GoToHelpPage = () => {
     setHelpClick(true);
     setTimeout(() => {
       navigate(`/Method`);
-    }, 600);
+    }, 300);
   };
 
   const GoToTestPage = () => {
     setTestClick(true);
     setTimeout(() => {
       navigate("/Test");
-    }, 600);
+    }, 100);
   };
 
   const GoToFontPage = () => {
     setFontClick(true);
     setTimeout(() => {
       navigate(`/fontsizeSetting`);
-    }, 600);
+    }, 100);
   };
 
   const HomeIconsAnimation = styled.img`
     content: url(${ImageUrls[currentImageIndex]});
-    width: 10%;
+    width: 12%;
+    margin-right: 10%;
   `;
 
   const ChangeImage = () => {
@@ -319,35 +392,45 @@ const Home = () => {
     <>
       <BackGround>
         <HomeNavigator />
-        <MainText>
+        <MainText fS={fontSize}>
           원하시는 서비스를
           <br />
           선택해주세요
         </MainText>
 
         <Box>
-          <FindBox onClick={GoToFindPage} active={findClick}>
+          {/* <FindBox onClick={GoToFindPage} active={findClick}>
             <HomeIconsAnimation />
-            <FindText>찾고 싶은 기능이 있어요</FindText>
+            <FindText fS={fontSize}>
+              필요한 어플 <br />
+              찾아드릴게요
+            </FindText>
+          </FindBox> */}
+          <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
+            <HomeIconsAnimation />
+            필요한 어플 <br />
+            찾아드릴게요
           </FindBox>
 
           <Row1>
             <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-              <JustLookText>
-                그냥
+              <JustLookText fS={fontSize}>
+                분야별
                 <br />
-                둘러볼게요
+                어플
+                <br />
+                보여드릴게요
               </JustLookText>
               <JustLookIcon src="/lookicon.svg" />
             </JustLookBox>
 
             <TestBox onClick={GoToTestPage} active={testClick}>
-              <TestText>
+              <TestText fS={fontSize}>
                 디지털
                 <br />
-                활용능력
+                레벨
                 <br />
-                테스트
+                알려드릴게요
               </TestText>
               <TestIcon src="test.svg" />
             </TestBox>
@@ -357,10 +440,10 @@ const Home = () => {
             <Circle>
               <HelpIcon src="/help_white.svg" />
             </Circle>
-            <HelpText>
-              도움이
+            <HelpText fS={fontSize}>
+              사용 방법을
               <br />
-              필요해요
+              알고 싶으신가요?
             </HelpText>
           </HelpBox>
 
@@ -368,14 +451,16 @@ const Home = () => {
             <Circle>
               <FontIcon src="/font_white.svg" />
             </Circle>
-            <FontText>
-              글자 크기를
+            <FontText fS={fontSize}>
+              글자 크기가
               <br />
-              바꾸고 싶어요
+              불편하신가요?
             </FontText>
           </FontBox>
         </Box>
+        <ContactUs/>
       </BackGround>
+      
     </>
   );
 };

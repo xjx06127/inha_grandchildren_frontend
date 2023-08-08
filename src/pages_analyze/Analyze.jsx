@@ -111,7 +111,7 @@ const Analyze = ({ percentage }) => {
   return (
     <div>
       <Text>
-        <Highlighter>디지털레벨</Highlighter>을
+        <Highlighter>디지털 레벨</Highlighter>을
         <br />
         분석중 입니다.
       </Text>

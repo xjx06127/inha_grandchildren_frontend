@@ -206,7 +206,10 @@ const FontSizeSetting = () => {
                     : "2.2rem",
               }}
             >
-              동해물과 백두산이 마르고 닳도록
+              당신에 의한
+              <br /> 당신을 위한
+              <br /> 당신의 어플
+              <br /> &nbsp;&nbsp;&nbsp;손주야
             </p>
           </ExBox>
           <Option defaultChecked>

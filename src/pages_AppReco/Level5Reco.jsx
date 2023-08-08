@@ -16,7 +16,6 @@ const Desktop = styled.div`
 const Rectangle = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
   border-radius: 50px 50px 0px 0px; /* 상단 모서리에만 border-radius를 적용 */
   background-color: #ffffff;
@@ -24,27 +23,36 @@ const Rectangle = styled.div`
   margin-top: 12%;
 `;
 
+
 const Img = styled.img`
-  width: auto;
-  height: auto;
+  width: 60%;
+  height: 60%;
 `;
 const Text = styled.p`
   font-weight: bold;
   font-size: 1.9rem;
-  margin-bottom:15%;
+  margin-top:2%;
+  margin-bottom:10%;
 `;
 
-
 const Ibox = styled.div`
-  width: 100px;
-  height: 100px;
-  margin-bottom: 5%;
+  @media (orientation: portrait) {
+    height: 12vh; /* 뷰포트 높이의 10%로 높이 설정 */
+    width: 12vh; /* 뷰포트 높이의 10%로 너비 설정 */
+  }
+
+  /* 미디어 쿼리: 가로 방향 (landscape)일 때 */
+  @media (orientation: landscape) {
+    height: 50vh; /* 뷰포트 높이의 50%로 높이 설정 */
+    width: 50vh; /* 뷰포트 높이의 50%로 너비 설정 */
+  }
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -12%;
 `;
 
 const CBox = styled.div`
@@ -52,28 +60,46 @@ const CBox = styled.div`
   flex-direction: column;
   justify-content: center; /* 가로축 가운데 정렬 */
   align-items: center;
-  margin-top: -15%;
+`;
+
+const  NameWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-left:5%;
+`;
+const Name = styled.p`
+  font-size: 1.3rem;
+`;
+const Number = styled.p`
+font-size: 1.3rem;
+font-weight: bold;
+`;
+const Icon1 = styled.img`
+  width: 6%;
+  height: 6%;
+  margin-right:2%;
 `;
 
 const Box = styled.div`
   display: flex;
-  width: 80%;
+  margin-left:5%;
+  margin-right:5%;
+  margin-top: 2%;
+  margin-bottom:7%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  margin-bottom: 10%; /* 각 Box 요소의 아래 간격 설정 */
-  /* &:nth-child(2n + 1) {
-    margin-right: auto;
-  } */
-  padding: 5%;
+  padding:5%;
 `;
+
 
 const Button = styled.button`
   background-color: transparent;
   border: none;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   color: #617143;
   text-decoration: underline;
 
@@ -87,6 +113,7 @@ const Title = styled.p`
   font-size: 1.6rem;
   text-align: left;
   margin-left: 5%;
+  font-weight: bold;
 `;
 
 const TB = styled.div`
@@ -97,6 +124,7 @@ const TB = styled.div`
 const AppImage = styled.img`
   width: 30%;
   height: 30%;
+  border-radius:5px;
 `;
 
 
@@ -133,6 +161,11 @@ const Level5Reco = () => {
           </CBox>
 
             {App.map((element, index) => (
+               <div>
+               <NameWrapper>
+               <Icon1 src="/Rec.svg"></Icon1>
+               <Number>{element.like}명</Number><Name>이 추천해요!</Name>
+               </NameWrapper>
               <Box key={index}>
                 <AppImage src={element.image} />
                 <TB>
@@ -144,6 +177,7 @@ const Level5Reco = () => {
                 </Button>
                 </TB>
               </Box>
+              </div>
             ))}
 
         </Rectangle>
