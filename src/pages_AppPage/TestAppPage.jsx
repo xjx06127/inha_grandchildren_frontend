@@ -294,24 +294,47 @@ const TestAppPage = () => {
 
   const handleButtonClick = () => {
     const mobileType = navigator.userAgent.toLowerCase();
+    const isMac = /MacIntel|MacPPC/i.test(navigator.platform);
+    //대소문자를 구분하지 않도록 옵션 설정 (i)
 
+    //안드로이드 기종인 경우
     if (mobileType.indexOf("android") > -1) {
+      //Googleplay스토어에 없는 경우
+      if (AndroidUrl === null) {
+        Swal.fire({
+          icon: "error",
+          title: "잠시만요!",
+          text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
+          confirmButtonText: "다른 어플 보러가기",
+          confirmButtonColor: "#798560",
+        });
+      }
+      //Googleplay스토어에 있는 경우
       return window.open(AndroidUrl);
-    } else if (
+    }
+
+    //애플 기종인 경우
+    else if (
       mobileType.indexOf("iphone") > -1 ||
       mobileType.indexOf("ipad") > -1 ||
       mobileType.indexOf("ipod") > -1
     ) {
+      if (iosUrl === null) {
+        Swal.fire({
+          icon: "error",
+          title: "잠시만요!",
+          text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
+          confirmButtonText: "다른 어플 보러가기",
+          confirmButtonColor: "#798560",
+        });
+      }
       return window.open(iosUrl);
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "잠시만요!",
-        text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
-        confirmButtonText: "다른 어플 보러가기",
-        confirmButtonColor: "#798560",
-      });
     }
+    //현재 데스크톱인 경우
+    else if (isMac) {
+      //Mac인경우
+      window.open(iosUrl);
+    } else window.open(AndroidUrl); //Mac이 아닌 경우
   };
 
   const handleButtonClick2 = async () => {
@@ -397,7 +420,10 @@ const TestAppPage = () => {
               어플이
               <br /> <Highlight>마음에 드신다면?</Highlight>
             </B2text>
-            <B2text2>다른 분들을 위해 추천해주세요.</B2text2>
+            <B2text2>
+              다른 분들을 위해 <br />
+              추천해주세요.
+            </B2text2>
             <Con>
               <Icon src="/Rec.svg"></Icon>
               <Button2 onClick={handleButtonClick2}>나도 추천</Button2>

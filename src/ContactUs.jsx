@@ -92,7 +92,7 @@ const ContactUs = () => {
             </Row1>
             <Row2>
                 <CallImg src="/call.svg"/>
-                <CallText>032 - 000 - 0221</CallText>
+                <CallText>032-000-0221</CallText>
             </Row2>
             <Row3>
                 <CopyBox>
