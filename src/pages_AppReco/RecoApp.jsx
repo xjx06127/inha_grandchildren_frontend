@@ -151,9 +151,9 @@ const RecoApp = () => {
         <Rectangle>
           <CBox>
             <Ibox>
-              <Img src="/recoapp.svg"></Img>
+              <Img src="/Star1.svg"></Img>
             </Ibox>
-            <Text>추천 어플</Text>
+            <Text>손주의 추천</Text>
           </CBox>
        
             {/* {App.map((element) => (

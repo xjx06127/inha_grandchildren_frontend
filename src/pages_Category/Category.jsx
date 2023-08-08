@@ -173,7 +173,7 @@ const Category = () => {
       <Desktop>
         <T1>
           <Text>
-            <Highlight>추천</Highlight> 어플{" "}
+            <Highlight>손주</Highlight>의 추천{" "}
           </Text>
           <Tbutton
             isActive={activeButtonIndex === 0}
