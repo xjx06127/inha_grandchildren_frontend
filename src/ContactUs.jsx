@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 const Background = styled.div`
     background-color: #F2F2F2;
-    height: 100%;
+    height: 90%;
     padding: 5%;
     padding-top: 7%;
+    padding-bottom: 10%;
 `
 
 const Text = styled.p`
@@ -25,7 +26,7 @@ const Row1 = styled.div`
 const Row2 = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 20%;
+    margin-bottom: 15%;
     margin-left: 3%;
 `
 
@@ -49,6 +50,7 @@ const EmailImg = styled.img`
 const EmailText = styled.p`
     font-weight: bold;
     font-size: 1.1rem;
+    text-decoration-line: none;
 `
 
 const CallImg = styled.img`

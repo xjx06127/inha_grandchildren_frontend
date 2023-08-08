@@ -62,13 +62,34 @@ const HomeNavigator = () => {
   const [isSoundOffClicked, setSoundOffClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance();
+
+    const speakText = (text) => {
+      utterance.text = text;
+      utterance.rate = 0.8;
+      synth.speak(utterance);
+    };
+
+    if (isSoundOffClicked) {
+      synth.cancel();
+    } else {
+      speakText("하단의 버튼을 클릭하여, 원하시는 서비스를 선택해주세요.");
+    }
+
+    return () => {
+      synth.cancel();
+    };
+  }, [isSoundOffClicked]);
+
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
       showConfirmButton: false,
-      timer: 1200,
+      timer: 1000,
       timerProgressBar: false,
       didOpen: (toast) => {
         toast.addEventListener("mouseenter", Swal.stopTimer);
@@ -103,5 +124,6 @@ const HomeNavigator = () => {
     </>
   );
 };
+
 
 export default HomeNavigator;
