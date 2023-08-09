@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TestNavigator from "../pages_Test/TestNavigator";
 import { useParams } from "react-router";
 import axios from "axios";
+// 안쓰는 페이지
 
 const Desktop = styled.div`
   display: flex;
@@ -83,13 +84,13 @@ const Button = styled.button`
   margin-top: 5%;
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   font-size: 1.6rem;
-  padding:3%;
+  padding: 3%;
   color: #ffffff;
   margin-bottom: 10%;
 
-  &:hover{
+  &:hover {
     font-weight: bold;
-   }
+  }
 `;
 
 const Box1 = styled.div`
@@ -109,11 +110,11 @@ const SButton = styled.button`
   width: 7%;
   margin-left: 7%;
   background-color: transparent;
-  border: none;  
+  border: none;
 
-  &:hover{
+  &:hover {
     color: #000000;
-   }
+  }
 `;
 
 const SImg = styled.img`
@@ -136,7 +137,6 @@ const B1text2 = styled.p`
   margin-right: 5%;
   margin-bottom: 10%;
   white-space: pre-line; /* 공백과 줄바꿈 유지 설정 */
-  
 `;
 
 const Bcon = styled.div`
@@ -149,16 +149,14 @@ const Bcon = styled.div`
 const AppImage = styled.img`
   width: 60%;
   height: 60%;
-  margin-top:10%;
+  margin-top: 10%;
 `;
 const AppPage = () => {
   const { id } = useParams();
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
   const [App, setApp] = useState([]);
 
-  const handleButtonClick = () => {
-  
-  };
+  const handleButtonClick = () => {};
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
@@ -192,11 +190,7 @@ const AppPage = () => {
           <Box>
             <AppImage src={App.app_info?.image}></AppImage>
             <BText>{App.app_info?.name}</BText>
-            <Button
-              onClick={() => handleButtonClick}
-            >
-              다운로드
-            </Button>
+            <Button onClick={() => handleButtonClick}>다운로드</Button>
           </Box>
 
           <Box1>
@@ -206,8 +200,13 @@ const AppPage = () => {
                 <SImg src="/TestNext.svg" />
               </SButton>
             </BS>
-            
-          <B1text2>{App.app_info?.detail && App.app_info?.detail.replace(/ • /g, '\n').replace(/\n/g, '\n\n')}</B1text2>
+
+            <B1text2>
+              {App.app_info?.detail &&
+                App.app_info?.detail
+                  .replace(/ • /g, "\n")
+                  .replace(/\n/g, "\n\n")}
+            </B1text2>
           </Box1>
         </Bcon>
       </Desktop>
