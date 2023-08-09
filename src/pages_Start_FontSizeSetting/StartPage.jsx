@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
@@ -69,24 +69,26 @@ const CopyRightText = styled.p`
 
 const StartPage = () => {
   const navigate = useNavigate();
+  const [isNew,SetIsNew] = useState("");
 
   useEffect(() => {
-    let isNew = localStorage.getItem("IsNew");
+    SetIsNew(localStorage.getItem("IsNew"));
     let isRecoArr = localStorage.getItem("isRecoArr");
 
     if (isRecoArr == null) {
       let arr = new Array(100).fill(false);
       localStorage.setItem("isRecoArr", JSON.stringify(arr));
     }
-    if (isNew == null) {
-      setTimeout(() => {
-        navigate(`/FontSizeSettingForNew`);
-      }, 2300);
-    } 
   }, []);
 
+
   const GoToMain = () => {
-    navigate(`/main`);
+    if (isNew == null) {
+      navigate(`/FontSizeSettingForNew`);
+      
+    } else {
+      navigate(`/Main`);
+    }
   };
 
 

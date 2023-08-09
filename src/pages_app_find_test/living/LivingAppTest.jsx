@@ -77,6 +77,7 @@ const SelectBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 10%;
 `;
 const Row1 = styled.div`
   display: flex;
