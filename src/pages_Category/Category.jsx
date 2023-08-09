@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import TestNavigator from "../pages_Test/TestNavigator";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import AppPage from "../pages_AppPage/AppPage";
+import CategoryNavigator from "./CategoryNavigator";
 
 const Desktop = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Desktop = styled.div`
   overflow-x: hidden; /* 화면을 옆으로 스크롤되지 않도록 설정 */
   background-color: #ffffff;
   width: 100%;
-  padding-bottom: 10%;
+  padding-bottom:10%;
 `;
 
 const Text = styled.p`
@@ -20,17 +20,19 @@ const Text = styled.p`
 `;
 
 const Highlight = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #ffd05d 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
 `;
 
 const Tbutton = styled.button`
   background-color: transparent;
   border: none;
-  margin-left: 7%;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #535353;
-  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
-  /* 클릭 여부에 따라 폰트 두께를 동적으로 설정합니다. */
+ margin-right:7%;
+
+  &:hover {
+    font-weight: bold;
+  }
 `;
 
 const T1 = styled.div`
@@ -39,6 +41,8 @@ const T1 = styled.div`
   margin-left: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
+  align-items: baseline;
+  justify-content:space-between;
 `;
 
 const NameWrapper = styled.div`
@@ -95,7 +99,7 @@ const Box1 = styled.div`
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 2%;
-  margin-bottom: 7%;
+  margin-bottom:15%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -135,16 +139,47 @@ const TB = styled.div`
 
 const Category = () => {
   const navigate = useNavigate();
-  const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
 
-  const handleButtonClick = (index) => {
-    setActiveButtonIndex(index);
+  const handleButtonClick2 = () => {
+    setTimeout(() => {
+      navigate(`../RecoApp`);
+    }, 100); 
+  };
+
+  const handleButtonClick3 = () => {
+    setTimeout(() => {
+      navigate("../level1");
+    }, 100); 
+  };
+
+  const handleButtonClick4 = () => {
+    setTimeout(() => {
+      navigate("../level2");
+    }, 100); 
+  };
+
+  const handleButtonClick5 = () => {
+    setTimeout(() => {
+      navigate("../level3");
+    }, 100); 
+  };
+
+  const handleButtonClick6 = () => {
+    setTimeout(() => {
+      navigate("../level4");
+    }, 100); 
+  };
+
+  const handleButtonClick7 = () => {
+    setTimeout(() => {
+      navigate("../level5");
+    }, 100); 
   };
 
   const handleButtonClick1 = (id) => {
     setTimeout(() => {
       navigate(`../AppPage/${id}`);
-    }, 300);
+    }, 100);
   };
 
   const [recoApp, setRecoApp] = useState([]);
@@ -169,17 +204,15 @@ const Category = () => {
 
   return (
     <>
-      <TestNavigator />
+      <CategoryNavigator />
       <Desktop>
         <T1>
           <Text>
             <Highlight>손주</Highlight>의 추천{" "}
           </Text>
           <Tbutton
-            isActive={activeButtonIndex === 0}
-            onClick={() => handleButtonClick(0)}
-          >
-            <Link to="../RecoApp">[더보기]</Link>
+            onClick= {handleButtonClick2}
+          > [더보기]
           </Tbutton>
         </T1>
 
@@ -234,10 +267,8 @@ const Category = () => {
             <Highlight>씨앗용</Highlight> 어플
           </Text>
           <Tbutton
-            isActive={activeButtonIndex === 1}
-            onClick={() => handleButtonClick(1)}
-          >
-            <Link to="../level1">[더보기]</Link>
+          onClick= {handleButtonClick3}
+          >[더보기]
           </Tbutton>
         </T1>
 
@@ -292,10 +323,8 @@ const Category = () => {
           </Text>
 
           <Tbutton
-            isActive={activeButtonIndex === 2}
-            onClick={() => handleButtonClick(2)}
-          >
-            <Link to="../level2">[더보기]</Link>
+           onClick= {handleButtonClick4}
+          >[더보기]
           </Tbutton>
         </T1>
 
@@ -350,10 +379,8 @@ const Category = () => {
             <Highlight>꽃용</Highlight> 어플
           </Text>
           <Tbutton
-            isActive={activeButtonIndex === 3}
-            onClick={() => handleButtonClick(3)}
-          >
-            <Link to="../level3">[더보기]</Link>
+            onClick= {handleButtonClick5}
+          >[더보기]
           </Tbutton>
         </T1>
 
@@ -408,10 +435,8 @@ const Category = () => {
             <Highlight>열매용</Highlight> 어플
           </Text>
           <Tbutton
-            isActive={activeButtonIndex === 4}
-            onClick={() => handleButtonClick(4)}
-          >
-            <Link to="../level4">[더보기]</Link>
+              onClick= {handleButtonClick6}
+          >[더보기]
           </Tbutton>
         </T1>
 
@@ -466,10 +491,8 @@ const Category = () => {
             <Highlight>나무용</Highlight> 어플
           </Text>
           <Tbutton
-            isActive={activeButtonIndex === 5}
-            onClick={() => handleButtonClick(5)}
-          >
-            <Link to="../level5">[더보기]</Link>
+             onClick= {handleButtonClick7}
+          >[더보기]
           </Tbutton>
         </T1>
         {app5[0] && (
