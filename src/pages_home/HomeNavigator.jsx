@@ -63,6 +63,7 @@ const HomeNavigator = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   useEffect(() => {
+    console.log(isSoundOffClicked);
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance();
 
@@ -124,6 +125,5 @@ const HomeNavigator = () => {
     </>
   );
 };
-
 
 export default HomeNavigator;

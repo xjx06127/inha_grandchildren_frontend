@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 import { useParams } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import AppPageNavigator from "./AppPageNavigator";
 import Swal from "sweetalert2";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -38,8 +39,26 @@ const Circle = styled.div`
 `;
 
 const Img = styled.img`
-  width: 50%;
-  height: 50%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "50%";
+      case "large":
+        return "60%";
+      case "veryLarge":
+        return "70%";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "50%";
+      case "large":
+        return "60%";
+      case "veryLarge":
+        return "70%";
+    }
+  }};
 `;
 
 const NameWrapper = styled.div`
@@ -48,19 +67,56 @@ const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 `;
 const Name = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 `;
 
 const Number = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   font-weight: bold;
 `;
 
 const Icon1 = styled.img`
-  width: 9%;
-  height: 9%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "9%";
+      case "large":
+        return "12%";
+      case "veryLarge":
+        return "15%";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "9%";
+      case "large":
+        return "12%";
+      case "veryLarge":
+        return "15%";
+    }
+  }};
   margin-right: 2%;
 `;
 
@@ -75,21 +131,57 @@ const Box = styled.div`
 `;
 
 const AppImage = styled.img`
-  width: 60%;
-  height: 60%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "60%";
+      case "large":
+        return "65%";
+      case "veryLarge":
+        return "70%";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "60%";
+      case "large":
+        return "65%";
+      case "veryLarge":
+        return "70%";
+    }
+  }};
   margin-top: 10%;
   border-radius: 5px;
 `;
 
 const BText = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-top: 3%;
   text-align: center; /* 내용을 가로축으로 가운데 정렬 */
   font-weight: bold;
 `;
 
 const Level = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 5%;
@@ -101,7 +193,16 @@ const Button = styled.button`
   width: 42%;
   border-radius: 13px;
   margin-top: 8%;
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   padding: 2%;
   color: #ffffff;
   margin-bottom: 10%;
@@ -120,7 +221,16 @@ const Box1 = styled.div`
 `;
 
 const B1text = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
@@ -129,7 +239,16 @@ const B1text = styled.p`
 `;
 
 const B1text2 = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
@@ -154,7 +273,16 @@ const Box2 = styled.div`
 `;
 
 const B2text = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
@@ -162,7 +290,16 @@ const B2text = styled.p`
   font-weight: bold;
 `;
 const B2text2 = styled.p`
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   margin-top: 10%;
   margin-left: 5%;
   margin-right: 5%;
@@ -182,7 +319,16 @@ const Button2 = styled.button`
   padding: 2%;
   color: #ffffff;
   margin-left: 10%;
-  font-size: 1.6rem;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
   &:hover {
     font-weight: bold;
   }
@@ -276,6 +422,7 @@ const TestAppPage = () => {
   const [showError, setShowError] = useState(false);
   const [like, setLike] = useState(false);
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
@@ -363,7 +510,7 @@ const TestAppPage = () => {
           icon: "success",
           title: "추천 완료",
           showConfirmButton: false,
-          timer: 1500,
+          timer: 3000,
         });
       } catch (error) {
         console.error("Error occurred while updating like:", error);
@@ -373,8 +520,8 @@ const TestAppPage = () => {
         icon: "error",
         title: "잠시만요!",
         text: "중복 추천은 불가해요.",
-        confirmButtonText: "돌아가기",
-        confirmButtonColor: "#798560",
+        showConfirmButton: false,
+        timer: 3000,
       });
     }
   };
@@ -387,27 +534,29 @@ const TestAppPage = () => {
       <Desktop>
         <Ccon>
           <Circle>
-            <Img src={`/L${App.app_info?.levelvalue}.svg`} />
+            <Img fS={fontSize} src={`/L${App.app_info?.levelvalue}.svg`} />
           </Circle>
         </Ccon>
 
         <NameWrapper>
-          <Icon1 src="/Rec.svg"></Icon1>
-          <Number>{App.app_info?.like}명</Number>
-          <Name>의 추천을 받은 어플</Name>
+          <Icon1 src="/Rec.svg" fS={fontSize}></Icon1>
+          <Number fS={fontSize}>{App.app_info?.like}명</Number>
+          <Name fS={fontSize}>의 추천을 받은 어플</Name>
         </NameWrapper>
 
         <Bcon>
           <Box>
-            <AppImage src={App.app_info?.image}></AppImage>
-            <BText>{App.app_info?.name}</BText>
-            <Level>{App.app_info?.summary}</Level>
-            <Button onClick={handleButtonClick}>다운로드</Button>
+            <AppImage fS={fontSize} src={App.app_info?.image}></AppImage>
+            <BText fS={fontSize}>{App.app_info?.name}</BText>
+            <Level fS={fontSize}>{App.app_info?.summary}</Level>
+            <Button onClick={handleButtonClick} fS={fontSize}>
+              다운로드
+            </Button>
           </Box>
 
           <Box1>
-            <B1text>어떻게 사용할까요?</B1text>
-            <B1text2>
+            <B1text fS={fontSize}>어떻게 사용할까요?</B1text>
+            <B1text2 fS={fontSize}>
               {App.app_info?.detail &&
                 App.app_info?.detail
                   .replace(/ • /g, "\n")
@@ -416,17 +565,19 @@ const TestAppPage = () => {
           </Box1>
 
           <Box2>
-            <B2text>
+            <B2text fS={fontSize}>
               어플이
-              <br /> <Highlight>마음에 드신다면?</Highlight>
+              <br /> <Highlight fS={fontSize}>마음에 드신다면?</Highlight>
             </B2text>
-            <B2text2>
+            <B2text2 fS={fontSize}>
               다른 분들을 위해 <br />
               추천해주세요.
             </B2text2>
             <Con>
               <Icon src="/Rec.svg"></Icon>
-              <Button2 onClick={handleButtonClick2}>나도 추천</Button2>
+              <Button2 fS={fontSize} onClick={handleButtonClick2}>
+                나도 추천
+              </Button2>
             </Con>
           </Box2>
         </Bcon>
