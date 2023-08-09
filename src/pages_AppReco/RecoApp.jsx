@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Navigator from "../Navigator";
+import NavigatorApp from "./NavigatorApp";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import AppPage from "../pages_AppPage/AppPage";
@@ -138,13 +138,13 @@ const RecoApp = () => {
   const handleButtonClick = (id) => {
     setTimeout(() => {
       navigate(`../AppPage/${id}`);
-    }, 300);
+    }, 100);
   };
 
   return (
     <>
       <Desktop>
-        <Navigator />
+        <NavigatorApp/>
 
         <Rectangle>
           <CBox>
