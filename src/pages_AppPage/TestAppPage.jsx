@@ -412,7 +412,52 @@ const MidBox = styled.div`
   }
 `;
 
-const Hidden = styled.p``;
+const TtsBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background: #617143;
+  position: fixed;
+  width: 25vw;
+  height: 25vw;
+  opacity: 0.8;
+  right: 0%;
+`;
+
+const TtsImg = styled.img`
+  content: url("/sound.svg");
+  width: 50%; /* Adjust the size of the image as needed */
+  height: auto;
+`;
+
+const FixBox = styled.div`
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 5%;
+  right: 5%;
+`;
+
+const ToolTip = styled.img`
+  content: url("/speechBubble.svg");
+  width: 90%;
+  height: auto;
+  position: relative; /* Add this line */
+  top: -70px; /* Adjust this value to move the tooltip up or down */
+  z-index: -1;
+`;
+
+const ToolTipText = styled.p`
+  position: absolute;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  top: -55px; /* Adjust this value to position the text as needed */
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
 const TestAppPage = () => {
   const { id } = useParams();
@@ -423,6 +468,16 @@ const TestAppPage = () => {
   const [like, setLike] = useState(false);
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  const [showToolTip, setShowToolTip] = useState(true);
+  useEffect(() => {
+    const toolTipTimeout = setTimeout(() => {
+      setShowToolTip(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(toolTipTimeout);
+    };
+  }, []);
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
@@ -430,14 +485,8 @@ const TestAppPage = () => {
       setIosUrl(res.data.app_info?.alink);
       setAndroidUrl(res.data.app_info?.slink);
       //  setApp5(res.data.level_5);
-      tts();
     });
   }, [like]);
-
-  const tts = () => {
-    // const audio = new Audio(App.tts);
-    // audio.play(); // 음성 파일을 재생합니다.
-  };
 
   const handleButtonClick = () => {
     const mobileType = navigator.userAgent.toLowerCase();
@@ -528,7 +577,6 @@ const TestAppPage = () => {
 
   return (
     <>
-      <Hidden onClick={() => tts()} />
       <GlobalStyles show={showError} />
       <AppPageNavigator></AppPageNavigator>
       <Desktop>
@@ -581,6 +629,14 @@ const TestAppPage = () => {
             </Con>
           </Box2>
         </Bcon>
+        <FixBox>
+          <ToolTipText>이곳을 클릭하여 어플 설명을 들어보세요.</ToolTipText>
+
+          <ToolTip />
+          <TtsBtn>
+            <TtsImg />
+          </TtsBtn>
+        </FixBox>
       </Desktop>
     </>
   );

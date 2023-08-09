@@ -356,7 +356,7 @@ const Home = () => {
     setHelpClick(true);
     setTimeout(() => {
       navigate(`/Method`);
-    }, 300);
+    }, 100);
   };
 
   const GoToTestPage = () => {
@@ -458,9 +458,8 @@ const Home = () => {
             </FontText>
           </FontBox>
         </Box>
-        <ContactUs/>
+        <ContactUs />
       </BackGround>
-      
     </>
   );
 };
