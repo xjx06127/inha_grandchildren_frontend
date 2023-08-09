@@ -15,7 +15,7 @@ const Desktop = styled.div`
 `;
 
 const Text = styled.p`
-  font-weight: bold;
+ font-family:'DO';
   font-size: 1.9rem;
 `;
 
@@ -28,7 +28,8 @@ const Tbutton = styled.button`
   border: none;
   font-size: 1.4rem;
   color: #535353;
- margin-right:7%;
+ margin-right:14%;
+
 
   &:hover {
     font-weight: bold;
@@ -89,6 +90,7 @@ const Button = styled.button`
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
 
+
   &:hover {
     font-weight: bold;
   }
@@ -114,6 +116,7 @@ const Button1 = styled.button`
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
+  
 
   &:hover {
     font-weight: bold;
@@ -128,7 +131,7 @@ const Title = styled.p`
   font-size: 1.6rem;
   text-align: left;
   margin-left: 5%;
-  font-weight: bold;
+  
 `;
 
 const TB = styled.div`
