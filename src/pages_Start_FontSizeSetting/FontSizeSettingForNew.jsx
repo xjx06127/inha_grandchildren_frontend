@@ -4,6 +4,7 @@ import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -180,6 +181,10 @@ const FontSizeSettingForNew = () => {
     setFontSize(event.target.name);
     console.log(fontSize);
   };
+
+  useEffect(()=>{
+    localStorage.setItem('sound',false);
+  },[])
 
   const go = () => {
     navigate(`/TestForNew`);
