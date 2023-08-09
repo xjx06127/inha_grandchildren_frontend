@@ -419,10 +419,11 @@ const TtsBtn = styled.div`
   border-radius: 100%;
   background: #617143;
   position: fixed;
-  width: 25vw;
-  height: 25vw;
+  width: 100px;
+  height: 100px;
   opacity: 0.8;
-  right: 0%;
+  left: 5%;
+  bottom: 3%;
 `;
 
 const TtsImg = styled.img`
@@ -442,21 +443,33 @@ const FixBox = styled.div`
 
 const ToolTip = styled.img`
   content: url("/speechBubble.svg");
-  width: 90%;
-  height: auto;
+  /* width: 80vw;
+  height: auto; */
   position: relative; /* Add this line */
   top: -70px; /* Adjust this value to move the tooltip up or down */
   z-index: -1;
+  opacity: 0.9;
+  left: -20px; /* 원하는 값으로 조절하세요 */
+  @media (orientation: landscape) {
+    height: 45vh;
+    width: 40vw;
+  }
+  @media (orientation: portrait) {
+    height: auto;
+    width: 80vw;
+  }
 `;
 
 const ToolTipText = styled.p`
   position: absolute;
   font-size: 1.4rem;
   font-weight: bold;
-  text-align: center;
-  top: -55px; /* Adjust this value to position the text as needed */
-  left: 50%;
+  text-align: center; /* 가운데 정렬 */
+  top: -25%;
+  left: 42%;
   transform: translateX(-50%);
+  color: white;
+  width: 250px;
 `;
 
 const TestAppPage = () => {
@@ -469,15 +482,16 @@ const TestAppPage = () => {
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [showToolTip, setShowToolTip] = useState(true);
-  useEffect(() => {
-    const toolTipTimeout = setTimeout(() => {
-      setShowToolTip(false);
-    }, 5000);
 
-    return () => {
-      clearTimeout(toolTipTimeout);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const toolTipTimeout = setTimeout(() => {
+  //     setShowToolTip(false);
+  //   }, 3000);
+
+  //   return () => {
+  //     clearTimeout(toolTipTimeout);
+  //   };
+  // }, []);
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
@@ -487,6 +501,12 @@ const TestAppPage = () => {
       //  setApp5(res.data.level_5);
     });
   }, [like]);
+
+  const tts = () => {
+    const audio = new Audio(App.tts);
+    console.log(audio);
+    audio.play(); // 음성 파일을 재생합니다.
+  };
 
   const handleButtonClick = () => {
     const mobileType = navigator.userAgent.toLowerCase();
@@ -630,10 +650,7 @@ const TestAppPage = () => {
           </Box2>
         </Bcon>
         <FixBox>
-          <ToolTipText>이곳을 클릭하여 어플 설명을 들어보세요.</ToolTipText>
-
-          <ToolTip />
-          <TtsBtn>
+          <TtsBtn onClick={() => tts()}>
             <TtsImg />
           </TtsBtn>
         </FixBox>
