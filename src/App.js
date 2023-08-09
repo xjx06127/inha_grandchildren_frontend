@@ -39,6 +39,7 @@ import HealthCare from "./pages_app_find_test/healthy/HealthCare";
 import Treatment from "./pages_app_find_test/healthy/Treatment";
 import CommunityAppTest from "./pages_app_find_test/community/CommunityAppTest";
 import TestAppPage from "./pages_AppPage/TestAppPage";
+import FindAnalyze from "./pages_analyze/FindAnalyze";
 
 function App() {
   return (
@@ -96,6 +97,10 @@ function App() {
             <Route path="/TreatmentAppsFind" element={<Treatment />} />
 
             <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
+<<<<<<< HEAD
+            <Route path="/FindAnalyze" element={<FindAnalyze />} />
+=======
+>>>>>>> f870d0ebe4d142a6f74ee3680315ca50b9593da8
 
             <Route path="*" element={<NotFound />} />
           </Routes>
