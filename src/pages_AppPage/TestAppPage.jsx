@@ -299,18 +299,20 @@ const TestAppPage = () => {
 
     //안드로이드 기종인 경우
     if (mobileType.indexOf("android") > -1) {
-      //Googleplay스토어에 없는 경우
-      if (AndroidUrl === null) {
-        Swal.fire({
-          icon: "error",
-          title: "잠시만요!",
-          text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
-          confirmButtonText: "다른 어플 보러가기",
-          confirmButtonColor: "#798560",
-        });
-      }
       //Googleplay스토어에 있는 경우
-      return window.open(AndroidUrl);
+      if (AndroidUrl) {
+        return window.open(AndroidUrl);
+      }
+      else
+      //Googleplay스토어에 없는 경우
+      Swal.fire({
+        icon: "error",
+        title: "잠시만요!",
+        text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
+        confirmButtonText: "다른 어플 보러가기",
+        confirmButtonColor: "#798560",
+      });
+      return;
     }
 
     //애플 기종인 경우
@@ -319,22 +321,27 @@ const TestAppPage = () => {
       mobileType.indexOf("ipad") > -1 ||
       mobileType.indexOf("ipod") > -1
     ) {
-      if (iosUrl === null) {
-        Swal.fire({
-          icon: "error",
-          title: "잠시만요!",
-          text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
-          confirmButtonText: "다른 어플 보러가기",
-          confirmButtonColor: "#798560",
-        });
+      if (iosUrl) {
+        window.open(iosUrl);
+        return;
       }
-      return window.open(iosUrl);
+      else
+      Swal.fire({
+        icon: "error",
+        title: "잠시만요!",
+        text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
+        confirmButtonText: "다른 어플 보러가기",
+        confirmButtonColor: "#798560",
+      });
+      return;
     }
+
     //현재 데스크톱인 경우
     else if (isMac) {
       //Mac인경우
       window.open(iosUrl);
-    } else window.open(AndroidUrl); //Mac이 아닌 경우
+    } 
+    else window.open(AndroidUrl); //Mac이 아닌 경우
   };
 
   const handleButtonClick2 = async () => {

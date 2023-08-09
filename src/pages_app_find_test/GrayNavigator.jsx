@@ -104,6 +104,13 @@ const GrayNavigator = () => {
           else if (decodeURI(location.pathname) === decodeURI(`/AppsFindResult/은행`)) {
             speakText("은행과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
         }
+          else if (decodeURI(location.pathname) === decodeURI(`/AppsFindResult/주식`)) {
+          speakText("주식과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
+      }
+          else if (decodeURI(location.pathname) === decodeURI(`/AppsFindResult/간편결제`)) {
+          speakText("간편 결제와 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
+      }
+
         
         //취미
         else if (location.pathname === '/HobbyAppTest1') {
