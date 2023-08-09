@@ -85,15 +85,14 @@ const Highlighter = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 80%);
   border-radius: 3px;
 `;
-
 const Test4 = () => {
   const navigate = useNavigate();
 
   const { OX, OX2, OX3 } = useParams();
 
   const [OX4, setOX4] = useState("");
-
   const [speakMessage, setSpeakMessage] = useState(false);
+  const [speakTimeout, setSpeakTimeout] = useState(null);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -102,26 +101,45 @@ const Test4 = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.8;
       synth.speak(utterance);
+      return utterance;
     };
 
     if (!speakMessage) {
-      speakText("로그인이 어려우신가요?");
-      setSpeakMessage(true);
-    }
-  }, [speakMessage]);
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
 
-  const GoTest5 = (answer) => {
-    if (answer === "네") {
-      setOX4("O");
-    } else if (answer === "아니요") {
-      setOX4("X");
+      const utterance = speakText("로그인이 어려우신가요?");
+      setSpeakMessage(true);
+      setSpeakTimeout(utterance);
+    }
+
+    return () => {
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+    };
+  }, [speakMessage, speakTimeout]);
+
+  const stopSpeaking = () => {
+    if (speakTimeout) {
+      clearTimeout(speakTimeout);
+      window.speechSynthesis.cancel();
     }
   };
 
-  const GoNextPage = () => {
-    if (OX4 !== "") {
-      navigate(`/Test5/${OX}/${OX2}/${OX3}/${OX4}`);
+  const GoTest5 = (answer) => {
+    stopSpeaking();
+
+    if (answer === "O") {
+      setOX4("O");
+    } else if (answer === "X") {
+      setOX4("X");
     }
+
+    navigate(`/Test5/${OX}/${OX2}/${OX3}/${answer}`);
   };
 
   return (
@@ -140,16 +158,16 @@ const Test4 = () => {
           <Question> 어려우신가요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest5("네")}>
+          <Ans onClick={() => GoTest5("O")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest5("아니요")}>
+          <Ans onClick={() => GoTest5("X")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        <NextButton onClick={GoNextPage}>다음</NextButton>
+        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
       </div>
     </>
   );

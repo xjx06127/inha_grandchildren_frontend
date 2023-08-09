@@ -90,6 +90,7 @@ const Test2 = () => {
   const { OX } = useParams();
   const [OX2, setOX2] = useState("");
   const [speakMessage, setSpeakMessage] = useState(false);
+  const [speakTimeout, setSpeakTimeout] = useState(null);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -101,23 +102,41 @@ const Test2 = () => {
     };
 
     if (!speakMessage) {
-      speakText("인터넷 뱅킹을 쓰시나요?");
-      setSpeakMessage(true);
-    }
-  }, [speakMessage]);
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
 
-  const GoTest3 = (answer) => {
-    if (answer === "네") {
-      setOX2("O");
-    } else if (answer === "아니요") {
-      setOX2("X");
+      const utterance = speakText("인터넷 뱅킹을 쓰시나요?");
+      setSpeakMessage(true);
+      setSpeakTimeout(utterance);
+    }
+
+    return () => {
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+    };
+  }, [speakMessage, speakTimeout]);
+
+  const stopSpeaking = () => {
+    if (speakTimeout) {
+      clearTimeout(speakTimeout);
+      window.speechSynthesis.cancel();
     }
   };
 
-  const GoNextPage = () => {
-    if (OX2 !== "") {
-      navigate(`/Test3/${OX}/${OX2}`);
+  const GoTest3 = (answer) => {
+    stopSpeaking();
+
+    if (answer === "O") {
+      setOX2("O");
+    } else if (answer === "X") {
+      setOX2("X");
     }
+
+    navigate(`/Test3/${OX}/${answer}`);
   };
 
   return (
@@ -136,16 +155,16 @@ const Test2 = () => {
           <Question> 쓰시나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest3("네")}>
+          <Ans onClick={() => GoTest3("O")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest3("아니요")}>
+          <Ans onClick={() => GoTest3("X")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        <NextButton onClick={GoNextPage}>다음</NextButton>
+        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
       </div>
     </>
   );

@@ -91,8 +91,8 @@ const Test3 = () => {
   const { OX, OX2 } = useParams();
 
   const [OX3, setOX3] = useState("");
-
   const [speakMessage, setSpeakMessage] = useState(false);
+  const [speakTimeout, setSpeakTimeout] = useState(null);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -101,27 +101,47 @@ const Test3 = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.8;
       synth.speak(utterance);
+      return utterance;
     };
 
     if (!speakMessage) {
-      speakText("어플설치를 세번이상 해보셨나요?");
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+
+      const utterance = speakText("어플설치를 세번이상 해보셨나요?");
       setSpeakMessage(true);
+      setSpeakTimeout(utterance);
     }
-  }, [speakMessage]);
+
+    return () => {
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+    };
+  }, [speakMessage, speakTimeout]);
+
+  const stopSpeaking = () => {
+    if (speakTimeout) {
+      clearTimeout(speakTimeout);
+      window.speechSynthesis.cancel();
+    }
+  };
 
   const GoTest4 = (answer) => {
-    if (answer === "네") {
+    stopSpeaking();
+
+    if (answer === "O") {
       setOX3("O");
-    } else if (answer === "아니요") {
+    } else if (answer === "X") {
       setOX3("X");
     }
+
+    navigate(`/Test4/${OX}/${OX2}/${answer}`);
   };
 
-  const GoNextPage = () => {
-    if (OX3 !== "") {
-      navigate(`/Test4/${OX}/${OX2}/${OX3}`);
-    }
-  };
   return (
     <>
       <TestNavigator />
@@ -138,16 +158,16 @@ const Test3 = () => {
           <Question> 3번이상 해보셨나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest4("네")}>
+          <Ans onClick={() => GoTest4("O")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest4("아니요")}>
+          <Ans onClick={() => GoTest4("X")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        <NextButton onClick={GoNextPage}>다음</NextButton>
+        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
       </div>
     </>
   );

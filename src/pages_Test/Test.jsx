@@ -90,6 +90,7 @@ const Test = () => {
   const navigate = useNavigate();
   const [OX, setOX] = useState("");
   const [speakMessage, setSpeakMessage] = useState(false);
+  const [speakTimeout, setSpeakTimeout] = useState(null);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -98,29 +99,52 @@ const Test = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.8;
       synth.speak(utterance);
+      return utterance;
     };
 
     if (!speakMessage) {
-      speakText("회원가입을 성공해보셨나요?");
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+
+      const utterance = speakText("회원가입을 성공해보셨나요?");
       setSpeakMessage(true);
     }
-  }, [speakMessage]);
+
+    return () => {
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+    };
+  }, [speakMessage, speakTimeout]);
+
+  const stopSpeaking = () => {
+    if (speakTimeout) {
+      clearTimeout(speakTimeout);
+    }
+    window.speechSynthesis.cancel();
+  };
 
   const GoTest2 = (answer) => {
-    if (answer === "네") {
+    stopSpeaking();
+
+    if (answer === "O") {
       setOX("O");
-    } else if (answer === "아니요") {
+    } else if (answer === "X") {
       setOX("X");
     }
-    // navigate(`/Test2/${answer}`);
-  };
 
-  const GoNextPage = () => {
-    // 사용자가 선택한 값이 '네' 또는 '아니요' 인 경우에만 다음 페이지로 넘어가도록 조건을 추가합니다.
-    if (OX === "O" || OX === "X") {
-      navigate(`/Test2/${OX}`);
-    }
+    navigate(`/Test2/${answer}`);
   };
+  // const GoNextPage = () => {
+  //   // 사용자가 선택한 값이 '네' 또는 '아니요' 인 경우에만 다음 페이지로 넘어가도록 조건을 추가합니다.
+  //   if (OX === "O" || OX === "X") {
+  //     navigate(`/Test2/${OX}`);
+  //   }
+  // };
+  console.log(OX);
   return (
     <>
       <TestNavigator />
@@ -137,17 +161,17 @@ const Test = () => {
           <Question> 성공해 보셨나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest2("네")}>
+          <Ans onClick={() => GoTest2("O")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest2("아니요")}>
+          <Ans onClick={() => GoTest2("X")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
 
-        <NextButton onClick={GoNextPage}>다음</NextButton>
+        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
       </div>
     </>
   );

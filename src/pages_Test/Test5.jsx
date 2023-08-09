@@ -92,8 +92,8 @@ const Test5 = () => {
   const { OX, OX2, OX3, OX4 } = useParams();
 
   const [OX5, setOX5] = useState("");
-
   const [speakMessage, setSpeakMessage] = useState(false);
+  const [speakTimeout, setSpeakTimeout] = useState(null);
 
   useEffect(() => {
     const synth = window.speechSynthesis;
@@ -102,26 +102,45 @@ const Test5 = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.8;
       synth.speak(utterance);
+      return utterance;
     };
 
     if (!speakMessage) {
-      speakText("어플 삭제를 해보셨나요?");
-      setSpeakMessage(true);
-    }
-  }, [speakMessage]);
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
 
-  const GoResult = (answer) => {
-    if (answer === "네") {
-      setOX5("O");
-    } else if (answer === "아니요") {
-      setOX5("X");
+      const utterance = speakText("어플 삭제를 해보셨나요?");
+      setSpeakMessage(true);
+      setSpeakTimeout(utterance);
+    }
+
+    return () => {
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+        synth.cancel();
+      }
+    };
+  }, [speakMessage, speakTimeout]);
+
+  const stopSpeaking = () => {
+    if (speakTimeout) {
+      clearTimeout(speakTimeout);
+      window.speechSynthesis.cancel();
     }
   };
 
-  const GoNextPage = () => {
-    if (OX5 !== "") {
-      navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Analyze`);
+  const GoResult = (answer) => {
+    stopSpeaking();
+
+    if (answer === "O") {
+      setOX5("O");
+    } else if (answer === "X") {
+      setOX5("X");
     }
+
+    navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${answer}/Analyze`);
   };
 
   return (
@@ -140,16 +159,16 @@ const Test5 = () => {
           <Question> 해보셨나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoResult("네")}>
+          <Ans onClick={() => GoResult("O")}>
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoResult("아니요")}>
+          <Ans onClick={() => GoResult("X")}>
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        <NextButton onClick={GoNextPage}>다음</NextButton>
+        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
       </div>
     </>
   );
