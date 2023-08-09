@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import ContactUs from "../ContactUs";
+import Swal from "sweetalert2";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -328,6 +329,10 @@ const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
 const WhiteImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
+const HomeIconsAnimation = styled.img`
+
+`;
+
 const Home = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [findClick, setFindClick] = useState(false);
@@ -373,12 +378,6 @@ const Home = () => {
     }, 100);
   };
 
-  const HomeIconsAnimation = styled.img`
-    content: url(${ImageUrls[currentImageIndex]});
-    width: 12%;
-    margin-right: 10%;
-  `;
-
   const ChangeImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % ImageUrls.length);
   };
@@ -407,7 +406,10 @@ const Home = () => {
             </FindText>
           </FindBox> */}
           <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
-            <HomeIconsAnimation />
+            <HomeIconsAnimation 
+              src={ImageUrls[currentImageIndex]}
+              style={{ width: "12%", marginRight: "10%" }}
+            />
             필요한 어플 <br />
             찾아드릴게요
           </FindBox>

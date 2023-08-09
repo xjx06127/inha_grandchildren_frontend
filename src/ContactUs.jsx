@@ -69,7 +69,7 @@ const CopyRightImg = styled.img`
 const CopyRightText = styled.p`
     font-size: 0.8rem;
     white-space: nowrap;
-`
+`   
 
 const InstargramImg = styled.img`
     width: 15%;
