@@ -653,6 +653,13 @@ const TestAppPage = () => {
           <TtsBtn onClick={() => tts()}>
             <TtsImg />
           </TtsBtn>
+          {showToolTip && (
+            <ToolTip>
+              <ToolTipText>
+                Click to listen to the app's description
+              </ToolTipText>
+            </ToolTip>
+          )}
         </FixBox>
       </Desktop>
     </>
