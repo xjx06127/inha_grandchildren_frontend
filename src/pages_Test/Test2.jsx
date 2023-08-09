@@ -7,6 +7,8 @@ import ReactPlayer from "react-player/lazy";
 import Navigator from "../Navigator";
 import TestNavigator from "./TestNavigator";
 import "./Bar.css";
+import { motion } from "framer-motion";
+
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
@@ -25,15 +27,18 @@ const Highlight = styled.div`
   font-size: 1.9rem;
   height: 0%;
 `;
+const DDiv = styled.div`
+  width: 100%;
+  height: 10vh;
+`;
 
 const Ans = styled.button`
   color: #000000;
   width: 75%;
   height: 22vh;
   &:hover {
-    background-color: #df7857;
-    transition: 1.5s;
-    color: white;
+    transition: 0.2s;
+    background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
   background-color: white;
   border: none;
@@ -54,6 +59,12 @@ const Ans = styled.button`
 const Icon = styled.img`
   width: 30%;
   height: 40%;
+`;
+const Icon2 = styled.img`
+  width: 8%;
+  height: 8%;
+  margin-top: 10%;
+  margin-left: 45%;
 `;
 
 const Align = styled.div`
@@ -84,14 +95,24 @@ const Highlighter = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 80%);
   border-radius: 3px;
 `;
-
+const Home = styled.div`
+  color: #5f5f5f;
+  font-size: 1.3rem;
+  margin-bottom: 10%;
+  text-align: center;
+`;
 const Test2 = () => {
   const navigate = useNavigate();
   const { OX } = useParams();
   const [OX2, setOX2] = useState("");
   const [speakMessage, setSpeakMessage] = useState(false);
   const [speakTimeout, setSpeakTimeout] = useState(null);
-
+  const [isBoxClicked, setIsBoxClicked] = useState(false);
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const synth = window.speechSynthesis;
 
@@ -128,6 +149,7 @@ const Test2 = () => {
   };
 
   const GoTest3 = (answer) => {
+    setIsBoxClicked(true);
     stopSpeaking();
 
     if (answer === "O") {
@@ -136,13 +158,47 @@ const Test2 = () => {
       setOX2("X");
     }
 
-    navigate(`/Test3/${OX}/${answer}`);
+    setTimeout(() => {
+      setIsBoxClicked(false);
+      navigate(`/Test3/${OX}/${answer}`);
+    }, 200); // 100ms의 지연시간
   };
+
+  const animateProgressBar = () => {
+    let intervalId;
+    const initialProgress = 20; // 시작 진행률 (60%)
+    const targetProgress = 40; // 목표 진행률 (80%)
+
+    intervalId = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= targetProgress) {
+          clearInterval(intervalId);
+          return targetProgress;
+        }
+        return prevProgress + 1;
+      });
+    }, 10); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
+
+    setProgress(initialProgress); // 시작 진행률 설정
+
+    return () => clearInterval(intervalId);
+  };
+  useEffect(() => {
+    animateProgressBar();
+  }, []); // 컴포넌트가 마운트된 후에 한 번만 실행
 
   return (
     <>
       <TestNavigator />
-      <progress id="progress" value="40" min="0" max="100"></progress>
+      <motion.progress
+        id="progress"
+        value={progress}
+        min="0"
+        max="100"
+        initial={{ width: 0 }}
+        animate={{ width: `${progress}%` }}
+        transition={{ duration: 2 }} // 2초 동안 프로그래스 바가 증가하는 애니메이션
+      ></motion.progress>
       <div>
         <All>
           <PageNum>2/5</PageNum>
@@ -155,16 +211,32 @@ const Test2 = () => {
           <Question> 쓰시나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest3("O")}>
+          <Ans
+            clicked={isBoxClicked}
+            onClick={() => GoTest3("O")}
+            style={{
+              transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
+            }}
+          >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest3("X")}>
+          <Ans
+            clicked={isBoxClicked}
+            onClick={() => GoTest3("X")}
+            style={{
+              transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
+            }}
+          >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
+        <Icon2
+          src="/GoHome.svg"
+          onClick={() => navigate("/Main")} // 아이콘 클릭 시 /Main 경로로 이동
+        />
+        <Home>홈으로</Home>
       </div>
     </>
   );

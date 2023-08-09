@@ -7,6 +7,20 @@ import ReactPlayer from "react-player/lazy";
 import Navigator from "../Navigator";
 import TestNavigator from "./TestNavigator";
 import "./Bar.css";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+const LoadingOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+`;
 
 const All = styled.div`
   padding-top: 11%;
@@ -31,10 +45,10 @@ const Ans = styled.button`
   color: #000000;
   width: 75%;
   height: 22vh;
+
   &:hover {
-    background-color: #df7857;
-    transition: 1.5s;
-    color: white;
+    transition: 0.2s;
+    background-color: ${({ clicked }) => (clicked ? "#EFC5B9" : "#FFFFFF")};
   }
   background-color: white;
   border: none;
@@ -56,18 +70,33 @@ const Icon = styled.img`
   width: 30%;
   height: 40%;
 `;
-
+const Icon2 = styled.img`
+  width: 8%;
+  height: 8%;
+  margin-top: 10%;
+  margin-left: 45%;
+`;
+const Homebutton = styled.button``;
 const Align = styled.div`
   display: flex;
   font-size: 1.6rem;
+  /* margin-bottom: 10%; */
 `;
-
+const DDiv = styled.div`
+  width: 100%;
+  height: 10vh;
+`;
 const PageNum = styled.div`
   color: #df7857;
   font-size: 1.6rem;
   margin-left: 10%;
 `;
-
+const Home = styled.div`
+  color: #5f5f5f;
+  font-size: 1.3rem;
+  margin-bottom: 10%;
+  text-align: center;
+`;
 const NextButton = styled.button`
   width: 60%;
   height: 8vh;
@@ -91,7 +120,22 @@ const Test = () => {
   const [OX, setOX] = useState("");
   const [speakMessage, setSpeakMessage] = useState(false);
   const [speakTimeout, setSpeakTimeout] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
+  const [isBoxClicked, setIsBoxClicked] = useState(false);
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false); // 로딩 화면을 0.2초 후에 비활성화
+    }, 200); // 0.2초
 
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+  useEffect(() => {
+    // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const synth = window.speechSynthesis;
 
@@ -128,27 +172,58 @@ const Test = () => {
   };
 
   const GoTest2 = (answer) => {
+    setIsBoxClicked(true);
     stopSpeaking();
-
+    if (isLoading) return; // 로딩 중에는 버튼 클릭 방지
     if (answer === "O") {
       setOX("O");
     } else if (answer === "X") {
       setOX("X");
     }
-
-    navigate(`/Test2/${answer}`);
+    setTimeout(() => {
+      setIsBoxClicked(false);
+      navigate(`/Test2/${answer}`);
+    }, 200); // 100ms delay
   };
-  // const GoNextPage = () => {
-  //   // 사용자가 선택한 값이 '네' 또는 '아니요' 인 경우에만 다음 페이지로 넘어가도록 조건을 추가합니다.
-  //   if (OX === "O" || OX === "X") {
-  //     navigate(`/Test2/${OX}`);
-  //   }
-  // };
+
   console.log(OX);
+
+  const animateProgressBar = () => {
+    let intervalId;
+    const initialProgress = 0; // 시작 진행률 (60%)
+    const targetProgress = 20; // 목표 진행률 (80%)
+
+    intervalId = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= targetProgress) {
+          clearInterval(intervalId);
+          return targetProgress;
+        }
+        return prevProgress + 1;
+      });
+    }, 10); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
+
+    setProgress(initialProgress); // 시작 진행률 설정
+
+    return () => clearInterval(intervalId);
+  };
+  useEffect(() => {
+    animateProgressBar();
+  }, []); // 컴포넌트가 마운트된 후에 한 번만 실행
+
   return (
     <>
       <TestNavigator />
-      <progress id="progress" value="20" min="0" max="100"></progress>
+      {isLoading}
+      <motion.progress
+        id="progress"
+        value={progress}
+        min="0"
+        max="100"
+        initial={{ width: 0 }}
+        animate={{ width: `${progress}%` }}
+        transition={{ duration: 2 }} // 2초 동안 프로그래스 바가 증가하는 애니메이션
+      ></motion.progress>
       <div>
         <All>
           <PageNum>1/5</PageNum>
@@ -161,17 +236,32 @@ const Test = () => {
           <Question> 성공해 보셨나요?</Question>
         </All>
         <Align>
-          <Ans onClick={() => GoTest2("O")}>
+          <Ans
+            clicked={isBoxClicked}
+            onClick={() => GoTest2("O")}
+            style={{
+              transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
+            }}
+          >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
         </Align>
         <Align>
-          <Ans onClick={() => GoTest2("X")}>
+          <Ans
+            clicked={isBoxClicked}
+            onClick={() => GoTest2("X")}
+            style={{
+              transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
+            }}
+          >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
-        </Align>
-
-        {/* <NextButton onClick={GoNextPage}>다음</NextButton> */}
+        </Align>{" "}
+        <Icon2
+          src="/GoHome.svg"
+          onClick={() => navigate("/Main")} // 아이콘 클릭 시 /Main 경로로 이동
+        />
+        <Home>홈으로</Home>
       </div>
     </>
   );
