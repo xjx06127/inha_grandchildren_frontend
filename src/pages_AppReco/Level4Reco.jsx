@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Navigator from "../Navigator";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import AppPage from "../pages_AppPage/AppPage";
+import NavigatorApp from "./NavigatorApp";
 
 
 const Desktop = styled.div`
@@ -139,13 +139,13 @@ const Level4Reco = () => {
   const handleButtonClick = (id) => {
     setTimeout(() => {
       navigate(`../AppPage/${id}`);
-    }, 300);
+    }, 100);
   };
 
   return (
     <>
       <Desktop>
-        <Navigator />
+        <NavigatorApp />
 
         <Rectangle>
           <CBox>

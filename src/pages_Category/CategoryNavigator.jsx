@@ -9,7 +9,8 @@ const Box = styled.div`
   justify-content: space-between;
   padding-left: 4.8%;
   padding-right: 4.8%;
-  padding-top: 7%;
+  padding-top: 5%;
+  padding-bottom: 3%;
 `;
 
 const BackBox = styled.div`
@@ -25,7 +26,7 @@ const BackImg = styled.img`
 `;
 
 const BackText = styled.p`
-  color: #5f5f5f;
+  color: rgba(95, 95, 95, 1);
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -51,7 +52,7 @@ const SoundImg = styled.img`
 `;
 
 const SoundText = styled.p`
-  color: #5f5f5f;
+  color: rgba(95, 95, 95, 1);
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -64,15 +65,17 @@ const SoundText = styled.p`
   }};
 `;
 
-const AppPageNavigator = () => {
+const CategoryNavigator = () => {
   const navigate = useNavigate();
   const [isBackClicked, setBackClicked] = useState(false);
-  const [isSoundOffClicked, setSoundOffClicked] = useState(false);
+  const [isSoundClicked, setSoundClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const GoToBack = () => {
     setBackClicked(true);
-    navigate(-1);
+    setTimeout(() => {
+      navigate(-1);
+    }, 250);
   };
 
   useEffect(() => {
@@ -81,37 +84,24 @@ const AppPageNavigator = () => {
     }
   }, [isBackClicked]);
 
-  const handleControlSound = () => {
-    setSoundOffClicked(!isSoundOffClicked);
-  };
-
-  // const tts = () => {
-  //     const audio = new Audio(App.tts);
-  //     audio.play(); // 음성 파일을 재생합니다.
-  //   };
+  useEffect(() => {
+    if (isSoundClicked) {
+      setSoundClicked(false);
+    }
+  }, [isSoundClicked]);
 
   return (
     <>
       <Box>
         <BackBox onClick={GoToBack}>
-          <BackImg src="/grayback.svg" />
+          <BackImg src="/TestBack.svg" />
           <BackText clicked={isBackClicked} fS={fontSize}>
             돌아가기
           </BackText>
         </BackBox>
-
-        <SoundBox>
-          <SoundImg
-            src={isSoundOffClicked ? "/soundoff_gray.svg" : "/graysound.svg"}
-            onClick={handleControlSound}
-          />
-          <SoundText fS={fontSize}>
-            {isSoundOffClicked ? "소리 켜기" : "소리 끄기"}
-          </SoundText>
-        </SoundBox>
       </Box>
     </>
   );
 };
 
-export default AppPageNavigator;
+export default CategoryNavigator;
