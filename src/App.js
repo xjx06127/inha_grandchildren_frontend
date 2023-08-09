@@ -60,7 +60,7 @@ function App() {
             <Route path="/Method" element={<App_methods />} />
             <Route
               path="/:OX/:OX2/:OX3/:OX4/:OX5/Result"
-              element={<Result />}
+              element={<Result />}  
             />
             {/* <Route path="/AppPage/:id" element={<AppPage />} /> */}
             <Route path="/AppPage/:id" element={<TestAppPage />} />
@@ -97,7 +97,10 @@ function App() {
             <Route path="/TreatmentAppsFind" element={<Treatment />} />
 
             <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
+<<<<<<< HEAD
             <Route path="/FindAnalyze" element={<FindAnalyze />} />
+=======
+>>>>>>> f870d0ebe4d142a6f74ee3680315ca50b9593da8
 
             <Route path="*" element={<NotFound />} />
           </Routes>

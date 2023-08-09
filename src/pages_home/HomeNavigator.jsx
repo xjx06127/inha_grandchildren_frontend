@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
@@ -61,8 +62,10 @@ const SoundText = styled.p`
 const HomeNavigator = () => {
   const [isSoundOffClicked, setSoundOffClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  const location = useLocation();
 
   useEffect(() => {
+    console.log(isSoundOffClicked);
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance();
 
@@ -74,14 +77,15 @@ const HomeNavigator = () => {
 
     if (isSoundOffClicked) {
       synth.cancel();
-    } else {
+    } else if (location.pathname.toLowerCase() === '/main' || location.pathname === '/Main'){
+      console.log(location.pathname);
       speakText("하단의 버튼을 클릭하여, 원하시는 서비스를 선택해주세요.");
     }
 
     return () => {
       synth.cancel();
     };
-  }, [isSoundOffClicked]);
+  }, [isSoundOffClicked, location.pathname]);
 
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
@@ -107,6 +111,7 @@ const HomeNavigator = () => {
         });
   };
 
+
   return (
     <>
       <Box>
@@ -124,6 +129,5 @@ const HomeNavigator = () => {
     </>
   );
 };
-
 
 export default HomeNavigator;
