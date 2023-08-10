@@ -149,7 +149,7 @@ const Outdoor = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/여행`);
+      navigate(`/FindAnalyze/여행`);
     }, 100);
   };
 
@@ -157,7 +157,7 @@ const Outdoor = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/낚시`);
+      navigate(`/FindAnalyze/낚시`);
     }, 100);
   };
 
@@ -165,7 +165,7 @@ const Outdoor = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/등산`);
+      navigate(`/FindAnalyze/등산`);
     }, 100);
   };
 
