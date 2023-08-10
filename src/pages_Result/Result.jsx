@@ -230,6 +230,7 @@ const Result = () => {
         console.error(error);
       });
   }, [OX, OX2, OX3, OX4, OX5]);
+  window.localStorage.setItem("Level", level);
 
   useEffect(() => {
     let isNew = localStorage.getItem("IsNew");
