@@ -81,6 +81,7 @@ function App() {
             <Route path="/level5" element={<Level5Reco />} />
 
             <Route path="/AppFind" element={<FirstChoosePage />} />
+            <Route path="/FindAnalyze/:appfield" element={<FindAnalyze />} />
             <Route path="/AppsFindResult/:appfield" element={<AppsFind />} />
 
             <Route path="/LivingAppsFind1" element={<LivingAppTest />} />
@@ -97,8 +98,7 @@ function App() {
             <Route path="/TreatmentAppsFind" element={<Treatment />} />
 
             <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
-            <Route path="/FindAnalyze" element={<FindAnalyze />} />
-
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
