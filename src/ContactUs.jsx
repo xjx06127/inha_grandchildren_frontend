@@ -21,13 +21,14 @@ const Row1 = styled.div`
     align-items: center;
     margin-bottom: 3%;
     margin-left: 3%;
+    margin-left: 0.8%;
 `
 
 const Row2 = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 15%;
-    margin-left: 3%;
+    margin-left: 0.8%;
 `
 
 const Row3 = styled.div`

@@ -246,7 +246,7 @@ const Result = () => {
 
     if (comment1 !== "") {
       // 빈 comment 문자열이 아닐 때만 TTS 실행
-      speakText(comment1 + comment2);
+      speakText(comment1 + " " +comment2);
     }
   }, [comment1]);
 
@@ -277,7 +277,7 @@ const Result = () => {
         >
 {
   correctNum1 === 5 ? "홈으로 🏠" :
-  "이제 손주야에서 디지털 레벨을 테스트해보세요! 👍"
+  "이제 손주야에서 디지털 레벨을 올려보세요! 👍"
 }
         </Btn>
       </VertiBox>
