@@ -98,7 +98,6 @@ function App() {
             <Route path="/TreatmentAppsFind" element={<Treatment />} />
 
             <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
-            <Route path="/FindAnalyze" element={<FindAnalyze />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
