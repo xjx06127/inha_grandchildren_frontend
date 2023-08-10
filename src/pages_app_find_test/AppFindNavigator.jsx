@@ -66,7 +66,7 @@ const SoundText = styled.p`
   }};
 `;
 
-const GrayNavigator = () => {
+const AppFindNavigator = () => {
     const navigate = useNavigate();
     const [isSoundOffClicked,setSoundOffClicked] = useState(false);
     const location = useLocation();
@@ -196,8 +196,8 @@ const GrayNavigator = () => {
         else if (decodeURI(location.pathname) === decodeURI('/AppsFindResult/진료')) {
           speakText("진료와 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
         }
-        else if (decodeURI(location.pathname) === decodeURI('/AppsFindResult/운동')) {
-          speakText("운동과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
+        else if (decodeURI(location.pathname) === decodeURI('/AppsFindResult/약')) {
+          speakText("약과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
         }
 
         return () => {
@@ -206,8 +206,8 @@ const GrayNavigator = () => {
       }, [isSoundOffClicked,location.pathname]);
  
 
-  const GoToBack = () => {
-    navigate(-1);
+  const GoToHome = () => {
+    navigate('/Main');
   };
 
     //소리 버튼 클릭 시, alert창 생성
@@ -240,9 +240,9 @@ const GrayNavigator = () => {
     return (
        <>
        <Box>
-       <BackBox onClick={GoToBack} >
-        <BackImg src="/grayback.svg"/>
-        <BackText fS={fontSize}>돌아가기</BackText>
+       <BackBox onClick={GoToHome} >
+        <BackImg src="/GoHome.svg"/>
+        <BackText fS={fontSize}>처음으로</BackText>
        </BackBox>
 
        <SoundBox>
@@ -260,4 +260,4 @@ const GrayNavigator = () => {
  
 };
 
-export default GrayNavigator;
+export default AppFindNavigator;

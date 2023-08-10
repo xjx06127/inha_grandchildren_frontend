@@ -86,12 +86,11 @@ const ProgressCircle = styled.circle`
   animation: ${progressAnimation} 5s linear forwards;
 `;
 const Highlighter = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #f1d152 80%);
-  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #ffd05d 50%);
 `;
 
 const FindAnalyze = ({ percentage }) => {
-  const { OX, OX2, OX3, OX4, OX5 } = useParams();
+  const {appfield} = useParams();
 
   const [offset, setOffset] = useState(0);
 
@@ -102,7 +101,7 @@ const FindAnalyze = ({ percentage }) => {
     setOffset(progressOffset);
 
     const timer = setTimeout(() => {
-      navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Result`); //여기야 !!!!!!!!!!!!!
+      navigate(`/AppsFindResult/${appfield}`); //여기야 !!!!!!!!!!!!!
     }, 3000);
 
     // 컴포넌트가 unmount 될 때 타이머 해제
@@ -111,7 +110,7 @@ const FindAnalyze = ({ percentage }) => {
   return (
     <div>
       <Text>
-        <Highlighter>""</Highlighter>에 관한
+        <Highlighter>{appfield}</Highlighter>에 관한
         <br />
         적절한 어플을
         <br />

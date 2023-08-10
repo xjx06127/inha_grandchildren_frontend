@@ -150,13 +150,13 @@ const CommunityAppTest = () => {
 
   const GoToConnectPage = () => {
     setTimeout(() => {
-      navigate(`/AppsFindResult/연락`);
+      navigate(`/FindAnalyze/연락`);
     }, 100);
   };
 
   const GoToSharePage = () => {
     setTimeout(() => {
-      navigate(`/AppsFindResult/일상공유`);
+      navigate(`/FindAnalyze/일상공유`);
     }, 100);
   };
 
