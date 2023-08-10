@@ -24,6 +24,7 @@ const Comment1 = styled.p`
   }};
   margin-left: 10%;
   margin-top: 17%;
+  font-family: 'MICE';
 `;
 
 const Highlight = styled.span`
@@ -49,6 +50,7 @@ const VertiBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'MICE';
 `;
 
 const LevelComment = styled.p`
@@ -119,6 +121,7 @@ const Btn = styled.button`
 
   margin-top: 15%;
   margin-bottom: 20%;
+  font-family: 'MICE';
 `;
 
 const Result = () => {
@@ -177,7 +180,7 @@ const Result = () => {
   const [comment1, setComment1] = useState("");
   const [comment2, setComment2] = useState("");
   const { fontSize, setFontSize } = useContext(FontSizeContext);
-  const [correctNum1,setCorrectNum1] = useState(0);
+  const [correctNum1, setCorrectNum1] = useState(0);
 
   useEffect(() => {
     axios
@@ -227,10 +230,11 @@ const Result = () => {
         console.error(error);
       });
   }, [OX, OX2, OX3, OX4, OX5]);
+  window.localStorage.setItem("Level", level);
 
   useEffect(() => {
     let isNew = localStorage.getItem("IsNew");
-    if (isNew == null) {
+    if (isNew == "true") {
       localStorage.setItem("IsNew", false);
     }
   }, []);
