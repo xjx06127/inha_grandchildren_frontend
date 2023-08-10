@@ -20,6 +20,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
+  font-family: 'MICE';
 `;
 const Highlight = styled.div`
   color: #df7857;
@@ -56,6 +57,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  font-family: 'MICE';
 `;
 
 const Icon = styled.img`
@@ -99,6 +101,7 @@ const Home = styled.div`
   font-size: 1.3rem;
   margin-bottom: 10%;
   text-align: center;
+  font-family: 'MICE';
 `;
 const Test3 = () => {
   const navigate = useNavigate();

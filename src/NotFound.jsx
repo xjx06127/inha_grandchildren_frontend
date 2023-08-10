@@ -11,6 +11,7 @@ const Con = styled.div`
   margin-right: 10%;
   margin-top: 30%;
   text-align: center;
+  font-family: 'MICE';
 `;
 
 const NextButton = styled.button`
@@ -25,6 +26,7 @@ const NextButton = styled.button`
   font-weight: bold;
   border: none;
   text-align: center;
+  font-family: 'MICE';
 `;
 
 const Img = styled.img`

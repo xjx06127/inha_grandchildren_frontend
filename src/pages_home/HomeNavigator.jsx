@@ -12,6 +12,7 @@ const Box = styled.div`
   padding-left: 4.8%;
   padding-right: 4.8%;
   padding-top: 7%;
+  font-family: 'MICE';
 `;
 const SoundBox = styled.div`
   display: flex;

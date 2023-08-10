@@ -12,6 +12,7 @@ const MainText = styled.h1`
   text-align: center;
   margin-top: 7%;
   margin-bottom:10%;
+  font-family: 'MICE';
 `;
 
 const Highlight = styled.span`
@@ -36,6 +37,7 @@ const AppBox = styled.div`
   margin-left:5%;
   margin-right:5%;
   padding: 5%;
+  font-family: 'MICE';
 `;
 
 const AppImg = styled.img`
@@ -80,6 +82,7 @@ const  NameWrapper = styled.div`
   flex-direction: row;
   align-items:center;
   margin-left:5%;
+  font-family: 'MICE';
 `;
 const Name = styled.p`
   font-size: 1.3rem;

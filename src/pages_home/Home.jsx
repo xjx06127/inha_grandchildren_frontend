@@ -17,6 +17,7 @@ const BackGround = styled.div`
   @media (orientation: landscape) {
     height: 120vh;
   }
+    font-family: 'MICE';
 `;
 
 const MainText = styled.h1`
@@ -329,9 +330,7 @@ const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
 const WhiteImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
-const HomeIconsAnimation = styled.img`
-
-`;
+const HomeIconsAnimation = styled.img``;
 
 const Home = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
@@ -386,15 +385,17 @@ const Home = () => {
     const interval = setInterval(ChangeImage, 2800);
     return () => clearInterval(interval);
   }, []);
-
+  const Level = window.localStorage.getItem("Level");
   return (
     <>
       <BackGround>
         <HomeNavigator />
         <MainText fS={fontSize}>
+          현재 레벨: {Level}
+          <br />
           원하시는 서비스를
           <br />
-          선택해주세요
+          선택해주세요:
         </MainText>
 
         <Box>
@@ -406,7 +407,7 @@ const Home = () => {
             </FindText>
           </FindBox> */}
           <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
-            <HomeIconsAnimation 
+            <HomeIconsAnimation
               src={ImageUrls[currentImageIndex]}
               style={{ width: "12%", marginRight: "10%" }}
             />

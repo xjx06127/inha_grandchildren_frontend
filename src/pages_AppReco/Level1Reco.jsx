@@ -10,6 +10,7 @@ const Desktop = styled.div`
   flex-direction: column;
   background-color: #617143;
   width: 100%;
+  font-family: 'MICE';
 `;
 
 const Rectangle = styled.div`
@@ -99,7 +100,7 @@ const Button = styled.button`
   font-size: 1.3rem;
   color: #617143;
   text-decoration: underline;
-  
+  font-family: 'MICE';
   &:hover{
     font-weight: bold;
    }
