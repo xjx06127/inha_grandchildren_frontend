@@ -57,7 +57,7 @@ const FindBox = styled.div`
   border-radius: 110px;
   margin: 5%;
   margin-top: 4%;
-  margin-bottom: 4%;
+  margin-bottom: 6%;
   padding: 1.8%;
   padding-left: 6%;
   padding-right: 6%;
@@ -147,7 +147,7 @@ const JustLookText = styled.p`
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
-        return "1.6rem";
+        return "1.4rem";
       case "large":
         return "1.9rem";
       case "veryLarge":
@@ -198,7 +198,7 @@ const TestText = styled.p`
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
-        return "1.6rem";
+        return "1.4rem";
       case "large":
         return "1.9rem";
       case "veryLarge":
@@ -206,8 +206,23 @@ const TestText = styled.p`
     }
   }};
   font-weight: bold;
-  margin-bottom: 10%;
+  margin-bottom: 1.6%;
 `;
+
+const LevelText = styled.p`
+  color: #DF7857;
+  font-weight: bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.25rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+`
 
 const TestIcon = styled.img`
   width: 50%;
@@ -340,6 +355,7 @@ const Home = () => {
   const [testClick, setTestClick] = useState(false);
   const [fontClick, setFontClick] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [LevelImg, setLevelImg] = useState("");
   const navigate = useNavigate();
 
   const GoToFindPage = () => {
@@ -385,17 +401,28 @@ const Home = () => {
     const interval = setInterval(ChangeImage, 2800);
     return () => clearInterval(interval);
   }, []);
-  const Level = window.localStorage.getItem("Level");
+
+  
+    const Level = window.localStorage.getItem("Level");
+    useEffect(() => {
+      setLevelImg(
+        Level === "씨앗" ? "/Seed.svg" :
+        Level === "새싹" ? "/Saessack.svg" :
+        Level === "꽃" ? "/Flower.svg" :
+        Level === "열매" ? "/Yeolmae.svg" :
+        Level === "나무" ? "/Tree.svg" : null
+      );
+    }, [Level]);
+
+
   return (
     <>
       <BackGround>
         <HomeNavigator />
         <MainText fS={fontSize}>
-          현재 레벨: {Level}
-          <br />
           원하시는 서비스를
           <br />
-          선택해주세요:
+          선택해주세요
         </MainText>
 
         <Box>
@@ -411,7 +438,7 @@ const Home = () => {
               src={ImageUrls[currentImageIndex]}
               style={{ width: "12%", marginRight: "10%" }}
             />
-            필요한 어플 <br />
+            필요한 어플을 <br />
             찾아드릴게요
           </FindBox>
 
@@ -420,7 +447,7 @@ const Home = () => {
               <JustLookText fS={fontSize}>
                 분야별
                 <br />
-                어플
+                어플을
                 <br />
                 보여드릴게요
               </JustLookText>
@@ -429,13 +456,17 @@ const Home = () => {
 
             <TestBox onClick={GoToTestPage} active={testClick}>
               <TestText fS={fontSize}>
-                디지털
+                테스트를
                 <br />
-                레벨
-                <br />
-                알려드릴게요
+                다시 하고
+                <br/>
+                싶으신가요?
               </TestText>
-              <TestIcon src="test.svg" />
+              <LevelText fS={fontSize}>
+              현재 : {Level}
+              </LevelText>
+              <TestIcon src={LevelImg}>
+              </TestIcon>
             </TestBox>
           </Row1>
 
