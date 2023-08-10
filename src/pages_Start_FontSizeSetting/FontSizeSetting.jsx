@@ -15,6 +15,7 @@ const BackGround = styled.div`
   @media (orientation: landscape) {
     height: 120vh;
   }
+  font-family: 'MICE';
 `;
 
 const P = styled.p`
@@ -126,6 +127,7 @@ const CancelP = styled.p`
   line-height: 25px;
 
   color: #000000;
+  font-family: 'MICE';
 `;
 
 const SetBtn = styled.button`
@@ -144,6 +146,7 @@ const SetP = styled.p`
   line-height: 25px;
   /* identical to box height */
   color: #ffffff;
+  font-family: 'MICE';
 `;
 
 const Input = styled.input`

@@ -24,6 +24,7 @@ const Comment1 = styled.p`
   }};
   margin-left: 10%;
   margin-top: 17%;
+  font-family: 'MICE';
 `;
 
 const Highlight = styled.span`
@@ -49,6 +50,7 @@ const VertiBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'MICE';
 `;
 
 const LevelComment = styled.p`
@@ -119,6 +121,7 @@ const Btn = styled.button`
 
   margin-top: 15%;
   margin-bottom: 20%;
+  font-family: 'MICE';
 `;
 
 const Result = () => {

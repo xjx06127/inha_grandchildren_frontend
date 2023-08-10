@@ -17,6 +17,7 @@ const BackGround = styled.div`
   @media (orientation: landscape) {
     height: 120vh;
   }
+    font-family: 'MICE';
 `;
 
 const MainText = styled.h1`

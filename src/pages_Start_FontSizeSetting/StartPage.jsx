@@ -28,6 +28,7 @@ const Div = styled.div`
     padding: 0%;
     padding-top: 4%;
   }
+  font-family: 'MICE';
 `;
 
 const MainButton = styled.div`

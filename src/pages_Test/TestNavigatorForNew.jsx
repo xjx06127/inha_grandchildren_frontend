@@ -10,6 +10,7 @@ const Box = styled.div`
   padding-right: 4.8%;
   padding-top: 5%;
   padding-bottom: 3%;
+  font-family: 'MICE';
 `;
 
 const BackBox = styled.div`

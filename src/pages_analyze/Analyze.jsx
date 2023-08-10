@@ -36,6 +36,7 @@ const Text = styled.h1`
   text-align: center;
   padding-top: 25%;
   margin-bottom: 30%;
+  font-family: 'MICE';
 `;
 
 // const Container = styled.div`
