@@ -230,11 +230,6 @@ const TestForNew = () => {
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        <Icon2
-          src="/GoHome.svg"
-          onClick={() => navigate("/Main")} // 아이콘 클릭 시 /Main 경로로 이동
-        />
-        <Home>홈으로</Home>
       </div>
     </motion.div>
   );

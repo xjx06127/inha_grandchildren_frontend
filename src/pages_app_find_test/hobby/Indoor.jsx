@@ -146,7 +146,7 @@ const Indoor = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/독서`);
+      navigate(`/FindAnalyze/독서`);
     }, 100);
   };
 
@@ -154,7 +154,7 @@ const Indoor = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/운동`);
+      navigate(`/FindAnalyze/운동`);
     }, 100);
   };
 

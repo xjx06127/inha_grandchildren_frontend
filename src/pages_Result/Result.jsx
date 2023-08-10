@@ -180,7 +180,7 @@ const Result = () => {
   const [comment1, setComment1] = useState("");
   const [comment2, setComment2] = useState("");
   const { fontSize, setFontSize } = useContext(FontSizeContext);
-  const [correctNum1,setCorrectNum1] = useState(0);
+  const [correctNum1, setCorrectNum1] = useState(0);
 
   useEffect(() => {
     axios
@@ -233,7 +233,7 @@ const Result = () => {
 
   useEffect(() => {
     let isNew = localStorage.getItem("IsNew");
-    if (isNew == null) {
+    if (isNew == "true") {
       localStorage.setItem("IsNew", false);
     }
   }, []);
@@ -278,10 +278,9 @@ const Result = () => {
             navigate(`/Main`);
           }}
         >
-{
-  correctNum1 === 5 ? "홈으로 🏠" :
-  "이제 손주야에서 디지털 레벨을 테스트해보세요! 👍"
-}
+          {correctNum1 === 5
+            ? "홈으로 🏠"
+            : "이제 손주야에서 디지털 레벨을 테스트해보세요! 👍"}
         </Btn>
       </VertiBox>
     </>

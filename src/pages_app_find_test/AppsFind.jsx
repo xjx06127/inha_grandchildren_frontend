@@ -6,6 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import AppFindNavigator from "./AppFindNavigator";
 
 const MainText = styled.h1`
   text-align: center;
@@ -124,7 +125,7 @@ const AppsFind = () => {
 
   return (
     <>
-      <GrayNavigator />
+      <AppFindNavigator />
       <MainText>
         <Highlight>적절한 어플</Highlight>을<br />
         찾아봤어요!

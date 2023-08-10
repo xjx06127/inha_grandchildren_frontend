@@ -151,7 +151,7 @@ const Finance = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/은행`);
+      navigate(`/FindAnalyze/은행`);
     }, 100);
   };
 
@@ -159,7 +159,7 @@ const Finance = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/주식`);
+      navigate(`/FindAnalyze/주식`);
     }, 100);
   };
 
@@ -167,7 +167,7 @@ const Finance = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/간편결제`);
+      navigate(`/FindAnalyze/간편결제`);
     }, 100);
   };
 

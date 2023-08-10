@@ -162,7 +162,7 @@ const Delivery = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/배달 음식`);
+      navigate(`/FindAnalyze/배달 음식`);
     }, 100);
   };
 
@@ -170,7 +170,7 @@ const Delivery = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/식료품 및 생활용품 배송`);
+      navigate(`/FindAnalyze/식료품 및 생활용품 배송`);
     }, 100);
   };
 

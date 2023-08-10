@@ -146,7 +146,7 @@ const Treatment = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/진료`);
+      navigate(`/FindAnalyze/진료`);
     }, 100);
   };
 
@@ -154,7 +154,7 @@ const Treatment = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/약`);
+      navigate(`/FindAnalyze/약`);
     }, 100);
   };
 

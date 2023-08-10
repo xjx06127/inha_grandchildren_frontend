@@ -5,38 +5,40 @@ import { useNavigate } from "react-router";
 
 const Img = styled.img`
   content: url(startPageLogo.png);
-  width: 50vw;
+  width: 47vw;
   height: 30vh;
+  height: auto;
   @media (orientation: landscape) {
     height: 50vh;
     width: 18vw;
     padding: 2%;
   }
-
 `;
 
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  padding-top: 60%;
+  padding-top:20vh;
+  min-height: 100vh;
+  overflow: hidden; /* Hide any overflow to prevent scrolling */
   @media (orientation: landscape) {
     height: 100vh;
     padding: 0%;
-    padding-top: 0.4%;
+    padding-top: 4%;
   }
   font-family: 'MICE';
 `;
 
 const MainButton = styled.div`
-  border: 2px solid #FF8057;
+  border: 2px solid #ff8057;
   border-radius: 7px;
-  color: #DF7857;
+  color: #df7857;
   padding: 4%;
   font-weight: bold;
-  margin-top: 15%;
-  margin-bottom: 50%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   @media (orientation: landscape) {
     margin-top: 0.1%;
     padding: 1%;
@@ -45,32 +47,30 @@ const MainButton = styled.div`
 
   &:hover {
     transition: 0.1s;
-    color: #FFBCA7;
+    color: #ffbca7;
   }
-`
+`;
 
 const CopyBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-`
+`;
 
 const CopyRightImg = styled.img`
   margin-right: 2%;
-
-`
+`;
 
 const CopyRightText = styled.p`
   font-size: 0.8rem;
   font-weight: lighter;
-  color: #DF7857;
+  color: #df7857;
   white-space: nowrap;
-`
+`;
 
 const StartPage = () => {
   const navigate = useNavigate();
-  const [isNew,SetIsNew] = useState("");
+  const [isNew, SetIsNew] = useState("");
 
   useEffect(() => {
     SetIsNew(localStorage.getItem("IsNew"));
@@ -82,16 +82,14 @@ const StartPage = () => {
     }
   }, []);
 
-
   const GoToMain = () => {
-    if (isNew == null) {
+    if (isNew == null || isNew == "true") {
+      localStorage.setItem("IsNew", true);
       navigate(`/FontSizeSettingForNew`);
-      
     } else {
       navigate(`/Main`);
     }
   };
-
 
   return (
     <motion.div
@@ -103,13 +101,12 @@ const StartPage = () => {
         <Img />
         <MainButton onClick={GoToMain}>시작하기</MainButton>
         <CopyBox>
-            <CopyRightImg src="/copyright_color.svg"/>
-            <CopyRightText>INHA_GRANDCHILDRENS. All Rights Reserved.</CopyRightText>
+          <CopyRightImg src="/copyright_color.svg" />
+          <CopyRightText>
+            INHA_GRANDCHILDRENS. All Rights Reserved.
+          </CopyRightText>
         </CopyBox>
-
-
       </Div>
-     
     </motion.div>
   );
 };

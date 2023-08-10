@@ -150,7 +150,7 @@ const HealthCare = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/식단`);
+      navigate(`/FindAnalyze/식단`);
     }, 100);
   };
 
@@ -158,7 +158,7 @@ const HealthCare = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/수면`);
+      navigate(`/FindAnalyze/수면`);
     }, 100);
   };
 
@@ -166,7 +166,7 @@ const HealthCare = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/운동`);
+      navigate(`/FindAnalyze/운동`);
     }, 100);
   };
 
