@@ -123,6 +123,8 @@ const Test = () => {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
+  const isNew = localStorage.getItem("IsNew");
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false); // 로딩 화면을 0.2초 후에 비활성화
@@ -257,11 +259,15 @@ const Test = () => {
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>{" "}
-        <Icon2
-          src="/GoHome.svg"
-          onClick={() => navigate("/Main")} // 아이콘 클릭 시 /Main 경로로 이동
-        />
-        <Home>홈으로</Home>
+        {isNew == "false" && ( // Check if IsNew is set to false
+          <>
+            <Icon2
+              src="/GoHome.svg"
+              onClick={() => navigate("/Main")} // Icon2 click handler
+            />
+            <Home>홈으로</Home>
+          </>
+        )}
       </div>
     </>
   );

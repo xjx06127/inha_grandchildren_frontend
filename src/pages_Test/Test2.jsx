@@ -109,6 +109,7 @@ const Test2 = () => {
   const [speakTimeout, setSpeakTimeout] = useState(null);
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const [progress, setProgress] = useState(0);
+  const isNew = localStorage.getItem("IsNew");
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
@@ -232,11 +233,15 @@ const Test2 = () => {
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        <Icon2
-          src="/GoHome.svg"
-          onClick={() => navigate("/Main")} // 아이콘 클릭 시 /Main 경로로 이동
-        />
-        <Home>홈으로</Home>
+        {isNew == "false" && ( // Check if IsNew is set to false
+          <>
+            <Icon2
+              src="/GoHome.svg"
+              onClick={() => navigate("/Main")} // Icon2 click handler
+            />
+            <Home>홈으로</Home>
+          </>
+        )}
       </div>
     </>
   );

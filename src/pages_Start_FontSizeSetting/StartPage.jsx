@@ -31,9 +31,9 @@ const Div = styled.div`
 `;
 
 const MainButton = styled.div`
-  border: 2px solid #FF8057;
+  border: 2px solid #ff8057;
   border-radius: 7px;
-  color: #DF7857;
+  color: #df7857;
   padding: 4%;
   font-weight: bold;
   margin-top: 5vh;
@@ -46,32 +46,30 @@ const MainButton = styled.div`
 
   &:hover {
     transition: 0.1s;
-    color: #FFBCA7;
+    color: #ffbca7;
   }
-`
+`;
 
 const CopyBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-`
+`;
 
 const CopyRightImg = styled.img`
   margin-right: 2%;
-
-`
+`;
 
 const CopyRightText = styled.p`
   font-size: 0.8rem;
   font-weight: lighter;
-  color: #DF7857;
+  color: #df7857;
   white-space: nowrap;
-`
+`;
 
 const StartPage = () => {
   const navigate = useNavigate();
-  const [isNew,SetIsNew] = useState("");
+  const [isNew, SetIsNew] = useState("");
 
   useEffect(() => {
     SetIsNew(localStorage.getItem("IsNew"));
@@ -83,16 +81,14 @@ const StartPage = () => {
     }
   }, []);
 
-
   const GoToMain = () => {
-    if (isNew == null) {
+    if (isNew == null || isNew == "true") {
+      localStorage.setItem("IsNew", true);
       navigate(`/FontSizeSettingForNew`);
-      
     } else {
       navigate(`/Main`);
     }
   };
-
 
   return (
     <motion.div
@@ -104,13 +100,12 @@ const StartPage = () => {
         <Img />
         <MainButton onClick={GoToMain}>시작하기</MainButton>
         <CopyBox>
-            <CopyRightImg src="/copyright_color.svg"/>
-            <CopyRightText>INHA_GRANDCHILDRENS. All Rights Reserved.</CopyRightText>
+          <CopyRightImg src="/copyright_color.svg" />
+          <CopyRightText>
+            INHA_GRANDCHILDRENS. All Rights Reserved.
+          </CopyRightText>
         </CopyBox>
-
-
       </Div>
-     
     </motion.div>
   );
 };
