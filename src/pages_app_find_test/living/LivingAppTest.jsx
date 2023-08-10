@@ -169,7 +169,7 @@ const LivingAppTest = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/날씨`);
+      navigate(`/FindAnalyze/날씨`);
     }, 100);
   };
 
@@ -193,7 +193,7 @@ const LivingAppTest = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/일정 관리`);
+      navigate(`/FindAnalyze/일정 관리`);
     }, 100);
   };
 

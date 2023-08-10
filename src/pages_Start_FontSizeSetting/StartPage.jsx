@@ -5,8 +5,9 @@ import { useNavigate } from "react-router";
 
 const Img = styled.img`
   content: url(startPageLogo.png);
-  width: 50vw;
+  width: 47vw;
   height: 30vh;
+  height: auto;
   @media (orientation: landscape) {
     height: 50vh;
     width: 18vw;
@@ -17,13 +18,15 @@ const Img = styled.img`
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  padding-top: 60%;
+  padding-top:20vh;
+  min-height: 100vh;
+  overflow: hidden; /* Hide any overflow to prevent scrolling */
   @media (orientation: landscape) {
     height: 100vh;
     padding: 0%;
-    padding-top: 0.4%;
+    padding-top: 4%;
   }
 `;
 
@@ -33,8 +36,8 @@ const MainButton = styled.div`
   color: #df7857;
   padding: 4%;
   font-weight: bold;
-  margin-top: 15%;
-  margin-bottom: 50%;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   @media (orientation: landscape) {
     margin-top: 0.1%;
     padding: 1%;

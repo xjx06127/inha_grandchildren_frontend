@@ -157,7 +157,7 @@ const SearchLoad = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/지도`);
+      navigate(`/FindAnalyze/지도`);
     }, 100);
   };
 
@@ -165,7 +165,7 @@ const SearchLoad = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/지하철`);
+      navigate(`/FindAnalyze/지하철`);
     }, 100);
   };
 
@@ -173,7 +173,7 @@ const SearchLoad = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/버스`);
+      navigate(`/FindAnalyze/버스`);
     }, 100);
   };
 
@@ -181,7 +181,7 @@ const SearchLoad = () => {
     setIsBoxClicked(true);
     setTimeout(() => {
       setIsBoxClicked(false);
-      navigate(`/AppsFindResult/택시`);
+      navigate(`/FindAnalyze/택시`);
     }, 100);
   };
 
