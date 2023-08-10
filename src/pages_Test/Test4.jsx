@@ -230,7 +230,7 @@ const Test4 = () => {
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
-        {isNew == "true" && ( // Check if IsNew is set to false
+        {isNew == "false" && ( // Check if IsNew is set to false
           <>
             <Icon2
               src="/GoHome.svg"

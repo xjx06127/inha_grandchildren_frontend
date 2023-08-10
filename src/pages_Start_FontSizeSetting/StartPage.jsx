@@ -79,8 +79,8 @@ const StartPage = () => {
   }, []);
 
   const GoToMain = () => {
-    if (isNew == null || isNew == "false") {
-      localStorage.setItem("IsNew", false);
+    if (isNew == null || isNew == "true") {
+      localStorage.setItem("IsNew", true);
       navigate(`/FontSizeSettingForNew`);
     } else {
       navigate(`/Main`);

@@ -230,8 +230,8 @@ const Result = () => {
 
   useEffect(() => {
     let isNew = localStorage.getItem("IsNew");
-    if (isNew == "false") {
-      localStorage.setItem("IsNew", true);
+    if (isNew == "true") {
+      localStorage.setItem("IsNew", false);
     }
   }, []);
 
