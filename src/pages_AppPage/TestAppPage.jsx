@@ -441,35 +441,30 @@ const FixBox = styled.div`
   right: 5%;
 `;
 
-const ToolTip = styled.img`
-  content: url("/speechBubble.svg");
-  /* width: 80vw;
-  height: auto; */
-  position: relative; /* Add this line */
-  top: -70px; /* Adjust this value to move the tooltip up or down */
-  z-index: -1;
-  opacity: 0.9;
-  left: -20px; /* 원하는 값으로 조절하세요 */
-  @media (orientation: landscape) {
-    height: 45vh;
-    width: 40vw;
-  }
-  @media (orientation: portrait) {
-    height: auto;
-    width: 80vw;
-  }
-`;
+// const ToolTip = styled.img`
+//   content: url("/speechBubble.svg");
+//   /* width: 80vw;
+//   height: auto; */
+//   position: relative; /* Add this line */
+//   top: -70px; /* Adjust this value to move the tooltip up or down */
+//   z-index: -1;
+//   opacity: 0.9;
+//   left: -20px; /* 원하는 값으로 조절하세요 */
+//   @media (orientation: landscape) {
+//     height: 45vh;
+//     width: 40vw;
+//   }
+//   @media (orientation: portrait) {
+//     height: auto;
+//     width: 80vw;
+//   }
+// `;
 
 const ToolTipText = styled.p`
-  position: absolute;
   font-size: 1.4rem;
   font-weight: bold;
-  text-align: center; /* 가운데 정렬 */
-  top: -25%;
-  left: 42%;
-  transform: translateX(-50%);
+  text-align: center;
   color: white;
-  width: 250px;
 `;
 
 const TestAppPage = () => {
