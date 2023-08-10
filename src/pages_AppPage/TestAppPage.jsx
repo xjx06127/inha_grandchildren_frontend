@@ -20,6 +20,7 @@ const Desktop = styled.div`
   background-color: #ffffff;
   width: 100%;
   margin-bottom: 10%;
+  font-family: 'MICE';
 `;
 
 const Ccon = styled.div`
@@ -206,6 +207,7 @@ const Button = styled.button`
   padding: 2%;
   color: #ffffff;
   margin-bottom: 10%;
+  font-family: 'MICE';
 
   &:hover {
     font-weight: bold;
@@ -329,6 +331,7 @@ const Button2 = styled.button`
         return "2.2rem";
     }
   }};
+  font-family: 'MICE';
   &:hover {
     font-weight: bold;
   }

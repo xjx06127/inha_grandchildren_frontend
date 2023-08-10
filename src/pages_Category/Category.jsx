@@ -12,11 +12,12 @@ const Desktop = styled.div`
   background-color: #ffffff;
   width: 100%;
   padding-bottom:10%;
+  font-family: 'MICE';
 `;
 
 const Text = styled.p`
- font-family:'DO';
   font-size: 1.9rem;
+  font-weight:bold;
 `;
 
 const Highlight = styled.span`
@@ -28,8 +29,8 @@ const Tbutton = styled.button`
   border: none;
   font-size: 1.4rem;
   color: #535353;
- margin-right:14%;
-
+  margin-right:14%;
+  font-family: 'MICE';
 
   &:hover {
     font-weight: bold;
@@ -54,6 +55,7 @@ const NameWrapper = styled.div`
 `;
 const Name = styled.p`
   font-size: 1.3rem;
+
 `;
 
 const Number = styled.p`
@@ -89,7 +91,7 @@ const Button = styled.button`
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-
+  font-family: 'MICE';
 
   &:hover {
     font-weight: bold;
@@ -116,7 +118,7 @@ const Button1 = styled.button`
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  
+    font-family: 'MICE';
 
   &:hover {
     font-weight: bold;

@@ -15,6 +15,7 @@ const BackGround = styled.div`
   }
   height: 100%;
   margin: 0;
+  font-family: 'MICE';
 `;
 
 const MidBox = styled.div`

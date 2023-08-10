@@ -7,6 +7,7 @@ const Background = styled.div`
     padding: 5%;
     padding-top: 7%;
     padding-bottom: 10%;
+    font-family: 'MICE';
 `
 
 const Text = styled.p`
