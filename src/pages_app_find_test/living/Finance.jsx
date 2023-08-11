@@ -4,6 +4,7 @@ import GrayNavigator from "../GrayNavigator";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../../pages_font_context/FontSizeProvider";
+import UnderNavigator from "../UnderNavigator";
 
 const BackGround = styled.div`
   background-color: #f7f7f7;
@@ -199,6 +200,7 @@ const Finance = () => {
             </Box>
           </Row2>
         </SelectBox>
+        <UnderNavigator/>
       </BackGround>
     </>
   );
