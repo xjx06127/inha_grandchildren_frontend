@@ -14,6 +14,7 @@ import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
+  font-family: "MICE";
 `;
 const Question = styled.div`
   color: #000000;

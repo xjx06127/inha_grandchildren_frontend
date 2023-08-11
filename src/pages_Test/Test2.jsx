@@ -14,6 +14,7 @@ import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
+  font-family: "MICE";
 `;
 const Question = styled.div`
   color: #000000;
@@ -39,6 +40,7 @@ const Highlight = styled.div`
   font-weight: bolder;
   /* font-size: 1.9rem; */
   height: 0%;
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -295,9 +297,9 @@ const Test2 = () => {
       <Circle progress={progress}></Circle>
       <div>
         <All>
-          <PageNum  fS={fontSize}>2/5</PageNum>
-          <Question  fS={fontSize}>
-            <Highlight  fS={fontSize}>
+          <PageNum fS={fontSize}>2/5</PageNum>
+          <Question fS={fontSize}>
+            <Highlight fS={fontSize}>
               <Highlighter>인터넷 뱅킹</Highlighter>
             </Highlight>
             을

@@ -13,6 +13,7 @@ import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
+  font-family: "MICE";
 `;
 const Home = styled.div`
   color: #5f5f5f;
@@ -55,6 +56,7 @@ const Highlight = styled.div`
   font-weight: bolder;
   /* font-size: 1.9rem; */
   height: 0%;
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
