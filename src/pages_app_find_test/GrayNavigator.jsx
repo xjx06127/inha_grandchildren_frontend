@@ -144,7 +144,7 @@ const GrayNavigator = () => {
         
         //취미
         else if (location.pathname === '/HobbyAppTest1') {
-            speakText("내부 혹은 외부 중에서 활동하시는 걸 좋아하시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("내부 혹은 외부 중, 어디에서 활동하시는 걸 좋아하시나요? 아래의 버튼 중 하나를 선택해주세요.");
         }
         else if (location.pathname === '/IndoorAppsFind') {
             speakText("어떤 활동을 좋아하시나요? 아래의 버튼 중 하나를 선택해주세요.");
