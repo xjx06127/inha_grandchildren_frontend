@@ -78,7 +78,7 @@ const Icon2 = styled.img`
   margin-top: 10%;
   margin-left: 45%;
 `;
-const Homebutton = styled.button``;
+
 const Align = styled.div`
   display: flex;
   font-size: 1.6rem;
@@ -100,24 +100,22 @@ const Home = styled.div`
   text-align: center;
   font-family: "MICE";
 `;
-const NextButton = styled.button`
-  width: 60%;
-  height: 8vh;
-  margin-left: 20%;
-  background: linear-gradient(97.27deg, #df7857 0%, #e7ab9a 100%);
-  border-radius: 5px;
-  color: white;
-  font-size: 1.6rem;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  font-weight: bold;
-  border: none;
-`;
+
 const Highlighter = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 80%);
   border-radius: 3px;
 `;
-
+const Circle = styled.div`
+  position: absolute;
+  left: ${({ progress }) => `${progress}%`};
+  transform: translateX(-50%);
+  width: 4vw;
+  height: 4vw;
+  background-color: #ca5430;
+  border-radius: 50%;
+  border: #e3927a;
+  z-index: 1;
+`;
 const Test = () => {
   const navigate = useNavigate();
   const [OX, setOX] = useState("");
@@ -127,6 +125,18 @@ const Test = () => {
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const isNew = localStorage.getItem("IsNew");
+
+  useEffect(() => {
+    // ... (TTS 설정과 관련된 기존 코드)
+
+    return () => {
+      // 컴포넌트가 언마운트될 때 TTS와 타이머 정리
+      stopSpeaking();
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+      }
+    };
+  }, [speakTimeout]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -195,8 +205,8 @@ const Test = () => {
 
   const animateProgressBar = () => {
     let intervalId;
-    const initialProgress = 0; // 시작 진행률 (60%)
-    const targetProgress = 20; // 목표 진행률 (80%)
+    const initialProgress = 0;
+    const targetProgress = 20;
 
     intervalId = setInterval(() => {
       setProgress((prevProgress) => {
@@ -206,7 +216,7 @@ const Test = () => {
         }
         return prevProgress + 1;
       });
-    }, 10); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
+    }, 20); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
 
     setProgress(initialProgress); // 시작 진행률 설정
 
@@ -215,7 +225,7 @@ const Test = () => {
   useEffect(() => {
     animateProgressBar();
   }, []); // 컴포넌트가 마운트된 후에 한 번만 실행
-
+  console.log(isNew);
   return (
     <>
       <TestNavigator />
@@ -229,6 +239,7 @@ const Test = () => {
         animate={{ width: `${progress}%` }}
         transition={{ duration: 2 }} // 2초 동안 프로그래스 바가 증가하는 애니메이션
       ></motion.progress>
+      <Circle progress={progress}></Circle>
       <div>
         <All>
           <PageNum>1/5</PageNum>
@@ -262,7 +273,7 @@ const Test = () => {
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>{" "}
-        {isNew == "false" && ( // Check if IsNew is set to false
+        {isNew === "false" && ( // Check if IsNew is set to false
           <>
             <Icon2
               src="/GoHome.svg"
