@@ -25,7 +25,7 @@ const LoadingOverlay = styled.div`
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 const Question = styled.div`
   color: #000000;
@@ -65,7 +65,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Icon = styled.img`
@@ -98,7 +98,7 @@ const Home = styled.div`
   font-size: 1.3rem;
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 const NextButton = styled.button`
   width: 60%;

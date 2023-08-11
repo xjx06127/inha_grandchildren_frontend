@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { GlobalStyle } from "./GlobalStyle";
 import { Link } from "react-router-dom";
 import App_methods from "./pages_app_methods/App_methods";
@@ -106,12 +105,6 @@ function App() {
         </BrowserRouter>
       </AnimatePresence>
     </FontSizeProvider>
-=======
-
-function App() {
-  return (
-    <h1>프론트 화이팅!</h1>
->>>>>>> d847917415e681f412571d9e73d5c97f15e5570a
   );
 }
 
