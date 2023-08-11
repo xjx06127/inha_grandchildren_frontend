@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const Box = styled.div`
   display: flex;
@@ -44,7 +46,17 @@ const SoundImg = styled.img`
 
 const SoundText = styled.p`
   color: rgba(95, 95, 95, 1);
-  font-size: 1rem;
+  /* font-size: 1rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1rem";
+      case "large":
+        return "1.3rem";
+      case "veryLarge":
+        return "1.6rem";
+    }
+  }};
 `;
 
 const handleControlSound = () => {
@@ -53,9 +65,11 @@ const handleControlSound = () => {
 
 const TestNavigatorNew = () => {
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
   const initialSoundOffValue = localStorage.getItem('soundOff') === 'true';
   const [isSoundOffClicked, setSoundClicked] = useState(initialSoundOffValue);
  
+
 
   useEffect(() => {
     if (isSoundOffClicked) {
@@ -68,7 +82,7 @@ const TestNavigatorNew = () => {
       <Box>
         <SoundBox>
           <SoundImg src="/TestNext.svg" onClick={handleControlSound}/>
-          <SoundText>소리끄기</SoundText>
+          <SoundText fS={fontSize}>소리끄기</SoundText>
         </SoundBox>
       </Box>
     </>

@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import AppPage from "../pages_AppPage/AppPage";
 import NavigatorApp from "./NavigatorApp";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const Desktop = styled.div`
   display: flex;
@@ -29,9 +31,19 @@ const Img = styled.img`
 `;
 const Text = styled.p`
   font-weight: bold;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   margin-top:2%;
   margin-bottom:10%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 
 const Ibox = styled.div`
@@ -68,11 +80,31 @@ const  NameWrapper = styled.div`
   margin-left:5%;
 `;
 const Name = styled.p`
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 const Number = styled.p`
-font-size: 1.3rem;
+/* font-size: 1.3rem; */
 font-weight: bold;
+font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 const Icon1 = styled.img`
   width: 6%;
@@ -97,20 +129,40 @@ const Button = styled.button`
   border: none;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   color: #617143;
   text-decoration: underline;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
   &:hover{
     font-weight: bold;
    }
 `;
 
 const Title = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   text-align: left;
   margin-left: 5%;
   font-weight: bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 `;
 
 const TB = styled.div`
@@ -127,6 +179,7 @@ const AppImage = styled.img`
 const Level1Reco = () => {
   const [App, setApp] = useState([]);
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
@@ -151,7 +204,7 @@ const Level1Reco = () => {
             <Ibox>
               <Img src="/Level1.svg"></Img>
             </Ibox>
-            <Text>씨앗용 어플</Text>
+            <Text fS={fontSize}>씨앗용 어플</Text>
           </CBox>
 
        
@@ -159,14 +212,14 @@ const Level1Reco = () => {
                <div>
                <NameWrapper>
                <Icon1 src="/Rec.svg"></Icon1>
-               <Number>{element.like}명</Number><Name>이 추천해요!</Name>
+               <Number fS={fontSize}>{element.like}명</Number><Name fS={fontSize}>이 추천해요!</Name>
                </NameWrapper>
               <Box key={index}>
                 <AppImage src={element.image} />
                 <TB>
-                <Title>{element.name}</Title>
+                <Title fS={fontSize}>{element.name}</Title>
                 <Button
-                  onClick={() => handleButtonClick(element.id)}
+                  onClick={() => handleButtonClick(element.id)} fS={fontSize}
                 >
                   자세히
                 </Button>

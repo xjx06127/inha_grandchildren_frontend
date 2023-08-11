@@ -3,6 +3,8 @@ import styled from "styled-components";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { FontSizeContext } from "./pages_font_context/FontSizeProvider";
 
 const Con = styled.div`
   font-weight: 100px;
@@ -20,13 +22,23 @@ const NextButton = styled.button`
   background: linear-gradient(97.27deg, #df7857 0%, #e7ab9a 100%);
   border-radius: 5px;
   color: white;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   margin-top: 10%;
   margin-bottom: 10%;
   font-weight: bold;
   border: none;
   text-align: center;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 `;
 
 const Img = styled.img`
@@ -45,6 +57,8 @@ const NotFound = () => {
   };
 
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+
   return (
     <Con>
       <h1>
@@ -54,7 +68,7 @@ const NotFound = () => {
       <Div>
         <Img />
       </Div>
-      <NextButton onClick={Back}>이전으로</NextButton>
+      <NextButton onClick={Back}  fS={fontSize} >이전으로</NextButton>
     </Con>
   );
 };
