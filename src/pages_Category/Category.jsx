@@ -4,6 +4,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import AppPage from "../pages_AppPage/AppPage";
 import CategoryNavigator from "./CategoryNavigator";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const Desktop = styled.div`
   display: flex;
@@ -16,8 +18,18 @@ const Desktop = styled.div`
 `;
 
 const Text = styled.p`
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   font-weight:bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 
 const Highlight = styled.span`
@@ -27,10 +39,20 @@ const Highlight = styled.span`
 const Tbutton = styled.button`
   background-color: transparent;
   border: none;
-  font-size: 1.4rem;
+  /* font-size: 1.3rem; */
   color: #535353;
   margin-right:14%;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.7rem";
+    }
+  }};
 
   &:hover {
     font-weight: bold;
@@ -54,13 +76,32 @@ const NameWrapper = styled.div`
   margin-left: 5%;
 `;
 const Name = styled.p`
-  font-size: 1.3rem;
-
+  /* font-size: 1.3rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 
 const Number = styled.p`
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   font-weight: bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 
 const Icon1 = styled.img`
@@ -86,12 +127,22 @@ const Box = styled.div`
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   color: #617143;
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 
   &:hover {
     font-weight: bold;
@@ -111,7 +162,7 @@ const Box1 = styled.div`
 `;
 
 const Button1 = styled.button`
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   background-color: transparent;
   border: none;
   color: #617143;
@@ -119,6 +170,16 @@ const Button1 = styled.button`
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
     font-family: 'MICE';
+    font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 
   &:hover {
     font-weight: bold;
@@ -130,10 +191,20 @@ const AppImage = styled.img`
   border-radius: 5px;
 `;
 const Title = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   text-align: left;
   margin-left: 5%;
-  
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+
 `;
 
 const TB = styled.div`
@@ -144,6 +215,7 @@ const TB = styled.div`
 
 const Category = () => {
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
 
   const handleButtonClick2 = () => {
     setTimeout(() => {
@@ -212,11 +284,11 @@ const Category = () => {
       <CategoryNavigator />
       <Desktop>
         <T1>
-          <Text>
+          <Text fS={fontSize}>
             <Highlight>손주</Highlight>의 추천{" "}
           </Text>
-          <Tbutton
-            onClick= {handleButtonClick2}
+          <Tbutton 
+            onClick= {handleButtonClick2} fS={fontSize}
           > [더보기]
           </Tbutton>
         </T1>
@@ -225,17 +297,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{recoApp[0].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{recoApp[0].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box>
               <AppImage src={recoApp[0].image}></AppImage>
               <TB>
-                <Title>{recoApp[0].name}</Title>
+                <Title fS={fontSize}>{recoApp[0].name}</Title>
                 <Button
                   onClick={() => {
-                    handleButtonClick1(recoApp[0].id);
-                  }}
+                    handleButtonClick1(recoApp[0].id); 
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button>
@@ -248,17 +320,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{recoApp[1].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{recoApp[1].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box1>
               <AppImage src={recoApp[1].image}></AppImage>
               <TB>
-                <Title>{recoApp[1].name}</Title>
+                <Title fS={fontSize}>{recoApp[1].name}</Title>
                 <Button1
                   onClick={() => {
                     handleButtonClick1(recoApp[1].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button1>
@@ -268,11 +340,11 @@ const Category = () => {
         )}
 
         <T1>
-          <Text>
+          <Text fS={fontSize}>
             <Highlight>씨앗용</Highlight> 어플
           </Text>
           <Tbutton
-          onClick= {handleButtonClick3}
+          onClick= {handleButtonClick3} fS={fontSize}
           >[더보기]
           </Tbutton>
         </T1>
@@ -281,17 +353,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app1[0].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app1[0].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box>
               <AppImage src={app1[0].image}></AppImage>
               <TB>
-                <Title>{app1[0].name}</Title>
+                <Title fS={fontSize}>{app1[0].name}</Title>
                 <Button
                   onClick={() => {
                     handleButtonClick1(app1[0].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button>
@@ -303,17 +375,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app1[1].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app1[1].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box1>
               <AppImage src={app1[1].image}></AppImage>
               <TB>
-                <Title>{app1[1].name}</Title>
+                <Title fS={fontSize}>{app1[1].name}</Title>
                 <Button1
                   onClick={() => {
                     handleButtonClick1(app1[1].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button1>
@@ -323,12 +395,12 @@ const Category = () => {
         )}
 
         <T1>
-          <Text>
+          <Text fS={fontSize}>
             <Highlight>새싹용</Highlight> 어플
           </Text>
 
           <Tbutton
-           onClick= {handleButtonClick4}
+           onClick= {handleButtonClick4} fS={fontSize}
           >[더보기]
           </Tbutton>
         </T1>
@@ -337,17 +409,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app2[0].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app2[0].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box>
               <AppImage src={app2[0].image}></AppImage>
               <TB>
-                <Title>{app2[0].name}</Title>
+                <Title fS={fontSize}>{app2[0].name}</Title>
                 <Button
                   onClick={() => {
                     handleButtonClick1(app2[0].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button>
@@ -360,17 +432,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app2[1].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app2[1].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box1>
               <AppImage src={app2[1].image}></AppImage>{" "}
               <TB>
-                <Title>{app2[1].name}</Title>
+                <Title fS={fontSize}>{app2[1].name}</Title>
                 <Button1
                   onClick={() => {
                     handleButtonClick1(app2[1].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button1>
@@ -380,11 +452,11 @@ const Category = () => {
         )}
 
         <T1>
-          <Text>
+          <Text fS={fontSize}>
             <Highlight>꽃용</Highlight> 어플
           </Text>
           <Tbutton
-            onClick= {handleButtonClick5}
+            onClick= {handleButtonClick5} fS={fontSize}
           >[더보기]
           </Tbutton>
         </T1>
@@ -393,17 +465,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app3[0].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app3[0].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box>
               <AppImage src={app3[0].image}></AppImage>
               <TB>
-                <Title>{app3[0].name}</Title>
+                <Title fS={fontSize}>{app3[0].name}</Title>
                 <Button
                   onClick={() => {
                     handleButtonClick1(app3[0].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button>
@@ -416,17 +488,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app3[1].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app3[1].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box1>
               <AppImage src={app3[1].image}></AppImage>
               <TB>
-                <Title>{app3[1].name}</Title>
+                <Title fS={fontSize}>{app3[1].name}</Title>
                 <Button1
                   onClick={() => {
                     handleButtonClick1(app3[1].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button1>
@@ -436,11 +508,11 @@ const Category = () => {
         )}
 
         <T1>
-          <Text>
+          <Text fS={fontSize}>
             <Highlight>열매용</Highlight> 어플
           </Text>
           <Tbutton
-              onClick= {handleButtonClick6}
+              onClick= {handleButtonClick6} fS={fontSize}
           >[더보기]
           </Tbutton>
         </T1>
@@ -449,17 +521,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app4[0].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app4[0].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box>
               <AppImage src={app4[0].image}></AppImage>
               <TB>
-                <Title>{app4[0].name}</Title>
+                <Title fS={fontSize}>{app4[0].name}</Title>
                 <Button
                   onClick={() => {
                     handleButtonClick1(app4[0].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button>
@@ -472,17 +544,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app4[1].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app4[1].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box1>
               <AppImage src={app4[1].image}></AppImage>
               <TB>
-                <Title>{app4[1].name}</Title>
+                <Title fS={fontSize}>{app4[1].name}</Title>
                 <Button1
                   onClick={() => {
                     handleButtonClick1(app4[1].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button1>
@@ -492,11 +564,11 @@ const Category = () => {
         )}
 
         <T1>
-          <Text>
+          <Text fS={fontSize}>
             <Highlight>나무용</Highlight> 어플
           </Text>
           <Tbutton
-             onClick= {handleButtonClick7}
+             onClick= {handleButtonClick7} fS={fontSize}
           >[더보기]
           </Tbutton>
         </T1>
@@ -504,17 +576,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app5[0].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app5[0].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box>
               <AppImage src={app5[0].image}></AppImage>
               <TB>
-                <Title>{app5[0].name}</Title>
+                <Title fS={fontSize}>{app5[0].name}</Title>
                 <Button
                   onClick={() => {
                     handleButtonClick1(app5[0].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button>
@@ -527,17 +599,17 @@ const Category = () => {
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
-              <Number>{app5[1].like}명</Number>
-              <Name>이 추천해요!</Name>
+              <Number fS={fontSize}>{app5[1].like}명</Number>
+              <Name fS={fontSize}>이 추천해요!</Name>
             </NameWrapper>
             <Box1>
               <AppImage src={app5[1].image}></AppImage>
               <TB>
-                <Title>{app5[1].name}</Title>
+                <Title fS={fontSize}>{app5[1].name}</Title>
                 <Button1
                   onClick={() => {
                     handleButtonClick1(app5[1].id);
-                  }}
+                  }} fS={fontSize}
                 >
                   자세히
                 </Button1>

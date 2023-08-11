@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/lazy";
 import BackNavigator from "../BackNavigator";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -23,14 +25,35 @@ const Text = styled.h1`
   margin-left: 10%;
   padding-top: 2%;
   margin-bottom: 10%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 
 const Title = styled.div`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   color: black;
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 5%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+
 `;
 
 const Videobox = styled.div`
@@ -45,12 +68,13 @@ const Icon = styled.img`
 `;
 
 const App_methods = () => {
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
   return (
     <>
       <BackGround>
         <BackNavigator />
         <Icon src="/videoIcon.svg"></Icon>
-        <Text>
+        <Text fS={fontSize}>
           직접 동영상으로
           <br />
           알려드릴게요🐥
@@ -66,7 +90,7 @@ const App_methods = () => {
             loop={true}
           />
         </Videobox>
-        <Title>'손주야~'사용영상 </Title>
+        <Title fS={fontSize}>'손주야~'사용영상 </Title>
         <Videobox>
           <ReactPlayer
             url="video2.mp4"
@@ -78,7 +102,7 @@ const App_methods = () => {
             loop={true}
           />
         </Videobox>
-        <Title>삭제는 이렇게 해요 </Title>
+        <Title fS={fontSize}>삭제는 이렇게 해요 </Title>
         <Videobox>
           <ReactPlayer
             url="video3.mp4"
@@ -90,7 +114,7 @@ const App_methods = () => {
             loop={true}
           />
         </Videobox>
-        <Title>친구에게도 알려주고 싶으실 땐요,</Title>
+        <Title fS={fontSize}>친구에게도 알려주고 싶으실 땐요,</Title>
       </BackGround>
     </>
   );

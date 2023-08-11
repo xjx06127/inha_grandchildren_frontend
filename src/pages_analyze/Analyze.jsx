@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const RotateAnimation = keyframes`
   from {
@@ -37,6 +39,19 @@ const Text = styled.h1`
   padding-top: 25%;
   margin-bottom: 30%;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
+
+
+
 `;
 
 // const Container = styled.div`
@@ -109,9 +124,11 @@ const Analyze = ({ percentage }) => {
     // 컴포넌트가 unmount 될 때 타이머 해제
     return () => clearTimeout(timer);
   }, [percentage, navigate]);
+
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
   return (
     <div>
-      <Text>
+      <Text fS={fontSize}>
         <Highlighter>디지털 레벨</Highlighter>을
         <br />
         분석중 입니다.

@@ -8,6 +8,8 @@ import Navigator from "../Navigator";
 import TestNavigator from "./TestNavigator";
 import "./Bar.css";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 const DDiv = styled.div`
   width: 100%;
   height: 10vh;
@@ -19,17 +21,37 @@ const All = styled.div`
 const Question = styled.div`
   color: #000000;
   margin-left: 10%;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   display: flex;
   flex-direction: row;
   text-align: left;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 const Highlight = styled.div`
   color: #df7857;
   font-weight: bolder;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   height: 0%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 const Icon2 = styled.img`
   width: 8%;
@@ -39,10 +61,21 @@ const Icon2 = styled.img`
 `;
 const Home = styled.div`
   color: #5f5f5f;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
+
 `;
 const Ans = styled.button`
   color: #000000;
@@ -62,11 +95,21 @@ const Ans = styled.button`
   margin-left: 12.5%;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 
 const Icon = styled.img`
@@ -81,8 +124,18 @@ const Align = styled.div`
 
 const PageNum = styled.div`
   color: #df7857;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   margin-left: 10%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 `;
 
 const NextButton = styled.button`
@@ -92,11 +145,21 @@ const NextButton = styled.button`
   background: linear-gradient(97.27deg, #df7857 0%, #e7ab9a 100%);
   border-radius: 5px;
   color: white;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   margin-top: 10%;
   margin-bottom: 10%;
   font-weight: bold;
   border: none;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 `;
 const Highlighter = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 80%);
@@ -105,6 +168,7 @@ const Highlighter = styled.span`
 
 const Test5 = () => {
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const { OX, OX2, OX3, OX4 } = useParams();
 
@@ -205,14 +269,14 @@ const Test5 = () => {
       ></motion.progress>
       <div>
         <All>
-          <PageNum>5/5</PageNum>
-          <Question>
+          <PageNum fS={fontSize}>5/5</PageNum>
+          <Question fS={fontSize}>
             <Highlight>
-              <Highlighter>어플 삭제</Highlighter>
+              <Highlighter fS={fontSize}>어플 삭제</Highlighter>
             </Highlight>
             를
           </Question>{" "}
-          <Question> 해보셨나요?</Question>
+          <Question fS={fontSize}> 해보셨나요?</Question>
         </All>
         <Align>
           <Ans
@@ -220,7 +284,7 @@ const Test5 = () => {
             onClick={() => GoResult("O")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}
+            }} fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -231,7 +295,7 @@ const Test5 = () => {
             onClick={() => GoResult("X")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}
+            }} fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
@@ -242,7 +306,7 @@ const Test5 = () => {
               src="/GoHome.svg"
               onClick={() => navigate("/Main")} // Icon2 click handler
             />
-            <Home>홈으로</Home>
+            <Home fS={fontSize}>홈으로</Home>
           </>
         )}
       </div>
