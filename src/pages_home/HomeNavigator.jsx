@@ -61,7 +61,9 @@ const SoundText = styled.p`
 `;
 
 const HomeNavigator = () => {
-  const [isSoundOffClicked, setSoundOffClicked] = useState(false);
+  //초기에 localStorage에 저장된 soundOff key값을 가져온다.
+  const initialSoundOffValue = localStorage.getItem('soundOff') === 'true'; // 문자열을 불리언으로 변환
+  const [isSoundOffClicked, setSoundOffClicked] = useState(initialSoundOffValue);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const location = useLocation();
 
@@ -88,8 +90,11 @@ const HomeNavigator = () => {
     };
   }, [isSoundOffClicked, location.pathname]);
 
+  //소리버튼 클릭 시, 현재와 반대로 설정.
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
+    localStorage.setItem('soundOff',!isSoundOffClicked);
+
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
@@ -101,6 +106,7 @@ const HomeNavigator = () => {
         toast.addEventListener("mouseleave", Swal.resumeTimer);
       },
     });
+
     isSoundOffClicked === true
       ? Toast.fire({
           icon: "success",
@@ -109,7 +115,7 @@ const HomeNavigator = () => {
       : Toast.fire({
           icon: "success",
           title: "음성 지원 소리를 껐습니다.",
-        });
+        }); 
   };
 
 

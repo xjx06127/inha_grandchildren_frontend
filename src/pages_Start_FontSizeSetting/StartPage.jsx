@@ -20,8 +20,7 @@ const Div = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding-top:20vh;
-  min-height: 100vh;
+  padding-top:22vh;
   overflow: hidden; /* Hide any overflow to prevent scrolling */
   @media (orientation: landscape) {
     height: 100vh;
@@ -38,7 +37,7 @@ const MainButton = styled.div`
   padding: 4%;
   font-weight: bold;
   margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin-bottom: 7vh;
   @media (orientation: landscape) {
     margin-top: 0.1%;
     padding: 1%;

@@ -183,8 +183,9 @@ const FontSizeSettingForNew = () => {
     console.log(fontSize);
   };
 
+  //기본 tts 설정값 : 자동재생 (버튼클릭 시, 소리끄기)
   useEffect(()=>{
-    localStorage.setItem('sound',false);
+    localStorage.setItem('soundOff',false);
   },[])
 
   const go = () => {

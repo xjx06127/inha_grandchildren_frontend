@@ -68,7 +68,8 @@ const SoundText = styled.p`
 
 const AppFindNavigator = () => {
     const navigate = useNavigate();
-    const [isSoundOffClicked,setSoundOffClicked] = useState(false);
+    const initialSoundOffValue = localStorage.getItem('soundOff') === 'true';
+    const [isSoundOffClicked,setSoundOffClicked] = useState(initialSoundOffValue);
     const location = useLocation();
     const { fontSize, setFontSize } = useContext(FontSizeContext);
 
@@ -213,6 +214,7 @@ const AppFindNavigator = () => {
     //소리 버튼 클릭 시, alert창 생성
     const handleControlSound = () => {
         setSoundOffClicked(!isSoundOffClicked);
+        localStorage.setItem('soundOff',!isSoundOffClicked);
 
         const Toast = Swal.mixin({
             toast: true,
