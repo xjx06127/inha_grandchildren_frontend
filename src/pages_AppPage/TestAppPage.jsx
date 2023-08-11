@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import AppPageNavigator from "./AppPageNavigator";
 import Swal from "sweetalert2";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import "./Arrow.css";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -309,8 +310,8 @@ const B2text2 = styled.p`
 `;
 
 const Icon = styled.img`
-  width: 35%;
-  height: 35%;
+  width: 25%;
+  height: 25%;
 `;
 const Button2 = styled.button`
   background: linear-gradient(45deg, #617143, #9da582);
@@ -422,8 +423,8 @@ const TtsBtn = styled.div`
   border-radius: 100%;
   background: #617143;
   position: fixed;
-  width: 100px;
-  height: 100px;
+  width: 20vw;
+  height: 20vw;
   opacity: 0.8;
   left: 5%;
   bottom: 3%;
@@ -431,7 +432,7 @@ const TtsBtn = styled.div`
 
 const TtsImg = styled.img`
   content: url("/sound.svg");
-  width: 50%; /* Adjust the size of the image as needed */
+  width: 35%; /* Adjust the size of the image as needed */
   height: auto;
 `;
 
@@ -446,14 +447,14 @@ const FixBox = styled.div`
 
 const LeftBottomBalloon = styled.div`
   position: fixed; /* 수정된 부분 */
-  bottom: 20%; /* 수정된 부분 */
+  bottom: 17%; /* 수정된 부분 */
   left: 10%; /* 수정된 부분 */
-  background-color: #e0e0e0;
+  background-color: #d1cccc;
   border-radius: 8px;
   padding: 20px;
   width: 70vw;
   font-size: 1.6rem;
-  color: #333;
+  color: #b3baa9;
   &:before {
     content: "";
     position: absolute;
@@ -611,7 +612,7 @@ const TestAppPage = () => {
       Swal.fire({
         icon: "error",
         title: "잠시만요!",
-        text: "중복 추천은 불가해요.",
+        text: "중복 추천은 불가해요.😥",
         showConfirmButton: false,
         timer: 3000,
       });
@@ -674,10 +675,15 @@ const TestAppPage = () => {
         </Bcon>
         <FixBox>
           {showToolTip && (
-            <LeftBottomBalloon>
+            // <LeftBottomBalloon>
+            //   이곳을 클릭하여
+            //   <br /> 어플 설명을 들어보세요!
+            // </LeftBottomBalloon>
+            <div class="arrow_box">
               이곳을 클릭하여
-              <br /> 어플 설명을 들어보세요.
-            </LeftBottomBalloon>
+              <br />
+              어플 설명을 들어보세요!🔉
+            </div>
           )}
           <TtsBtn onClick={() => tts()}>
             <TtsImg />
