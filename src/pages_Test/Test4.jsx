@@ -117,7 +117,17 @@ const Align = styled.div`
   display: flex;
   font-size: 1.6rem;
 `;
-
+const Circle = styled.div`
+  position: absolute;
+  left: ${({ progress }) => `${progress}%`};
+  transform: translateX(-50%);
+  width: 4vw;
+  height: 4vw;
+  background-color: #ca5430;
+  border-radius: 50%;
+  border: #e3927a;
+  z-index: 1;
+`;
 const PageNum = styled.div`
   color: #df7857;
   /* font-size: 1.6rem; */
@@ -175,6 +185,7 @@ const Test4 = () => {
   const [speakTimeout, setSpeakTimeout] = useState(null);
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
@@ -241,7 +252,7 @@ const Test4 = () => {
         }
         return prevProgress + 1;
       });
-    }, 10); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
+    }, 20); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
 
     setProgress(initialProgress); // 시작 진행률 설정
 
@@ -263,6 +274,7 @@ const Test4 = () => {
         animate={{ width: `${progress}%` }}
         transition={{ duration: 2 }} // 2초 동안 프로그래스 바가 증가하는 애니메이션
       ></motion.progress>
+      <Circle progress={progress}></Circle>
       <div>
         <All>
           <PageNum  fS={fontSize}>4/5</PageNum>
@@ -303,6 +315,12 @@ const Test4 = () => {
               onClick={() => navigate("/Main")} // Icon2 click handler
             />
             <Home  fS={fontSize}>홈으로</Home>
+          </>
+        )}
+        {isNew === "true" && (
+          <>
+            {/* 여기서 원하는 만큼 여백을 추가할 수 있습니다 */}
+            <div style={{ marginBottom: "20%" }}></div>
           </>
         )}
       </div>

@@ -17,7 +17,7 @@ const BackGround = styled.div`
   @media (orientation: landscape) {
     height: 120vh;
   }
-    font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const MainText = styled.h1`
@@ -210,7 +210,7 @@ const TestText = styled.p`
 `;
 
 const LevelText = styled.p`
-  color: #DF7857;
+  color: #df7857;
   font-weight: bold;
   font-size: ${(props) => {
     switch (props.fS) {
@@ -222,7 +222,7 @@ const LevelText = styled.p`
         return "2.2rem";
     }
   }};
-`
+`;
 
 const TestIcon = styled.img`
   width: 50%;
@@ -343,8 +343,6 @@ const FontText = styled.p`
 
 const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
-const WhiteImageUrls = ["/findicon.svg", "/questionIcon.svg"];
-
 const HomeIconsAnimation = styled.img``;
 
 const Home = () => {
@@ -402,18 +400,22 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  
-    const Level = window.localStorage.getItem("Level");
-    useEffect(() => {
-      setLevelImg(
-        Level === "씨앗" ? "/Seed.svg" :
-        Level === "새싹" ? "/Saessack.svg" :
-        Level === "꽃" ? "/Flower.svg" :
-        Level === "열매" ? "/Yeolmae.svg" :
-        Level === "나무" ? "/Tree.svg" : null
-      );
-    }, [Level]);
-
+  const Level = window.localStorage.getItem("Level");
+  useEffect(() => {
+    setLevelImg(
+      Level === "씨앗"
+        ? "/Seed.svg"
+        : Level === "새싹"
+        ? "/Saessack.svg"
+        : Level === "꽃"
+        ? "/Flower.svg"
+        : Level === "열매"
+        ? "/Yeolmae.svg"
+        : Level === "나무"
+        ? "/Tree.svg"
+        : null
+    );
+  }, [Level]);
 
   return (
     <>
@@ -459,14 +461,11 @@ const Home = () => {
                 테스트를
                 <br />
                 다시 하고
-                <br/>
+                <br />
                 싶으신가요?
               </TestText>
-              <LevelText fS={fontSize}>
-              현재 : {Level}
-              </LevelText>
-              <TestIcon src={LevelImg}>
-              </TestIcon>
+              <LevelText fS={fontSize}>현재 : {Level}</LevelText>
+              <TestIcon src={LevelImg}></TestIcon>
             </TestBox>
           </Row1>
 

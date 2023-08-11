@@ -38,6 +38,7 @@ const Question = styled.div`
   }};
 
 `;
+
 const Highlight = styled.div`
   color: #df7857;
   font-weight: bolder;
@@ -78,6 +79,7 @@ const Home = styled.div`
     }
   }};
 `;
+
 const Ans = styled.button`
   color: #000000;
   width: 75%;
@@ -161,7 +163,19 @@ const NextButton = styled.button`
         return "2.2rem";
     }
   }};
+  `;
+  
+const Circle = styled.div`
+  position: absolute;
+  left: ${({ progress }) => `${progress}%`};
+  transform: translateX(-50%);
+  width: 4vw;
+  height: 4vw;
+  background-color: #ca5430;
+  border-radius: 50%;
+  z-index: 1;
 `;
+
 const Highlighter = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 80%);
   border-radius: 3px;
@@ -176,6 +190,7 @@ const TestForNew = () => {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
+  const isNew = localStorage.getItem("IsNew");
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false); // 로딩 화면을 0.2초 후에 비활성화
@@ -236,7 +251,7 @@ const TestForNew = () => {
         }
         return prevProgress + increment;
       });
-    }, 10); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
+    }, 20); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
 
     return () => clearInterval(intervalId);
   };
@@ -262,6 +277,7 @@ const TestForNew = () => {
         animate={{ width: `${progress}%` }}
         transition={{ duration: 2 }} // 2초 동안 프로그래스 바가 증가하는 애니메이션
       ></motion.progress>
+      <Circle progress={progress}></Circle>
       <div>
         <All>
           <PageNum fS={fontSize}>1/5</PageNum>
@@ -295,6 +311,12 @@ const TestForNew = () => {
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
+        {isNew === "true" && (
+          <>
+            {/* 여기서 원하는 만큼 여백을 추가할 수 있습니다 */}
+            <div style={{ marginBottom: "20%" }}></div>
+          </>
+        )}
       </div>
     </motion.div>
   );

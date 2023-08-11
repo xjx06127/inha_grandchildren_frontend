@@ -4,6 +4,7 @@ import GrayNavigator from "../GrayNavigator";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../../pages_font_context/FontSizeProvider";
+import UnderNavigator from "../UnderNavigator";
 
 const BackGround = styled.div`
   background-color: #f7f7f7;
@@ -78,7 +79,7 @@ const SelectBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 10%;
+  padding-bottom: 3%;
 `;
 const Row1 = styled.div`
   display: flex;
@@ -257,6 +258,7 @@ const LivingAppTest = () => {
             </Box>
           </Row3>
         </SelectBox>
+        <UnderNavigator/>
       </BackGround>
     </>
   );

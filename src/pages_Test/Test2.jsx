@@ -121,7 +121,17 @@ const PageNum = styled.div`
     }
   }};
 `;
-
+const Circle = styled.div`
+  position: absolute;
+  left: ${({ progress }) => `${progress}%`};
+  transform: translateX(-50%);
+  width: 4vw;
+  height: 4vw;
+  background-color: #ca5430;
+  border-radius: 50%;
+  border: #e3927a;
+  z-index: 1;
+`;
 const NextButton = styled.button`
   width: 60%;
   height: 8vh;
@@ -177,10 +187,24 @@ const Test2 = () => {
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    // ... (TTS 설정과 관련된 기존 코드)
+
+    return () => {
+      // 컴포넌트가 언마운트될 때 TTS와 타이머 정리
+      stopSpeaking();
+      if (speakTimeout) {
+        clearTimeout(speakTimeout);
+      }
+    };
+  }, [speakTimeout]);
+
   useEffect(() => {
     const synth = window.speechSynthesis;
 
@@ -188,6 +212,7 @@ const Test2 = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 0.8;
       synth.speak(utterance);
+      return utterance;
     };
 
     if (!speakMessage) {
@@ -245,7 +270,7 @@ const Test2 = () => {
         }
         return prevProgress + 1;
       });
-    }, 10); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
+    }, 20); // 10ms 간격으로 실행하여 부드러운 애니메이션 효과를 생성
 
     setProgress(initialProgress); // 시작 진행률 설정
 
@@ -267,6 +292,7 @@ const Test2 = () => {
         animate={{ width: `${progress}%` }}
         transition={{ duration: 2 }} // 2초 동안 프로그래스 바가 증가하는 애니메이션
       ></motion.progress>
+      <Circle progress={progress}></Circle>
       <div>
         <All>
           <PageNum  fS={fontSize}>2/5</PageNum>
@@ -307,6 +333,12 @@ const Test2 = () => {
               onClick={() => navigate("/Main")} // Icon2 click handler
             />
             <Home  fS={fontSize}>홈으로</Home>
+          </>
+        )}
+        {isNew === "true" && (
+          <>
+            {/* 여기서 원하는 만큼 여백을 추가할 수 있습니다 */}
+            <div style={{ marginBottom: "20%" }}></div>
           </>
         )}
       </div>

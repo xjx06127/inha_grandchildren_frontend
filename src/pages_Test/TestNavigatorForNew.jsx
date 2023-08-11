@@ -59,41 +59,34 @@ const SoundText = styled.p`
   }};
 `;
 
-const TestNavigator = () => {
+const handleControlSound = () => {
+
+}
+
+const TestNavigatorNew = () => {
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext); 
-  const [isBackClicked, setBackClicked] = useState(false);
-  const [isSoundClicked, setSoundClicked] = useState(false);
+  const initialSoundOffValue = localStorage.getItem('soundOff') === 'true';
+  const [isSoundOffClicked, setSoundClicked] = useState(initialSoundOffValue);
+ 
 
-  const GoToBack = () => {
-    setBackClicked(true);
-    setTimeout(() => {
-      navigate(-1);
-    }, 250);
-  };
 
   useEffect(() => {
-    if (isBackClicked) {
-      setBackClicked(false);
-    }
-  }, [isBackClicked]);
-
-  useEffect(() => {
-    if (isSoundClicked) {
+    if (isSoundOffClicked) {
       setSoundClicked(false);
     }
-  }, [isSoundClicked]);
+  }, [isSoundOffClicked]);
 
   return (
     <>
       <Box>
         <SoundBox>
-          <SoundImg src="/TestNext.svg" />
-          <SoundText fS={fontSize} >소리끄기</SoundText>
+          <SoundImg src="/TestNext.svg" onClick={handleControlSound}/>
+          <SoundText fS={fontSize}>소리끄기</SoundText>
         </SoundBox>
       </Box>
     </>
   );
 };
 
-export default TestNavigator;
+export default TestNavigatorNew;

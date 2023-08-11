@@ -20,7 +20,7 @@ const Desktop = styled.div`
   background-color: #ffffff;
   width: 100%;
   margin-bottom: 10%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Ccon = styled.div`
@@ -207,7 +207,7 @@ const Button = styled.button`
   padding: 2%;
   color: #ffffff;
   margin-bottom: 10%;
-  font-family: 'MICE';
+  font-family: "MICE";
 
   &:hover {
     font-weight: bold;
@@ -331,7 +331,7 @@ const Button2 = styled.button`
         return "2.2rem";
     }
   }};
-  font-family: 'MICE';
+  font-family: "MICE";
   &:hover {
     font-weight: bold;
   }
@@ -444,35 +444,50 @@ const FixBox = styled.div`
   right: 5%;
 `;
 
-const ToolTip = styled.img`
-  content: url("/speechBubble.svg");
-  /* width: 80vw;
-  height: auto; */
-  position: relative; /* Add this line */
-  top: -70px; /* Adjust this value to move the tooltip up or down */
-  z-index: -1;
-  opacity: 0.9;
-  left: -20px; /* 원하는 값으로 조절하세요 */
-  @media (orientation: landscape) {
-    height: 45vh;
-    width: 40vw;
-  }
-  @media (orientation: portrait) {
-    height: auto;
-    width: 80vw;
+const LeftBottomBalloon = styled.div`
+  position: fixed; /* 수정된 부분 */
+  bottom: 20%; /* 수정된 부분 */
+  left: 10%; /* 수정된 부분 */
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 70vw;
+  font-size: 1.6rem;
+  color: #333;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
+    border: 10px solid transparent;
+    border-top-color: #e0e0e0;
   }
 `;
 
+// const ToolTip = styled.img`
+//   content: url("/speechBubble.svg");
+//   /* width: 80vw;
+//   height: auto; */
+//   position: relative; /* Add this line */
+//   top: -70px; /* Adjust this value to move the tooltip up or down */
+//   z-index: -1;
+//   opacity: 0.9;
+//   left: -20px; /* 원하는 값으로 조절하세요 */
+//   @media (orientation: landscape) {
+//     height: 45vh;
+//     width: 40vw;
+//   }
+//   @media (orientation: portrait) {
+//     height: auto;
+//     width: 80vw;
+//   }
+// `;
+
 const ToolTipText = styled.p`
-  position: absolute;
   font-size: 1.4rem;
   font-weight: bold;
-  text-align: center; /* 가운데 정렬 */
-  top: -25%;
-  left: 42%;
-  transform: translateX(-50%);
+  text-align: center;
   color: white;
-  width: 250px;
 `;
 
 const TestAppPage = () => {
@@ -486,15 +501,15 @@ const TestAppPage = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [showToolTip, setShowToolTip] = useState(true);
 
-  // useEffect(() => {
-  //   const toolTipTimeout = setTimeout(() => {
-  //     setShowToolTip(false);
-  //   }, 3000);
+  useEffect(() => {
+    const toolTipTimeout = setTimeout(() => {
+      setShowToolTip(false);
+    }, 3000);
 
-  //   return () => {
-  //     clearTimeout(toolTipTimeout);
-  //   };
-  // }, []);
+    return () => {
+      clearTimeout(toolTipTimeout);
+    };
+  }, []);
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
@@ -658,6 +673,12 @@ const TestAppPage = () => {
           </Box2>
         </Bcon>
         <FixBox>
+          {showToolTip && (
+            <LeftBottomBalloon>
+              이곳을 클릭하여
+              <br /> 어플 설명을 들어보세요.
+            </LeftBottomBalloon>
+          )}
           <TtsBtn onClick={() => tts()}>
             <TtsImg />
           </TtsBtn>
