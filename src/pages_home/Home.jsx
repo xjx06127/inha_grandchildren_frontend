@@ -343,8 +343,6 @@ const FontText = styled.p`
 
 const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 
-const WhiteImageUrls = ["/findicon.svg", "/questionIcon.svg"];
-
 const HomeIconsAnimation = styled.img``;
 
 const Home = () => {

@@ -69,7 +69,8 @@ const SoundText = styled.p`
 
 const GrayNavigator = () => {
     const navigate = useNavigate();
-    const [isSoundOffClicked,setSoundOffClicked] = useState(false);
+    const initialSoundOffValue = localStorage.getItem('soundOff') === 'true'; //true인 경우 true반환
+    const [isSoundOffClicked,setSoundOffClicked] = useState(initialSoundOffValue);
     const location = useLocation();
     const { fontSize, setFontSize } = useContext(FontSizeContext);
 
@@ -214,6 +215,7 @@ const GrayNavigator = () => {
     //소리 버튼 클릭 시, alert창 생성
     const handleControlSound = () => {
         setSoundOffClicked(!isSoundOffClicked);
+        localStorage.setItem('soundOff',!isSoundOffClicked);
 
         const Toast = Swal.mixin({
             toast: true,

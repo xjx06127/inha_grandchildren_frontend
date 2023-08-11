@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import { useLocation } from "react-router";
+import UnderNavigator from "./UnderNavigator";
 
 const BackGround = styled.div`
   background-color: #f7f7f7;
@@ -103,6 +104,7 @@ const Row2 = styled.div`
     height: 50vh;
   }
 `;
+
 
 const Box = styled.div`
   display: flex;
@@ -212,6 +214,8 @@ const FirstChoosePage = () => {
             </Box>
           </Row2>
         </SelectBox>
+        <UnderNavigator/>
+        
       </BackGround>
     </>
   );
