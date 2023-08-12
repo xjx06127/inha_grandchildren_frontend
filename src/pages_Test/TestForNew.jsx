@@ -8,6 +8,8 @@ import Navigator from "../Navigator";
 import TestNavigatorForNew from "./TestNavigatorForNew";
 import "./Bar.css";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 const DDiv = styled.div`
   width: 100%;
   height: 10vh;
@@ -19,18 +21,63 @@ const All = styled.div`
 const Question = styled.div`
   color: #000000;
   margin-left: 10%;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: "MICE";
+  font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
+
 `;
 
 const Highlight = styled.div`
   color: #df7857;
   font-weight: bolder;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   height: 0%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
+
+`;
+const Icon2 = styled.img`
+  width: 8%;
+  height: 8%;
+  margin-top: 10%;
+  margin-left: 45%;
+`;
+const Home = styled.div`
+  color: #5f5f5f;
+  /* font-size: 1.3rem; */
+  margin-bottom: 10%;
+  text-align: center;
+  font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 
 const Ans = styled.button`
@@ -51,11 +98,21 @@ const Ans = styled.button`
   margin-left: 12.5%;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: "MICE";
+  font-family: 'MICE';
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 
 const Icon = styled.img`
@@ -67,24 +124,47 @@ const Align = styled.div`
   display: flex;
   font-size: 1.6rem;
 `;
-const Icon2 = styled.img`
-  width: 8%;
-  height: 8%;
-  margin-top: 10%;
-  margin-left: 45%;
-`;
-const Home = styled.div`
-  color: #5f5f5f;
-  font-size: 1.3rem;
-  margin-bottom: 10%;
-  text-align: center;
-  font-family: "MICE";
-`;
+
 const PageNum = styled.div`
   color: #df7857;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   margin-left: 10%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
 `;
+
+const NextButton = styled.button`
+  width: 60%;
+  height: 8vh;
+  margin-left: 20%;
+  background: linear-gradient(97.27deg, #df7857 0%, #e7ab9a 100%);
+  border-radius: 5px;
+  color: white;
+  /* font-size: 1.6rem; */
+  margin-top: 10%;
+  margin-bottom: 10%;
+  font-weight: bold;
+  border: none;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+  `;
+  
 const Circle = styled.div`
   position: absolute;
   left: ${({ progress }) => `${progress}%`};
@@ -103,6 +183,7 @@ const Highlighter = styled.span`
 
 const TestForNew = () => {
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
   const [OX, setOX] = useState("");
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
@@ -179,14 +260,14 @@ const TestForNew = () => {
       <Circle progress={progress}></Circle>
       <div>
         <All>
-          <PageNum>1/5</PageNum>
-          <Question>
-            <Highlight>
+          <PageNum fS={fontSize}>1/5</PageNum>
+          <Question fS={fontSize}>
+            <Highlight fS={fontSize}>
               <Highlighter>회원가입</Highlighter>
             </Highlight>
             을
           </Question>{" "}
-          <Question> 성공해 보셨나요?</Question>
+          <Question fS={fontSize}> 성공해 보셨나요?</Question>
         </All>
         <Align>
           <Ans
@@ -194,7 +275,7 @@ const TestForNew = () => {
             onClick={() => GoTest2("O")}
             style={{
               transition: "background-color 0.1s",
-            }}
+            }} fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -205,7 +286,7 @@ const TestForNew = () => {
             style={{
               transition: "background-color 0.1s",
             }}
-            clicked={isBoxClicked}
+            clicked={isBoxClicked} fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>

@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import Swal from "sweetalert2";
-
 
 const Box = styled.div`
   display: flex;
@@ -47,14 +48,26 @@ const SoundImg = styled.img`
 
 const SoundText = styled.p`
   color: rgba(95, 95, 95, 1);
-  font-size: 1rem;
+  /* font-size: 1rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1rem";
+      case "large":
+        return "1.3rem";
+      case "veryLarge":
+        return "1.6rem";
+    }
+  }};
 `;
 
 const TestNavigatorNew = () => {
   const navigate = useNavigate();
+  const { fontSize, setFontSize } = useContext(FontSizeContext); 
   const initialSoundOffValue = localStorage.getItem('soundOff') === 'true';
   const [isSoundOffClicked, setSoundOffClicked] = useState(initialSoundOffValue);
   const location = useLocation();
+
 
   useEffect(() => {
     console.log(isSoundOffClicked);
@@ -114,7 +127,7 @@ const TestNavigatorNew = () => {
         <SoundBox>
           <SoundImg 
           src={isSoundOffClicked ? '/soundoff_gray.svg' : '/graysound.svg'} onClick={handleControlSound}/>
-          <SoundText>{isSoundOffClicked ? '소리 켜기' : '소리 끄기'}</SoundText>
+          <SoundText fS={fontSize}>{isSoundOffClicked ? '소리 켜기' : '소리 끄기'}</SoundText>
         </SoundBox>
       </Box>
     </>
