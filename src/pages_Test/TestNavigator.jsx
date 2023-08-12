@@ -13,7 +13,7 @@ const Box = styled.div`
   padding-right: 4.8%;
   padding-top: 5%;
   padding-bottom: 3%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const BackBox = styled.div`
@@ -49,8 +49,26 @@ const SoundBox = styled.div`
 `;
 
 const SoundImg = styled.img`
-  width: 40%;
-  height: 40%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "30px";
+      case "large":
+        return "36px";
+      case "veryLarge":
+        return "45px";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "24px";
+      case "large":
+        return "27px";
+      case "veryLarge":
+        return "34px";
+    }
+  }};
   margin-bottom: 7px;
 `;
 
@@ -71,8 +89,9 @@ const SoundText = styled.p`
 const TestNavigator = () => {
   const navigate = useNavigate();
   const [isBackClicked, setBackClicked] = useState(false);
-  const initialSoundOffValue = localStorage.getItem('soundOff') === 'true';
-  const [isSoundOffClicked, setSoundOffClicked] = useState(initialSoundOffValue);
+  const initialSoundOffValue = localStorage.getItem("soundOff") === "true";
+  const [isSoundOffClicked, setSoundOffClicked] =
+    useState(initialSoundOffValue);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const location = useLocation();
 
@@ -89,30 +108,24 @@ const TestNavigator = () => {
 
     if (isSoundOffClicked) {
       synth.cancel();
-    }
-    else if (location.pathname.includes('Test2')){
+    } else if (location.pathname.includes("Test2")) {
       console.log(location.pathname);
       speakText("인터넷 뱅킹을 쓰시나요?");
-    }
-    else if (location.pathname.includes('Test3')){
+    } else if (location.pathname.includes("Test3")) {
       console.log(location.pathname);
       speakText("어플 설치를 3번이상 해보셨나요?");
-    }
-    else if (location.pathname.includes('Test4')){
+    } else if (location.pathname.includes("Test4")) {
       console.log(location.pathname);
       speakText("로그인이 어려우신가요?");
-    }
-    else if (location.pathname.includes('Test5')){
+    } else if (location.pathname.includes("Test5")) {
       console.log(location.pathname);
       speakText("어플 삭제를 해보셨나요?");
-    }
-    else if (location.pathname.includes('Test')){
+    } else if (location.pathname.includes("Test")) {
       console.log(location.pathname);
       speakText("회원가입을 성공해 보셨나요?");
-    }
-    else if (location.pathname.includes('Result')){
+    } else if (location.pathname.includes("Result")) {
       const oCount = (location.pathname.match(/O/g) || []).length;
-      switch(oCount){
+      switch (oCount) {
         case 0:
           speakText("씨앗은 레벨1 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
           break;
@@ -133,7 +146,7 @@ const TestNavigator = () => {
           break;
       }
     }
-    
+
     return () => {
       synth.cancel();
     };
@@ -152,33 +165,33 @@ const TestNavigator = () => {
     }
   }, [isBackClicked]);
 
- //소리 버튼 클릭 시
- const handleControlSound = () => {
-  setSoundOffClicked(!isSoundOffClicked);
-  localStorage.setItem('soundOff', !isSoundOffClicked);
+  //소리 버튼 클릭 시
+  const handleControlSound = () => {
+    setSoundOffClicked(!isSoundOffClicked);
+    localStorage.setItem("soundOff", !isSoundOffClicked);
 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: "top",
-    showConfirmButton: false,
-    timer: 1000,
-    timerProgressBar: false,
-    didOpen: (toast) => {
-      toast.addEventListener("mouseenter", Swal.stopTimer);
-      toast.addEventListener("mouseleave", Swal.resumeTimer);
-    },
-  });
-  
-  isSoundOffClicked === true
-    ? Toast.fire({
-        icon: "success",
-        title: "음성 지원 소리를 켰습니다.",
-      })
-    : Toast.fire({
-        icon: "success",
-        title: "음성 지원 소리를 껐습니다.",
-      });
-}
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    isSoundOffClicked === true
+      ? Toast.fire({
+          icon: "success",
+          title: "음성 지원 소리를 켰습니다.",
+        })
+      : Toast.fire({
+          icon: "success",
+          title: "음성 지원 소리를 껐습니다.",
+        });
+  };
 
   return (
     <>
@@ -191,9 +204,14 @@ const TestNavigator = () => {
         </BackBox>
 
         <SoundBox>
-        <SoundImg 
-          src={isSoundOffClicked ? '/soundoff_gray.svg' : '/graysound.svg'} onClick={handleControlSound}/>
-          <SoundText fS={fontSize}>{isSoundOffClicked ? '소리 켜기' : '소리 끄기'}</SoundText>
+          <SoundImg
+            fS={fontSize}
+            src={isSoundOffClicked ? "/soundoff_gray.svg" : "/graysound.svg"}
+            onClick={handleControlSound}
+          />
+          <SoundText fS={fontSize}>
+            {isSoundOffClicked ? "소리 켜기" : "소리 끄기"}
+          </SoundText>
         </SoundBox>
       </Box>
     </>

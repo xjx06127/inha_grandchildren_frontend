@@ -18,7 +18,7 @@ const BackGround = styled.div`
   @media (orientation: landscape) {
     height: 120vh;
   }
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 const Text = styled.h1`
   color: #ffffff;
@@ -53,7 +53,6 @@ const Title = styled.div`
         return "2.2rem";
     }
   }};
-
 `;
 
 const Videobox = styled.div`
@@ -68,7 +67,11 @@ const Icon = styled.img`
 `;
 
 const App_methods = () => {
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <BackGround>

@@ -14,7 +14,7 @@ const Box = styled.div`
   padding-right: 4.8%;
   padding-top: 5%;
   padding-bottom: 3%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const BackBox = styled.div`
@@ -41,8 +41,26 @@ const SoundBox = styled.div`
 `;
 
 const SoundImg = styled.img`
-  width: 40%;
-  height: 40%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "30px";
+      case "large":
+        return "36px";
+      case "veryLarge":
+        return "45px";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "24px";
+      case "large":
+        return "27px";
+      case "veryLarge":
+        return "34px";
+    }
+  }};
   margin-bottom: 7px;
 `;
 
@@ -63,11 +81,11 @@ const SoundText = styled.p`
 
 const TestNavigatorNew = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
-  const initialSoundOffValue = localStorage.getItem('soundOff') === 'true';
-  const [isSoundOffClicked, setSoundOffClicked] = useState(initialSoundOffValue);
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  const initialSoundOffValue = localStorage.getItem("soundOff") === "true";
+  const [isSoundOffClicked, setSoundOffClicked] =
+    useState(initialSoundOffValue);
   const location = useLocation();
-
 
   useEffect(() => {
     console.log(isSoundOffClicked);
@@ -82,7 +100,7 @@ const TestNavigatorNew = () => {
 
     if (isSoundOffClicked) {
       synth.cancel();
-    } else if (location.pathname.includes('TestForNew')){
+    } else if (location.pathname.includes("TestForNew")) {
       console.log(location.pathname);
       speakText("회원가입을 성공해 보셨나요?");
     }
@@ -92,11 +110,10 @@ const TestNavigatorNew = () => {
     };
   }, [isSoundOffClicked, location.pathname]);
 
-
   //소리 버튼 클릭 시
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
-    localStorage.setItem('soundOff', !isSoundOffClicked);
+    localStorage.setItem("soundOff", !isSoundOffClicked);
 
     const Toast = Swal.mixin({
       toast: true,
@@ -109,7 +126,7 @@ const TestNavigatorNew = () => {
         toast.addEventListener("mouseleave", Swal.resumeTimer);
       },
     });
-    
+
     isSoundOffClicked === true
       ? Toast.fire({
           icon: "success",
@@ -119,15 +136,20 @@ const TestNavigatorNew = () => {
           icon: "success",
           title: "음성 지원 소리를 껐습니다.",
         });
-  }
+  };
 
   return (
     <>
       <Box>
         <SoundBox>
-          <SoundImg 
-          src={isSoundOffClicked ? '/soundoff_gray.svg' : '/graysound.svg'} onClick={handleControlSound}/>
-          <SoundText fS={fontSize}>{isSoundOffClicked ? '소리 켜기' : '소리 끄기'}</SoundText>
+          <SoundImg
+            fS={fontSize}
+            src={isSoundOffClicked ? "/soundoff_gray.svg" : "/graysound.svg"}
+            onClick={handleControlSound}
+          />
+          <SoundText fS={fontSize}>
+            {isSoundOffClicked ? "소리 켜기" : "소리 끄기"}
+          </SoundText>
         </SoundBox>
       </Box>
     </>
