@@ -117,54 +117,16 @@ const Test5 = () => {
   const navigate = useNavigate();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const { OX, OX2, OX3, OX4 } = useParams();
-
   const [OX5, setOX5] = useState("");
-  const [speakMessage, setSpeakMessage] = useState(false);
-  const [speakTimeout, setSpeakTimeout] = useState(null);
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-      return utterance;
-    };
-
-    if (!speakMessage) {
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-        synth.cancel();
-      }
-
-      const utterance = speakText("어플 삭제를 해보셨나요?");
-      setSpeakMessage(true);
-      setSpeakTimeout(utterance);
-    }
-
-    return () => {
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-        synth.cancel();
-      }
-    };
-  }, [speakMessage, speakTimeout]);
-
-  const stopSpeaking = () => {
-    if (speakTimeout) {
-      clearTimeout(speakTimeout);
-      window.speechSynthesis.cancel();
-    }
-  };
 
   const GoResult = (answer) => {
-    stopSpeaking();
     setIsBoxClicked(true);
     if (answer === "O") {
       setOX5("O");

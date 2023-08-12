@@ -129,57 +129,8 @@ const Test2 = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    // ... (TTS 설정과 관련된 기존 코드)
-
-    return () => {
-      // 컴포넌트가 언마운트될 때 TTS와 타이머 정리
-      stopSpeaking();
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-      }
-    };
-  }, [speakTimeout]);
-
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-      return utterance;
-    };
-
-    if (!speakMessage) {
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-        synth.cancel();
-      }
-
-      const utterance = speakText("인터넷 뱅킹을 쓰시나요?");
-      setSpeakMessage(true);
-      setSpeakTimeout(utterance);
-    }
-
-    return () => {
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-        synth.cancel();
-      }
-    };
-  }, [speakMessage, speakTimeout]);
-
-  const stopSpeaking = () => {
-    if (speakTimeout) {
-      clearTimeout(speakTimeout);
-      window.speechSynthesis.cancel();
-    }
-  };
-
   const GoTest3 = (answer) => {
     setIsBoxClicked(true);
-    stopSpeaking();
 
     if (answer === "O") {
       setOX2("O");

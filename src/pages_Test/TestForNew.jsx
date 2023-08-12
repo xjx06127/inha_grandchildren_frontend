@@ -104,8 +104,6 @@ const Highlighter = styled.span`
 const TestForNew = () => {
   const navigate = useNavigate();
   const [OX, setOX] = useState("");
-  const [speakMessage, setSpeakMessage] = useState(false);
-  const [speakTimeout, setSpeakTimeout] = useState(null);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
@@ -119,33 +117,14 @@ const TestForNew = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    const synth = window.speechSynthesis;
 
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-    };
-
-    if (!speakMessage) {
-      speakText("회원가입을 성공해보셨나요?");
-      setSpeakMessage(true);
-    }
-  }, [speakMessage]);
-  const stopSpeaking = () => {
-    if (speakTimeout) {
-      clearTimeout(speakTimeout);
-    }
-    window.speechSynthesis.cancel();
-  };
   const GoTest2 = (answer) => {
     setIsBoxClicked(true);
-    stopSpeaking();
     if (isLoading) return; // 로딩 중에는 버튼 클릭 방지
     if (answer === "O") {
       setOX("O");
@@ -178,6 +157,7 @@ const TestForNew = () => {
   useEffect(() => {
     animateProgressBar();
   }, []); // 컴포넌트가 마운트된 후에 한 번만 실행
+
   return (
     <motion.div
       key="fontSizeSetting" // Add a unique key to the motion.div so that it properly triggers animations during updates
