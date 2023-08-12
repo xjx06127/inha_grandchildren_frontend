@@ -92,19 +92,19 @@ const GrayNavigator = () => {
         }
         //생활편의
           else if (location.pathname === '/LivingAppsFind1') {
-            speakText("지금 필요하신 것이 무엇인가요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("지금 필요하신 것이 무엇인가요?");
         }
           else if (location.pathname === '/LivingAppsFind1') {
-            speakText("지금 필요하신 것이 무엇인가요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("지금 필요하신 것이 무엇인가요?");
         }
           else if (location.pathname === '/FinanceAppsFind') {
-            speakText("어떤 분야를 찾으시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어떤 분야를 찾으시나요?");
         }
           else if (location.pathname === '/SearchLoadsAppsFind') {
-            speakText("어떤 분야를 찾으시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어떤 분야를 찾으시나요?");
         }
           else if (location.pathname === '/DeliveryAppsFind') {
-            speakText("어떤 분야를 찾으시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어떤 분야를 찾으시나요?");
         }
 
           else if (decodeURI(location.pathname) === decodeURI(`/AppsFindResult/은행`)) {
@@ -144,13 +144,13 @@ const GrayNavigator = () => {
         
         //취미
         else if (location.pathname === '/HobbyAppTest1') {
-            speakText("내부 혹은 외부 중에서 활동하시는 걸 좋아하시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("내부 혹은 외부 중, 어디에서 활동하시는 걸 좋아하시나요?");
         }
         else if (location.pathname === '/IndoorAppsFind') {
-            speakText("어떤 활동을 좋아하시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어떤 활동을 좋아하시나요?");
         }
         else if (location.pathname === '/OutdoorAppsFind') {
-            speakText("어떤 활동을 좋아하시나요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어떤 활동을 좋아하시나요?");
         }
         else if(decodeURI(location.pathname) === decodeURI('/AppsFindResult/독서')) {
             speakText("독서와 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!")
@@ -167,7 +167,7 @@ const GrayNavigator = () => {
 
         //소통
         else if (location.pathname === '/CommunityAppsFind') {
-            speakText("어느 것이 필요하신가요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어느 것이 필요하신가요?");
         }
         else if (decodeURI(location.pathname) === decodeURI('/AppsFindResult/연락')) {
             speakText("연락과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");
@@ -178,13 +178,13 @@ const GrayNavigator = () => {
 
         //건강
         else if (location.pathname === '/HealthyAppTest1') {
-            speakText("어느 것이 필요하신가요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어느 것이 필요하신가요?");
         }
         else if (location.pathname === '/HealthCareAppsFind') {
-            speakText("어떤 관리가 필요하신가요? 아래의 버튼 중 하나를 선택해주세요.");
+            speakText("어떤 관리가 필요하신가요?");
         }
         else if (location.pathname === '/TreatmentAppsFind') {
-          speakText("어떤 것이 필요하신가요? 아래의 버튼 중 하나를 선택해주세요.");
+          speakText("어떤 것이 필요하신가요?");
         }
         else if (decodeURI(location.pathname) === decodeURI('/AppsFindResult/식단')) {
             speakText("식단과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!");

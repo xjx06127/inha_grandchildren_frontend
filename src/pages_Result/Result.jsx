@@ -239,21 +239,6 @@ const Result = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-    };
-
-    if (comment1 !== "") {
-      // 빈 comment 문자열이 아닐 때만 TTS 실행
-      speakText(comment1 + " " +comment2);
-    }
-  }, [comment1]);
-
   return (
     <>
       <TestNavigator />
