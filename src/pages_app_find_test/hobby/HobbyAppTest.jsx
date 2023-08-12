@@ -174,7 +174,7 @@ const HobbyAppTest = () => {
         <MidBox>
           <ImgArea src="/hi.svg" />
           <MainText fS={fontSize}>
-            <HighLight fS={fontSize}>내부/외부</HighLight>중 어디에서
+            <HighLight fS={fontSize}>내부/외부</HighLight> 중 어디에서
             <br />
             활동하는걸 좋아하시나요?
           </MainText>

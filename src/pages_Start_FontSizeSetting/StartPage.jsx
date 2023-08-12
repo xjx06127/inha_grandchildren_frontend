@@ -37,7 +37,7 @@ const MainButton = styled.div`
   padding: 4%;
   font-weight: bold;
   margin-top: 5vh;
-  margin-bottom: 7vh;
+  margin-bottom: 10vh;
   @media (orientation: landscape) {
     margin-top: 0.1%;
     padding: 1%;
