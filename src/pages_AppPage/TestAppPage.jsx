@@ -501,6 +501,7 @@ const TestAppPage = () => {
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [showToolTip, setShowToolTip] = useState(true);
+  document.body.style = "background: white;";
 
   useEffect(() => {
     const toolTipTimeout = setTimeout(() => {

@@ -7,13 +7,12 @@ import AppPage from "../pages_AppPage/AppPage";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
-
 const Desktop = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #617143;
   width: 100%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Rectangle = styled.div`
@@ -134,7 +133,7 @@ const Button = styled.button`
   /* font-size: 1.3rem; */
   color: #617143;
   text-decoration: underline;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -183,7 +182,8 @@ const AppImage = styled.img`
 const RecoApp = () => {
   const [App, setApp] = useState([]);
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
@@ -201,7 +201,7 @@ const RecoApp = () => {
   return (
     <>
       <Desktop>
-        <NavigatorApp/>
+        <NavigatorApp />
 
         <Rectangle>
           <CBox>
@@ -229,7 +229,10 @@ const RecoApp = () => {
                 <AppImage src={element.image} />
                 <TB>
                   <Title fS={fontSize}>{element.name}</Title>
-                  <Button onClick={() => handleButtonClick(element.id)} fS={fontSize}>
+                  <Button
+                    onClick={() => handleButtonClick(element.id)}
+                    fS={fontSize}
+                  >
                     자세히
                   </Button>
                 </TB>

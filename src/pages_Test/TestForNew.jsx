@@ -25,7 +25,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -36,7 +36,6 @@ const Question = styled.div`
         return "2.5rem";
     }
   }};
-
 `;
 
 const Highlight = styled.div`
@@ -54,7 +53,6 @@ const Highlight = styled.div`
         return "2.5rem";
     }
   }};
-
 `;
 const Icon2 = styled.img`
   width: 8%;
@@ -67,7 +65,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -102,7 +100,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -163,8 +161,8 @@ const NextButton = styled.button`
         return "2.2rem";
     }
   }};
-  `;
-  
+`;
+
 const Circle = styled.div`
   position: absolute;
   left: ${({ progress }) => `${progress}%`};
@@ -183,12 +181,14 @@ const Highlighter = styled.span`
 
 const TestForNew = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [OX, setOX] = useState("");
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false); // 로딩 화면을 0.2초 후에 비활성화
@@ -275,7 +275,8 @@ const TestForNew = () => {
             onClick={() => GoTest2("O")}
             style={{
               transition: "background-color 0.1s",
-            }} fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -286,7 +287,8 @@ const TestForNew = () => {
             style={{
               transition: "background-color 0.1s",
             }}
-            clicked={isBoxClicked} fS={fontSize}
+            clicked={isBoxClicked}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>

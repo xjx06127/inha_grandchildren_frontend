@@ -13,7 +13,7 @@ const BackGround = styled.div`
   background-size: cover;
   border-radius: 0 0 50px 60px / 0 0 12px 19px;
   @media (orientation: portrait) {
-    height: 40vh;
+    height: 50vh;
   }
   @media (orientation: landscape) {
     height: 120vh;
@@ -68,6 +68,7 @@ const Icon = styled.img`
 
 const App_methods = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
 
   useEffect(() => {
     window.scrollTo(0, 0);

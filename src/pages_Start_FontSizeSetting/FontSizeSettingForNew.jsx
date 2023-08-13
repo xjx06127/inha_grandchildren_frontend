@@ -14,7 +14,7 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
   font-family: "MICE";
 `;
@@ -203,6 +203,8 @@ const Input = styled.input`
 
 const FontSizeSettingForNew = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   const navigate = useNavigate();
   const handleRadioChange = (event) => {
     setFontSize(event.target.name);

@@ -6,7 +6,7 @@ import AppPage from "../pages_AppPage/AppPage";
 import CategoryNavigator from "./CategoryNavigator";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-import Fade from 'react-reveal/Fade';
+import Fade from "react-reveal/Fade";
 
 const Desktop = styled.div`
   display: flex;
@@ -14,13 +14,13 @@ const Desktop = styled.div`
   overflow-x: hidden; /* 화면을 옆으로 스크롤되지 않도록 설정 */
   background-color: #ffffff;
   width: 100%;
-  padding-bottom:10%;
-  font-family: 'MICE';
+  padding-bottom: 10%;
+  font-family: "MICE";
 `;
 
 const Text = styled.p`
   /* font-size: 1.9rem; */
-  font-weight:bold;
+  font-weight: bold;
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -42,8 +42,8 @@ const Tbutton = styled.button`
   border: none;
   /* font-size: 1.3rem; */
   color: #535353;
-  margin-right:14%;
-  font-family: 'MICE';
+  margin-right: 14%;
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -67,7 +67,7 @@ const T1 = styled.div`
   margin-top: 5%;
   margin-bottom: 5%;
   align-items: baseline;
-  justify-content:space-between;
+  justify-content: space-between;
 `;
 
 const NameWrapper = styled.div`
@@ -133,7 +133,7 @@ const Button = styled.button`
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -155,7 +155,7 @@ const Box1 = styled.div`
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 2%;
-  margin-bottom:15%;
+  margin-bottom: 15%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -170,8 +170,8 @@ const Button1 = styled.button`
   text-decoration: underline;
   margin-top: auto; /* 오른쪽 하단으로 버튼 이동 */
   margin-left: auto; /* 오른쪽 하단으로 버튼 이동 */
-    font-family: 'MICE';
-    font-size: ${(props) => {
+  font-family: "MICE";
+  font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
         return "1.3rem";
@@ -205,7 +205,6 @@ const Title = styled.p`
         return "2.2rem";
     }
   }};
-
 `;
 
 const TB = styled.div`
@@ -214,52 +213,48 @@ const TB = styled.div`
   width: 65%;
 `;
 
-const BigBox = styled.div`
-  
-`
+const BigBox = styled.div``;
 
-const BigBoxTwo = styled.div`
-  
-`
+const BigBoxTwo = styled.div``;
 
 const Category = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const handleButtonClick2 = () => {
     setTimeout(() => {
       navigate(`../RecoApp`);
-    }, 100); 
+    }, 100);
   };
 
   const handleButtonClick3 = () => {
     setTimeout(() => {
       navigate("../level1");
-    }, 100); 
+    }, 100);
   };
 
   const handleButtonClick4 = () => {
     setTimeout(() => {
       navigate("../level2");
-    }, 100); 
+    }, 100);
   };
 
   const handleButtonClick5 = () => {
     setTimeout(() => {
       navigate("../level3");
-    }, 100); 
+    }, 100);
   };
 
   const handleButtonClick6 = () => {
     setTimeout(() => {
       navigate("../level4");
-    }, 100); 
+    }, 100);
   };
 
   const handleButtonClick7 = () => {
     setTimeout(() => {
       navigate("../level5");
-    }, 100); 
+    }, 100);
   };
 
   const handleButtonClick1 = (id) => {
@@ -275,6 +270,7 @@ const Category = () => {
   const [app4, setApp4] = useState([]);
   const [app5, setApp5] = useState([]);
   const [AppName, setAppName] = useState("");
+  document.body.style = "background: white;";
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/mainapplist/`).then((res) => {
@@ -298,380 +294,379 @@ const Category = () => {
     <>
       <CategoryNavigator />
       <Desktop>
-
-      <BigBox>
-        <T1>
-          <Text fS={fontSize}>
-            <Highlight>손주</Highlight>의 추천{" "}
-          </Text>
-          <Tbutton 
-            onClick= {handleButtonClick2} fS={fontSize}
-          > [더보기]
-          </Tbutton>
-        </T1>
-      </BigBox>
-      
-      <BigBox>
-        {recoApp[0] && (
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{recoApp[0].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box>
-              <AppImage src={recoApp[0].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{recoApp[0].name}</Title>
-                <Button
-                  onClick={() => {
-                    handleButtonClick1(recoApp[0].id); 
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button>
-              </TB>
-            </Box>
-          </div>
-        )}
+        <BigBox>
+          <T1>
+            <Text fS={fontSize}>
+              <Highlight>손주</Highlight>의 추천{" "}
+            </Text>
+            <Tbutton onClick={handleButtonClick2} fS={fontSize}>
+              {" "}
+              [더보기]
+            </Tbutton>
+          </T1>
         </BigBox>
-      
 
         <BigBox>
-        {recoApp[1] && (
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{recoApp[1].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box1>
-              <AppImage src={recoApp[1].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{recoApp[1].name}</Title>
-                <Button1
-                  onClick={() => {
-                    handleButtonClick1(recoApp[1].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button1>
-              </TB>
-            </Box1>
-          </div>
-        )}
+          {recoApp[0] && (
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{recoApp[0].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box>
+                <AppImage src={recoApp[0].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{recoApp[0].name}</Title>
+                  <Button
+                    onClick={() => {
+                      handleButtonClick1(recoApp[0].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
+                </TB>
+              </Box>
+            </div>
+          )}
+        </BigBox>
+
+        <BigBox>
+          {recoApp[1] && (
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{recoApp[1].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box1>
+                <AppImage src={recoApp[1].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{recoApp[1].name}</Title>
+                  <Button1
+                    onClick={() => {
+                      handleButtonClick1(recoApp[1].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button1>
+                </TB>
+              </Box1>
+            </div>
+          )}
         </BigBox>
 
         <Fade bottom delay={0}>
-        <div>
-        <T1>
-          <Text fS={fontSize}>
-            <Highlight>씨앗용</Highlight> 어플
-          </Text>
-          <Tbutton
-          onClick= {handleButtonClick3} fS={fontSize}
-          >[더보기]
-          </Tbutton>
-        </T1>
-        </div>
-        </Fade>
-        
-        {app1[0] && (
-           <Fade bottom delay={300}>
           <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app1[0].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box>
-              <AppImage src={app1[0].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app1[0].name}</Title>
-                <Button
-                  onClick={() => {
-                    handleButtonClick1(app1[0].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button>
-              </TB>
-            </Box>
+            <T1>
+              <Text fS={fontSize}>
+                <Highlight>씨앗용</Highlight> 어플
+              </Text>
+              <Tbutton onClick={handleButtonClick3} fS={fontSize}>
+                [더보기]
+              </Tbutton>
+            </T1>
           </div>
+        </Fade>
+
+        {app1[0] && (
+          <Fade bottom delay={300}>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app1[0].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box>
+                <AppImage src={app1[0].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app1[0].name}</Title>
+                  <Button
+                    onClick={() => {
+                      handleButtonClick1(app1[0].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
+                </TB>
+              </Box>
+            </div>
           </Fade>
         )}
 
         {app1[1] && (
           <Fade bottom delay={400}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app1[1].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box1>
-              <AppImage src={app1[1].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app1[1].name}</Title>
-                <Button1
-                  onClick={() => {
-                    handleButtonClick1(app1[1].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button1>
-              </TB>
-            </Box1>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app1[1].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box1>
+                <AppImage src={app1[1].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app1[1].name}</Title>
+                  <Button1
+                    onClick={() => {
+                      handleButtonClick1(app1[1].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button1>
+                </TB>
+              </Box1>
+            </div>
           </Fade>
         )}
-        
 
         <Fade bottom>
-        <T1>
-          <Text fS={fontSize}>
-            <Highlight>새싹용</Highlight> 어플
-          </Text>
+          <T1>
+            <Text fS={fontSize}>
+              <Highlight>새싹용</Highlight> 어플
+            </Text>
 
-          <Tbutton
-           onClick= {handleButtonClick4} fS={fontSize}
-          >[더보기]
-          </Tbutton>
-        </T1>
+            <Tbutton onClick={handleButtonClick4} fS={fontSize}>
+              [더보기]
+            </Tbutton>
+          </T1>
         </Fade>
 
         {app2[0] && (
           <Fade bottom delay={300}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app2[0].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box>
-              <AppImage src={app2[0].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app2[0].name}</Title>
-                <Button
-                  onClick={() => {
-                    handleButtonClick1(app2[0].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button>
-              </TB>
-            </Box>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app2[0].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box>
+                <AppImage src={app2[0].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app2[0].name}</Title>
+                  <Button
+                    onClick={() => {
+                      handleButtonClick1(app2[0].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
+                </TB>
+              </Box>
+            </div>
           </Fade>
         )}
 
         {app2[1] && (
           <Fade bottom delay={400}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app2[1].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box1>
-              <AppImage src={app2[1].image}></AppImage>{" "}
-              <TB>
-                <Title fS={fontSize}>{app2[1].name}</Title>
-                <Button1
-                  onClick={() => {
-                    handleButtonClick1(app2[1].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button1>
-              </TB>
-            </Box1>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app2[1].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box1>
+                <AppImage src={app2[1].image}></AppImage>{" "}
+                <TB>
+                  <Title fS={fontSize}>{app2[1].name}</Title>
+                  <Button1
+                    onClick={() => {
+                      handleButtonClick1(app2[1].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button1>
+                </TB>
+              </Box1>
+            </div>
           </Fade>
         )}
-      
 
         <T1>
           <Text fS={fontSize}>
             <Highlight>꽃용</Highlight> 어플
           </Text>
-          <Tbutton
-            onClick= {handleButtonClick5} fS={fontSize}
-          >[더보기]
+          <Tbutton onClick={handleButtonClick5} fS={fontSize}>
+            [더보기]
           </Tbutton>
         </T1>
 
-        
         {app3[0] && (
           <Fade bottom delay={300}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app3[0].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box>
-              <AppImage src={app3[0].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app3[0].name}</Title>
-                <Button
-                  onClick={() => {
-                    handleButtonClick1(app3[0].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button>
-              </TB>
-            </Box>
-          </div>
-          </Fade>
-        )}
-  
-        {app3[1] && (
-          <Fade bottom delay={400}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app3[1].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box1>
-              <AppImage src={app3[1].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app3[1].name}</Title>
-                <Button1
-                  onClick={() => {
-                    handleButtonClick1(app3[1].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button1>
-              </TB>
-            </Box1>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app3[0].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box>
+                <AppImage src={app3[0].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app3[0].name}</Title>
+                  <Button
+                    onClick={() => {
+                      handleButtonClick1(app3[0].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
+                </TB>
+              </Box>
+            </div>
           </Fade>
         )}
 
+        {app3[1] && (
+          <Fade bottom delay={400}>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app3[1].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box1>
+                <AppImage src={app3[1].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app3[1].name}</Title>
+                  <Button1
+                    onClick={() => {
+                      handleButtonClick1(app3[1].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button1>
+                </TB>
+              </Box1>
+            </div>
+          </Fade>
+        )}
 
         <T1>
           <Text fS={fontSize}>
             <Highlight>열매용</Highlight> 어플
           </Text>
-          <Tbutton
-              onClick= {handleButtonClick6} fS={fontSize}
-          >[더보기]
+          <Tbutton onClick={handleButtonClick6} fS={fontSize}>
+            [더보기]
           </Tbutton>
         </T1>
-      
+
         {app4[0] && (
           <Fade bottom delay={300}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app4[0].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box>
-              <AppImage src={app4[0].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app4[0].name}</Title>
-                <Button
-                  onClick={() => {
-                    handleButtonClick1(app4[0].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button>
-              </TB>
-            </Box>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app4[0].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box>
+                <AppImage src={app4[0].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app4[0].name}</Title>
+                  <Button
+                    onClick={() => {
+                      handleButtonClick1(app4[0].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
+                </TB>
+              </Box>
+            </div>
           </Fade>
         )}
 
         {app4[1] && (
-          <Fade bottom delay={400}>         
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app4[1].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box1>
-              <AppImage src={app4[1].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app4[1].name}</Title>
-                <Button1
-                  onClick={() => {
-                    handleButtonClick1(app4[1].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button1>
-              </TB>
-            </Box1>
-          </div>
-          </Fade> 
+          <Fade bottom delay={400}>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app4[1].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box1>
+                <AppImage src={app4[1].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app4[1].name}</Title>
+                  <Button1
+                    onClick={() => {
+                      handleButtonClick1(app4[1].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button1>
+                </TB>
+              </Box1>
+            </div>
+          </Fade>
         )}
-
 
         <T1>
           <Text fS={fontSize}>
             <Highlight>나무용</Highlight> 어플
           </Text>
-          <Tbutton
-             onClick= {handleButtonClick7} fS={fontSize}
-          >[더보기]
+          <Tbutton onClick={handleButtonClick7} fS={fontSize}>
+            [더보기]
           </Tbutton>
         </T1>
-        
 
         {app5[0] && (
           <Fade bottom delay={300}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app5[0].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box>
-              <AppImage src={app5[0].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app5[0].name}</Title>
-                <Button
-                  onClick={() => {
-                    handleButtonClick1(app5[0].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button>
-              </TB>
-            </Box>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app5[0].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box>
+                <AppImage src={app5[0].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app5[0].name}</Title>
+                  <Button
+                    onClick={() => {
+                      handleButtonClick1(app5[0].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
+                </TB>
+              </Box>
+            </div>
           </Fade>
         )}
 
         {app5[1] && (
           <Fade bottom delay={400}>
-          <div>
-            <NameWrapper>
-              <Icon1 src="/Rec.svg"></Icon1>
-              <Number fS={fontSize}>{app5[1].like}명</Number>
-              <Name fS={fontSize}>이 추천해요!</Name>
-            </NameWrapper>
-            <Box1>
-              <AppImage src={app5[1].image}></AppImage>
-              <TB>
-                <Title fS={fontSize}>{app5[1].name}</Title>
-                <Button1
-                  onClick={() => {
-                    handleButtonClick1(app5[1].id);
-                  }} fS={fontSize}
-                >
-                  자세히
-                </Button1>
-              </TB>
-            </Box1>
-          </div>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{app5[1].like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
+              <Box1>
+                <AppImage src={app5[1].image}></AppImage>
+                <TB>
+                  <Title fS={fontSize}>{app5[1].name}</Title>
+                  <Button1
+                    onClick={() => {
+                      handleButtonClick1(app5[1].id);
+                    }}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button1>
+                </TB>
+              </Box1>
+            </div>
           </Fade>
         )}
       </Desktop>

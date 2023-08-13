@@ -20,8 +20,26 @@ const BackBox = styled.div`
 `;
 
 const BackImg = styled.img`
-  width: 40%;
-  height: 40%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "30px";
+      case "large":
+        return "36px";
+      case "veryLarge":
+        return "45px";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "24px";
+      case "large":
+        return "27px";
+      case "veryLarge":
+        return "34px";
+    }
+  }};
   margin-bottom: 7px;
 `;
 
@@ -68,7 +86,7 @@ const BackNavigator = () => {
     <>
       <Box>
         <BackBox onClick={GoToBack}>
-          <BackImg src="/back.svg" />
+          <BackImg fS={fontSize} src="/back.svg" />
           <BackText fS={fontSize} clicked={isBackClicked}>
             돌아가기
           </BackText>

@@ -10,6 +10,7 @@ import "./Bar.css";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import UnderNavigator from "../pages_app_find_test/UnderNavigator";
 
 const All = styled.div`
   padding-top: 11%;
@@ -22,7 +23,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -77,7 +78,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -164,7 +165,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -178,7 +179,7 @@ const Home = styled.div`
 `;
 const Test2 = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const { OX } = useParams();
   const [OX2, setOX2] = useState("");
@@ -187,6 +188,7 @@ const Test2 = () => {
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
 
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
@@ -246,14 +248,14 @@ const Test2 = () => {
       <Circle progress={progress}></Circle>
       <div>
         <All>
-          <PageNum  fS={fontSize}>2/5</PageNum>
-          <Question  fS={fontSize}>
-            <Highlight  fS={fontSize}>
+          <PageNum fS={fontSize}>2/5</PageNum>
+          <Question fS={fontSize}>
+            <Highlight fS={fontSize}>
               <Highlighter>인터넷 뱅킹</Highlighter>
             </Highlight>
             을
           </Question>{" "}
-          <Question  fS={fontSize}> 쓰시나요?</Question>
+          <Question fS={fontSize}> 쓰시나요?</Question>
         </All>
         <Align>
           <Ans
@@ -261,7 +263,8 @@ const Test2 = () => {
             onClick={() => GoTest3("O")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -272,18 +275,15 @@ const Test2 = () => {
             onClick={() => GoTest3("X")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
         {isNew == "false" && ( // Check if IsNew is set to false
           <>
-            <Icon2
-              src="/GoHome.svg"
-              onClick={() => navigate("/Main")} // Icon2 click handler
-            />
-            <Home  fS={fontSize}>홈으로</Home>
+            <UnderNavigator />
           </>
         )}
         {isNew === "true" && (

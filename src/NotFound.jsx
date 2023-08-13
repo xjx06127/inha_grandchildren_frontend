@@ -13,7 +13,7 @@ const Con = styled.div`
   margin-right: 10%;
   margin-top: 30%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const NextButton = styled.button`
@@ -28,7 +28,7 @@ const NextButton = styled.button`
   font-weight: bold;
   border: none;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -57,7 +57,8 @@ const NotFound = () => {
   };
 
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
 
   return (
     <Con>
@@ -68,7 +69,9 @@ const NotFound = () => {
       <Div>
         <Img />
       </Div>
-      <NextButton onClick={Back}  fS={fontSize} >이전으로</NextButton>
+      <NextButton onClick={Back} fS={fontSize}>
+        이전으로
+      </NextButton>
     </Con>
   );
 };

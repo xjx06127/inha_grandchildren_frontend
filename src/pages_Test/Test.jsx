@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-
+import UnderNavigator from "../pages_app_find_test/UnderNavigator";
 
 const LoadingOverlay = styled.div`
   position: fixed;
@@ -89,7 +89,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -117,7 +117,6 @@ const Align = styled.div`
   display: flex;
   /* font-size: 1.6rem; */
   /* margin-bottom: 10%; */
-
 `;
 const DDiv = styled.div`
   width: 100%;
@@ -143,7 +142,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -185,20 +184,18 @@ const Circle = styled.div`
 `;
 const Test = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [OX, setOX] = useState("");
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false); // 로딩 화면을 0.2초 후에 비활성화
     }, 200); // 0.2초
-
-    
-
 
     return () => {
       clearTimeout(timeoutId);
@@ -274,13 +271,14 @@ const Test = () => {
           </Question>{" "}
           <Question fS={fontSize}> 성공해 보셨나요?</Question>
         </All>
-        <Align >
+        <Align>
           <Ans
             clicked={isBoxClicked}
             onClick={() => GoTest2("O")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -291,18 +289,15 @@ const Test = () => {
             onClick={() => GoTest2("X")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>{" "}
         {isNew === "false" && ( // Check if IsNew is set to false
           <>
-            <Icon2
-              src="/GoHome.svg"
-              onClick={() => navigate("/Main")} // Icon2 click handler
-            />
-            <Home fS={fontSize}>홈으로</Home>
+            <UnderNavigator />
           </>
         )}
       </div>
