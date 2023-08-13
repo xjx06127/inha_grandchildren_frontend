@@ -14,7 +14,7 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
   font-family: "MICE";
 `;

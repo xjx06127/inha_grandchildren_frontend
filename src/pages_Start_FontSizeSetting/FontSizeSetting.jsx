@@ -13,18 +13,14 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
   font-family: "MICE";
 `;
 
-const P = styled.p`
-  font-size: 25px;
-`;
-
 const ExBox = styled.div`
   width: 70%;
-  min-height: 20vh; /* 최대 높이를 지정합니다. */
+  min-height: 160px;
 
   background: #ffffff;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
@@ -48,6 +44,7 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100%;
 `;
 
 const Highlight = styled.span`
@@ -215,7 +212,7 @@ const FontSizeSetting = () => {
       <VertiBox>
         <VertiBox2>
           <Logo />
-          <Title>
+          <Title fS={fontSize}>
             원하는 <Highlight>글자 크기</Highlight>를 선택해 주세요
           </Title>
         </VertiBox2>

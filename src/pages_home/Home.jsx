@@ -15,7 +15,7 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
   font-family: "MICE";
 `;
@@ -395,7 +395,6 @@ const Home = () => {
   const ChangeImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % ImageUrls.length);
   };
-
   useEffect(() => {
     const interval = setInterval(ChangeImage, 2800);
     return () => clearInterval(interval);
