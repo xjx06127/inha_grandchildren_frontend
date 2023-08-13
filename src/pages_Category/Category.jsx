@@ -6,6 +6,7 @@ import AppPage from "../pages_AppPage/AppPage";
 import CategoryNavigator from "./CategoryNavigator";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import Fade from 'react-reveal/Fade';
 
 const Desktop = styled.div`
   display: flex;
@@ -213,6 +214,14 @@ const TB = styled.div`
   width: 65%;
 `;
 
+const BigBox = styled.div`
+  
+`
+
+const BigBoxTwo = styled.div`
+  
+`
+
 const Category = () => {
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext); 
@@ -266,6 +275,7 @@ const Category = () => {
   const [app4, setApp4] = useState([]);
   const [app5, setApp5] = useState([]);
   const [AppName, setAppName] = useState("");
+
   useEffect(() => {
     axios.get(`https://forgrandparents.store/mainapplist/`).then((res) => {
       //   setRecoApp(res.data.level_0);
@@ -279,10 +289,17 @@ const Category = () => {
     });
   }, []);
 
+  useEffect(() => {
+    // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <CategoryNavigator />
       <Desktop>
+
+      <BigBox>
         <T1>
           <Text fS={fontSize}>
             <Highlight>손주</Highlight>의 추천{" "}
@@ -292,7 +309,9 @@ const Category = () => {
           > [더보기]
           </Tbutton>
         </T1>
-
+      </BigBox>
+      
+      <BigBox>
         {recoApp[0] && (
           <div>
             <NameWrapper>
@@ -315,7 +334,10 @@ const Category = () => {
             </Box>
           </div>
         )}
+        </BigBox>
+      
 
+        <BigBox>
         {recoApp[1] && (
           <div>
             <NameWrapper>
@@ -338,7 +360,10 @@ const Category = () => {
             </Box1>
           </div>
         )}
+        </BigBox>
 
+        <Fade bottom delay={0}>
+        <div>
         <T1>
           <Text fS={fontSize}>
             <Highlight>씨앗용</Highlight> 어플
@@ -348,8 +373,11 @@ const Category = () => {
           >[더보기]
           </Tbutton>
         </T1>
-
+        </div>
+        </Fade>
+        
         {app1[0] && (
+           <Fade bottom delay={300}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -370,8 +398,11 @@ const Category = () => {
               </TB>
             </Box>
           </div>
+          </Fade>
         )}
+
         {app1[1] && (
+          <Fade bottom delay={400}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -392,8 +423,11 @@ const Category = () => {
               </TB>
             </Box1>
           </div>
+          </Fade>
         )}
+        
 
+        <Fade bottom>
         <T1>
           <Text fS={fontSize}>
             <Highlight>새싹용</Highlight> 어플
@@ -404,8 +438,10 @@ const Category = () => {
           >[더보기]
           </Tbutton>
         </T1>
+        </Fade>
 
         {app2[0] && (
+          <Fade bottom delay={300}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -426,9 +462,11 @@ const Category = () => {
               </TB>
             </Box>
           </div>
+          </Fade>
         )}
 
         {app2[1] && (
+          <Fade bottom delay={400}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -449,7 +487,9 @@ const Category = () => {
               </TB>
             </Box1>
           </div>
+          </Fade>
         )}
+      
 
         <T1>
           <Text fS={fontSize}>
@@ -461,7 +501,9 @@ const Category = () => {
           </Tbutton>
         </T1>
 
+        
         {app3[0] && (
+          <Fade bottom delay={300}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -482,9 +524,11 @@ const Category = () => {
               </TB>
             </Box>
           </div>
+          </Fade>
         )}
-
+  
         {app3[1] && (
+          <Fade bottom delay={400}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -505,7 +549,9 @@ const Category = () => {
               </TB>
             </Box1>
           </div>
+          </Fade>
         )}
+
 
         <T1>
           <Text fS={fontSize}>
@@ -516,8 +562,9 @@ const Category = () => {
           >[더보기]
           </Tbutton>
         </T1>
-
+      
         {app4[0] && (
+          <Fade bottom delay={300}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -538,9 +585,11 @@ const Category = () => {
               </TB>
             </Box>
           </div>
+          </Fade>
         )}
 
         {app4[1] && (
+          <Fade bottom delay={400}>         
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -561,7 +610,9 @@ const Category = () => {
               </TB>
             </Box1>
           </div>
+          </Fade> 
         )}
+
 
         <T1>
           <Text fS={fontSize}>
@@ -572,7 +623,10 @@ const Category = () => {
           >[더보기]
           </Tbutton>
         </T1>
+        
+
         {app5[0] && (
+          <Fade bottom delay={300}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -593,9 +647,11 @@ const Category = () => {
               </TB>
             </Box>
           </div>
+          </Fade>
         )}
 
         {app5[1] && (
+          <Fade bottom delay={400}>
           <div>
             <NameWrapper>
               <Icon1 src="/Rec.svg"></Icon1>
@@ -616,6 +672,7 @@ const Category = () => {
               </TB>
             </Box1>
           </div>
+          </Fade>
         )}
       </Desktop>
     </>
