@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import AppFindNavigator from "./AppFindNavigator";
+import Fade from 'react-reveal/Fade';
 
 const MainText = styled.h1`
   text-align: center;
@@ -132,7 +133,8 @@ const AppsFind = () => {
       </MainText>
 
       <Apps>
-        {apps.map((index) => (
+        {apps.map((index, i) => (
+          <Fade bottom delay={i * 150}>
           <div>
           <NameWrapper>
           <Icon1 src="/Rec.svg"></Icon1>
@@ -168,6 +170,7 @@ const AppsFind = () => {
             </TextBox>
           </AppBox>
           </div>
+          </Fade>
         ))}
       </Apps>
     </>
