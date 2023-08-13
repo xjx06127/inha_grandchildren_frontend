@@ -20,14 +20,14 @@ const Div = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding-top:22vh;
+  padding-top: 22vh;
   overflow: hidden; /* Hide any overflow to prevent scrolling */
   @media (orientation: landscape) {
     height: 100vh;
     padding: 0%;
     padding-top: 4%;
   }
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const MainButton = styled.div`
@@ -70,6 +70,7 @@ const CopyRightText = styled.p`
 const StartPage = () => {
   const navigate = useNavigate();
   const [isNew, SetIsNew] = useState("");
+  document.body.style = "background: white;";
 
   useEffect(() => {
     SetIsNew(localStorage.getItem("IsNew"));

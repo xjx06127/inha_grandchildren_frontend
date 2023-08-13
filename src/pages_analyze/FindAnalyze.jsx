@@ -38,7 +38,7 @@ const Text = styled.h1`
   text-align: center;
   padding-top: 25%;
   margin-bottom: 30%;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -103,7 +103,7 @@ const Highlighter = styled.span`
 `;
 
 const FindAnalyze = ({ percentage }) => {
-  const {appfield} = useParams();
+  const { appfield } = useParams();
 
   const [offset, setOffset] = useState(0);
 
@@ -120,7 +120,8 @@ const FindAnalyze = ({ percentage }) => {
     // 컴포넌트가 unmount 될 때 타이머 해제
     return () => clearTimeout(timer);
   }, [percentage, navigate]);
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
 
   return (
     <div>

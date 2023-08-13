@@ -68,6 +68,7 @@ const Icon = styled.img`
 
 const App_methods = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
 
   useEffect(() => {
     window.scrollTo(0, 0);

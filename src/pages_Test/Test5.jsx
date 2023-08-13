@@ -35,7 +35,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -74,7 +74,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -85,7 +85,6 @@ const Home = styled.div`
         return "1.9rem";
     }
   }};
-
 `;
 const Ans = styled.button`
   color: #000000;
@@ -109,7 +108,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -184,6 +183,7 @@ const Test5 = () => {
   const [OX5, setOX5] = useState("");
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
 
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
@@ -257,7 +257,8 @@ const Test5 = () => {
             onClick={() => GoResult("O")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }} fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -268,7 +269,8 @@ const Test5 = () => {
             onClick={() => GoResult("X")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }} fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>

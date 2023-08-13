@@ -203,6 +203,8 @@ const Input = styled.input`
 
 const FontSizeSettingForNew = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   const navigate = useNavigate();
   const handleRadioChange = (event) => {
     setFontSize(event.target.name);

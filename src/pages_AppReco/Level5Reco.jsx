@@ -7,13 +7,12 @@ import AppPage from "../pages_AppPage/AppPage";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
-
 const Desktop = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #617143;
   width: 100%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Rectangle = styled.div`
@@ -26,7 +25,6 @@ const Rectangle = styled.div`
   margin-top: 12%;
 `;
 
-
 const Img = styled.img`
   width: 60%;
   height: 60%;
@@ -34,8 +32,8 @@ const Img = styled.img`
 const Text = styled.p`
   font-weight: bold;
   /* font-size: 1.9rem; */
-  margin-top:2%;
-  margin-bottom:10%;
+  margin-top: 2%;
+  margin-bottom: 10%;
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -75,11 +73,11 @@ const CBox = styled.div`
   align-items: center;
 `;
 
-const  NameWrapper = styled.div`
+const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  align-items:center;
-  margin-left:5%;
+  align-items: center;
+  margin-left: 5%;
 `;
 const Name = styled.p`
   /* font-size: 1.3rem; */
@@ -95,9 +93,9 @@ const Name = styled.p`
   }};
 `;
 const Number = styled.p`
-/* font-size: 1.3rem; */
-font-weight: bold;
-font-size: ${(props) => {
+  /* font-size: 1.3rem; */
+  font-weight: bold;
+  font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
         return "1.3rem";
@@ -111,21 +109,20 @@ font-size: ${(props) => {
 const Icon1 = styled.img`
   width: 6%;
   height: 6%;
-  margin-right:2%;
+  margin-right: 2%;
 `;
 
 const Box = styled.div`
   display: flex;
-  margin-left:5%;
-  margin-right:5%;
+  margin-left: 5%;
+  margin-right: 5%;
   margin-top: 2%;
-  margin-bottom:7%;
+  margin-bottom: 7%;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  padding:5%;
+  padding: 5%;
 `;
-
 
 const Button = styled.button`
   background-color: transparent;
@@ -135,7 +132,7 @@ const Button = styled.button`
   /* font-size: 1.3rem; */
   color: #617143;
   text-decoration: underline;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -147,10 +144,9 @@ const Button = styled.button`
     }
   }};
 
-  &:hover{
+  &:hover {
     font-weight: bold;
-   }
-
+  }
 `;
 
 const Title = styled.p`
@@ -171,22 +167,21 @@ const Title = styled.p`
 `;
 
 const TB = styled.div`
- display: flex;
- flex-direction:column;
- width:65%;
-`
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+`;
 const AppImage = styled.img`
   width: 30%;
   height: 30%;
-  border-radius:5px;
+  border-radius: 5px;
 `;
-
 
 const Level5Reco = () => {
   const [App, setApp] = useState([]);
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
-
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
@@ -216,25 +211,27 @@ const Level5Reco = () => {
             <Text fS={fontSize}>나무용 어플</Text>
           </CBox>
 
-            {App.map((element, index) => (
-               <div>
-               <NameWrapper>
-               <Icon1 src="/Rec.svg"></Icon1>
-               <Number fS={fontSize}>{element.like}명</Number><Name fS={fontSize}>이 추천해요!</Name>
-               </NameWrapper>
+          {App.map((element, index) => (
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number fS={fontSize}>{element.like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
+              </NameWrapper>
               <Box key={index}>
                 <AppImage src={element.image} />
                 <TB>
-                <Title fS={fontSize}>{element.name}</Title>
-                <Button
-                    onClick={() => handleButtonClick(element.id)} fS={fontSize}>
-                  자세히
-                </Button>
+                  <Title fS={fontSize}>{element.name}</Title>
+                  <Button
+                    onClick={() => handleButtonClick(element.id)}
+                    fS={fontSize}
+                  >
+                    자세히
+                  </Button>
                 </TB>
               </Box>
-              </div>
-            ))}
-
+            </div>
+          ))}
         </Rectangle>
       </Desktop>
     </>

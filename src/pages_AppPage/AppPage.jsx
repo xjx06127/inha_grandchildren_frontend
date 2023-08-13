@@ -155,6 +155,7 @@ const AppPage = () => {
   const { id } = useParams();
   const [activeButtonIndex, setActiveButtonIndex] = useState(-1);
   const [App, setApp] = useState([]);
+  document.body.style = "background: white;";
 
   const handleButtonClick = () => {};
 

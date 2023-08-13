@@ -196,6 +196,8 @@ const Div2 = styled.div`
 
 const FontSizeSetting = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   const navigate = useNavigate();
   const handleRadioChange = (event) => {
     setFontSize(event.target.name);

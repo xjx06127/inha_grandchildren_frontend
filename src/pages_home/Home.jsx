@@ -355,6 +355,7 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [LevelImg, setLevelImg] = useState("");
   const navigate = useNavigate();
+  document.body.style = "background: white;";
 
   const GoToFindPage = () => {
     setFindClick(true);

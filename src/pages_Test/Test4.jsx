@@ -19,7 +19,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -38,7 +38,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -95,7 +95,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -176,19 +176,20 @@ const Highlighter = styled.span`
 `;
 const Test4 = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const { OX, OX2, OX3 } = useParams();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const [OX4, setOX4] = useState("");
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
 
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
   }, []);
-  
+
   const GoTest5 = (answer) => {
     setIsBoxClicked(true);
     if (answer === "O") {
@@ -239,14 +240,14 @@ const Test4 = () => {
       <Circle progress={progress}></Circle>
       <div>
         <All>
-          <PageNum  fS={fontSize}>4/5</PageNum>
-          <Question  fS={fontSize}>
-            <Highlight  fS={fontSize}>
+          <PageNum fS={fontSize}>4/5</PageNum>
+          <Question fS={fontSize}>
+            <Highlight fS={fontSize}>
               <Highlighter>로그인</Highlighter>
             </Highlight>
             이
           </Question>{" "}
-          <Question  fS={fontSize}> 어려우신가요?</Question>
+          <Question fS={fontSize}> 어려우신가요?</Question>
         </All>
         <Align>
           <Ans
@@ -254,7 +255,8 @@ const Test4 = () => {
             onClick={() => GoTest5("O")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -265,7 +267,8 @@ const Test4 = () => {
             onClick={() => GoTest5("X")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
@@ -276,7 +279,7 @@ const Test4 = () => {
               src="/GoHome.svg"
               onClick={() => navigate("/Main")} // Icon2 click handler
             />
-            <Home  fS={fontSize}>홈으로</Home>
+            <Home fS={fontSize}>홈으로</Home>
           </>
         )}
         {isNew === "true" && (
