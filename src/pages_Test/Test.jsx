@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import UnderNavigator from "../pages_app_find_test/UnderNavigator";
 
 const LoadingOverlay = styled.div`
   position: fixed;
@@ -296,11 +297,7 @@ const Test = () => {
         </Align>{" "}
         {isNew === "false" && ( // Check if IsNew is set to false
           <>
-            <Icon2
-              src="/GoHome.svg"
-              onClick={() => navigate("/Main")} // Icon2 click handler
-            />
-            <Home fS={fontSize}>홈으로</Home>
+            <UnderNavigator />
           </>
         )}
       </div>

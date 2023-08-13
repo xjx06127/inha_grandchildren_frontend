@@ -10,6 +10,7 @@ import "./Bar.css";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import UnderNavigator from "../pages_app_find_test/UnderNavigator";
 
 const All = styled.div`
   padding-top: 11%;
@@ -275,11 +276,7 @@ const Test3 = () => {
         </Align>
         {isNew == "false" && ( // Check if IsNew is set to false
           <>
-            <Icon2
-              src="/GoHome.svg"
-              onClick={() => navigate("/Main")} // Icon2 click handler
-            />
-            <Home fS={fontSize}>홈으로</Home>
+            <UnderNavigator />
           </>
         )}
         {isNew === "true" && (
