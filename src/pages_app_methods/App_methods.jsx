@@ -94,7 +94,6 @@ const App_methods = () => {
             width="90%"
             height="20%"
             // playing={true}
-            poster="/001.png"
             muted={true}
             controls={true}
             loop={true}
