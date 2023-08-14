@@ -10,7 +10,7 @@ const Box = styled.div`
   padding-left: 4.8%;
   padding-right: 4.8%;
   padding-top: 7%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const BackBox = styled.div`
@@ -20,8 +20,26 @@ const BackBox = styled.div`
 `;
 
 const BackImg = styled.img`
-  width: 40%;
-  height: 40%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "30px";
+      case "large":
+        return "36px";
+      case "veryLarge":
+        return "45px";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "24px";
+      case "large":
+        return "27px";
+      case "veryLarge":
+        return "34px";
+    }
+  }};
   margin-bottom: 7px;
 `;
 
@@ -46,8 +64,26 @@ const SoundBox = styled.div`
 `;
 
 const SoundImg = styled.img`
-  width: 40%;
-  height: 40%;
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "30px";
+      case "large":
+        return "36px";
+      case "veryLarge":
+        return "45px";
+    }
+  }};
+  height: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "24px";
+      case "large":
+        return "27px";
+      case "veryLarge":
+        return "34px";
+    }
+  }};
   margin-bottom: 7px;
 `;
 
@@ -95,16 +131,16 @@ const AppPageNavigator = () => {
     <>
       <Box>
         <BackBox onClick={GoToBack}>
-          <BackImg src="/grayback.svg" />
+          <BackImg src="/grayback.svg" fS={fontSize} />
           <BackText clicked={isBackClicked} fS={fontSize}>
             돌아가기
           </BackText>
         </BackBox>
 
-        <SoundBox>
+        <SoundBox onClick={handleControlSound}>
           <SoundImg
+            fS={fontSize}
             src={isSoundOffClicked ? "/soundoff_gray.svg" : "/graysound.svg"}
-            onClick={handleControlSound}
           />
           <SoundText fS={fontSize}>
             {isSoundOffClicked ? "소리 켜기" : "소리 끄기"}
