@@ -18,6 +18,7 @@ const Text = styled.p`
   margin-top: 8%;
   margin-left: 5%;
   margin-right: 5%;
+  text-align: center;
 `;
 
 const SText = styled.p`
@@ -51,15 +52,35 @@ const Div = styled.div`
   display: flex;
 `;
 const Img = styled.img`
-  width: 60%;
-  height: 60%;
-  margin-left: 20%;
-  margin-top: 15%;
+  width: 80%;
+  height: 80%;
+  /* margin-left: 10%; */
+  margin-top: 10%;
   margin-bottom: 15%;
 `;
 const Box1 = styled.div`
-  height: auto;
   width: 90%;
+  background-color: rgba(242, 243, 245, 1);
+  border-radius: 20px;
+  margin-left: 5%;
+`;
+const Box2 = styled.div`
+  width: 90%;
+  background-color: rgba(233, 243, 253, 1);
+  border-radius: 20px;
+  margin-left: 5%;
+`;
+const Box3 = styled.div`
+  width: 90%;
+  background-color: rgba(255, 250, 231, 1);
+  border-radius: 20px;
+  margin-left: 5%;
+`;
+const Box4 = styled.div`
+  width: 90%;
+  background-color: rgba(240, 249, 246, 1);
+  border-radius: 20px;
+  margin-left: 5%;
 `;
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -77,8 +98,15 @@ const Img2 = styled.img`
   width: 100%;
   height: 100%;
   /* margin-left: 5%; */
-  margin-top: 15%;
+  margin-top: 10%;
   margin-bottom: 15%;
+`;
+const InText = styled.div`
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 1.4rem;
+  text-align: left;
+  padding-top: 15%;
 `;
 const NoSound = () => {
   return (
@@ -91,31 +119,46 @@ const NoSound = () => {
         <br />
         <Div>
           <Icon src="/Arrow.svg"></Icon>
-          <Icon1 src="/0.svg"></Icon1>
+          <Icon1 src="/II.svg"></Icon1>
         </Div>
         <SText>
           {" "}
           <br />
           그렇다면, 아래와 같은 방법으로 설정해보세요! <br />
           <br />
-          1. 아래의 빨간 동그라미 안 버튼을 눌러주세요.
+          <Box1>
+            <InText>1. 아래의 빨간 동그라미 안 버튼을 눌러주세요. </InText>
+            <br />
+            <Img src="/1.svg"></Img>
+          </Box1>
           <br />
-          <Img src="/1.svg"></Img>
+          <Box2>
+            <InText>
+              2. 아래의 빨간 동그라미 <Highlighter>'설정'</Highlighter>을
+              눌러주세요.
+            </InText>
+            <br />
+            <Img src="/20.svg"></Img>
+          </Box2>
           <br />
-          2. 아래의 빨간 동그라미 <Highlighter>'설정'</Highlighter>을
-          눌러주세요.
+          <Box3>
+            <InText>
+              3. 아래로 내려 <Highlighter>‘유용한 기능’</Highlighter>을 찾아
+              클릭해주세요!
+            </InText>
+            <br />
+            <Img2 src="/30.svg"></Img2>
+          </Box3>
           <br />
-          <Img src="/20.svg"></Img>
-          <br />
-          3. 아래로 내려 <Highlighter>‘유용한 기능’</Highlighter>을 찾아
-          클릭해주세요!
-          <br />
-          <Img2 src="/30.svg"></Img2>
-          <br />
-          4. 이제 마지막 단계입니다. <br />
-          <Highlighter>‘동영상 자동 재생 허용’</Highlighter> 버튼을 눌러주세요!
-          <br />
-          <Img2 src="/40.svg"></Img2>
+          <Box4>
+            <InText>
+              4. 이제 마지막 단계입니다. <br />
+              <Highlighter>‘동영상 자동 재생 허용’</Highlighter> 버튼을
+              눌러주세요!
+            </InText>
+            <br />
+            <Img2 src="/40.svg"></Img2>
+          </Box4>
           <br />
         </SText>
         <SsText>
