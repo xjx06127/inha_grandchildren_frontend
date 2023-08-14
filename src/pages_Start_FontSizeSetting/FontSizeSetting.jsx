@@ -13,18 +13,14 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
-  font-family: 'MICE';
-`;
-
-const P = styled.p`
-  font-size: 25px;
+  font-family: "MICE";
 `;
 
 const ExBox = styled.div`
   width: 70%;
-  min-height: 20vh; /* 최대 높이를 지정합니다. */
+  min-height: 160px;
 
   background: #ffffff;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
@@ -48,6 +44,7 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100%;
 `;
 
 const Highlight = styled.span`
@@ -58,38 +55,26 @@ const Highlight = styled.span`
   );
 `;
 
-const Option = styled.div`
-  /* 선택지 하나하나 control */
+// const Option = styled.div`
+//   /* 선택지 하나하나 control */
 
-  width: 80%;
-  height: 66px;
+//   width: 80%;
+//   height: 66px;
 
-  background: #ffffff;
-  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #000000;
-  box-sizing: border-box;
+//   background: #ffffff;
+//   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
+//   border-radius: 5px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding-left: 20px;
+//   padding-right: 20px;
+//   color: #000000;
+//   box-sizing: border-box;
 
-  margin-bottom: 1rem;
-  padding: 2rem;
-`;
-
-const Label1 = styled.p`
-  font-size: 25px;
-`;
-
-const Label2 = styled.p`
-  font-size: 30px;
-`;
-
-const Label3 = styled.p`
-  font-size: 35px;
-`;
+//   margin-bottom: 1rem;
+//   padding: 2rem;
+// `;
 
 const Title = styled.h1`
   color: #ffffff;
@@ -127,7 +112,7 @@ const CancelP = styled.p`
   line-height: 25px;
 
   color: #000000;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const SetBtn = styled.button`
@@ -146,7 +131,7 @@ const SetP = styled.p`
   line-height: 25px;
   /* identical to box height */
   color: #ffffff;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Input = styled.input`
@@ -173,15 +158,49 @@ const Input = styled.input`
     height: 12px;
     background-color: #617143;
     border-radius: 50%;
-  } /* Ellipse 5 */
+  }
+`;
+
+const Label = styled.label`
+  width: 80%;
+  height: 66px;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+
+  margin-bottom: 1rem;
+  padding: 2rem;
+`;
+
+const Div2 = styled.div`
+  display: flex;
 `;
 
 const FontSizeSetting = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   const navigate = useNavigate();
   const handleRadioChange = (event) => {
     setFontSize(event.target.name);
-    console.log(fontSize);
+  };
+  const handleLabelClick = (selectedFontSize) => {
+    setFontSize(selectedFontSize);
   };
 
   const go = () => {
@@ -193,7 +212,7 @@ const FontSizeSetting = () => {
       <VertiBox>
         <VertiBox2>
           <Logo />
-          <Title>
+          <Title fS={fontSize}>
             원하는 <Highlight>글자 크기</Highlight>를 선택해 주세요
           </Title>
         </VertiBox2>
@@ -215,33 +234,33 @@ const FontSizeSetting = () => {
               <br /> &nbsp;&nbsp;&nbsp;손주야
             </p>
           </ExBox>
-          <Option defaultChecked>
-            <Label1 htmlFor="select">보통</Label1>
+          <Label fS={"normal"} onClick={() => handleLabelClick("normal")}>
+            보통
             <Input
               type="radio"
               name="normal"
               checked={fontSize === "normal"}
               onChange={handleRadioChange}
             />
-          </Option>
-          <Option>
-            <Label2 htmlFor="select2">크게</Label2>
+          </Label>
+          <Label fS={"large"} onClick={() => handleLabelClick("large")}>
+            크게
             <Input
               type="radio"
               name="large"
               checked={fontSize === "large"}
               onChange={handleRadioChange}
             />
-          </Option>
-          <Option>
-            <Label3 htmlFor="select3">매우 크게</Label3>
+          </Label>
+          <Label fS={"veryLarge"} onClick={() => handleLabelClick("veryLarge")}>
+            매우 크게
             <Input
               type="radio"
               name="veryLarge"
               checked={fontSize === "veryLarge"}
               onChange={handleRadioChange}
             />
-          </Option>
+          </Label>
         </Div>
         <ButtonBox>
           <Link to={`/Main`} style={{ textDecoration: "none" }}>

@@ -25,7 +25,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -36,7 +36,6 @@ const Question = styled.div`
         return "2.5rem";
     }
   }};
-
 `;
 
 const Highlight = styled.div`
@@ -54,7 +53,6 @@ const Highlight = styled.div`
         return "2.5rem";
     }
   }};
-
 `;
 const Icon2 = styled.img`
   width: 8%;
@@ -67,7 +65,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -102,7 +100,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -163,8 +161,8 @@ const NextButton = styled.button`
         return "2.2rem";
     }
   }};
-  `;
-  
+`;
+
 const Circle = styled.div`
   position: absolute;
   left: ${({ progress }) => `${progress}%`};
@@ -183,14 +181,14 @@ const Highlighter = styled.span`
 
 const TestForNew = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [OX, setOX] = useState("");
-  const [speakMessage, setSpeakMessage] = useState(false);
-  const [speakTimeout, setSpeakTimeout] = useState(null);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true); // 로딩 화면 표시 여부
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setIsLoading(false); // 로딩 화면을 0.2초 후에 비활성화
@@ -200,33 +198,14 @@ const TestForNew = () => {
       clearTimeout(timeoutId);
     };
   }, []);
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    const synth = window.speechSynthesis;
 
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-    };
-
-    if (!speakMessage) {
-      speakText("회원가입을 성공해보셨나요?");
-      setSpeakMessage(true);
-    }
-  }, [speakMessage]);
-  const stopSpeaking = () => {
-    if (speakTimeout) {
-      clearTimeout(speakTimeout);
-    }
-    window.speechSynthesis.cancel();
-  };
   const GoTest2 = (answer) => {
     setIsBoxClicked(true);
-    stopSpeaking();
     if (isLoading) return; // 로딩 중에는 버튼 클릭 방지
     if (answer === "O") {
       setOX("O");
@@ -259,6 +238,7 @@ const TestForNew = () => {
   useEffect(() => {
     animateProgressBar();
   }, []); // 컴포넌트가 마운트된 후에 한 번만 실행
+
   return (
     <motion.div
       key="fontSizeSetting" // Add a unique key to the motion.div so that it properly triggers animations during updates
@@ -295,7 +275,8 @@ const TestForNew = () => {
             onClick={() => GoTest2("O")}
             style={{
               transition: "background-color 0.1s",
-            }} fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -306,7 +287,8 @@ const TestForNew = () => {
             style={{
               transition: "background-color 0.1s",
             }}
-            clicked={isBoxClicked} fS={fontSize}
+            clicked={isBoxClicked}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>

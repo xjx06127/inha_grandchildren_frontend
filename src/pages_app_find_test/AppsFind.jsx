@@ -7,12 +7,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import AppFindNavigator from "./AppFindNavigator";
+import Fade from "react-reveal/Fade";
 
 const MainText = styled.h1`
   text-align: center;
   margin-top: 7%;
-  margin-bottom:10%;
-  font-family: 'MICE';
+  margin-bottom: 10%;
+  font-family: "MICE";
 `;
 
 const Highlight = styled.span`
@@ -24,7 +25,7 @@ const Highlight2 = styled.span`
 `;
 
 const Apps = styled.div`
-padding-bottom:10%;
+  padding-bottom: 10%;
 `;
 
 const AppBox = styled.div`
@@ -34,10 +35,10 @@ const AppBox = styled.div`
   border-radius: 5px;
   margin-bottom: 7%;
   margin-top: 2%;
-  margin-left:5%;
-  margin-right:5%;
+  margin-left: 5%;
+  margin-right: 5%;
   padding: 5%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const AppImg = styled.img`
@@ -77,24 +78,24 @@ const GoToDetail = styled.p`
   }
 `;
 
-const  NameWrapper = styled.div`
+const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  align-items:center;
-  margin-left:5%;
-  font-family: 'MICE';
+  align-items: center;
+  margin-left: 5%;
+  font-family: "MICE";
 `;
 const Name = styled.p`
   font-size: 1.3rem;
 `;
 const Number = styled.p`
-font-size: 1.3rem;
-font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: bold;
 `;
 const Icon1 = styled.img`
   width: 6%;
   height: 6%;
-  margin-right:2%;
+  margin-right: 2%;
 `;
 
 const Box = styled.div`
@@ -104,13 +105,13 @@ const Box = styled.div`
   margin-left: 7%;
 `;
 
-
 const GoToAppDetail = () => {};
 
 const AppsFind = () => {
   const { appfield } = useParams();
   const [apps, setApps] = useState([]);
   const navigate = useNavigate();
+  document.body.style = "background: white;";
 
   useEffect(() => {
     axios
@@ -132,42 +133,45 @@ const AppsFind = () => {
       </MainText>
 
       <Apps>
-        {apps.map((index) => (
-          <div>
-          <NameWrapper>
-          <Icon1 src="/Rec.svg"></Icon1>
-          <Number>{index.like}명</Number><Name>이 추천해요!</Name>
-          </NameWrapper>
-          <AppBox>
-            <AppImg src={index.image} />
-            <TextBox>
-              <AppName>{index.name}</AppName>
-              <AppLevel>
-                난이도 :
-                {index.levelvalue === 0
-                  ? " 씨앗"
-                  : index.levelvalue === 1
-                  ? " 새싹"
-                  : index.levelvalue === 2
-                  ? " 꽃용"
-                  : index.levelvalue === 3
-                  ? " 열매용"
-                  : index.levelvalue === 4
-                  ? " 나무용"
-                  : index.levelvalue === 5
-                  ? " 나무용"
-                  : "level정보가 존재하지 않습니다"}
-              </AppLevel>
-              <GoToDetail
-                onClick={() => {
-                  navigate(`../AppPage/${index.id}`);
-                }}
-              >
-                자세히
-              </GoToDetail>
-            </TextBox>
-          </AppBox>
-          </div>
+        {apps.map((index, i) => (
+          <Fade bottom delay={i * 150}>
+            <div>
+              <NameWrapper>
+                <Icon1 src="/Rec.svg"></Icon1>
+                <Number>{index.like}명</Number>
+                <Name>이 추천해요!</Name>
+              </NameWrapper>
+              <AppBox>
+                <AppImg src={index.image} />
+                <TextBox>
+                  <AppName>{index.name}</AppName>
+                  <AppLevel>
+                    난이도 :
+                    {index.levelvalue === 0
+                      ? " 씨앗"
+                      : index.levelvalue === 1
+                      ? " 새싹"
+                      : index.levelvalue === 2
+                      ? " 꽃용"
+                      : index.levelvalue === 3
+                      ? " 열매용"
+                      : index.levelvalue === 4
+                      ? " 나무용"
+                      : index.levelvalue === 5
+                      ? " 나무용"
+                      : "level정보가 존재하지 않습니다"}
+                  </AppLevel>
+                  <GoToDetail
+                    onClick={() => {
+                      navigate(`../AppPage/${index.id}`);
+                    }}
+                  >
+                    자세히
+                  </GoToDetail>
+                </TextBox>
+              </AppBox>
+            </div>
+          </Fade>
         ))}
       </Apps>
     </>

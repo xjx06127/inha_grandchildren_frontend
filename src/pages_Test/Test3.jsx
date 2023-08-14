@@ -10,6 +10,7 @@ import "./Bar.css";
 import { motion } from "framer-motion";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import UnderNavigator from "../pages_app_find_test/UnderNavigator";
 
 const All = styled.div`
   padding-top: 11%;
@@ -23,7 +24,7 @@ const Question = styled.div`
   display: flex;
   flex-direction: row;
   text-align: left;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -80,7 +81,7 @@ const Ans = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -165,7 +166,7 @@ const Home = styled.div`
   /* font-size: 1.3rem; */
   margin-bottom: 10%;
   text-align: center;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -179,69 +180,20 @@ const Home = styled.div`
 `;
 const Test3 = () => {
   const navigate = useNavigate();
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const { OX, OX2 } = useParams();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const [OX3, setOX3] = useState("");
-  const [speakMessage, setSpeakMessage] = useState(false);
-  const [speakTimeout, setSpeakTimeout] = useState(null);
   const [progress, setProgress] = useState(0);
   const isNew = localStorage.getItem("IsNew");
+  document.body.style = "background: white;";
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    // ... (TTS 설정과 관련된 기존 코드)
-
-    return () => {
-      // 컴포넌트가 언마운트될 때 TTS와 타이머 정리
-      stopSpeaking();
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-      }
-    };
-  }, [speakTimeout]);
-
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-      return utterance;
-    };
-
-    if (!speakMessage) {
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-        synth.cancel();
-      }
-
-      const utterance = speakText("어플설치를 세번이상 해보셨나요?");
-      setSpeakMessage(true);
-      setSpeakTimeout(utterance);
-    }
-
-    return () => {
-      if (speakTimeout) {
-        clearTimeout(speakTimeout);
-        synth.cancel();
-      }
-    };
-  }, [speakMessage, speakTimeout]);
-
-  const stopSpeaking = () => {
-    if (speakTimeout) {
-      clearTimeout(speakTimeout);
-      window.speechSynthesis.cancel();
-    }
-  };
-
   const GoTest4 = (answer) => {
-    stopSpeaking();
     setIsBoxClicked(true);
     if (answer === "O") {
       setOX3("O");
@@ -290,14 +242,14 @@ const Test3 = () => {
       <Circle progress={progress}></Circle>
       <div>
         <All>
-          <PageNum  fS={fontSize}>3/5</PageNum>
-          <Question  fS={fontSize}>
-            <Highlight  fS={fontSize}>
+          <PageNum fS={fontSize}>3/5</PageNum>
+          <Question fS={fontSize}>
+            <Highlight fS={fontSize}>
               <Highlighter>어플 설치</Highlighter>
             </Highlight>
             를
           </Question>{" "}
-          <Question  fS={fontSize}> 3번이상 해보셨나요?</Question>
+          <Question fS={fontSize}> 3번이상 해보셨나요?</Question>
         </All>
         <Align>
           <Ans
@@ -305,7 +257,8 @@ const Test3 = () => {
             onClick={() => GoTest4("O")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/Good.svg"></Icon>네
           </Ans>
@@ -316,18 +269,15 @@ const Test3 = () => {
             onClick={() => GoTest4("X")}
             style={{
               transition: "background-color 0.1s", // 배경색 변경에 대한 트랜지션 시간을 줄입니다.
-            }}  fS={fontSize}
+            }}
+            fS={fontSize}
           >
             <Icon src="/TT.svg"></Icon>아니요
           </Ans>
         </Align>
         {isNew == "false" && ( // Check if IsNew is set to false
           <>
-            <Icon2
-              src="/GoHome.svg"
-              onClick={() => navigate("/Main")} // Icon2 click handler
-            />
-            <Home  fS={fontSize}>홈으로</Home>
+            <UnderNavigator />
           </>
         )}
         {isNew === "true" && (

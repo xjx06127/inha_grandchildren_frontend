@@ -38,7 +38,7 @@ const Text = styled.h1`
   text-align: center;
   padding-top: 25%;
   margin-bottom: 30%;
-  font-family: 'MICE';
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -49,9 +49,6 @@ const Text = styled.h1`
         return "2.5rem";
     }
   }};
-
-
-
 `;
 
 // const Container = styled.div`
@@ -125,7 +122,9 @@ const Analyze = ({ percentage }) => {
     return () => clearTimeout(timer);
   }, [percentage, navigate]);
 
-  const { fontSize, setFontSize } = useContext(FontSizeContext); 
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   return (
     <div>
       <Text fS={fontSize}>

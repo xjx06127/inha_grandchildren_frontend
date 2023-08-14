@@ -14,9 +14,9 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const P = styled.p`
@@ -148,6 +148,32 @@ const SetP = styled.p`
   color: #ffffff;
 `;
 
+const Label = styled.label`
+  width: 80%;
+  height: 66px;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+
+  margin-bottom: 1rem;
+  padding: 2rem;
+`;
+
 const Input = styled.input`
   appearance: none;
   border: 2.5px solid rgba(97, 113, 67, 0.3);
@@ -177,16 +203,21 @@ const Input = styled.input`
 
 const FontSizeSettingForNew = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   const navigate = useNavigate();
   const handleRadioChange = (event) => {
     setFontSize(event.target.name);
     console.log(fontSize);
   };
+  const handleLabelClick = (selectedFontSize) => {
+    setFontSize(selectedFontSize);
+  };
 
   //기본 tts 설정값 : 자동재생 (버튼클릭 시, 소리끄기)
-  useEffect(()=>{
-    localStorage.setItem('soundOff',false);
-  },[])
+  useEffect(() => {
+    localStorage.setItem("soundOff", false);
+  }, []);
 
   const go = () => {
     navigate(`/TestForNew`);
@@ -226,33 +257,36 @@ const FontSizeSettingForNew = () => {
                 <br /> &nbsp;&nbsp;&nbsp;손주야
               </p>
             </ExBox>
-            <Option defaultChecked>
-              <Label1 htmlFor="select">보통</Label1>
+            <Label fS={"normal"} onClick={() => handleLabelClick("normal")}>
+              보통
               <Input
                 type="radio"
                 name="normal"
                 checked={fontSize === "normal"}
                 onChange={handleRadioChange}
               />
-            </Option>
-            <Option>
-              <Label2 htmlFor="select2">크게</Label2>
+            </Label>
+            <Label fS={"large"} onClick={() => handleLabelClick("large")}>
+              크게
               <Input
                 type="radio"
                 name="large"
                 checked={fontSize === "large"}
                 onChange={handleRadioChange}
               />
-            </Option>
-            <Option>
-              <Label3 htmlFor="select3">매우 크게</Label3>
+            </Label>
+            <Label
+              fS={"veryLarge"}
+              onClick={() => handleLabelClick("veryLarge")}
+            >
+              매우 크게
               <Input
                 type="radio"
                 name="veryLarge"
                 checked={fontSize === "veryLarge"}
                 onChange={handleRadioChange}
               />
-            </Option>
+            </Label>
           </Div>
           <ButtonBox>
             <SetBtn onClick={() => go()}>

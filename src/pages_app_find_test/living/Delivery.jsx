@@ -7,16 +7,15 @@ import { FontSizeContext } from "../../pages_font_context/FontSizeProvider";
 import UnderNavigator from "../UnderNavigator";
 
 const BackGround = styled.div`
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7;
   background-size: cover;
   width: 100vw;
   @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
     height: 100vh;
   }
   height: 100%;
-  margin: 0;
-  font-family: 'MICE';
+  margin: 0; */
+  font-family: "MICE";
 `;
 
 const MidBox = styled.div`
@@ -153,6 +152,7 @@ const Delivery = () => {
   const navigate = useNavigate();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: #f7f7f7;";
 
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
@@ -214,7 +214,7 @@ const Delivery = () => {
             </Box>
           </Row2>
         </SelectBox>
-        <UnderNavigator/>
+        <UnderNavigator />
       </BackGround>
     </>
   );

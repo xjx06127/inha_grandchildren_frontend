@@ -7,15 +7,14 @@ import { FontSizeContext } from "../../pages_font_context/FontSizeProvider";
 import UnderNavigator from "../UnderNavigator";
 
 const BackGround = styled.div`
-  background-color: #f7f7f7;
+  /* background-color: #f7f7f7;
   background-size: cover;
   width: 100vw;
   @media (orientation: portrait) {
-    /* Set the height specifically for portrait mode */
     height: 100vh;
   }
-  margin: 0;
-  font-family: 'MICE';
+  margin: 0; */
+  font-family: "MICE";
 `;
 
 const MidBox = styled.div`
@@ -145,6 +144,7 @@ const HobbyAppTest = () => {
   const navigate = useNavigate();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: #f7f7f7;";
 
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
@@ -174,7 +174,7 @@ const HobbyAppTest = () => {
         <MidBox>
           <ImgArea src="/hi.svg" />
           <MainText fS={fontSize}>
-            <HighLight fS={fontSize}>내부/외부</HighLight>중 어디에서
+            <HighLight fS={fontSize}>내부/외부</HighLight> 중 어디에서
             <br />
             활동하는걸 좋아하시나요?
           </MainText>
@@ -190,7 +190,7 @@ const HobbyAppTest = () => {
             </Box>
           </Row1>
         </SelectBox>
-        <UnderNavigator/>
+        <UnderNavigator />
       </BackGround>
     </>
   );

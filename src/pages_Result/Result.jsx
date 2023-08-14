@@ -24,7 +24,7 @@ const Comment1 = styled.p`
   }};
   margin-left: 10%;
   margin-top: 17%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Highlight = styled.span`
@@ -50,7 +50,7 @@ const VertiBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const LevelComment = styled.p`
@@ -121,7 +121,7 @@ const Btn = styled.button`
 
   margin-top: 15%;
   margin-bottom: 20%;
-  font-family: 'MICE';
+  font-family: "MICE";
 `;
 
 const Result = () => {
@@ -181,6 +181,7 @@ const Result = () => {
   const [comment2, setComment2] = useState("");
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [correctNum1, setCorrectNum1] = useState(0);
+  document.body.style = "background: white;";
 
   useEffect(() => {
     axios
@@ -239,21 +240,6 @@ const Result = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const speakText = (text) => {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 0.8;
-      synth.speak(utterance);
-    };
-
-    if (comment1 !== "") {
-      // 빈 comment 문자열이 아닐 때만 TTS 실행
-      speakText(comment1 + " " +comment2);
-    }
-  }, [comment1]);
-
   return (
     <>
       <TestNavigator />
@@ -279,10 +265,9 @@ const Result = () => {
             navigate(`/Main`);
           }}
         >
-{
-  correctNum1 === 5 ? "홈으로 🏠" :
-  "이제 손주야에서 디지털 레벨을 올려보세요! 👍"
-}
+          {correctNum1 === 5
+            ? "홈으로 🏠"
+            : "이제 손주야에서 디지털 레벨을 올려보세요! 👍"}
         </Btn>
       </VertiBox>
     </>
