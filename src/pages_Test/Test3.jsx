@@ -15,6 +15,7 @@ import UnderNavigator from "../pages_app_find_test/UnderNavigator";
 const All = styled.div`
   padding-top: 11%;
   margin-bottom: 5%;
+  font-family: "MICE";
 `;
 const Question = styled.div`
   color: #000000;
