@@ -15,6 +15,13 @@ const BackGround = styled.div`
   }
   margin: 0; */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Flex = styled.div`
+  flex: 1;
 `;
 
 const MidBox = styled.div`
@@ -165,25 +172,27 @@ const CommunityAppTest = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            <HighLight fS={fontSize}>어느 것</HighLight>이<br />
-            필요하신가요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box onClick={GoToConnectPage}>
-              <SelText fS={fontSize}>연락</SelText>
-            </Box>
-            <Box onClick={GoToSharePage}>
-              <SelText fS={fontSize}>일상 공유</SelText>
-            </Box>
-          </Row1>
-        </SelectBox>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              <HighLight fS={fontSize}>어느 것</HighLight>이<br />
+              필요하신가요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box onClick={GoToConnectPage}>
+                <SelText fS={fontSize}>연락</SelText>
+              </Box>
+              <Box onClick={GoToSharePage}>
+                <SelText fS={fontSize}>일상 공유</SelText>
+              </Box>
+            </Row1>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>
