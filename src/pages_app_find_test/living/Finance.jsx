@@ -15,6 +15,13 @@ const BackGround = styled.div`
   }
   margin: 0; */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Flex = styled.div`
+  flex: 1;
 `;
 
 const MidBox = styled.div`
@@ -175,31 +182,33 @@ const Finance = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            어떤 <HighLight fS={fontSize}>분야</HighLight>를<br />
-            찾으시나요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box onClick={GoToBankPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>은행</SelText>
-            </Box>
-            <Box onClick={GoToStockPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>주식</SelText>
-            </Box>
-          </Row1>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              어떤 <HighLight fS={fontSize}>분야</HighLight>를<br />
+              찾으시나요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box onClick={GoToBankPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>은행</SelText>
+              </Box>
+              <Box onClick={GoToStockPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>주식</SelText>
+              </Box>
+            </Row1>
 
-          <Row2>
-            <Box onClick={GoToSimplePaymentPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>간편 결제</SelText>
-            </Box>
-          </Row2>
-        </SelectBox>
+            <Row2>
+              <Box onClick={GoToSimplePaymentPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>간편 결제</SelText>
+              </Box>
+            </Row2>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>
