@@ -17,11 +17,11 @@ const MainText = styled.h1`
 `;
 
 const Highlight = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #ffd05d 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
 `;
 
 const Highlight2 = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #c5d3ab 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #c5d3ab 50%);
 `;
 
 const Apps = styled.div`
@@ -128,7 +128,10 @@ const AppsFind = () => {
     <>
       <AppFindNavigator />
       <MainText>
-        <Highlight>적절한 어플</Highlight>을<br />
+        <Highlight>{appfield}</Highlight>에 관한
+        <br />
+        적절한 어플을
+        <br />
         찾아봤어요!
       </MainText>
 

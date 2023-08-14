@@ -347,7 +347,8 @@ const Con = styled.div`
 `;
 
 const Highlight = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
+  border-radius: 3px;
 `;
 
 const ErrorMessage = styled.div`

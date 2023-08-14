@@ -8,6 +8,11 @@ import BackNavigator from "../BackNavigator";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
+const Highlight = styled.span`
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
+  border-radius: 3px;
+`;
+
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
   background-size: cover;
@@ -79,7 +84,7 @@ const App_methods = () => {
         <BackNavigator />
         <Icon src="/videoIcon.svg"></Icon>
         <Text fS={fontSize}>
-          직접 동영상으로
+          직접 <Highlight>동영상으로</Highlight>
           <br />
           알려드릴게요🐥
         </Text>
@@ -106,7 +111,7 @@ const App_methods = () => {
             loop={true}
           />
         </Videobox>
-        <Title fS={fontSize}>삭제는 이렇게 해요 </Title>
+        <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
         <Videobox>
           <ReactPlayer
             url="video3.mp4"
