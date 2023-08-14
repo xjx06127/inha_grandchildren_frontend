@@ -35,6 +35,7 @@ const Text = styled.p`
 
 const Highlight = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
+  border-radius: 3px;
 `;
 
 const Tbutton = styled.button`
