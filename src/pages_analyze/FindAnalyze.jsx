@@ -131,7 +131,7 @@ const FindAnalyze = ({ percentage }) => {
         <br />
         적절한 어플을
         <br />
-        찾는중 입니다.
+        찾는 중입니다.
       </Text>
       <CircularContainer>
         <CircularSVG viewBox="-5 -5 250 250">

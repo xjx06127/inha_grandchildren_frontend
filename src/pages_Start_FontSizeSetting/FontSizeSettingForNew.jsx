@@ -236,7 +236,7 @@ const FontSizeSettingForNew = () => {
           <VertiBox2>
             <Logo />
             <Title>
-              원하는 <Highlight>글자 크기</Highlight>를 선택해 주세요
+              원하시는 <Highlight>글자 크기</Highlight>를 선택해 주세요
             </Title>
           </VertiBox2>
           <Div>
