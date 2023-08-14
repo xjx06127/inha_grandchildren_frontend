@@ -99,7 +99,8 @@ const ProgressCircle = styled.circle`
   animation: ${progressAnimation} 5s linear forwards;
 `;
 const Highlighter = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #ffd05d 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
+  border-radius: 3px;
 `;
 
 const FindAnalyze = ({ percentage }) => {
@@ -130,7 +131,7 @@ const FindAnalyze = ({ percentage }) => {
         <br />
         적절한 어플을
         <br />
-        찾는중 입니다.
+        찾는 중입니다.
       </Text>
       <CircularContainer>
         <CircularSVG viewBox="-5 -5 250 250">

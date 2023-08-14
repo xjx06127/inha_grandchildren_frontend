@@ -15,6 +15,13 @@ const BackGround = styled.div`
   }
   margin: 0; */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Flex = styled.div`
+  flex: 1;
 `;
 
 const MidBox = styled.div`
@@ -174,30 +181,32 @@ const HealthCare = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            어떤 <HighLight fS={fontSize}>관리</HighLight>가<br />
-            필요하신가요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box onClick={GoToMenuPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>식단</SelText>
-            </Box>
-            <Box onClick={GoToSleepPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>수면</SelText>
-            </Box>
-          </Row1>
-          <Row2>
-            <Box onClick={GoToExercisePage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>운동</SelText>
-            </Box>
-          </Row2>
-        </SelectBox>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              어떤 <HighLight fS={fontSize}>관리</HighLight>가<br />
+              필요하신가요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box onClick={GoToMenuPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>식단</SelText>
+              </Box>
+              <Box onClick={GoToSleepPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>수면</SelText>
+              </Box>
+            </Row1>
+            <Row2>
+              <Box onClick={GoToExercisePage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>운동</SelText>
+              </Box>
+            </Row2>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>

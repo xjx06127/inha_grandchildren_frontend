@@ -16,6 +16,9 @@ const BackGround = styled.div`
   height: 100%;
   margin: 0; */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const MidBox = styled.div`
@@ -134,20 +137,9 @@ const Box = styled.div`
   }
 `;
 
-const SelText = styled.p`
-  font-size: ${(props) => {
-    switch (props.fS) {
-      case "normal":
-        return "1.6rem";
-      case "large":
-        return "1.9rem";
-      case "veryLarge":
-        return "2.2rem";
-    }
-  }};
-  font-weight: bold;
+const Flex = styled.div`
+  flex: 1;
 `;
-
 const Delivery = () => {
   const navigate = useNavigate();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
@@ -178,42 +170,44 @@ const Delivery = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            어떤 <HighLight fS={fontSize}>분야</HighLight>를<br />
-            찾으시나요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box
-              onClick={GoToDeliveryFoodPage}
-              clicked={isBoxClicked}
-              fS={fontSize}
-            >
-              배달 음식
-              {/* <SelText fS={fontSize}>배달 음식</SelText> */}
-            </Box>
-          </Row1>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              어떤 <HighLight fS={fontSize}>분야</HighLight>를<br />
+              찾으시나요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box
+                onClick={GoToDeliveryFoodPage}
+                clicked={isBoxClicked}
+                fS={fontSize}
+              >
+                배달 음식
+                {/* <SelText fS={fontSize}>배달 음식</SelText> */}
+              </Box>
+            </Row1>
 
-          <Row2>
-            <Box
-              onClick={GoToGeneralDeliveryPage}
-              clicked={isBoxClicked}
-              fS={fontSize}
-            >
-              식료품 및<br />
-              생활용품 <br />
-              배송
-              {/* <SelText fS={fontSize}>
+            <Row2>
+              <Box
+                onClick={GoToGeneralDeliveryPage}
+                clicked={isBoxClicked}
+                fS={fontSize}
+              >
+                식료품 및<br />
+                생활용품 <br />
+                배송
+                {/* <SelText fS={fontSize}>
 
               </SelText> */}
-            </Box>
-          </Row2>
-        </SelectBox>
+              </Box>
+            </Row2>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>

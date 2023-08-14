@@ -15,6 +15,13 @@ const BackGround = styled.div`
   }
   margin: 0; */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Flex = styled.div`
+  flex: 1;
 `;
 
 const MidBox = styled.div`
@@ -202,62 +209,64 @@ const LivingAppTest = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            지금 <HighLight fS={fontSize}>필요하신 것</HighLight>이<br />
-            무엇인가요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box
-              onTouchEnd={GoToFinancePage}
-              onClick={GoToFinancePage}
-              clicked={isBoxClicked}
-            >
-              <SelText fS={fontSize}>금융</SelText>
-            </Box>
-            <Box
-              onTouchEnd={GoToWeatherPage}
-              onClick={GoToWeatherPage}
-              clicked={isBoxClicked}
-            >
-              <SelText fS={fontSize}>날씨</SelText>
-            </Box>
-          </Row1>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              지금 <HighLight fS={fontSize}>필요하신 것</HighLight>이<br />
+              무엇인가요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box
+                onTouchEnd={GoToFinancePage}
+                onClick={GoToFinancePage}
+                clicked={isBoxClicked}
+              >
+                <SelText fS={fontSize}>금융</SelText>
+              </Box>
+              <Box
+                onTouchEnd={GoToWeatherPage}
+                onClick={GoToWeatherPage}
+                clicked={isBoxClicked}
+              >
+                <SelText fS={fontSize}>날씨</SelText>
+              </Box>
+            </Row1>
 
-          <Row2>
-            <Box
-              onTouchEnd={GoToSearchLoadPage}
-              onClick={GoToSearchLoadPage}
-              clicked={isBoxClicked}
-            >
-              <SelText fS={fontSize}>길 찾기</SelText>
-            </Box>
-            <Box
-              onTouchEnd={GoToDeliveryPage}
-              onClick={GoToDeliveryPage}
-              clicked={isBoxClicked}
-            >
-              <SelText fS={fontSize}>
-                배달 및<br /> 배송
-              </SelText>
-            </Box>
-          </Row2>
+            <Row2>
+              <Box
+                onTouchEnd={GoToSearchLoadPage}
+                onClick={GoToSearchLoadPage}
+                clicked={isBoxClicked}
+              >
+                <SelText fS={fontSize}>길 찾기</SelText>
+              </Box>
+              <Box
+                onTouchEnd={GoToDeliveryPage}
+                onClick={GoToDeliveryPage}
+                clicked={isBoxClicked}
+              >
+                <SelText fS={fontSize}>
+                  배달 및<br /> 배송
+                </SelText>
+              </Box>
+            </Row2>
 
-          <Row3>
-            <Box
-              onTouchEnd={GoToSchedulePage}
-              onClick={GoToSchedulePage}
-              clicked={isBoxClicked}
-            >
-              <SelText fS={fontSize}>일정 관리</SelText>
-            </Box>
-          </Row3>
-        </SelectBox>
+            <Row3>
+              <Box
+                onTouchEnd={GoToSchedulePage}
+                onClick={GoToSchedulePage}
+                clicked={isBoxClicked}
+              >
+                <SelText fS={fontSize}>일정 관리</SelText>
+              </Box>
+            </Row3>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>

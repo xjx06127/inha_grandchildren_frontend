@@ -15,6 +15,13 @@ const BackGround = styled.div`
   }
   margin: 0; */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Flex = styled.div`
+  flex: 1;
 `;
 
 const MidBox = styled.div`
@@ -190,34 +197,36 @@ const SearchLoad = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            어떤 <HighLight fS={fontSize}>분야</HighLight>를<br />
-            찾으시나요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box onClick={GoToMapPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>지도</SelText>
-            </Box>
-            <Box onClick={GoToSubwayPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>지하철</SelText>
-            </Box>
-          </Row1>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              어떤 <HighLight fS={fontSize}>분야</HighLight>를<br />
+              찾으시나요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box onClick={GoToMapPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>지도</SelText>
+              </Box>
+              <Box onClick={GoToSubwayPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>지하철</SelText>
+              </Box>
+            </Row1>
 
-          <Row2>
-            <Box onClick={GoToBusPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>버스</SelText>
-            </Box>
-            <Box onClick={GoToTexiPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>택시</SelText>
-            </Box>
-          </Row2>
-        </SelectBox>
+            <Row2>
+              <Box onClick={GoToBusPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>버스</SelText>
+              </Box>
+              <Box onClick={GoToTexiPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>택시</SelText>
+              </Box>
+            </Row2>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>

@@ -99,7 +99,7 @@ const ProgressCircle = styled.circle`
   animation: ${progressAnimation} 5s linear forwards;
 `;
 const Highlighter = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #f1d152 80%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
   border-radius: 3px;
 `;
 
