@@ -18,10 +18,10 @@ const BackGround = styled.div`
   background-size: cover;
   border-radius: 0 0 50px 60px / 0 0 12px 19px;
   @media (orientation: portrait) {
-    height: 50vh;
+    height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 120vh;
+    height: 90vh;
   }
   font-family: "MICE";
 `;
