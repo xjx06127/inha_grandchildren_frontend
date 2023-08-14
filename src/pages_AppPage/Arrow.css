@@ -1,12 +1,13 @@
 .arrow_box {
   position: relative;
-  background: #b3baa9;
-  border: 4px solid #bed3c7;
+  background: #778267;
+  border: 4px solid  #778267;
   width: 60vw;
   height: 15vw;
   text-align: center;
   padding-top: 3%;
   border-radius: 20px;
+  color:#ffffff;
 }
 .arrow_box:after {
   border-width: 5vw; /* 화살표 크기를 viewport width의 10%로 설정 */
@@ -28,11 +29,11 @@
 
 .arrow_box:after {
   border-color: rgba(136, 183, 213, 0);
-  border-right-color: #b3baa9;
+  border-right-color: #778267;
 }
 .arrow_box:before {
   border-color: rgba(194, 225, 245, 0);
-  border-right-color: #bed3c7;
+  border-right-color:  #778267;
   border-width: 2vh;
   margin-left: 2vh;
   margin-top: -5%;
