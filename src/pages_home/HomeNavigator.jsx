@@ -145,7 +145,7 @@ const HomeNavigator = () => {
       <Box>
         <CheckSamsungInternet 
         fS={fontSize}
-        onClick={()=>navigate('/Category')}
+        onClick={()=>navigate('/NoSound')}
         >혹시, 소리가 안 나오시나요?</CheckSamsungInternet>
         <SoundBox onClick={handleControlSound}>
           <SoundImg
