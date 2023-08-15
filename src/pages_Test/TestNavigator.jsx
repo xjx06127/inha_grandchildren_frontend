@@ -134,7 +134,7 @@ const TestNavigator = () => {
       speakText("어플 설치를 3번이상 해보셨나요?");
     } else if (location.pathname.includes("Test4")) {
       console.log(location.pathname);
-      speakText("로그인이 어려우신가요?");
+      speakText("인터넷 검색을 통해 정보를 찾아보셨나요?");
     } else if (location.pathname.includes("Test5")) {
       console.log(location.pathname);
       speakText("어플 삭제를 해보셨나요?");
