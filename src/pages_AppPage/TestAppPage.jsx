@@ -194,9 +194,14 @@ const Level = styled.p`
 const Button = styled.button`
   background: linear-gradient(45deg, #617143, #9da582);
   border: none;
-  width: 42%;
+  width: 55%;
+  height: 30%;
   border-radius: 13px;
   margin-top: 8%;
+  padding:4%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  white-space: nowrap;
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -207,7 +212,6 @@ const Button = styled.button`
         return "2.2rem";
     }
   }};
-  padding: 2%;
   color: #ffffff;
   margin-bottom: 10%;
   font-family: "MICE";
@@ -318,12 +322,15 @@ const Icon = styled.img`
 const Button2 = styled.button`
   background: linear-gradient(45deg, #617143, #9da582);
   border: none;
-  width: 45%;
+  width: 55%;
   height: 30%;
   border-radius: 13px;
-  padding: 2%;
+  padding:4%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   color: #ffffff;
   margin-left: 10%;
+  white-space: nowrap;
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
