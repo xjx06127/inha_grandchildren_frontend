@@ -16,6 +16,9 @@ const BackGround = styled.div`
     height: auto;
   } */
   font-family: "MICE";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const MidBox = styled.div`
@@ -137,6 +140,10 @@ const SelText = styled.p`
   font-weight: bold;
 `;
 
+const Flex = styled.div`
+  flex: 1;
+`;
+
 const FirstChoosePage = () => {
   const navigate = useNavigate();
   const [isBoxClicked, setIsBoxClicked] = useState(false);
@@ -185,34 +192,36 @@ const FirstChoosePage = () => {
   return (
     <>
       <BackGround>
-        <GrayNavigator />
-        <MidBox>
-          <ImgArea src="/hi.svg" />
-          <MainText fS={fontSize}>
-            <HighLight fS={fontSize}>어떤 기능</HighLight>이<br />
-            필요하신가요?
-          </MainText>
-          <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
-        </MidBox>
-        <SelectBox>
-          <Row1>
-            <Box onClick={GoToLivingPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>생활 편의</SelText>
-            </Box>
-            <Box onClick={GoToHobbyPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>취미</SelText>
-            </Box>
-          </Row1>
+        <Flex>
+          <GrayNavigator />
+          <MidBox>
+            <ImgArea src="/hi.svg" />
+            <MainText fS={fontSize}>
+              <HighLight fS={fontSize}>어떤 기능</HighLight>이<br />
+              필요하신가요?
+            </MainText>
+            <SubText fS={fontSize}>아래의 버튼 중 하나를 선택해주세요.</SubText>
+          </MidBox>
+          <SelectBox>
+            <Row1>
+              <Box onClick={GoToLivingPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>생활 편의</SelText>
+              </Box>
+              <Box onClick={GoToHobbyPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>취미</SelText>
+              </Box>
+            </Row1>
 
-          <Row2>
-            <Box onClick={GoToCoummnityPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>소통</SelText>
-            </Box>
-            <Box onClick={GoToHealthyPage} clicked={isBoxClicked}>
-              <SelText fS={fontSize}>건강</SelText>
-            </Box>
-          </Row2>
-        </SelectBox>
+            <Row2>
+              <Box onClick={GoToCoummnityPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>소통</SelText>
+              </Box>
+              <Box onClick={GoToHealthyPage} clicked={isBoxClicked}>
+                <SelText fS={fontSize}>건강</SelText>
+              </Box>
+            </Row2>
+          </SelectBox>
+        </Flex>
         <UnderNavigator />
       </BackGround>
     </>

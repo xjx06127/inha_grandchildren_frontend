@@ -7,6 +7,8 @@ import AppPageNavigator from "./AppPageNavigator";
 import Swal from "sweetalert2";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import "./Arrow.css";
+import { useRef } from "react";
+import { useLocation } from "react-router";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -347,7 +349,8 @@ const Con = styled.div`
 `;
 
 const Highlight = styled.span`
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 70%, #ffd05d 50%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
+  border-radius: 3px;
 `;
 
 const ErrorMessage = styled.div`
@@ -511,6 +514,8 @@ const TestAppPage = () => {
   const [showToolTip, setShowToolTip] = useState(true);
   document.body.style = "background: white;";
   const [buttonClickCheck,setButtonClickCheck] = useState(false);
+  const audioRef = useRef(null); // Audio 인스턴스를 저장하기 위한 Ref 초기화
+  const location = useLocation();
 
   useEffect(() => {
     const toolTipTimeout = setTimeout(() => {
@@ -538,8 +543,17 @@ const TestAppPage = () => {
   // };
 
   //backend에서 가져온 tts 음성 조절
+  //unmount시 코드 실행
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause(); 
+        audioRef.current.currentTime = 0; //음성 재생시점을 0으로 다시 세팅 
+      }
+    };
+  }, []);
+
   const controlAudio = () => {
-    const audio = new Audio(App.tts);
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
@@ -552,19 +566,28 @@ const TestAppPage = () => {
       },
     });
 
+    if (!audioRef.current) {
+      audioRef.current = new Audio(App.tts);
+    }
+
     if(buttonClickCheck === false) {
       console.log(buttonClickCheck);
       Toast.fire({
         icon: "success",
         title: "음성 지원 소리를 켰습니다.",
       }); 
-      audio.play();
+      audioRef.current.play();
       setButtonClickCheck(true);
     }
     else {
       console.log(buttonClickCheck);
+      Toast.fire({
+        icon: "success",
+        title: "음성 지원 소리를 껐습니다.",
+      }); 
+      audioRef.current.load();
       setButtonClickCheck(false);
-      navigate(0);      
+      // navigate(0);      
     }
   };
   

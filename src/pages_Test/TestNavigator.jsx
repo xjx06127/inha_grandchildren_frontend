@@ -221,11 +221,10 @@ const TestNavigator = () => {
           </BackText>
         </BackBox>
 
-        <SoundBox>
+        <SoundBox onClick={handleControlSound}>
           <SoundImg
             fS={fontSize}
             src={isSoundOffClicked ? "/soundoff_gray.svg" : "/graysound.svg"}
-            onClick={handleControlSound}
           />
           <SoundText fS={fontSize}>
             {isSoundOffClicked ? "소리 켜기" : "소리 끄기"}

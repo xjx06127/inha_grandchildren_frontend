@@ -489,7 +489,7 @@ const Home = () => {
             <FontText fS={fontSize}>
               글자 크기가
               <br />
-              불편하신가요?
+              작으신가요?
             </FontText>
           </FontBox>
         </Box>
