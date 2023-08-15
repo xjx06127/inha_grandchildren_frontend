@@ -246,11 +246,11 @@ const Test4 = () => {
           <PageNum fS={fontSize}>4/5</PageNum>
           <Question fS={fontSize}>
             <Highlight fS={fontSize}>
-              <Highlighter>로그인</Highlighter>
+              <Highlighter>인터넷 검색</Highlighter>
             </Highlight>
-            이
+            을 통해
           </Question>{" "}
-          <Question fS={fontSize}> 어려우신가요?</Question>
+          <Question fS={fontSize}> 정보를 찾아보셨나요?</Question>
         </All>
         <Align>
           <Ans
