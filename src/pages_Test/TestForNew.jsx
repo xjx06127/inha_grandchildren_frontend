@@ -43,6 +43,7 @@ const Highlight = styled.div`
   font-weight: bolder;
   /* font-size: 1.9rem; */
   height: 0%;
+  font-family:"MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -127,6 +128,7 @@ const PageNum = styled.div`
   color: #df7857;
   /* font-size: 1.6rem; */
   margin-left: 10%;
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
