@@ -6,6 +6,7 @@ import AppPage from "../pages_AppPage/AppPage";
 import NavigatorApp from "./NavigatorApp";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import Fade from "react-reveal/Fade";
 
 const Desktop = styled.div`
   display: flex;
@@ -209,6 +210,7 @@ const Level1Reco = () => {
           </CBox>
 
           {App.map((element, index) => (
+            <Fade bottom delay={index * 100}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -228,6 +230,7 @@ const Level1Reco = () => {
                 </TB>
               </Box>
             </div>
+            </Fade>
           ))}
         </Rectangle>
       </Desktop>

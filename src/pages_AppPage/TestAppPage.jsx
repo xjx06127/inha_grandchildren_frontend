@@ -7,6 +7,8 @@ import AppPageNavigator from "./AppPageNavigator";
 import Swal from "sweetalert2";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import "./Arrow.css";
+import { useRef } from "react";
+import { useLocation } from "react-router";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -417,6 +419,11 @@ const MidBox = styled.div`
   }
 `;
 
+const TtsBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const TtsBtn = styled.div`
   display: flex;
   justify-content: center;
@@ -432,7 +439,6 @@ const TtsBtn = styled.div`
 `;
 
 const TtsImg = styled.img`
-  content: url("/sound.svg");
   width: 35%; /* Adjust the size of the image as needed */
   height: auto;
 `;
@@ -445,6 +451,10 @@ const FixBox = styled.div`
   bottom: 5%;
   right: 5%;
 `;
+
+const TtsText = styled.p`
+
+`
 
 const LeftBottomBalloon = styled.div`
   position: fixed; /* 수정된 부분 */
@@ -503,6 +513,9 @@ const TestAppPage = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [showToolTip, setShowToolTip] = useState(true);
   document.body.style = "background: white;";
+  const [buttonClickCheck,setButtonClickCheck] = useState(false);
+  const audioRef = useRef(null); // Audio 인스턴스를 저장하기 위한 Ref 초기화
+  const location = useLocation();
 
   useEffect(() => {
     const toolTipTimeout = setTimeout(() => {
@@ -523,11 +536,61 @@ const TestAppPage = () => {
     });
   }, [like]);
 
-  const tts = () => {
-    const audio = new Audio(App.tts);
-    console.log(audio);
-    audio.play(); // 음성 파일을 재생합니다.
+  // const tts = () => {
+  //   const audio = new Audio(App.tts);
+  //   console.log(audio);
+  //   audio.play(); // 음성 파일을 재생합니다.
+  // };
+
+  //backend에서 가져온 tts 음성 조절
+  //unmount시 코드 실행
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause(); 
+        audioRef.current.currentTime = 0; //음성 재생시점을 0으로 다시 세팅 
+      }
+    };
+  }, []);
+
+  const controlAudio = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top",
+      showConfirmButton: false,
+      timer: 1000,
+      timerProgressBar: false,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    if (!audioRef.current) {
+      audioRef.current = new Audio(App.tts);
+    }
+
+    if(buttonClickCheck === false) {
+      console.log(buttonClickCheck);
+      Toast.fire({
+        icon: "success",
+        title: "음성 지원 소리를 켰습니다.",
+      }); 
+      audioRef.current.play();
+      setButtonClickCheck(true);
+    }
+    else {
+      console.log(buttonClickCheck);
+      Toast.fire({
+        icon: "success",
+        title: "음성 지원 소리를 껐습니다.",
+      }); 
+      audioRef.current.load();
+      setButtonClickCheck(false);
+      // navigate(0);      
+    }
   };
+  
 
   const handleButtonClick = () => {
     const mobileType = navigator.userAgent.toLowerCase();
@@ -687,9 +750,17 @@ const TestAppPage = () => {
               어플 설명을 들어보세요!🔉
             </div>
           )}
-          <TtsBtn onClick={() => tts()}>
-            <TtsImg />
+          <TtsBox>
+          <TtsBtn onClick={controlAudio}>  
+            <TtsImg 
+            src={buttonClickCheck ? "/sound.svg" : "/soundoff_white.svg"}/>
           </TtsBtn>
+          {/* <TtsText>
+            {
+              buttonClickCheck ? "소리 끄기" : "소리 켜기"
+            }
+          </TtsText> */}
+          </TtsBox>
         </FixBox>
       </Desktop>
     </>

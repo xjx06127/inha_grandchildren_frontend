@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   padding-left: 4.8%;
   padding-right: 4.8%;
   padding-top: 7%;
@@ -60,6 +60,23 @@ const SoundText = styled.p`
   }};
 `;
 
+const CheckSamsungInternet = styled.p`
+  color: white;
+   /* font-size: 1rem; */
+   font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.1rem";
+      case "large":
+        return "1.2rem";
+      case "veryLarge":
+        return "1.3rem";
+    }
+  }};
+  padding-top: 2%;
+  
+`
+
 const HomeNavigator = () => {
   //초기에 localStorage에 저장된 soundOff key값을 가져온다.
   const initialSoundOffValue = localStorage.getItem("soundOff") === "true"; // 문자열을 불리언으로 변환
@@ -67,6 +84,7 @@ const HomeNavigator = () => {
     useState(initialSoundOffValue);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(isSoundOffClicked);
@@ -125,6 +143,10 @@ const HomeNavigator = () => {
   return (
     <>
       <Box>
+        <CheckSamsungInternet 
+        fS={fontSize}
+        onClick={()=>navigate('/Category')}
+        >혹시, 소리가 안 나오시나요?</CheckSamsungInternet>
         <SoundBox onClick={handleControlSound}>
           <SoundImg
             fS={fontSize}

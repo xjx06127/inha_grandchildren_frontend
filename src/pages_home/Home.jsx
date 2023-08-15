@@ -36,6 +36,7 @@ const MainText = styled.h1`
   padding-left: 10%;
   padding-top: 8%;
 `;
+
 const Box = styled.div`
   display: flex;
   flex-direction: column;
@@ -416,6 +417,7 @@ const Home = () => {
         : null
     );
   }, [Level]);
+
 
   return (
     <>

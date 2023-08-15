@@ -373,7 +373,7 @@ const Category = () => {
         </Fade>
 
         {app1[0] && (
-          <Fade bottom delay={300}>
+          <Fade bottom delay={200}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -399,7 +399,7 @@ const Category = () => {
         )}
 
         {app1[1] && (
-          <Fade bottom delay={400}>
+          <Fade bottom delay={300}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -437,7 +437,7 @@ const Category = () => {
         </Fade>
 
         {app2[0] && (
-          <Fade bottom delay={300}>
+          <Fade bottom delay={200}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -463,7 +463,7 @@ const Category = () => {
         )}
 
         {app2[1] && (
-          <Fade bottom delay={400}>
+          <Fade bottom delay={300}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -498,7 +498,7 @@ const Category = () => {
         </T1>
 
         {app3[0] && (
-          <Fade bottom delay={300}>
+          <Fade bottom delay={200}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -524,7 +524,7 @@ const Category = () => {
         )}
 
         {app3[1] && (
-          <Fade bottom delay={400}>
+          <Fade bottom delay={300}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -559,7 +559,7 @@ const Category = () => {
         </T1>
 
         {app4[0] && (
-          <Fade bottom delay={300}>
+          <Fade bottom delay={200}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -585,7 +585,7 @@ const Category = () => {
         )}
 
         {app4[1] && (
-          <Fade bottom delay={400}>
+          <Fade bottom delay={300}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -620,7 +620,7 @@ const Category = () => {
         </T1>
 
         {app5[0] && (
-          <Fade bottom delay={300}>
+          <Fade bottom delay={200}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -646,7 +646,7 @@ const Category = () => {
         )}
 
         {app5[1] && (
-          <Fade bottom delay={400}>
+          <Fade bottom delay={300}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
