@@ -168,7 +168,7 @@ const NoSound = () => {
             <ImgIcon src="/number1.svg"/>
             <InText>아래의 빨간 동그라미 안 버튼을 눌러주세요. </InText>
             <br />
-            <Img src="/1.svg"></Img>
+            <Img src="/phone-removebg-preview.png"></Img>
           </Box1>
           </Col>
       
@@ -182,7 +182,7 @@ const NoSound = () => {
               눌러주세요.
             </InText>
             <br />
-            <Img src="/20.svg"></Img>
+            <Img src="/phone2-removebg-preview.png"></Img>
           </Box2>
           </Col>
           </Fade>
