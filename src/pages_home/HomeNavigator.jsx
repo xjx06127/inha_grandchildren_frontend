@@ -53,9 +53,9 @@ const SoundText = styled.p`
       case "normal":
         return "1rem";
       case "large":
-        return "1.3rem";
+        return "1.2rem";
       case "veryLarge":
-        return "1.6rem";
+        return "1.3rem";
     }
   }};
 `;
