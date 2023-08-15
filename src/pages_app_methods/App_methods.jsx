@@ -102,7 +102,7 @@ const App_methods = () => {
         <Title fS={fontSize}>'손주야~'사용영상 </Title>
         <Videobox>
           <ReactPlayer
-            url="video2.mp4"
+            url="KakaoTalk_20230815_162726022.mp4"
             width="90%"
             height="20%"
             // playing={true}

@@ -418,7 +418,6 @@ const Home = () => {
     );
   }, [Level]);
 
-
   return (
     <>
       <BackGround>
