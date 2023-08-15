@@ -297,6 +297,13 @@ const GrayNavigator = () => {
         "운동과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!"
       );
     }
+      else if(
+        decodeURI(location.pathname) === decodeURI("/NoSound")
+      ) {
+        speakText(
+          "혹시 아래와 같은 삼성 인터넷을 쓰시나요? 그렇다면, 아래와 같은 방법으로 설정해보세요! 화면을 위로 쓸어올리시면, 다음 설명 페이지로 이동합니다."
+        );
+      }
 
     return () => {
       synth.cancel();
