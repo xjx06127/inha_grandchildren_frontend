@@ -43,7 +43,7 @@ const Highlight = styled.div`
   font-weight: bolder;
   /* font-size: 1.9rem; */
   height: 0%;
-  font-family:"MICE";
+  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -298,7 +298,7 @@ const TestForNew = () => {
         {isNew === "true" && (
           <>
             {/* 여기서 원하는 만큼 여백을 추가할 수 있습니다 */}
-            <div style={{ marginBottom: "20%" }}></div>
+            <div style={{ height: "120px" }}></div>
           </>
         )}
       </div>

@@ -283,7 +283,7 @@ const Test3 = () => {
         {isNew === "true" && (
           <>
             {/* 여기서 원하는 만큼 여백을 추가할 수 있습니다 */}
-            <div style={{ marginBottom: "20%" }}></div>
+            <div style={{ height: "120px" }}></div>
           </>
         )}
       </div>
