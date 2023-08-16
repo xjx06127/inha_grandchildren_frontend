@@ -90,9 +90,10 @@ const App_methods = () => {
         </Text>
         <Videobox>
           <ReactPlayer
-            url="KakaoTalk_20230816_163409084.mp4"
+            url="Appuse2.mp4"
             width="90%"
             height="20%"
+            // light={<img src="003.png" alt="Thumbnail" />}
             // playing={true}
             muted={true}
             controls={true}
