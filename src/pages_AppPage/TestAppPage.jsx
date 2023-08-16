@@ -198,7 +198,7 @@ const Button = styled.button`
   height: 30%;
   border-radius: 13px;
   margin-top: 8%;
-  padding:4%;
+  padding: 4%;
   padding-top: 5%;
   padding-bottom: 5%;
   white-space: nowrap;
@@ -325,7 +325,7 @@ const Button2 = styled.button`
   width: 55%;
   height: 30%;
   border-radius: 13px;
-  padding:4%;
+  padding: 4%;
   padding-top: 5%;
   padding-bottom: 5%;
   color: #ffffff;
@@ -699,7 +699,7 @@ const TestAppPage = () => {
           icon: "success",
           title: "추천 완료",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
         });
       } catch (error) {
         console.error("Error occurred while updating like:", error);
@@ -710,7 +710,7 @@ const TestAppPage = () => {
         title: "잠시만요!",
         text: "중복 추천은 불가해요.😥",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
       });
     }
   };
