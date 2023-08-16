@@ -6,51 +6,54 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FontSizeContext } from "./pages_font_context/FontSizeProvider";
 
-const Con = styled.div`
-  font-weight: 100px;
-  font-size: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 30%;
-  text-align: center;
+const Text = styled.div`
+  font-size: 4rem;
+  color: white;
+  font-weight: bold;
+  padding-top: 57%;
+  padding-left: 5%;
   font-family: "MICE";
+`;
+
+const Stext = styled.div`
+  font-size: 2.1rem;
+  color: white;
+  font-weight: bold;
+  padding-left: 7%;
+  padding-top: 3%;
+  font-family: "MICE";
+`;
+
+const Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: #e38b6f;
 `;
 
 const NextButton = styled.button`
   width: 60%;
   height: 8vh;
-  background: linear-gradient(97.27deg, #df7857 0%, #e7ab9a 100%);
-  border-radius: 5px;
+  background: transparent;
+  border-radius: 30px;
   color: white;
-  /* font-size: 1.6rem; */
-  margin-top: 10%;
   margin-bottom: 10%;
   font-weight: bold;
-  border: none;
   text-align: center;
   font-family: "MICE";
-  font-size: ${(props) => {
-    switch (props.fS) {
-      case "normal":
-        return "1.6rem";
-      case "large":
-        return "1.9rem";
-      case "veryLarge":
-        return "2.2rem";
-    }
-  }};
+  font-size: 1.6rem;
+  border-color: white;
+  border-width: 7px;
+  margin-left: 20%;
+  border: 3px solid white;
+  margin-top: 10%;
 `;
 
 const Img = styled.img`
-  content: url(/startPageLogo.png);
+  content: url(/people.svg);
+  /* margin-top: 30%; */
+  padding-top: 28.5%;
 `;
-const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20%;
-  margin-bottom: 20%;
-`;
+
 const NotFound = () => {
   const Back = () => {
     navigate(-1);
@@ -61,18 +64,17 @@ const NotFound = () => {
   document.body.style = "background: white;";
 
   return (
-    <Con>
-      <h1>
+    <Background>
+      <Text>아이고!</Text>
+      <Stext>
         페이지를
-        <br /> 찾을 수 없습니다.
-      </h1>
-      <Div>
-        <Img />
-      </Div>
+        <br /> 찾을 수 없어요.
+      </Stext>
       <NextButton onClick={Back} fS={fontSize}>
         이전으로
       </NextButton>
-    </Con>
+      <Img />
+    </Background>
   );
 };
 
