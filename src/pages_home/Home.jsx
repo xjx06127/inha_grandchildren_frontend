@@ -6,6 +6,8 @@ import { useNavigate } from "react-router";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import ContactUs from "../ContactUs";
 import Swal from "sweetalert2";
+import { useMediaQuery } from "react-responsive";
+import { useLocation } from "react-router-dom";
 
 const BackGround = styled.div`
   background-image: url(/mainBackground.png);
@@ -357,6 +359,27 @@ const Home = () => {
   const [LevelImg, setLevelImg] = useState("");
   const navigate = useNavigate();
   document.body.style = "background: white;";
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
+  const alertPC = () => {
+    Swal.fire({
+      title: "잠시만요!",
+      html: "F12를 눌러 Toggle device toolbar를 통해 모바일 모드로 보시는 걸 권장합니다. <br/><br/>( 단축키 : F12 -> Ctrl+Shift+M )",
+      icon: "warning",
+      confirmButtonText: "확인",
+      confirmButtonColor: "#798560",
+    });
+    localStorage.setItem("isAlerted", true);
+  };
 
   const GoToFindPage = () => {
     setFindClick(true);
@@ -397,6 +420,10 @@ const Home = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % ImageUrls.length);
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
+    if (isDesktopOrLaptop && localStorage.getItem("isAlerted") == null) {
+      alertPC();
+    }
     const interval = setInterval(ChangeImage, 2800);
     return () => clearInterval(interval);
   }, []);
@@ -420,80 +447,162 @@ const Home = () => {
 
   return (
     <>
-      <BackGround>
-        <HomeNavigator />
-        <MainText fS={fontSize}>
-          원하시는 서비스를
-          <br />
-          선택해주세요
-        </MainText>
+      {isDesktopOrLaptop && (
+        <>
+          <BackGround>
+            <HomeNavigator />
+            <MainText fS={fontSize}>
+              원하시는 서비스를
+              <br />
+              선택해주세요
+            </MainText>
 
-        <Box>
-          {/* <FindBox onClick={GoToFindPage} active={findClick}>
+            <Box>
+              {/* <FindBox onClick={GoToFindPage} active={findClick}>
             <HomeIconsAnimation />
             <FindText fS={fontSize}>
               필요한 어플 <br />
               찾아드릴게요
             </FindText>
           </FindBox> */}
-          <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
-            <HomeIconsAnimation
-              src={ImageUrls[currentImageIndex]}
-              style={{ width: "12%", marginRight: "10%" }}
-            />
-            필요한 어플을 <br />
-            찾아드릴게요
-          </FindBox>
+              <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
+                <HomeIconsAnimation
+                  src={ImageUrls[currentImageIndex]}
+                  style={{ width: "12%", marginRight: "10%" }}
+                />
+                필요한 어플을 <br />
+                찾아드릴게요
+              </FindBox>
 
-          <Row1>
-            <JustLookBox onClick={GoToRecoPage} active={recoClick}>
-              <JustLookText fS={fontSize}>
-                분야별
-                <br />
-                어플을
-                <br />
-                보여드릴게요
-              </JustLookText>
-              <JustLookIcon src="/lookicon.svg" />
-            </JustLookBox>
+              <Row1>
+                <JustLookBox onClick={GoToRecoPage} active={recoClick}>
+                  <JustLookText fS={fontSize}>
+                    분야별
+                    <br />
+                    어플을
+                    <br />
+                    보여드릴게요
+                  </JustLookText>
+                  <JustLookIcon src="/lookicon.svg" />
+                </JustLookBox>
 
-            <TestBox onClick={GoToTestPage} active={testClick}>
-              <TestText fS={fontSize}>
-                테스트를
-                <br />
-                다시 하고
-                <br />
-                싶으신가요?
-              </TestText>
-              <LevelText fS={fontSize}>현재 : {Level}</LevelText>
-              <TestIcon src={LevelImg}></TestIcon>
-            </TestBox>
-          </Row1>
+                <TestBox onClick={GoToTestPage} active={testClick}>
+                  <TestText fS={fontSize}>
+                    테스트를
+                    <br />
+                    다시 하고
+                    <br />
+                    싶으신가요?
+                  </TestText>
+                  <LevelText fS={fontSize}>현재 : {Level}</LevelText>
+                  <TestIcon src={LevelImg}></TestIcon>
+                </TestBox>
+              </Row1>
 
-          <HelpBox onClick={GoToHelpPage} active={helpClick}>
-            <Circle>
-              <HelpIcon src="/help_white.svg" />
-            </Circle>
-            <HelpText fS={fontSize}>
-              사용 방법을
+              <HelpBox onClick={GoToHelpPage} active={helpClick}>
+                <Circle>
+                  <HelpIcon src="/help_white.svg" />
+                </Circle>
+                <HelpText fS={fontSize}>
+                  사용 방법을
+                  <br />
+                  알고 싶으신가요?
+                </HelpText>
+              </HelpBox>
+
+              <FontBox onClick={GoToFontPage} active={fontClick}>
+                <Circle>
+                  <FontIcon src="/font_white.svg" />
+                </Circle>
+                <FontText fS={fontSize}>
+                  글자 크기가
+                  <br />
+                  작으신가요?
+                </FontText>
+              </FontBox>
+            </Box>
+            <ContactUs />
+          </BackGround>
+        </>
+      )}
+      {isTabletOrMobile && (
+        <>
+          <BackGround>
+            <HomeNavigator />
+            <MainText fS={fontSize}>
+              원하시는 서비스를
               <br />
-              알고 싶으신가요?
-            </HelpText>
-          </HelpBox>
+              선택해주세요
+            </MainText>
 
-          <FontBox onClick={GoToFontPage} active={fontClick}>
-            <Circle>
-              <FontIcon src="/font_white.svg" />
-            </Circle>
-            <FontText fS={fontSize}>
-              글자 크기가
-              <br />
-              작으신가요?
-            </FontText>
-          </FontBox>
-        </Box>
-        <ContactUs />
-      </BackGround>
+            <Box>
+              {/* <FindBox onClick={GoToFindPage} active={findClick}>
+            <HomeIconsAnimation />
+            <FindText fS={fontSize}>
+              필요한 어플 <br />
+              찾아드릴게요
+            </FindText>
+          </FindBox> */}
+              <FindBox onClick={GoToFindPage} active={findClick} fS={fontSize}>
+                <HomeIconsAnimation
+                  src={ImageUrls[currentImageIndex]}
+                  style={{ width: "12%", marginRight: "10%" }}
+                />
+                필요한 어플을 <br />
+                찾아드릴게요
+              </FindBox>
+
+              <Row1>
+                <JustLookBox onClick={GoToRecoPage} active={recoClick}>
+                  <JustLookText fS={fontSize}>
+                    분야별
+                    <br />
+                    어플을
+                    <br />
+                    보여드릴게요
+                  </JustLookText>
+                  <JustLookIcon src="/lookicon.svg" />
+                </JustLookBox>
+
+                <TestBox onClick={GoToTestPage} active={testClick}>
+                  <TestText fS={fontSize}>
+                    테스트를
+                    <br />
+                    다시 하고
+                    <br />
+                    싶으신가요?
+                  </TestText>
+                  <LevelText fS={fontSize}>현재 : {Level}</LevelText>
+                  <TestIcon src={LevelImg}></TestIcon>
+                </TestBox>
+              </Row1>
+
+              <HelpBox onClick={GoToHelpPage} active={helpClick}>
+                <Circle>
+                  <HelpIcon src="/help_white.svg" />
+                </Circle>
+                <HelpText fS={fontSize}>
+                  사용 방법을
+                  <br />
+                  알고 싶으신가요?
+                </HelpText>
+              </HelpBox>
+
+              <FontBox onClick={GoToFontPage} active={fontClick}>
+                <Circle>
+                  <FontIcon src="/font_white.svg" />
+                </Circle>
+                <FontText fS={fontSize}>
+                  글자 크기가
+                  <br />
+                  작으신가요?
+                </FontText>
+              </FontBox>
+            </Box>
+            <ContactUs />
+          </BackGround>
+        </>
+      )}
     </>
   );
 };

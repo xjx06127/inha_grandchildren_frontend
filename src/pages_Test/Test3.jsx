@@ -249,7 +249,7 @@ const Test3 = () => {
             </Highlight>
             를
           </Question>{" "}
-          <Question fS={fontSize}> 3번이상 해보셨나요?</Question>
+          <Question fS={fontSize}> 3번 이상 해보셨나요?</Question>
         </All>
         <Align>
           <Ans
