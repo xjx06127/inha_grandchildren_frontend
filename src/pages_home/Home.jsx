@@ -347,7 +347,7 @@ const ImageUrls = ["/findicon.svg", "/questionIcon.svg"];
 const HomeIconsAnimation = styled.img``;
 
 const Home = () => {
-  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  const {fontSize, setFontSize } = useContext(FontSizeContext);
   const [findClick, setFindClick] = useState(false);
   const [recoClick, setRecoClick] = useState(false);
   const [helpClick, setHelpClick] = useState(false);
@@ -396,11 +396,13 @@ const Home = () => {
   const ChangeImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex + 1) % ImageUrls.length);
   };
+
   useEffect(() => {
     const interval = setInterval(ChangeImage, 2800);
     return () => clearInterval(interval);
   }, []);
 
+  
   const Level = window.localStorage.getItem("Level");
   useEffect(() => {
     setLevelImg(
