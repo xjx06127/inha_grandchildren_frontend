@@ -86,7 +86,7 @@ const ContactUs = () => {
         <Text>고객 문의</Text>
         <Row1>
           <EmailImg src="/email.svg" />
-          <EmailText>inha_grandchildrens@naver.com</EmailText>
+          <EmailText>inha_grandchildren@naver.com</EmailText>
         </Row1>
         <Row2>
           <CallImg src="/call.svg" />
