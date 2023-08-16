@@ -160,7 +160,7 @@ const TestNavigator = () => {
           speakText("열매는 레벨4 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
           break;
         case 5:
-          speakText("당신은 디지털 끝판왕!😉");
+          speakText("당신은 디지털 끝판왕!");
           break;
       }
     }

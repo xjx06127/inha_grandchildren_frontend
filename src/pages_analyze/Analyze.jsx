@@ -28,9 +28,10 @@ const Icon = styled.img`
   width: 80%;
   height: 40%;
   margin-left: 10%;
-  margin-top: 30%;
-  animation: ${RotateAnimation} 2s linear infinite,
-    ${MoveAnimation} 2s linear infinite alternate;
+  /* margin-top: 30%; */
+  animation: ${MoveAnimation} 2s linear infinite alternate;
+  margin-bottom: 10%;
+  padding-top: 30%;
 `;
 
 const Text = styled.h1`
@@ -110,17 +111,17 @@ const Analyze = ({ percentage }) => {
 
   const navigate = useNavigate(); // navigate 함수 생성
 
-  useEffect(() => {
-    const progressOffset = ((100 - percentage) / 100) * 502;
-    setOffset(progressOffset);
+  // useEffect(() => {
+  //   const progressOffset = ((100 - percentage) / 100) * 502;
+  //   setOffset(progressOffset);
 
-    const timer = setTimeout(() => {
-      navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Result`);
-    }, 3000);
+  //   const timer = setTimeout(() => {
+  //     navigate(`/${OX}/${OX2}/${OX3}/${OX4}/${OX5}/Result`);
+  //   }, 3000);
 
-    // 컴포넌트가 unmount 될 때 타이머 해제
-    return () => clearTimeout(timer);
-  }, [percentage, navigate]);
+  //   // 컴포넌트가 unmount 될 때 타이머 해제
+  //   return () => clearTimeout(timer);
+  // }, [percentage, navigate]);
 
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   document.body.style = "background: white;";
