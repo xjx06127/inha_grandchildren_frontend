@@ -103,7 +103,7 @@ const StartPage = () => {
         <CopyBox>
           <CopyRightImg src="/copyright_color.svg" />
           <CopyRightText>
-            INHA_GRANDCHILDRENS. All Rights Reserved.
+            INHA_GRANDCHILDREN. All Rights Reserved.
           </CopyRightText>
         </CopyBox>
       </Div>
