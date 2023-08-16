@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Background = styled.div`
   background-color: #f2f2f2;
-  height: 90%;
+  height: auto;
   padding: 5%;
   padding-top: 7%;
   padding-bottom: 10%;
