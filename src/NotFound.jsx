@@ -6,75 +6,54 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FontSizeContext } from "./pages_font_context/FontSizeProvider";
 
-const Con = styled.div`
-  font-size: ${(props) => {
-    switch (props.fS) {
-      case "normal":
-        return "1.6rem";
-      case "large":
-        return "1.9rem";
-      case "veryLarge":
-        return "2.2rem";
-    }
-  }};
-  margin-top: 20%;
-  margin-left: 10%;
-  margin-right: 10%;
-  text-align: center;
+const Text = styled.div`
+  font-size: 4rem;
+  color: white;
+  font-weight: bold;
+  padding-top: 57%;
+  padding-left: 5%;
   font-family: "MICE";
-  @media (orientation: landscape) {
-    margin-top: 3%;
-  }
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
-const NextButton = styled.div`
-  border: 2px solid #ff8057;
-  border-radius: 7px;
-  color: #df7857;
-  padding: 6%;
+const Stext = styled.div`
+  font-size: 2.1rem;
+  color: white;
   font-weight: bold;
-  margin-top: 5vh;
-  margin-bottom: 10vh;
-  /* width: 50%; */
-  font-size: ${(props) => {
-    switch (props.fS) {
-      case "normal":
-        return "1.1rem";
-      case "large":
-        return "1.3rem";
-      case "veryLarge":
-        return "1.6rem";
-    }
-  }};
-  @media (orientation: landscape) {
-    margin-top: -5%;
-    padding: 1%;
-    margin-bottom: 3.5%;
-  }
+  padding-left: 7%;
+  padding-top: 3%;
+  font-family: "MICE";
+`;
 
-  &:hover {
-    transition: 0.1s;
-    color: #ffbca7;
-  }
+const Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: #e38b6f;
+`;
+
+const NextButton = styled.button`
+  width: 60%;
+  height: 8vh;
+  background: transparent;
+  border-radius: 30px;
+  color: white;
+  margin-bottom: 10%;
+  font-weight: bold;
+  text-align: center;
+  font-family: "MICE";
+  font-size: 1.6rem;
+  border-color: white;
+  border-width: 7px;
+  margin-left: 20%;
+  border: 3px solid white;
+  margin-top: 10%;
 `;
 
 const Img = styled.img`
-  content: url(/startPageLogo.png);
+  content: url(/people.svg);
+  /* margin-top: 30%; */
+  padding-top: 28.5%;
 `;
-const Div = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20%;
-  margin-bottom: 10%;
-  @media (orientation: landscape) {
-    margin-top: 5%;
-  }
-`;
+
 const NotFound = () => {
   const Back = () => {
     navigate(-1);
@@ -85,16 +64,17 @@ const NotFound = () => {
   document.body.style = "background: white;";
 
   return (
-    <Con fS={fontSize}>
-      페이지를
-      <br /> 찾을 수 없습니다.
-      <Div>
-        <Img />
-      </Div>
+    <Background>
+      <Text>아이고!</Text>
+      <Stext>
+        페이지를
+        <br /> 찾을 수 없어요.
+      </Stext>
       <NextButton onClick={Back} fS={fontSize}>
         이전으로
       </NextButton>
-    </Con>
+      <Img />
+    </Background>
   );
 };
 
