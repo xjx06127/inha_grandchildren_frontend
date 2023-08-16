@@ -7,28 +7,6 @@ import { useContext } from "react";
 import { FontSizeContext } from "./pages_font_context/FontSizeProvider";
 
 const Con = styled.div`
-  font-weight: 100px;
-  font-size: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 30%;
-  text-align: center;
-  font-family: "MICE";
-`;
-
-const NextButton = styled.button`
-  width: 60%;
-  height: 8vh;
-  background: linear-gradient(97.27deg, #df7857 0%, #e7ab9a 100%);
-  border-radius: 5px;
-  color: white;
-  /* font-size: 1.6rem; */
-  margin-top: 10%;
-  margin-bottom: 10%;
-  font-weight: bold;
-  border: none;
-  text-align: center;
-  font-family: "MICE";
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -39,6 +17,49 @@ const NextButton = styled.button`
         return "2.2rem";
     }
   }};
+  margin-top: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+  font-family: "MICE";
+  @media (orientation: landscape) {
+    margin-top: 3%;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NextButton = styled.div`
+  border: 2px solid #ff8057;
+  border-radius: 7px;
+  color: #df7857;
+  padding: 6%;
+  font-weight: bold;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+  /* width: 50%; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.1rem";
+      case "large":
+        return "1.3rem";
+      case "veryLarge":
+        return "1.6rem";
+    }
+  }};
+  @media (orientation: landscape) {
+    margin-top: -5%;
+    padding: 1%;
+    margin-bottom: 3.5%;
+  }
+
+  &:hover {
+    transition: 0.1s;
+    color: #ffbca7;
+  }
 `;
 
 const Img = styled.img`
@@ -49,7 +70,10 @@ const Div = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 20%;
-  margin-bottom: 20%;
+  margin-bottom: 10%;
+  @media (orientation: landscape) {
+    margin-top: 5%;
+  }
 `;
 const NotFound = () => {
   const Back = () => {
@@ -61,11 +85,9 @@ const NotFound = () => {
   document.body.style = "background: white;";
 
   return (
-    <Con>
-      <h1>
-        페이지를
-        <br /> 찾을 수 없습니다.
-      </h1>
+    <Con fS={fontSize}>
+      페이지를
+      <br /> 찾을 수 없습니다.
       <Div>
         <Img />
       </Div>

@@ -58,6 +58,26 @@ const Title = styled.div`
         return "2.2rem";
     }
   }};
+  height: 50px;
+`;
+
+const Title1 = styled.div`
+  /* font-size: 1.6rem; */
+  color: black;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+  height: 120px;
 `;
 
 const Videobox = styled.div`
@@ -88,6 +108,7 @@ const App_methods = () => {
           <br />
           알려드릴게요🐥
         </Text>
+
         <Videobox>
           <ReactPlayer
             url="video.mp4"
@@ -123,7 +144,7 @@ const App_methods = () => {
             loop={true}
           />
         </Videobox>
-        <Title fS={fontSize}>친구에게도 알려주고 싶으실 땐요,</Title>
+        <Title1 fS={fontSize}>친구에게도 알려주고 싶으실 땐요,</Title1>
       </BackGround>
     </>
   );
