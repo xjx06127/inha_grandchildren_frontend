@@ -208,9 +208,10 @@ const App_methods = () => {
 
         <Videobox>
           <ReactPlayer
-            url="video.mp4"
+            url="Appuse2.mp4"
             width="90%"
             height="20%"
+            // light={<img src="003.png" alt="Thumbnail" />}
             // playing={true}
             muted={true}
             controls={true}
@@ -220,7 +221,7 @@ const App_methods = () => {
         <Title fS={fontSize}>'손주야~'사용영상 </Title>
         <Videobox>
           <ReactPlayer
-            url="KakaoTalk_20230815_162726022.mp4"
+            url="AppDelete.mp4"
             width="90%"
             height="20%"
             // playing={true}
