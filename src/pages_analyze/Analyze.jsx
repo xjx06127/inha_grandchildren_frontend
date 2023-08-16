@@ -28,9 +28,10 @@ const Icon = styled.img`
   width: 80%;
   height: 40%;
   margin-left: 10%;
-  margin-top: 30%;
-  animation: ${RotateAnimation} 2s linear infinite,
-    ${MoveAnimation} 2s linear infinite alternate;
+  /* margin-top: 30%; */
+  animation: ${MoveAnimation} 2s linear infinite alternate;
+  margin-bottom: 10%;
+  padding-top: 30%;
 `;
 
 const Text = styled.h1`
