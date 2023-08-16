@@ -198,7 +198,7 @@ const Button = styled.button`
   height: 30%;
   border-radius: 13px;
   margin-top: 8%;
-  padding:4%;
+  padding: 4%;
   padding-top: 5%;
   padding-bottom: 5%;
   white-space: nowrap;
@@ -325,7 +325,7 @@ const Button2 = styled.button`
   width: 55%;
   height: 30%;
   border-radius: 13px;
-  padding:4%;
+  padding: 4%;
   padding-top: 5%;
   padding-bottom: 5%;
   color: #ffffff;
@@ -429,6 +429,7 @@ const MidBox = styled.div`
 const TtsBox = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const TtsBtn = styled.div`
@@ -437,76 +438,101 @@ const TtsBtn = styled.div`
   align-items: center;
   border-radius: 100%;
   background: #617143;
-  position: fixed;
   width: 20vw;
   height: 20vw;
   opacity: 0.8;
-  left: 5%;
-  bottom: 3%;
 `;
 
 const TtsImg = styled.img`
-  width: 35%; /* Adjust the size of the image as needed */
+  width: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "35%";
+      case "large":
+        return "40%";
+      case "veryLarge":
+        return "45%";
+    }
+  }};
   height: auto;
 `;
 
 const FixBox = styled.div`
   position: fixed;
   display: flex;
-  justify-content: center;
-  align-items: center;
   bottom: 5%;
-  right: 5%;
+  left: 5%;
 `;
 
 const TtsText = styled.p`
-
-`
-
-const LeftBottomBalloon = styled.div`
-  position: fixed; /* 수정된 부분 */
-  bottom: 17%; /* 수정된 부분 */
-  left: 10%; /* 수정된 부분 */
-  background-color: #d1cccc;
-  border-radius: 8px;
-  padding: 20px;
-  width: 70vw;
-  font-size: 1.6rem;
-  color: #b3baa9;
-  &:before {
-    content: "";
-    position: absolute;
-    bottom: -20px;
-    left: 10px;
-    border: 10px solid transparent;
-    border-top-color: #e0e0e0;
-  }
+  color: #5f5f5f;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1rem";
+      case "large":
+        return "1.1rem";
+      case "veryLarge":
+        return "1.15rem";
+    }
+  }};
+  margin-top: 3%;
 `;
 
-// const ToolTip = styled.img`
-//   content: url("/speechBubble.svg");
-//   /* width: 80vw;
-//   height: auto; */
-//   position: relative; /* Add this line */
-//   top: -70px; /* Adjust this value to move the tooltip up or down */
-//   z-index: -1;
-//   opacity: 0.9;
-//   left: -20px; /* 원하는 값으로 조절하세요 */
-//   @media (orientation: landscape) {
-//     height: 45vh;
-//     width: 40vw;
-//   }
-//   @media (orientation: portrait) {
-//     height: auto;
-//     width: 80vw;
-//   }
-// `;
-
-const ToolTipText = styled.p`
-  font-size: 1.4rem;
-  font-weight: bold;
+const Div = styled.div`
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1rem";
+      case "large":
+        return "1.2rem";
+      case "veryLarge":
+        return "1.3rem";
+    }
+  }};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #778267;
+  border: 4px solid #778267;
+  width: 60vw;
+  height: 18vw;
   text-align: center;
-  color: white;
+  border-radius: 20px;
+  color: #ffffff;
+  margin-left: 10%;
+  opacity: 0.95;
+  &::after {
+    border-width: 5vw; /* 화살표 크기를 viewport width의 10%로 설정 */
+    margin-top: -5vw; /* 위치 조절 */
+    opacity: 0.95;
+  }
+
+  &::before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    /* border-width: 10px;
+  margin-left: -10px; */
+  }
+
+  &::after {
+    border-color: rgba(136, 183, 213, 0);
+    border-right-color: #778267;
+  }
+  &::before {
+    border-color: rgba(194, 225, 245, 0);
+    border-right-color: #778267;
+    border-width: 2vh;
+    margin-left: 2vh;
+    margin-top: -5%;
+  }
 `;
 
 const TestAppPage = () => {
@@ -518,21 +544,24 @@ const TestAppPage = () => {
   const [like, setLike] = useState(false);
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
-  const [showToolTip, setShowToolTip] = useState(true);
   document.body.style = "background: white;";
-  const [buttonClickCheck,setButtonClickCheck] = useState(false);
+  const [buttonClickCheck, setButtonClickCheck] = useState(false);
   const audioRef = useRef(null); // Audio 인스턴스를 저장하기 위한 Ref 초기화
   const location = useLocation();
+  const [showToolTip, setShowToolTip] = useState(true);
 
   useEffect(() => {
-    const toolTipTimeout = setTimeout(() => {
-      setShowToolTip(false);
-    }, 3000);
+    let deleteToolTip;
+    if (showToolTip === true && !buttonClickCheck) {
+      deleteToolTip = setTimeout(() => {
+        setShowToolTip(false);
+      }, 3000);
+    }
 
     return () => {
-      clearTimeout(toolTipTimeout);
+      clearTimeout(deleteToolTip);
     };
-  }, []);
+  }, [showToolTip, buttonClickCheck]);
 
   useEffect(() => {
     axios.get(`https://forgrandparents.store/detail/${id}`).then((res) => {
@@ -543,24 +572,23 @@ const TestAppPage = () => {
     });
   }, [like]);
 
-  // const tts = () => {
-  //   const audio = new Audio(App.tts);
-  //   console.log(audio);
-  //   audio.play(); // 음성 파일을 재생합니다.
-  // };
-
   //backend에서 가져온 tts 음성 조절
   //unmount시 코드 실행
   useEffect(() => {
     return () => {
       if (audioRef.current) {
-        audioRef.current.pause(); 
-        audioRef.current.currentTime = 0; //음성 재생시점을 0으로 다시 세팅 
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0; //음성 재생시점을 0으로 다시 세팅
       }
     };
   }, []);
 
   const controlAudio = () => {
+    if (buttonClickCheck === true) {
+      //소리가 꺼진 상태일떄... 아마 동기 비동기 문제때문에 이렇게 조건문 반대로 씀
+      console.log("a");
+      setShowToolTip(true);
+    }
     const Toast = Swal.mixin({
       toast: true,
       position: "top",
@@ -577,27 +605,23 @@ const TestAppPage = () => {
       audioRef.current = new Audio(App.tts);
     }
 
-    if(buttonClickCheck === false) {
-      console.log(buttonClickCheck);
+    if (buttonClickCheck === false) {
       Toast.fire({
         icon: "success",
         title: "음성 지원 소리를 켰습니다.",
-      }); 
+      });
       audioRef.current.play();
       setButtonClickCheck(true);
-    }
-    else {
-      console.log(buttonClickCheck);
+    } else {
       Toast.fire({
         icon: "success",
         title: "음성 지원 소리를 껐습니다.",
-      }); 
+      });
       audioRef.current.load();
       setButtonClickCheck(false);
-      // navigate(0);      
+      // navigate(0);
     }
   };
-  
 
   const handleButtonClick = () => {
     const mobileType = navigator.userAgent.toLowerCase();
@@ -675,7 +699,7 @@ const TestAppPage = () => {
           icon: "success",
           title: "추천 완료",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
         });
       } catch (error) {
         console.error("Error occurred while updating like:", error);
@@ -686,7 +710,7 @@ const TestAppPage = () => {
         title: "잠시만요!",
         text: "중복 추천은 불가해요.😥",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
       });
     }
   };
@@ -746,28 +770,26 @@ const TestAppPage = () => {
           </Box2>
         </Bcon>
         <FixBox>
-          {showToolTip && (
-            // <LeftBottomBalloon>
-            //   이곳을 클릭하여
-            //   <br /> 어플 설명을 들어보세요!
-            // </LeftBottomBalloon>
-            <div class="arrow_box">
-              이곳을 클릭하여
-              <br />
-              어플 설명을 들어보세요!🔉
-            </div>
-          )}
           <TtsBox>
-          <TtsBtn onClick={controlAudio}>  
-            <TtsImg 
-            src={buttonClickCheck ? "/sound.svg" : "/soundoff_white.svg"}/>
-          </TtsBtn>
-          {/* <TtsText>
-            {
-              buttonClickCheck ? "소리 끄기" : "소리 켜기"
-            }
-          </TtsText> */}
+            <TtsBtn onClick={controlAudio}>
+              <TtsImg
+                fS={fontSize}
+                src={buttonClickCheck ? "/sound.svg" : "/soundoff_white.svg"}
+              />
+            </TtsBtn>
+            <TtsText fS={fontSize}>
+              {buttonClickCheck ? "소리 끄기" : "소리 켜기"}
+            </TtsText>
           </TtsBox>
+          {!buttonClickCheck && showToolTip && (
+            <Div fS={fontSize} class="arrow_box">
+              <p>
+                이곳을 클릭하여
+                <br />
+                어플 설명을 들어보세요!🔉
+              </p>
+            </Div>
+          )}
         </FixBox>
       </Desktop>
     </>

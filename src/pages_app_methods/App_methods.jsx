@@ -59,6 +59,26 @@ const Title = styled.div`
         return "2.2rem";
     }
   }};
+  height: 50px;
+`;
+
+const Title1 = styled.div`
+  /* font-size: 1.6rem; */
+  color: black;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.2rem";
+    }
+  }};
+  height: 120px;
 `;
 
 const Videobox = styled.div`
@@ -185,6 +205,7 @@ const App_methods = () => {
           <br />
           알려드릴게요🐥
         </Text>
+
         <Videobox>
           <ReactPlayer
             url="video.mp4"
