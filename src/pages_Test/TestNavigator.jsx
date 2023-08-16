@@ -131,7 +131,7 @@ const TestNavigator = () => {
       speakText("인터넷 뱅킹을 쓰시나요?");
     } else if (location.pathname.includes("Test3")) {
       console.log(location.pathname);
-      speakText("어플 설치를 3번이상 해보셨나요?");
+      speakText("어플 설치를 세 번 이상 해보셨나요?");
     } else if (location.pathname.includes("Test4")) {
       console.log(location.pathname);
       speakText("인터넷 검색을 통해 정보를 찾아보셨나요?");
@@ -145,19 +145,29 @@ const TestNavigator = () => {
       const oCount = (location.pathname.match(/O/g) || []).length;
       switch (oCount) {
         case 0:
-          speakText("씨앗은 레벨1 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
+          speakText(
+            "씨앗은 레벨 일 입니다. 레벨 오 인 나무 레벨까지 올려보세요!"
+          );
           break;
         case 1:
-          speakText("새싹은 레벨2 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
+          speakText(
+            "새싹은 레벨 이 입니다. 레벨 오 인 나무 레벨까지 올려보세요!"
+          );
           break;
         case 2:
-          speakText("꽃은 레벨3 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
+          speakText(
+            "꽃은 레벨 삼 입니다. 레벨 오 인 나무 레벨까지 올려보세요!"
+          );
           break;
         case 3:
-          speakText("열매는 레벨4 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
+          speakText(
+            "열매는 레벨 사 입니다. 레벨 오 인 나무 레벨까지 올려보세요!"
+          );
           break;
         case 4:
-          speakText("열매는 레벨4 입니다. 레벨 5인 나무 레벨까지 올려보세요!");
+          speakText(
+            "열매는 레벨 사 입니다. 레벨 오 인 나무 레벨까지 올려보세요!"
+          );
           break;
         case 5:
           speakText("당신은 디지털 끝판왕!");
