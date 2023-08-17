@@ -551,6 +551,11 @@ const TestAppPage = () => {
   const [showToolTip, setShowToolTip] = useState(true);
 
   useEffect(() => {
+    // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     let deleteToolTip;
     if (showToolTip === true && !buttonClickCheck) {
       deleteToolTip = setTimeout(() => {

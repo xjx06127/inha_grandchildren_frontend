@@ -42,7 +42,6 @@ import TestAppPage from "./pages_AppPage/TestAppPage";
 import FindAnalyze from "./pages_analyze/FindAnalyze";
 import NoSound from "./pages_NoSound/NoSound";
 import styled, { css } from "styled-components";
-
 function App() {
   return (
     <FontSizeProvider>
