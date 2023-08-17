@@ -28,8 +28,8 @@ const Player2 = () => {
             url="Del.mp4"
             width="90%"
             height="20%"
-            // playing={true}
-            muted={true}
+            playing={true}
+            muted={false}
             controls={true}
             loop={false}
           />
