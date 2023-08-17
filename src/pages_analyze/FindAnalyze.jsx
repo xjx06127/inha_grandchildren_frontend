@@ -110,6 +110,10 @@ const FindAnalyze = ({ percentage }) => {
   const navigate = useNavigate(); // navigate 함수 생성
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const progressOffset = ((100 - percentage) / 100) * 502;
     setOffset(progressOffset);
 

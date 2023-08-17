@@ -4,11 +4,10 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/lazy";
-import BackNavigator from "../BackNavigator";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import Fade from "react-reveal/Fade";
-
+import App_methodNav from "./App_methodNav";
 const Highlight = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
   border-radius: 3px;
@@ -160,7 +159,7 @@ const LevelBox = styled.div`
   display: flex;
   align-items: center;
   margin-left: 10%;
-`
+`;
 
 const SeedImg = styled.img`
   margin-right: 3%;
@@ -174,7 +173,7 @@ const LevelBox2 = styled.div`
   display: flex;
   align-items: center;
   margin-left: 35%;
-`
+`;
 const Img2 = styled.img`
    margin-left: 3%;
    @media (orientation: landscape) {
@@ -187,8 +186,7 @@ const LevelBox3 = styled.div`
   display: flex;
   align-items: center;
   margin-left: 30%;
-  
-`
+`;
 const Img3 = styled.img`
   margin-right: 3%;
   @media (orientation: landscape) {
@@ -201,7 +199,7 @@ const LevelBox4 = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10%;
-`
+`;
 const Img4 = styled.img`
   width: 30%;
   height: 45%;
@@ -261,7 +259,7 @@ const App_methods = () => {
   return (
     <>
       <BackGround>
-        <BackNavigator />
+        <App_methodNav />
         <Icon src="/videoIcon.svg"></Icon>
         <Text fS={fontSize}>
           직접 <Highlight>동영상으로</Highlight>
@@ -282,54 +280,52 @@ const App_methods = () => {
         <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
 
         <LevelBackGround>
-          <Text2><Highlight>디지털 단계</Highlight>에 대해서 <br/> 알려드릴게요.</Text2>
+          <Text2>
+            <Highlight>디지털 단계</Highlight>에 대해서 <br /> 알려드릴게요.
+          </Text2>
 
           <Fade key={0} bottom>
-          <LevelBox>
-            <SeedImg src="/Ground_seed.svg"/>
-            <LevelText>1단계 : 씨앗</LevelText>
-          </LevelBox>
+            <LevelBox>
+              <SeedImg src="/Ground_seed.svg" />
+              <LevelText>1단계 : 씨앗</LevelText>
+            </LevelBox>
           </Fade>
 
           <Fade key={1} bottom delay={200}>
-          <Arrow src="/down-arrow1.svg"/>
+            <Arrow src="/down-arrow1.svg" />
 
-          <LevelBox2>
-            <LevelText>2단계 : 새싹</LevelText>
-            <Img2 src="/Ground_2.svg"/>
-          </LevelBox2>
+            <LevelBox2>
+              <LevelText>2단계 : 새싹</LevelText>
+              <Img2 src="/Ground_2.svg" />
+            </LevelBox2>
           </Fade>
 
           <Fade key={2} bottom delay={400}>
-          <Arrow2 src="/arrow-down2.svg"/>
+            <Arrow2 src="/arrow-down2.svg" />
 
             <LevelBox3>
-              <Img3 src="/Ground_3.svg"/>
+              <Img3 src="/Ground_3.svg" />
               <LevelText>3단계 : 꽃</LevelText>
             </LevelBox3>
           </Fade>
-          
+
           <Fade key={3} bottom delay={600}>
-          <Arrow3 src="/arrow-down3.svg"/>
-          <LevelBox4>
-            <Img4 src="/Ground_4.svg"/>
-            <LevelText>4단계 : 열매</LevelText>
-          </LevelBox4>
+            <Arrow3 src="/arrow-down3.svg" />
+            <LevelBox4>
+              <Img4 src="/Ground_4.svg" />
+              <LevelText>4단계 : 열매</LevelText>
+            </LevelBox4>
           </Fade>
 
           <Fade key={4} bottom delay={600}>
-          <Arrow4 src="/arrow-down4.svg"/>
-          <LevelBox5>
-            <LevelText>5단계 : 나무</LevelText>
-            <Img5 src="/Ground_5.svg"/>
-          </LevelBox5>
+            <Arrow4 src="/arrow-down4.svg" />
+            <LevelBox5>
+              <LevelText>5단계 : 나무</LevelText>
+              <Img5 src="/Ground_5.svg" />
+            </LevelBox5>
           </Fade>
-          
         </LevelBackGround>
-        
       </BackGround>
-
-      
     </>
   );
 };

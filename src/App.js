@@ -44,7 +44,6 @@ import NoSound from "./pages_NoSound/NoSound";
 import Player1 from "./pages_app_methods/Player1";
 import Player2 from "./pages_app_methods/Player2";
 import styled, { css } from "styled-components";
-
 function App() {
   return (
     <FontSizeProvider>

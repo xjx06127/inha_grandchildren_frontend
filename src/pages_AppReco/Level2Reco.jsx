@@ -6,7 +6,7 @@ import AppPage from "../pages_AppPage/AppPage";
 import NavigatorApp from "./NavigatorApp";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-import Fade from "react-reveal/Fade"
+import Fade from "react-reveal/Fade";
 
 const Desktop = styled.div`
   display: flex;
@@ -185,6 +185,8 @@ const Level2Reco = () => {
   document.body.style = "background: white;";
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
       setApp(res.data.level_1);
       console.log(App);
@@ -213,25 +215,25 @@ const Level2Reco = () => {
 
           {App.map((element, index) => (
             <Fade bottom delay={index * 100}>
-            <div>
-              <NameWrapper>
-                <Icon1 src="/Rec.svg"></Icon1>
-                <Number fS={fontSize}>{element.like}명</Number>
-                <Name fS={fontSize}>이 추천해요!</Name>
-              </NameWrapper>
-              <Box key={index}>
-                <AppImage src={element.image} />
-                <TB>
-                  <Title fS={fontSize}>{element.name}</Title>
-                  <Button
-                    onClick={() => handleButtonClick(element.id)}
-                    fS={fontSize}
-                  >
-                    자세히
-                  </Button>
-                </TB>
-              </Box>
-            </div>
+              <div>
+                <NameWrapper>
+                  <Icon1 src="/Rec.svg"></Icon1>
+                  <Number fS={fontSize}>{element.like}명</Number>
+                  <Name fS={fontSize}>이 추천해요!</Name>
+                </NameWrapper>
+                <Box key={index}>
+                  <AppImage src={element.image} />
+                  <TB>
+                    <Title fS={fontSize}>{element.name}</Title>
+                    <Button
+                      onClick={() => handleButtonClick(element.id)}
+                      fS={fontSize}
+                    >
+                      자세히
+                    </Button>
+                  </TB>
+                </Box>
+              </div>
             </Fade>
           ))}
         </Rectangle>
