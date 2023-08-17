@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import { Link } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ const Box = styled.div`
   font-family: "MICE";
 `;
 
-const BackBox = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,7 +108,7 @@ const GrayNavigator = () => {
   const navigate = useNavigate();
   const initialSoundOffValue = localStorage.getItem("soundOff") === "true"; //true인 경우 true반환
   const [isSoundOffClicked, setSoundOffClicked] =
-    useState(initialSoundOffValue);
+  useState(initialSoundOffValue);
   const location = useLocation();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
@@ -310,9 +311,11 @@ const GrayNavigator = () => {
     };
   }, [isSoundOffClicked, location.pathname]);
 
-  const GoToBack = () => {
-    navigate(-1);
-  };
+  // const GoToBack = (address) => {
+  //   if(decodeURI(address) === decodeURI("/AppFind")){
+  //     Link('/Main');
+  //   }
+  // };
 
   //소리 버튼 클릭 시, alert창 생성
   const handleControlSound = () => {
@@ -342,13 +345,56 @@ const GrayNavigator = () => {
         });
   };
 
+  // 동적 경로 생성 로직
+  let dynamicPath = "";
+  if (decodeURI(location.pathname) === decodeURI("/AppFind")) {
+    dynamicPath = "/Main";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/LivingAppsFind1")) {
+    dynamicPath = "/AppFind";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/HobbyAppTest1")) {
+    dynamicPath = "/AppFind";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/CommunityAppsFind")) {
+    dynamicPath = "/AppFind";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/HealthyAppTest1")) {
+    dynamicPath = "/AppFind";
+  }
+
+  else if (decodeURI(location.pathname) === decodeURI("/FinanceAppsFind")) {
+    dynamicPath = "/LivingAppsFind1";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/SearchLoadsAppsFind")) {
+    dynamicPath = "/LivingAppsFind1";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/DeliveryAppsFind")) {
+    dynamicPath = "/LivingAppsFind1";
+  }
+
+  else if (decodeURI(location.pathname) === decodeURI("/IndoorAppsFind")) {
+    dynamicPath = "/HobbyAppTest1";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/OutdoorAppsFind")) {
+    dynamicPath = "/HobbyAppTest1";
+  }
+
+  else if (decodeURI(location.pathname) === decodeURI("/HealthCareAppsFind")) {
+    dynamicPath = "/HealthyAppTest1";
+  }
+  else if (decodeURI(location.pathname) === decodeURI("/TreatmentAppsFind")) {
+    dynamicPath = "/HealthyAppTest1";
+  }
+
+
   return (
     <>
       <Box>
-        <BackBox onClick={GoToBack}>
+        <StyledLink to={dynamicPath} style={{ textDecoration: "none" }}>
           <BackImg fS={fontSize} src="/grayback.svg" />
           <BackText fS={fontSize}>돌아가기</BackText>
-        </BackBox>
+        </StyledLink>
 
         <SoundBox onClick={handleControlSound}>
           <SoundImg

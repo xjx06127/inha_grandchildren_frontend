@@ -62,8 +62,8 @@ const SoundText = styled.p`
 
 const CheckSamsungInternet = styled.p`
   color: white;
-   /* font-size: 1rem; */
-   font-size: ${(props) => {
+  /* font-size: 1rem; */
+  font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
         return "1.1rem";
@@ -74,8 +74,7 @@ const CheckSamsungInternet = styled.p`
     }
   }};
   padding-top: 2%;
-  
-`
+`;
 
 const HomeNavigator = () => {
   //초기에 localStorage에 저장된 soundOff key값을 가져온다.
@@ -90,7 +89,7 @@ const HomeNavigator = () => {
     console.log(isSoundOffClicked);
     const synth = window.speechSynthesis;
     const utterance = new SpeechSynthesisUtterance();
-
+    window.scrollTo(0, 0);
     const speakText = (text) => {
       utterance.text = text;
       utterance.rate = 0.8;
@@ -143,10 +142,12 @@ const HomeNavigator = () => {
   return (
     <>
       <Box>
-        <CheckSamsungInternet 
-        fS={fontSize}
-        onClick={()=>navigate('/NoSound')}
-        >혹시, 소리가 안 나오시나요?</CheckSamsungInternet>
+        <CheckSamsungInternet
+          fS={fontSize}
+          onClick={() => navigate("/NoSound")}
+        >
+          혹시, 소리가 안 나오시나요?
+        </CheckSamsungInternet>
         <SoundBox onClick={handleControlSound}>
           <SoundImg
             fS={fontSize}

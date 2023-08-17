@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
@@ -16,7 +18,7 @@ const Box = styled.div`
   font-family: "MICE";
 `;
 
-const BackBox = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,6 +114,7 @@ const TestNavigator = () => {
     useState(initialSoundOffValue);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   const location = useLocation();
+  const { OX, OX2, OX3, OX4, OX5 } = useParams();
 
   useEffect(() => {
     console.log(isSoundOffClicked);
@@ -221,15 +224,32 @@ const TestNavigator = () => {
         });
   };
 
+  let dynamicPath = "";
+  if (decodeURI(location.pathname) === decodeURI("/Test")) {
+    dynamicPath = "/Main";
+  }
+  else if (location.pathname.includes("Test2")) {
+    dynamicPath = "/Test";
+  }
+  else if (location.pathname.includes("Test3")) {
+    dynamicPath = `/Test2/${OX}`;
+  }
+  else if (location.pathname.includes("Test4")) {
+    dynamicPath = `/Test3/${OX}/${OX2}`;
+  }
+  else if (location.pathname.includes("Test5")) {
+    dynamicPath = `/Test4/${OX}/${OX2}/${OX3}`;
+  }
+
   return (
     <>
       <Box>
-        <BackBox onClick={GoToBack}>
+        <StyledLink to={dynamicPath} style={{ textDecoration: "none" }}>
           <BackImg fS={fontSize} src="/TestBack.svg" />
           <BackText clicked={isBackClicked} fS={fontSize}>
             돌아가기
           </BackText>
-        </BackBox>
+        </StyledLink>
 
         <SoundBox onClick={handleControlSound}>
           <SoundImg

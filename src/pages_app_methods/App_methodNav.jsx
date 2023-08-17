@@ -10,8 +10,7 @@ const Box = styled.div`
   justify-content: space-between;
   padding-left: 4.8%;
   padding-right: 4.8%;
-  padding-top: 5%;
-  padding-bottom: 3%;
+  padding-top: 7%;
   font-family: "MICE";
 `;
 
@@ -46,7 +45,7 @@ const BackImg = styled.img`
 `;
 
 const BackText = styled.p`
-  color: rgba(95, 95, 95, 1);
+  color: white;
   font-size: ${(props) => {
     switch (props.fS) {
       case "normal":
@@ -59,44 +58,17 @@ const BackText = styled.p`
   }};
 `;
 
-const SoundBox = styled.div`
+const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-const SoundImg = styled.img`
-  width: 40%;
-  height: 40%;
-  margin-bottom: 7px;
-`;
-
-const SoundText = styled.p`
-  color: rgba(95, 95, 95, 1);
-  font-size: ${(props) => {
-    switch (props.fS) {
-      case "normal":
-        return "1rem";
-      case "large":
-        return "1.3rem";
-      case "veryLarge":
-        return "1.6rem";
-    }
-  }};
-`;
-
-const CategoryNavigator = () => {
+const App_methodNav = () => {
   const navigate = useNavigate();
   const [isBackClicked, setBackClicked] = useState(false);
   const [isSoundClicked, setSoundClicked] = useState(false);
   const { fontSize, setFontSize } = useContext(FontSizeContext);
-
-  const GoToBack = () => {
-    window.history.back(); // 이전 페이지로 이동
-  };
-  useEffect(() => {
-    window.scrollTo(0, 0); // 이전 페이지로 이동했을 때 스크롤 맨 위로 이동
-  }, []);
 
   useEffect(() => {
     if (isBackClicked) {
@@ -113,17 +85,17 @@ const CategoryNavigator = () => {
   return (
     <>
       <Box>
-        <Link to={"/main"} style={{ textDecoration: "none" }}>
-          <BackBox>
-            <BackImg fS={fontSize} src="/TestBack.svg" />
-            <BackText clicked={isBackClicked} fS={fontSize}>
+        <BackBox>
+          <StyledLink to={`/Main`} style={{ textDecoration: "none" }}>
+            <BackImg fS={fontSize} src="/back.svg" />
+            <BackText fS={fontSize} clicked={isBackClicked}>
               돌아가기
             </BackText>
-          </BackBox>
-        </Link>
+          </StyledLink>
+        </BackBox>
       </Box>
     </>
   );
 };
 
-export default CategoryNavigator;
+export default App_methodNav;
