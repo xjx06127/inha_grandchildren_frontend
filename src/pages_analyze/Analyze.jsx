@@ -135,7 +135,7 @@ const Analyze = ({ percentage }) => {
       <Text fS={fontSize}>
         <Highlighter>디지털 레벨</Highlighter>을
         <br />
-        분석중 입니다.
+        분석 중입니다.
       </Text>
       <CircularContainer>
         <CircularSVG viewBox="-5 -5 250 250">
