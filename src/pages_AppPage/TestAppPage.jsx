@@ -198,7 +198,7 @@ const Button = styled.button`
   height: 30%;
   border-radius: 13px;
   margin-top: 8%;
-  padding:4%;
+  padding: 4%;
   padding-top: 5%;
   padding-bottom: 5%;
   white-space: nowrap;
@@ -325,7 +325,7 @@ const Button2 = styled.button`
   width: 55%;
   height: 30%;
   border-radius: 13px;
-  padding:4%;
+  padding: 4%;
   padding-top: 5%;
   padding-bottom: 5%;
   color: #ffffff;
@@ -549,6 +549,11 @@ const TestAppPage = () => {
   const audioRef = useRef(null); // Audio 인스턴스를 저장하기 위한 Ref 초기화
   const location = useLocation();
   const [showToolTip, setShowToolTip] = useState(true);
+
+  useEffect(() => {
+    // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     let deleteToolTip;

@@ -91,11 +91,11 @@ const CategoryNavigator = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
   const GoToBack = () => {
-    setBackClicked(true);
-    setTimeout(() => {
-      navigate(-1);
-    }, 250);
+    window.history.back(); // 이전 페이지로 이동
   };
+  useEffect(() => {
+    window.scrollTo(0, 0); // 이전 페이지로 이동했을 때 스크롤 맨 위로 이동
+  }, []);
 
   useEffect(() => {
     if (isBackClicked) {
@@ -114,9 +114,7 @@ const CategoryNavigator = () => {
       <Box>
         <BackBox onClick={GoToBack}>
           <BackImg fS={fontSize} src="/TestBack.svg" />
-          <BackText clicked={isBackClicked} fS={fontSize}>
-            돌아가기
-          </BackText>
+          <BackText fS={fontSize}>돌아가기</BackText>
         </BackBox>
       </Box>
     </>
