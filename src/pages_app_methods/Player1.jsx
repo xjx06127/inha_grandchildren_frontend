@@ -6,10 +6,14 @@ import ReactPlayer from "react-player/lazy";
 const BackGround = styled.div`
   background-color: black;
   height: 100%;
+  @media (orientation: landscape) {
+    height:auto;
+  }
 `;
 
 const Videobox = styled.div`
   margin-left: 10%;
+  margin-top: 10%;
 `;
 
 const Player1 = () => {
@@ -19,13 +23,13 @@ const Player1 = () => {
             <BackNavigator/>
             <Videobox>
                 <ReactPlayer
-                url="video.mp4"
+                url="Use.mp4"
                 width="90%"
                 height="20%"
                 // playing={true}
                 muted={true}
                 controls={true}
-                loop={true}
+                loop={false}
             />
             </Videobox>
         </BackGround>
