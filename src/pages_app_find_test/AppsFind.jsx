@@ -114,6 +114,7 @@ const AppsFind = () => {
   document.body.style = "background: white;";
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     axios
       .post(`https://forgrandparents.store/recommend/`, {
         field: appfield,
