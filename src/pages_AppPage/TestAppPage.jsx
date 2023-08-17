@@ -674,8 +674,32 @@ const TestAppPage = () => {
     //현재 데스크톱인 경우
     else if (isMac) {
       //Mac인경우
-      window.open(iosUrl);
-    } else window.open(AndroidUrl); //Mac이 아닌 경우
+      if(iosUrl){
+        window.open(iosUrl);
+      }
+      else{
+        Swal.fire({
+          icon: "error",
+          title: "잠시만요!",
+          text: "해당 어플은 현재 기기에서 지원하지 않아요.",
+          confirmButtonText: "다른 어플 보러가기",
+          confirmButtonColor: "#798560",
+        });
+      }
+    } 
+    //데스크톱이 맥이 아닌 경우
+    else if (AndroidUrl) {
+      window.open(AndroidUrl);
+    }
+    else{
+      Swal.fire({
+        icon: "error",
+        title: "잠시만요!",
+        text: "해당 어플은 현재 기기에서 지원하지 않아요.",
+        confirmButtonText: "다른 어플 보러가기",
+        confirmButtonColor: "#798560",
+      });
+    }
   };
 
   const handleButtonClick2 = async () => {
