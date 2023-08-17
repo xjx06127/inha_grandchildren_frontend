@@ -91,6 +91,7 @@ const StartPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (isDesktopOrLaptop && localStorage.getItem("isAlerted") == null) {
       alertPC();
     }
