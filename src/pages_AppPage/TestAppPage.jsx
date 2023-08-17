@@ -704,7 +704,7 @@ const TestAppPage = () => {
           icon: "success",
           title: "추천 완료",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 2000,
         });
       } catch (error) {
         console.error("Error occurred while updating like:", error);
@@ -715,7 +715,7 @@ const TestAppPage = () => {
         title: "잠시만요!",
         text: "중복 추천은 불가해요.😥",
         showConfirmButton: false,
-        timer: 3000,
+        timer: 2000,
       });
     }
   };
