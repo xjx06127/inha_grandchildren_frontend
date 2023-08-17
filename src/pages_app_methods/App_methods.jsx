@@ -236,7 +236,7 @@ const Thumbnail = styled.img`
 const Thumbnail2 = styled.img`
   content: url('/howtouse2.svg');
   @media (orientation: landscape) {
-    height: 45vh;
+    height: 45vh; 
   }
 `
 
