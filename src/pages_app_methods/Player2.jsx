@@ -25,7 +25,7 @@ const Player2 = () => {
         <BackNavigator />
         <Videobox>
           <ReactPlayer
-            url="Del.mp4"
+            url="nndel.mp4"
             width="90%"
             height="20%"
             playing={true}
