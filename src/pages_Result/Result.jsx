@@ -9,6 +9,7 @@ import TestNavigator from "../pages_Test/TestNavigator";
 import "../pages_Test/Bar.css";
 import confetti from "canvas-confetti";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
+import ResultNavigator from "./ResultNavigator";
 
 const Comment1 = styled.p`
   /* 디지털 레벨을 분석했어요! */
@@ -245,7 +246,7 @@ const Result = () => {
 
   return (
     <>
-      <TestNavigator />
+      <ResultNavigator />
       <Comment1 fS={fontSize}>
         <Highlight>디지털 레벨</Highlight>을<br />
         분석했어요!

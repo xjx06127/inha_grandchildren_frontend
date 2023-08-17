@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
@@ -102,14 +103,16 @@ const NavigatorApp = () => {
 
   return (
     <>
-      <Box>
-        <BackBox onClick={GoToBack}>
-          <BackImg src="/back.svg" />
-          <BackText clicked={isBackClicked} fS={fontSize}>
-            돌아가기
-          </BackText>
-        </BackBox>
-      </Box>
+      <Link to={"/category"} style={{ textDecoration: "none" }}>
+        <Box>
+          <BackBox>
+            <BackImg fS={fontSize} src="/back.svg" />
+            <BackText clicked={isBackClicked} fS={fontSize}>
+              돌아가기
+            </BackText>
+          </BackBox>
+        </Box>
+      </Link>
     </>
   );
 };

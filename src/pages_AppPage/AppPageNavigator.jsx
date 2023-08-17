@@ -154,16 +154,14 @@ const AppPageNavigator = () => {
 
   return (
     <>
-      <Link to={"/category"} style={{ textDecoration: "none" }}>
-        <Box>
-          <BackBox>
-            <BackImg src="/grayback.svg" fS={fontSize} />
-            <BackText clicked={isBackClicked} fS={fontSize}>
-              돌아가기
-            </BackText>
-          </BackBox>
-        </Box>
-      </Link>
+      <Box onClick={GoToBack}>
+        <BackBox>
+          <BackImg src="/grayback.svg" fS={fontSize} />
+          <BackText clicked={isBackClicked} fS={fontSize}>
+            돌아가기
+          </BackText>
+        </BackBox>
+      </Box>
     </>
   );
 };
