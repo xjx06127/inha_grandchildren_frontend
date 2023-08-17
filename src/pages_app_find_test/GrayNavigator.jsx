@@ -108,7 +108,7 @@ const GrayNavigator = () => {
   const navigate = useNavigate();
   const initialSoundOffValue = localStorage.getItem("soundOff") === "true"; //true인 경우 true반환
   const [isSoundOffClicked, setSoundOffClicked] =
-  useState(initialSoundOffValue);
+    useState(initialSoundOffValue);
   const location = useLocation();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
 
@@ -297,14 +297,11 @@ const GrayNavigator = () => {
       speakText(
         "운동과 관련된 어플을 찾아봤어요! 해당 어플이 궁금하시다면, 자세히 버튼을 눌러보세요!"
       );
+    } else if (decodeURI(location.pathname) === decodeURI("/NoSound")) {
+      speakText(
+        "혹시 아래와 같은 삼성 인터넷을 쓰시나요? 그렇다면, 아래와 같은 방법으로 설정해보세요! 화면을 위로 쓸어올리시면, 다음 설명 페이지로 이동합니다."
+      );
     }
-      else if(
-        decodeURI(location.pathname) === decodeURI("/NoSound")
-      ) {
-        speakText(
-          "혹시 아래와 같은 삼성 인터넷을 쓰시나요? 그렇다면, 아래와 같은 방법으로 설정해보세요! 화면을 위로 쓸어올리시면, 다음 설명 페이지로 이동합니다."
-        );
-      }
 
     return () => {
       synth.cancel();
@@ -349,44 +346,35 @@ const GrayNavigator = () => {
   let dynamicPath = "";
   if (decodeURI(location.pathname) === decodeURI("/AppFind")) {
     dynamicPath = "/Main";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/LivingAppsFind1")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/LivingAppsFind1")) {
     dynamicPath = "/AppFind";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/HobbyAppTest1")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/HobbyAppTest1")) {
     dynamicPath = "/AppFind";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/CommunityAppsFind")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/CommunityAppsFind")) {
     dynamicPath = "/AppFind";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/HealthyAppTest1")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/HealthyAppTest1")) {
     dynamicPath = "/AppFind";
-  }
-
-  else if (decodeURI(location.pathname) === decodeURI("/FinanceAppsFind")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/FinanceAppsFind")) {
     dynamicPath = "/LivingAppsFind1";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/SearchLoadsAppsFind")) {
+  } else if (
+    decodeURI(location.pathname) === decodeURI("/SearchLoadsAppsFind")
+  ) {
     dynamicPath = "/LivingAppsFind1";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/DeliveryAppsFind")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/DeliveryAppsFind")) {
     dynamicPath = "/LivingAppsFind1";
-  }
-
-  else if (decodeURI(location.pathname) === decodeURI("/IndoorAppsFind")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/IndoorAppsFind")) {
     dynamicPath = "/HobbyAppTest1";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/OutdoorAppsFind")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/OutdoorAppsFind")) {
     dynamicPath = "/HobbyAppTest1";
-  }
-
-  else if (decodeURI(location.pathname) === decodeURI("/HealthCareAppsFind")) {
+  } else if (
+    decodeURI(location.pathname) === decodeURI("/HealthCareAppsFind")
+  ) {
     dynamicPath = "/HealthyAppTest1";
-  }
-  else if (decodeURI(location.pathname) === decodeURI("/TreatmentAppsFind")) {
+  } else if (decodeURI(location.pathname) === decodeURI("/TreatmentAppsFind")) {
     dynamicPath = "/HealthyAppTest1";
+  } else if (decodeURI(location.pathname) === decodeURI("/NoSound")) {
+    dynamicPath = "/Main";
   }
-
 
   return (
     <>
