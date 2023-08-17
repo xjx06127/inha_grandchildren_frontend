@@ -334,11 +334,11 @@ const GrayNavigator = () => {
     isSoundOffClicked === true
       ? Toast.fire({
           icon: "success",
-          title: "음성 지원 소리를 켰습니다.",
+          title: "이제 소리가 나와요.",
         })
       : Toast.fire({
           icon: "success",
-          title: "음성 지원 소리를 껐습니다.",
+          title: "이제 소리가 나오지 않아요.",
         });
   };
 
