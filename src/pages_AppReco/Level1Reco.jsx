@@ -184,6 +184,8 @@ const Level1Reco = () => {
   document.body.style = "background: white;";
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     axios.get(`https://forgrandparents.store/applist/`).then((res) => {
       setApp(res.data.level_0);
       console.log(App);
@@ -211,25 +213,25 @@ const Level1Reco = () => {
 
           {App.map((element, index) => (
             <Fade bottom delay={index * 100}>
-            <div>
-              <NameWrapper>
-                <Icon1 src="/Rec.svg"></Icon1>
-                <Number fS={fontSize}>{element.like}명</Number>
-                <Name fS={fontSize}>이 추천해요!</Name>
-              </NameWrapper>
-              <Box key={index}>
-                <AppImage src={element.image} />
-                <TB>
-                  <Title fS={fontSize}>{element.name}</Title>
-                  <Button
-                    onClick={() => handleButtonClick(element.id)}
-                    fS={fontSize}
-                  >
-                    자세히
-                  </Button>
-                </TB>
-              </Box>
-            </div>
+              <div>
+                <NameWrapper>
+                  <Icon1 src="/Rec.svg"></Icon1>
+                  <Number fS={fontSize}>{element.like}명</Number>
+                  <Name fS={fontSize}>이 추천해요!</Name>
+                </NameWrapper>
+                <Box key={index}>
+                  <AppImage src={element.image} />
+                  <TB>
+                    <Title fS={fontSize}>{element.name}</Title>
+                    <Button
+                      onClick={() => handleButtonClick(element.id)}
+                      fS={fontSize}
+                    >
+                      자세히
+                    </Button>
+                  </TB>
+                </Box>
+              </div>
             </Fade>
           ))}
         </Rectangle>

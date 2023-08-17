@@ -214,6 +214,10 @@ const FontSizeSettingForNew = () => {
     setFontSize(selectedFontSize);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   //기본 tts 설정값 : 자동재생 (버튼클릭 시, 소리끄기)
   useEffect(() => {
     localStorage.setItem("soundOff", false);

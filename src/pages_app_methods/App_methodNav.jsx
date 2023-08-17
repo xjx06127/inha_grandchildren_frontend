@@ -58,6 +58,12 @@ const BackText = styled.p`
   }};
 `;
 
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const App_methodNav = () => {
   const navigate = useNavigate();
   const [isBackClicked, setBackClicked] = useState(false);
@@ -80,12 +86,12 @@ const App_methodNav = () => {
     <>
       <Box>
         <BackBox>
-          <Link to={`/Main`} style={{ textDecoration: "none" }}>
+          <StyledLink to={`/Main`} style={{ textDecoration: "none" }}>
             <BackImg fS={fontSize} src="/back.svg" />
             <BackText fS={fontSize} clicked={isBackClicked}>
               돌아가기
             </BackText>
-          </Link>
+          </StyledLink>
         </BackBox>
       </Box>
     </>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import { motion } from "framer-motion";
@@ -206,6 +206,10 @@ const FontSizeSetting = () => {
   const go = () => {
     navigate(`/Main`);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <BackGround>
