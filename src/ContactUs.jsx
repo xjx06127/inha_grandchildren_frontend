@@ -70,15 +70,6 @@ const CopyRightText = styled.p`
   white-space: nowrap;
 `;
 
-const InstargramImg = styled.img`
-  width: 15%;
-  margin-top: 3%;
-`;
-
-const GoToInstargram = () => {
-  window.location.href = "https://www.instagram.com/likelion_inha/";
-};
-
 const ContactUs = () => {
   return (
     <>
@@ -99,7 +90,6 @@ const ContactUs = () => {
               INHA_GRANDCHILDREN. All Rights Reserved.
             </CopyRightText>
           </CopyBox>
-          <InstargramImg src="/instargram.svg" onClick={GoToInstargram} />
         </Row3>
       </Background>
     </>
