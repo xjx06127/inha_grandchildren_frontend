@@ -8,6 +8,14 @@ import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import Fade from "react-reveal/Fade";
 import App_methodNav from "./App_methodNav";
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Highlight = styled.span`
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 68%, #ffd05d 50%);
   border-radius: 3px;
@@ -287,18 +295,21 @@ const App_methods = () => {
           <br />
           알려드릴게요🐥
         </Text>
+        <Div>
+          <Videobox>
+            <Link to={"/HowToUse1"} style={{ textDecoration: "none" }}>
+              <Thumbnail />
+            </Link>
+          </Videobox>
+          <Title fS={fontSize}>'손주야~'사용영상 </Title>
+        </Div>
 
-        <Videobox>
-          <Link to={"/HowToUse1"} style={{ textDecoration: "none" }}>
-            <Thumbnail />
-          </Link>
-        </Videobox>
-        <Title fS={fontSize}>'손주야~'사용영상 </Title>
-
-        <Videobox>
-          <Thumbnail2 onClick={GoToPlayer2} />
-        </Videobox>
-        <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
+        <Div>
+          <Videobox>
+            <Thumbnail2 onClick={GoToPlayer2} />
+          </Videobox>
+          <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
+        </Div>
 
         <LevelBackGround>
           <Text2 fS={fontSize}>
