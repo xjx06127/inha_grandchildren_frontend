@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
+import { useMediaQuery } from "react-responsive";
+import Swal from "sweetalert2";
 
 const Img = styled.img`
   content: url(startPageLogo.png);
@@ -72,7 +74,26 @@ const StartPage = () => {
   const [isNew, SetIsNew] = useState("");
   document.body.style = "background: white;";
 
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
+  const alertPC = () => {
+    Swal.fire({
+      title: "잠시만요!",
+      html: "F12를 눌러 Toggle device toolbar를 통해 모바일 모드로 보시는 걸 권장합니다. <br/><br/>( 단축키 : F12 -> Ctrl+Shift+M )",
+      icon: "warning",
+      confirmButtonText: "확인",
+      confirmButtonColor: "#798560",
+    });
+    localStorage.setItem("isAlerted", true);
+  };
+
   useEffect(() => {
+    if (isDesktopOrLaptop && localStorage.getItem("isAlerted") == null) {
+      alertPC();
+    }
     SetIsNew(localStorage.getItem("IsNew"));
     let isRecoArr = localStorage.getItem("isRecoArr");
 
