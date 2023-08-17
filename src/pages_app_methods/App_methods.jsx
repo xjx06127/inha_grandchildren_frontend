@@ -21,7 +21,7 @@ const BackGround = styled.div`
     height: 40vh;
   }
   @media (orientation: landscape) {
-    height: 90vh;
+    height: 95vh;
   }
   font-family: "MICE";
 `;
@@ -103,7 +103,7 @@ const LevelBackGround = styled.div`
     background-size: cover;
     height: 410vh;
   }
-`
+`;
 
 const Text2 = styled.h1`
   /* font-size: 1.9rem; */
@@ -124,7 +124,7 @@ const Text2 = styled.h1`
         return "2.3rem";
     }
   }};
-`
+`;
 
 const LevelText = styled.p`
   font-weight: bold;
@@ -142,15 +142,14 @@ const LevelText = styled.p`
         return "1.7rem";
     }
   }};
-
-`
+`;
 
 const Arrow = styled.img`
   margin-left: 30%;
   @media (orientation: landscape) {
     width: 14%;
   }
-`
+`;
 
 const Arrow2 = styled.img`
   margin-left: 40%;
@@ -159,7 +158,7 @@ const Arrow2 = styled.img`
   @media (orientation: landscape) {
     width: 14%;
   }
-`
+`;
 
 const Arrow3 = styled.img`
   margin-left: 15%;
@@ -167,14 +166,14 @@ const Arrow3 = styled.img`
   @media (orientation: landscape) {
     width: 14%;
   }
-`
+`;
 
 const Arrow4 = styled.img`
- margin-left: 37%;
- @media (orientation: landscape) {
+  margin-left: 37%;
+  @media (orientation: landscape) {
     width: 14%;
   }
-`
+`;
 
 //씨앗
 const LevelBox = styled.div`
@@ -188,7 +187,7 @@ const SeedImg = styled.img`
   @media (orientation: landscape) {
     width: 20%;
   }
-`
+`;
 
 //새싹
 const LevelBox2 = styled.div`
@@ -197,11 +196,11 @@ const LevelBox2 = styled.div`
   margin-left: 35%;
 `;
 const Img2 = styled.img`
-   margin-left: 3%;
-   @media (orientation: landscape) {
+  margin-left: 3%;
+  @media (orientation: landscape) {
     width: 20%;
   }
-`
+`;
 
 //꽃
 const LevelBox3 = styled.div`
@@ -214,7 +213,7 @@ const Img3 = styled.img`
   @media (orientation: landscape) {
     width: 20%;
   }
-`
+`;
 
 //열매
 const LevelBox4 = styled.div`
@@ -229,38 +228,38 @@ const Img4 = styled.img`
   @media (orientation: landscape) {
     width: 20%;
   }
-`
+`;
 
 //나무
 const LevelBox5 = styled.div`
   display: flex;
   align-items: center;
   margin-left: 20%;
-`
+`;
 const Img5 = styled.img`
   margin-left: 3%;
   margin-bottom: 5%;
   @media (orientation: landscape) {
     width: 60%;
     height: 40vh;
-    content: url('/Ground_tree.svg');
+    content: url("/Ground_tree.svg");
   }
-`
+`;
 
 //썸네일
 const Thumbnail = styled.img`
-  content: url('/howtouse1.svg');
+  content: url("/howtouse1.svg");
   @media (orientation: landscape) {
     height: 45vh;
   }
-`
+`;
 
 const Thumbnail2 = styled.img`
-  content: url('/howtouse2.svg');
+  content: url("/howtouse2.svg");
   @media (orientation: landscape) {
-    height: 45vh; 
+    height: 45vh;
   }
-`
+`;
 
 const App_methods = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
@@ -268,11 +267,11 @@ const App_methods = () => {
   const navigate = useNavigate();
 
   const GoToPlayer1 = () => {
-    navigate('/HowToUse1');
+    navigate("/HowToUse1");
   };
 
   const GoToPlayer2 = () => {
-    navigate('/HowToUse2');
+    navigate("/HowToUse2");
   };
 
   useEffect(() => {
@@ -290,14 +289,14 @@ const App_methods = () => {
         </Text>
 
         <Videobox>
-          <Link to={'/HowToUse1'} style={{ textDecoration: "none" }}>
-            <Thumbnail/>
+          <Link to={"/HowToUse1"} style={{ textDecoration: "none" }}>
+            <Thumbnail />
           </Link>
         </Videobox>
         <Title fS={fontSize}>'손주야~'사용영상 </Title>
 
         <Videobox>
-          <Thumbnail2 onClick={GoToPlayer2}/>
+          <Thumbnail2 onClick={GoToPlayer2} />
         </Videobox>
         <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
 
