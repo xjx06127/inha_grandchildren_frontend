@@ -235,6 +235,8 @@ const Result = () => {
   window.localStorage.setItem("Level", level);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     let isNew = localStorage.getItem("IsNew");
     if (isNew == "true") {
       localStorage.setItem("IsNew", false);
