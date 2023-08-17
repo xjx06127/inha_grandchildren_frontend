@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/lazy";
 import BackNavigator from "../BackNavigator";
@@ -60,6 +60,10 @@ const Title = styled.div`
     }
   }};
   height: 50px;
+
+  @media (orientation: landscape) {
+    text-align: center;
+  }
 `;
 
 const Title1 = styled.div`
@@ -82,7 +86,7 @@ const Title1 = styled.div`
 `;
 
 const Videobox = styled.div`
-  margin-left: 10%;
+  text-align: center;
 `;
 
 const Icon = styled.img`
@@ -95,6 +99,11 @@ const Icon = styled.img`
 const LevelBackGround = styled.div`
   background-image: url(/levelbackground.svg);
   background-size: cover;
+  @media (orientation: landscape) {
+    background-image: url(/levelbackground.svg);
+    background-size: cover;
+    height: 410vh;
+  }
 `
 
 const Text2 = styled.h1`
@@ -102,35 +111,48 @@ const Text2 = styled.h1`
   text-align: center;
   padding-top: 7%;
   padding-bottom: 10%;
+  @media (orientation: landscape) {
+    font-size: 2.5rem;
+  }
 `
 
 const LevelText = styled.p`
   font-weight: bold;
   font-size: 1.3rem;
-`
-
-const LevelText2 = styled.p`
-  font-weight: bold;
-  font-size: 1.4rem;
+  @media (orientation: landscape) {
+    font-size: 1.9rem;
+  }
 `
 
 const Arrow = styled.img`
   margin-left: 30%;
+  @media (orientation: landscape) {
+    width: 14%;
+  }
 `
 
 const Arrow2 = styled.img`
   margin-left: 40%;
   margin-top: 3%;
   margin-bottom: 3%;
+  @media (orientation: landscape) {
+    width: 14%;
+  }
 `
 
 const Arrow3 = styled.img`
   margin-left: 15%;
   margin-top: 3%;
+  @media (orientation: landscape) {
+    width: 14%;
+  }
 `
 
 const Arrow4 = styled.img`
  margin-left: 37%;
+ @media (orientation: landscape) {
+    width: 14%;
+  }
 `
 
 //씨앗
@@ -142,6 +164,9 @@ const LevelBox = styled.div`
 
 const SeedImg = styled.img`
   margin-right: 3%;
+  @media (orientation: landscape) {
+    width: 20%;
+  }
 `
 
 //새싹
@@ -152,6 +177,9 @@ const LevelBox2 = styled.div`
 `
 const Img2 = styled.img`
    margin-left: 3%;
+   @media (orientation: landscape) {
+    width: 20%;
+  }
 `
 
 //꽃
@@ -163,6 +191,9 @@ const LevelBox3 = styled.div`
 `
 const Img3 = styled.img`
   margin-right: 3%;
+  @media (orientation: landscape) {
+    width: 20%;
+  }
 `
 
 //열매
@@ -173,24 +204,56 @@ const LevelBox4 = styled.div`
 `
 const Img4 = styled.img`
   width: 30%;
-  height: 40%;
+  height: 45%;
   margin-bottom: 4%;
+  @media (orientation: landscape) {
+    width: 20%;
+  }
 `
 
 //나무
 const LevelBox5 = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 30%;
+  margin-left: 25%;
 `
 const Img5 = styled.img`
   margin-left: 3%;
   margin-bottom: 5%;
+  @media (orientation: landscape) {
+    width: 60%;
+    height: 40vh;
+    content: url('/Ground_tree.svg');
+  }
+`
+
+//썸네일
+const Thumbnail = styled.img`
+  content: url('/howtouse1.svg');
+  @media (orientation: landscape) {
+    height: 45vh;
+  }
+`
+
+const Thumbnail2 = styled.img`
+  content: url('/howtouse2.svg');
+  @media (orientation: landscape) {
+    height: 45vh;
+  }
 `
 
 const App_methods = () => {
   const { fontSize, setFontSize } = useContext(FontSizeContext);
   document.body.style = "background: white;";
+  const navigate = useNavigate();
+
+  const GoToPlayer1 = () => {
+    navigate('/HowToUse1');
+  };
+
+  const GoToPlayer2 = () => {
+    navigate('/HowToUse2');
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -207,27 +270,14 @@ const App_methods = () => {
         </Text>
 
         <Videobox>
-          <ReactPlayer
-            url="video.mp4"
-            width="90%"
-            height="20%"
-            // playing={true}
-            muted={true}
-            controls={true}
-            loop={true}
-          />
+          <Link to={'/HowToUse1'} style={{ textDecoration: "none" }}>
+            <Thumbnail/>
+          </Link>
         </Videobox>
         <Title fS={fontSize}>'손주야~'사용영상 </Title>
+
         <Videobox>
-          <ReactPlayer
-            url="KakaoTalk_20230815_162726022.mp4"
-            width="90%"
-            height="20%"
-            // playing={true}
-            muted={true}
-            controls={true}
-            loop={true}
-          />
+          <Thumbnail2 onClick={GoToPlayer2}/>
         </Videobox>
         <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
 

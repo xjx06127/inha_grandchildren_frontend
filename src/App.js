@@ -41,6 +41,8 @@ import CommunityAppTest from "./pages_app_find_test/community/CommunityAppTest";
 import TestAppPage from "./pages_AppPage/TestAppPage";
 import FindAnalyze from "./pages_analyze/FindAnalyze";
 import NoSound from "./pages_NoSound/NoSound";
+import Player1 from "./pages_app_methods/Player1";
+import Player2 from "./pages_app_methods/Player2";
 import styled, { css } from "styled-components";
 
 function App() {
@@ -102,6 +104,9 @@ function App() {
             <Route path="/CommunityAppsFind" element={<CommunityAppTest />} />
             <Route path="/FindAnalyze" element={<FindAnalyze />} />
             <Route path="/NoSound" element={<NoSound />} />
+
+            <Route path="/HowToUse1" element={<Player1/>}/>
+            <Route path="/HowToUse2" element={<Player2/>}/>
 
             <Route path="*" element={<NotFound />} />
           </Routes>
