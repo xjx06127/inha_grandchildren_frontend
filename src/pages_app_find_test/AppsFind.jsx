@@ -8,12 +8,24 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import AppFindNavigator from "./AppFindNavigator";
 import Fade from "react-reveal/Fade";
+import { useContext } from "react";
+import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
 const MainText = styled.h1`
   text-align: center;
   margin-top: 7%;
   margin-bottom: 10%;
   font-family: "MICE";
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.2rem";
+      case "veryLarge":
+        return "2.5rem";
+    }
+  }};
 `;
 
 const Highlight = styled.span`
@@ -48,13 +60,33 @@ const AppImg = styled.img`
 `;
 
 const AppName = styled.p`
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
   font-weight: bold;
   margin-bottom: 3%;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.6rem";
+      case "large":
+        return "1.9rem";
+      case "veryLarge":
+        return "2.1rem";
+    }
+  }};
 `;
 
 const AppLevel = styled.p`
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.2rem";
+      case "large":
+        return "1.5rem";
+      case "veryLarge":
+        return "1.8rem";
+    }
+  }};
 `;
 
 const TextBox = styled.div`
@@ -66,7 +98,7 @@ const TextBox = styled.div`
 `;
 
 const GoToDetail = styled.p`
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   text-align: right;
   color: #617143;
   text-decoration: underline;
@@ -76,6 +108,16 @@ const GoToDetail = styled.p`
     transition: 0.4s;
     font-weight: bold;
   }
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 
 const NameWrapper = styled.div`
@@ -86,11 +128,31 @@ const NameWrapper = styled.div`
   font-family: "MICE";
 `;
 const Name = styled.p`
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 const Number = styled.p`
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   font-weight: bold;
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.6rem";
+      case "veryLarge":
+        return "1.9rem";
+    }
+  }};
 `;
 const Icon1 = styled.img`
   width: 6%;
@@ -109,6 +171,7 @@ const GoToAppDetail = () => {};
 
 const AppsFind = () => {
   const { appfield } = useParams();
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
   const [apps, setApps] = useState([]);
   const navigate = useNavigate();
   document.body.style = "background: white;";
@@ -128,7 +191,7 @@ const AppsFind = () => {
   return (
     <>
       <AppFindNavigator />
-      <MainText>
+      <MainText fS={fontSize}>
         <Highlight>{appfield}</Highlight>에 관한
         <br />
         적절한 어플을
@@ -142,14 +205,14 @@ const AppsFind = () => {
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
-                <Number>{index.like}명</Number>
-                <Name>이 추천해요!</Name>
+                <Number fS={fontSize}>{index.like}명</Number>
+                <Name fS={fontSize}>이 추천해요!</Name>
               </NameWrapper>
               <AppBox>
                 <AppImg src={index.image} />
                 <TextBox>
-                  <AppName>{index.name}</AppName>
-                  <AppLevel>
+                  <AppName fS={fontSize}>{index.name}</AppName>
+                  <AppLevel fS={fontSize}>
                     난이도 :
                     {index.levelvalue === 0
                       ? " 씨앗"
@@ -168,7 +231,7 @@ const AppsFind = () => {
                   <GoToDetail
                     onClick={() => {
                       navigate(`../AppPage/${index.id}`);
-                    }}
+                    }} fS={fontSize}
                   >
                     자세히
                   </GoToDetail>
