@@ -1,0 +1,45 @@
+.arrow_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #778267;
+  border: 4px solid #778267;
+  width: 60vw;
+  height: 18vw;
+  text-align: center;
+  border-radius: 20px;
+  color: #ffffff;
+  margin-left: 10%;
+  opacity: 0.95;
+}
+.arrow_box:after {
+  border-width: 5vw; /* 화살표 크기를 viewport width의 10%로 설정 */
+  margin-top: -5vw; /* 위치 조절 */
+  opacity: 0.95;
+}
+
+.arrow_box:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  /* border-width: 10px;
+  margin-left: -10px; */
+}
+
+.arrow_box:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-right-color: #778267;
+}
+.arrow_box:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-right-color: #778267;
+  border-width: 2vh;
+  margin-left: 2vh;
+  margin-top: -5%;
+}
