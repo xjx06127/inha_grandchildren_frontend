@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Box = styled.div`
   display: flex;
@@ -121,7 +122,7 @@ const AppPageNavigator = () => {
 
   const handleControlSound = () => {
     setSoundOffClicked(!isSoundOffClicked);
-    localStorage.setItem('soundOff',!isSoundOffClicked);
+    localStorage.setItem("soundOff", !isSoundOffClicked);
 
     const Toast = Swal.mixin({
       toast: true,
@@ -143,7 +144,7 @@ const AppPageNavigator = () => {
       : Toast.fire({
           icon: "success",
           title: "음성 지원 소리를 껐습니다.",
-        }); 
+        });
   };
 
   // const tts = () => {
@@ -153,14 +154,16 @@ const AppPageNavigator = () => {
 
   return (
     <>
-      <Box>
-        <BackBox onClick={GoToBack}>
-          <BackImg src="/grayback.svg" fS={fontSize} />
-          <BackText clicked={isBackClicked} fS={fontSize}>
-            돌아가기
-          </BackText>
-        </BackBox>
-      </Box>
+      <Link to={"/category"} style={{ textDecoration: "none" }}>
+        <Box>
+          <BackBox>
+            <BackImg src="/grayback.svg" fS={fontSize} />
+            <BackText clicked={isBackClicked} fS={fontSize}>
+              돌아가기
+            </BackText>
+          </BackBox>
+        </Box>
+      </Link>
     </>
   );
 };

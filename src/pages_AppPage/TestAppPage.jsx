@@ -580,6 +580,7 @@ const TestAppPage = () => {
   //backend에서 가져온 tts 음성 조절
   //unmount시 코드 실행
   useEffect(() => {
+    window.scrollTo(0, 0);
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
