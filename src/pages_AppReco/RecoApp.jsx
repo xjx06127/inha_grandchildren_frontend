@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AppPage from "../pages_AppPage/AppPage";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 const Desktop = styled.div`
   display: flex;
@@ -222,7 +222,7 @@ const RecoApp = () => {
             ))} */}
 
           {App.map((element, index) => (
-            <Fade bottom delay={index * 100}>
+            <Fade direction="up" triggerOnce="true" delay={index * 100}>
               <div>
                 <NameWrapper>
                   <Icon1 src="/Rec.svg"></Icon1>

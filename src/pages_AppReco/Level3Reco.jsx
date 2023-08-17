@@ -6,7 +6,7 @@ import AppPage from "../pages_AppPage/AppPage";
 import NavigatorApp from "./NavigatorApp";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 const Desktop = styled.div`
   display: flex;
@@ -214,7 +214,7 @@ const Level3Reco = () => {
           </CBox>
 
           {App.map((element, index) => (
-            <Fade bottom delay={index * 10}>
+            <Fade direction="up" triggerOnce="true" delay={index * 10}>
               <div>
                 <NameWrapper>
                   <Icon1 src="/Rec.svg"></Icon1>

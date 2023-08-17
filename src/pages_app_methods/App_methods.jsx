@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player/lazy";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 import App_methodNav from "./App_methodNav";
 
 const Div = styled.div`

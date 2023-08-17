@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import AppFindNavigator from "./AppFindNavigator";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 
@@ -201,7 +201,7 @@ const AppsFind = () => {
 
       <Apps>
         {apps.map((index, i) => (
-          <Fade bottom delay={i * 150}>
+          <Fade direction="up" triggerOnce="true" delay={i * 150}>
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
