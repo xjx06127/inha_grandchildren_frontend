@@ -72,7 +72,7 @@ const Highlighter = styled.span`
 
 const Highlighter2 = styled.span`
   font-weight: bolder;
-  color: #F68858;
+  color: #f68858;
 `;
 
 const Icon1 = styled.img`
@@ -164,23 +164,24 @@ const InText = styled.div`
 const ImgIcon = styled.img`
   padding-top: 5%;
   width: 14%;
-`
+`;
 
 const ImgIcon2 = styled.img`
   padding-top: 7%;
   padding-right: 75%;
   width: 14%;
-`
+`;
 
 const Col = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
+`;
 
 const NoSound = () => {
-   const { fontSize, setFontSize } = useContext(FontSizeContext);
+  const { fontSize, setFontSize } = useContext(FontSizeContext);
+  document.body.style = "background: white;";
+
   useEffect(() => {
     // 페이지가 렌더링될 때 스크롤 위치를 맨 위로 이동
     window.scrollTo(0, 0);
@@ -203,69 +204,65 @@ const NoSound = () => {
           <br />
           그렇다면, 아래와 같은 방법으로 설정해보세요! <br />
           <br />
-        
           <Col>
-          <Box1>
-            <ImgIcon src="/number1.svg"/>
-            <InText fS={fontSize}>아래의 빨간 동그라미 안 버튼을 눌러주세요. </InText>
-            <br />
-            <Img src="/phone-removebg-preview.png"></Img>
-          </Box1>
+            <Box1>
+              <ImgIcon src="/number1.svg" />
+              <InText fS={fontSize}>
+                아래의 빨간 동그라미 안 버튼을 눌러주세요.{" "}
+              </InText>
+              <br />
+              <Img src="/phone-removebg-preview.png"></Img>
+            </Box1>
           </Col>
-      
           <br />
           <Fade key={1} bottom>
-          <Col>
-          <Box2>
-            <ImgIcon src="/number2.svg"/>
-            <InText fS={fontSize}>
-              아래의 빨간 동그라미 <Highlighter>'설정'</Highlighter>을
-              눌러주세요.
-            </InText>
-            <br />
-            <Img src="/phone2-removebg-preview.png"></Img>
-          </Box2>
-          </Col>
+            <Col>
+              <Box2>
+                <ImgIcon src="/number2.svg" />
+                <InText fS={fontSize}>
+                  아래의 빨간 동그라미 <Highlighter>'설정'</Highlighter>을
+                  눌러주세요.
+                </InText>
+                <br />
+                <Img src="/phone2-removebg-preview.png"></Img>
+              </Box2>
+            </Col>
           </Fade>
-
           <br />
-
           <Fade key={2} bottom>
-          <div>
-          <Col>
-          <Box3>
-            <ImgIcon src="/number3.svg"/>
-            <InText fS={fontSize}>
-              아래로 내려 <Highlighter>‘유용한 기능’</Highlighter>을 찾아
-              클릭해주세요!
-            </InText>
-            <br />
-            <Img2 src="/30.svg"></Img2>
-          </Box3>
-          </Col>
-          </div>
+            <div>
+              <Col>
+                <Box3>
+                  <ImgIcon src="/number3.svg" />
+                  <InText fS={fontSize}>
+                    아래로 내려 <Highlighter>‘유용한 기능’</Highlighter>을 찾아
+                    클릭해주세요!
+                  </InText>
+                  <br />
+                  <Img2 src="/30.svg"></Img2>
+                </Box3>
+              </Col>
+            </div>
           </Fade>
-
           <br />
           <Fade key={3} bottom>
-          <div>
-          <Col>
-          <Box4>
-            <ImgIcon src="/number4.svg"/>
-            <InText fS={fontSize}>
-              이제 마지막 단계입니다. <br />
-              <Highlighter>‘동영상 자동 재생 허용’</Highlighter> 버튼을
-              눌러주세요!
-            </InText>
-            <br />
-            <Img2 src="/40.svg"></Img2>
-          </Box4>
-          </Col>
-          </div>
+            <div>
+              <Col>
+                <Box4>
+                  <ImgIcon src="/number4.svg" />
+                  <InText fS={fontSize}>
+                    이제 마지막 단계입니다. <br />
+                    <Highlighter>‘동영상 자동 재생 허용’</Highlighter> 버튼을
+                    눌러주세요!
+                  </InText>
+                  <br />
+                  <Img2 src="/40.svg"></Img2>
+                </Box4>
+              </Col>
+            </div>
           </Fade>
           <br />
         </SText>
-        
         <SsText fS={fontSize}>
           그래도 소리가 나오지 않는다면
           <br />

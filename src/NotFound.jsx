@@ -13,6 +13,9 @@ const Text = styled.div`
   padding-top: 57%;
   padding-left: 5%;
   font-family: "MICE";
+  @media (orientation: landscape) {
+    padding-top: 3%;
+  }
 `;
 
 const Stext = styled.div`
@@ -24,15 +27,9 @@ const Stext = styled.div`
   font-family: "MICE";
 `;
 
-const Background = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: #e38b6f;
-`;
-
 const NextButton = styled.button`
   width: 60%;
-  height: 8vh;
+  height: 8%;
   background: transparent;
   border-radius: 30px;
   color: white;
@@ -46,6 +43,9 @@ const NextButton = styled.button`
   margin-left: 20%;
   border: 3px solid white;
   margin-top: 10%;
+  @media (orientation: landscape) {
+    height: 20%;
+  }
 `;
 
 const Img = styled.img`
@@ -61,10 +61,10 @@ const NotFound = () => {
 
   const navigate = useNavigate();
   const { fontSize, setFontSize } = useContext(FontSizeContext);
-  document.body.style = "background: white;";
+  document.body.style = "background: #e38b6f;";
 
   return (
-    <Background>
+    <>
       <Text>아이고!</Text>
       <Stext>
         페이지를
@@ -74,7 +74,7 @@ const NotFound = () => {
         이전으로
       </NextButton>
       <Img />
-    </Background>
+    </>
   );
 };
 
