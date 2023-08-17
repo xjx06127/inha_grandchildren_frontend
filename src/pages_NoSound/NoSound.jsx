@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
 import GrayNavigator from "../pages_app_find_test/GrayNavigator";
 import ContactUs from "../ContactUs";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 const Text = styled.p`
   /* font-size: 1.6rem; */
@@ -215,7 +215,7 @@ const NoSound = () => {
             </Box1>
           </Col>
           <br />
-          <Fade key={1} bottom>
+          <Fade direction="up" triggerOnce="true">
             <Col>
               <Box2>
                 <ImgIcon src="/number2.svg" />
@@ -229,7 +229,7 @@ const NoSound = () => {
             </Col>
           </Fade>
           <br />
-          <Fade key={2} bottom>
+          <Fade direction="up" triggerOnce="true">
             <div>
               <Col>
                 <Box3>
@@ -245,7 +245,7 @@ const NoSound = () => {
             </div>
           </Fade>
           <br />
-          <Fade key={3} bottom>
+          <Fade direction="up" triggerOnce="true">
             <div>
               <Col>
                 <Box4>

@@ -6,7 +6,7 @@ import AppPage from "../pages_AppPage/AppPage";
 import CategoryNavigator from "./CategoryNavigator";
 import { useContext } from "react";
 import { FontSizeContext } from "../pages_font_context/FontSizeProvider";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
 
 const Desktop = styled.div`
   display: flex;
@@ -359,8 +359,6 @@ const Category = () => {
           )}
         </BigBox>
 
-        <Fade bottom delay={0}>
-          <div>
             <T1>
               <Text fS={fontSize}>
                 <Highlight>씨앗용</Highlight> 어플
@@ -369,11 +367,9 @@ const Category = () => {
                 [더보기]
               </Tbutton>
             </T1>
-          </div>
-        </Fade>
 
         {app1[0] && (
-          <Fade bottom delay={200}>
+          <Fade direction="up" delay="0" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -399,7 +395,7 @@ const Category = () => {
         )}
 
         {app1[1] && (
-          <Fade bottom delay={300}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -424,7 +420,7 @@ const Category = () => {
           </Fade>
         )}
 
-        <Fade bottom>
+       
           <T1>
             <Text fS={fontSize}>
               <Highlight>새싹용</Highlight> 어플
@@ -434,10 +430,9 @@ const Category = () => {
               [더보기]
             </Tbutton>
           </T1>
-        </Fade>
 
         {app2[0] && (
-          <Fade bottom delay={200}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -463,7 +458,7 @@ const Category = () => {
         )}
 
         {app2[1] && (
-          <Fade bottom delay={300}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -498,7 +493,7 @@ const Category = () => {
         </T1>
 
         {app3[0] && (
-          <Fade bottom delay={200}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -524,7 +519,7 @@ const Category = () => {
         )}
 
         {app3[1] && (
-          <Fade bottom delay={300}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -559,7 +554,7 @@ const Category = () => {
         </T1>
 
         {app4[0] && (
-          <Fade bottom delay={200}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -585,7 +580,7 @@ const Category = () => {
         )}
 
         {app4[1] && (
-          <Fade bottom delay={300}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -620,7 +615,7 @@ const Category = () => {
         </T1>
 
         {app5[0] && (
-          <Fade bottom delay={200}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
@@ -646,7 +641,7 @@ const Category = () => {
         )}
 
         {app5[1] && (
-          <Fade bottom delay={300}>
+          <Fade direction="up" delay="" triggerOnce="true">
             <div>
               <NameWrapper>
                 <Icon1 src="/Rec.svg"></Icon1>
