@@ -106,21 +106,43 @@ const LevelBackGround = styled.div`
 `
 
 const Text2 = styled.h1`
-  font-size: 1.9rem;
+  /* font-size: 1.9rem; */
   text-align: center;
   padding-top: 7%;
   padding-bottom: 10%;
   @media (orientation: landscape) {
     font-size: 2.5rem;
   }
+
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.9rem";
+      case "large":
+        return "2.1rem";
+      case "veryLarge":
+        return "2.3rem";
+    }
+  }};
 `
 
 const LevelText = styled.p`
   font-weight: bold;
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   @media (orientation: landscape) {
     font-size: 1.9rem;
   }
+  font-size: ${(props) => {
+    switch (props.fS) {
+      case "normal":
+        return "1.3rem";
+      case "large":
+        return "1.5rem";
+      case "veryLarge":
+        return "1.7rem";
+    }
+  }};
+
 `
 
 const Arrow = styled.img`
@@ -213,7 +235,7 @@ const Img4 = styled.img`
 const LevelBox5 = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 25%;
+  margin-left: 20%;
 `
 const Img5 = styled.img`
   margin-left: 3%;
@@ -280,14 +302,14 @@ const App_methods = () => {
         <Title fS={fontSize}>어플삭제는 이렇게 해요 </Title>
 
         <LevelBackGround>
-          <Text2>
+          <Text2 fS={fontSize}>
             <Highlight>디지털 단계</Highlight>에 대해서 <br /> 알려드릴게요.
           </Text2>
 
           <Fade key={0} bottom>
             <LevelBox>
               <SeedImg src="/Ground_seed.svg" />
-              <LevelText>1단계 : 씨앗</LevelText>
+              <LevelText fS={fontSize}>1단계 : 씨앗</LevelText>
             </LevelBox>
           </Fade>
 
@@ -295,7 +317,7 @@ const App_methods = () => {
             <Arrow src="/down-arrow1.svg" />
 
             <LevelBox2>
-              <LevelText>2단계 : 새싹</LevelText>
+              <LevelText fS={fontSize}>2단계 : 새싹</LevelText>
               <Img2 src="/Ground_2.svg" />
             </LevelBox2>
           </Fade>
@@ -305,7 +327,7 @@ const App_methods = () => {
 
             <LevelBox3>
               <Img3 src="/Ground_3.svg" />
-              <LevelText>3단계 : 꽃</LevelText>
+              <LevelText fS={fontSize}>3단계 : 꽃</LevelText>
             </LevelBox3>
           </Fade>
 
@@ -313,14 +335,14 @@ const App_methods = () => {
             <Arrow3 src="/arrow-down3.svg" />
             <LevelBox4>
               <Img4 src="/Ground_4.svg" />
-              <LevelText>4단계 : 열매</LevelText>
+              <LevelText fS={fontSize}>4단계 : 열매</LevelText>
             </LevelBox4>
           </Fade>
 
           <Fade key={4} bottom delay={600}>
             <Arrow4 src="/arrow-down4.svg" />
             <LevelBox5>
-              <LevelText>5단계 : 나무</LevelText>
+              <LevelText fS={fontSize}>5단계 : 나무</LevelText>
               <Img5 src="/Ground_5.svg" />
             </LevelBox5>
           </Fade>
