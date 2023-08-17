@@ -613,14 +613,14 @@ const TestAppPage = () => {
     if (buttonClickCheck === false) {
       Toast.fire({
         icon: "success",
-        title: "음성 지원 소리를 켰습니다.",
+        title: "이제 소리가 나와요.",
       });
       audioRef.current.play();
       setButtonClickCheck(true);
     } else {
       Toast.fire({
         icon: "success",
-        title: "음성 지원 소리를 껐습니다.",
+        title: "이제 소리가 나오지 않아요.",
       });
       audioRef.current.load();
       setButtonClickCheck(false);
