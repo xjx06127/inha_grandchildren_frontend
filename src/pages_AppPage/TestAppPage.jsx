@@ -665,7 +665,7 @@ const TestAppPage = () => {
           icon: "error",
           title: "잠시만요!",
           text: "해당 어플은 현재 단말기에서 지원하지 않아요.",
-          confirmButtonText: "다른 어플 보러가기",
+          confirmButtonText: "확인",
           confirmButtonColor: "#798560",
         });
       return;
@@ -682,7 +682,7 @@ const TestAppPage = () => {
           icon: "error",
           title: "잠시만요!",
           text: "해당 어플은 현재 기기에서 지원하지 않아요.",
-          confirmButtonText: "다른 어플 보러가기",
+          confirmButtonText: "확인",
           confirmButtonColor: "#798560",
         });
       }
@@ -696,7 +696,7 @@ const TestAppPage = () => {
         icon: "error",
         title: "잠시만요!",
         text: "해당 어플은 현재 기기에서 지원하지 않아요.",
-        confirmButtonText: "다른 어플 보러가기",
+        confirmButtonText: "확인",
         confirmButtonColor: "#798560",
       });
     }
